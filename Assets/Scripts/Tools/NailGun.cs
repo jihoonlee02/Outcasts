@@ -6,16 +6,16 @@ public class NailGun : Tool
 {
     [SerializeField] private Projectile projectile;
 
-    private void Awake()
+    public override void UsePrimaryAction()
     {
-        m_data = new ToolData();
-        m_data.toolName = "NailGun";
-    }
+        if (m_user.Animator.GetFloat("MoveY") > 0.8f)
+        {
+            Pooler.Instance.Fire(ProjectileType.Nail,
+                m_user.transform.position, Vector2.up);
+            return;
+        }
 
-    public override void Use()
-    {
-        base.Use();
         Pooler.Instance.Fire(ProjectileType.Nail, 
-            m_user.transform.position, m_user.Animator.GetFloat("MoveX") > 0.1 ? Vector2.right : Vector2.left);
+            m_user.transform.position, Mathf.Sign(m_user.Animator.GetFloat("MoveX")) * Vector2.right);
     }
 }

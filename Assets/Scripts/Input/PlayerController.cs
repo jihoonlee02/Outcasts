@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
         //Adding methods to inputActions in PlayerInput
         m_playerInput.actions["Jump"].performed += JumpAction;
         m_playerInput.actions["Jump"].canceled += JumpAction;
-        m_playerInput.actions["UseTool"].performed += UseToolAction;
+        m_playerInput.actions["UseToolPrimary"].performed += UseToolPrimaryAction;
+        m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
+        m_playerInput.actions["NextTool"].performed += NextToolAction;
+        m_playerInput.actions["Prevtool"].performed += PrevToolAction;
         m_playerInput.actions.actionMaps[0].Enable();
     }
 
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         controlledPawn.Move(m_playerInput.actions["Movement"].ReadValue<Vector2>());
     }
 
+    #region Actions
     private void JumpAction(InputAction.CallbackContext context)
     {
         //This certainly could be coupled :p
@@ -56,18 +60,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UseToolAction(InputAction.CallbackContext context)
+    private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
-        ((ToolUser)controlledPawn).UseTool(0);
+        ((ToolUser)controlledPawn).UseToolPrimaryAction();
     }
+
+    private void UseToolSecondaryAction(InputAction.CallbackContext context)
+    {
+        ((ToolUser)controlledPawn).UseToolSecondaryAction();
+    }
+
+    private void NextToolAction(InputAction.CallbackContext context)
+    {
+        ((ToolUser)controlledPawn).NextTool();
+    }
+
+    private void PrevToolAction(InputAction.CallbackContext context)
+    {
+        ((ToolUser)controlledPawn).PrevTool();
+    }
+    #endregion
 
     public void DisableMovement()
     {
-
+        m_playerInput.actions["Movement"].Disable();
     }
 
     public void EnableMovement()
     {
-
+        m_playerInput.actions["Movement"].Enable();
     }
 }

@@ -24,18 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwapTool",
-                    "type": "PassThrough",
-                    "id": "d375d9df-7b6b-427b-aced-08043db2717c",
-                    "expectedControlType": "DiscreteButton",
+                    "name": "UseToolPrimary",
+                    "type": "Button",
+                    "id": "55c5766a-9aa6-489b-b2c1-5309bbc7b4e6",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UseTool",
+                    "name": "UseToolSecondary",
                     "type": "Button",
-                    "id": "55c5766a-9aa6-489b-b2c1-5309bbc7b4e6",
+                    "id": "a671040f-57dd-4168-9acc-57dfe297a78f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -45,6 +45,24 @@
                     "name": "Join",
                     "type": "Button",
                     "id": "c624bff0-ad4a-4e0f-b0d1-b29e3230233c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextTool",
+                    "type": "Button",
+                    "id": "a5e0197f-2d19-405b-bde5-db70c8ee42eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PrevTool",
+                    "type": "Button",
+                    "id": "136768ff-6541-4c68-a904-d9e207c4698b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -262,46 +280,13 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Bumpers",
-                    "id": "096f5420-a3f6-47d5-8b39-e38e14d21068",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapTool",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "5f9b1379-bff5-4c8f-9e48-05fc26afcf35",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SwapTool",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "de752735-17c7-4332-83e9-647b38743bf1",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SwapTool",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "35f9dea7-7021-4c78-9901-7965b2848bbd",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "UseTool",
+                    "action": "UseToolPrimary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -312,7 +297,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "UseTool",
+                    "action": "UseToolPrimary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -335,6 +320,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "552bf0f7-5f81-4af6-abc9-59b0142d915a",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseToolSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b717743-5a2a-4e9f-ad99-8058d1840612",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "UseToolSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "834096ba-0aff-42e2-ab50-6b0dbdd3e1c0",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NextTool",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed47cc3f-bc0b-4407-927f-643274658a4c",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PrevTool",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

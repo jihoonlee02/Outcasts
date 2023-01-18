@@ -20,6 +20,7 @@ public class Projectile : MonoBehaviour
         transform.position = spawnPos;
         m_movingDirection = direction;
         m_sr.flipX = direction == Vector2.left;
+        transform.eulerAngles = new Vector3(0, 0, direction == Vector2.up ? 90 : 0);
     }
 
     public void Update()

@@ -46,18 +46,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwapTool"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""d375d9df-7b6b-427b-aced-08043db2717c"",
-                    ""expectedControlType"": ""DiscreteButton"",
+                    ""name"": ""UseToolPrimary"",
+                    ""type"": ""Button"",
+                    ""id"": ""55c5766a-9aa6-489b-b2c1-5309bbc7b4e6"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""UseTool"",
+                    ""name"": ""UseToolSecondary"",
                     ""type"": ""Button"",
-                    ""id"": ""55c5766a-9aa6-489b-b2c1-5309bbc7b4e6"",
+                    ""id"": ""a671040f-57dd-4168-9acc-57dfe297a78f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -67,6 +67,24 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Join"",
                     ""type"": ""Button"",
                     ""id"": ""c624bff0-ad4a-4e0f-b0d1-b29e3230233c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextTool"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5e0197f-2d19-405b-bde5-db70c8ee42eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrevTool"",
+                    ""type"": ""Button"",
+                    ""id"": ""136768ff-6541-4c68-a904-d9e207c4698b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -284,46 +302,13 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Bumpers"",
-                    ""id"": ""096f5420-a3f6-47d5-8b39-e38e14d21068"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapTool"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5f9b1379-bff5-4c8f-9e48-05fc26afcf35"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""SwapTool"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""de752735-17c7-4332-83e9-647b38743bf1"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""SwapTool"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""35f9dea7-7021-4c78-9901-7965b2848bbd"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""UseTool"",
+                    ""action"": ""UseToolPrimary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -334,7 +319,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""UseTool"",
+                    ""action"": ""UseToolPrimary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -357,6 +342,50 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""552bf0f7-5f81-4af6-abc9-59b0142d915a"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseToolSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b717743-5a2a-4e9f-ad99-8058d1840612"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""UseToolSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""834096ba-0aff-42e2-ab50-6b0dbdd3e1c0"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextTool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed47cc3f-bc0b-4407-927f-643274658a4c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PrevTool"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -431,9 +460,11 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_SwapTool = m_Player.FindAction("SwapTool", throwIfNotFound: true);
-        m_Player_UseTool = m_Player.FindAction("UseTool", throwIfNotFound: true);
+        m_Player_UseToolPrimary = m_Player.FindAction("UseToolPrimary", throwIfNotFound: true);
+        m_Player_UseToolSecondary = m_Player.FindAction("UseToolSecondary", throwIfNotFound: true);
         m_Player_Join = m_Player.FindAction("Join", throwIfNotFound: true);
+        m_Player_NextTool = m_Player.FindAction("NextTool", throwIfNotFound: true);
+        m_Player_PrevTool = m_Player.FindAction("PrevTool", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -498,18 +529,22 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_SwapTool;
-    private readonly InputAction m_Player_UseTool;
+    private readonly InputAction m_Player_UseToolPrimary;
+    private readonly InputAction m_Player_UseToolSecondary;
     private readonly InputAction m_Player_Join;
+    private readonly InputAction m_Player_NextTool;
+    private readonly InputAction m_Player_PrevTool;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @SwapTool => m_Wrapper.m_Player_SwapTool;
-        public InputAction @UseTool => m_Wrapper.m_Player_UseTool;
+        public InputAction @UseToolPrimary => m_Wrapper.m_Player_UseToolPrimary;
+        public InputAction @UseToolSecondary => m_Wrapper.m_Player_UseToolSecondary;
         public InputAction @Join => m_Wrapper.m_Player_Join;
+        public InputAction @NextTool => m_Wrapper.m_Player_NextTool;
+        public InputAction @PrevTool => m_Wrapper.m_Player_PrevTool;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -525,15 +560,21 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @SwapTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapTool;
-                @SwapTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapTool;
-                @SwapTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapTool;
-                @UseTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
-                @UseTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
-                @UseTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
+                @UseToolPrimary.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolPrimary;
+                @UseToolPrimary.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolPrimary;
+                @UseToolPrimary.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolPrimary;
+                @UseToolSecondary.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolSecondary;
+                @UseToolSecondary.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolSecondary;
+                @UseToolSecondary.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseToolSecondary;
                 @Join.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
                 @Join.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
                 @Join.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
+                @NextTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextTool;
+                @NextTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextTool;
+                @NextTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextTool;
+                @PrevTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrevTool;
+                @PrevTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrevTool;
+                @PrevTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrevTool;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -544,15 +585,21 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @SwapTool.started += instance.OnSwapTool;
-                @SwapTool.performed += instance.OnSwapTool;
-                @SwapTool.canceled += instance.OnSwapTool;
-                @UseTool.started += instance.OnUseTool;
-                @UseTool.performed += instance.OnUseTool;
-                @UseTool.canceled += instance.OnUseTool;
+                @UseToolPrimary.started += instance.OnUseToolPrimary;
+                @UseToolPrimary.performed += instance.OnUseToolPrimary;
+                @UseToolPrimary.canceled += instance.OnUseToolPrimary;
+                @UseToolSecondary.started += instance.OnUseToolSecondary;
+                @UseToolSecondary.performed += instance.OnUseToolSecondary;
+                @UseToolSecondary.canceled += instance.OnUseToolSecondary;
                 @Join.started += instance.OnJoin;
                 @Join.performed += instance.OnJoin;
                 @Join.canceled += instance.OnJoin;
+                @NextTool.started += instance.OnNextTool;
+                @NextTool.performed += instance.OnNextTool;
+                @NextTool.canceled += instance.OnNextTool;
+                @PrevTool.started += instance.OnPrevTool;
+                @PrevTool.performed += instance.OnPrevTool;
+                @PrevTool.canceled += instance.OnPrevTool;
             }
         }
     }
@@ -621,9 +668,11 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnSwapTool(InputAction.CallbackContext context);
-        void OnUseTool(InputAction.CallbackContext context);
+        void OnUseToolPrimary(InputAction.CallbackContext context);
+        void OnUseToolSecondary(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
+        void OnNextTool(InputAction.CallbackContext context);
+        void OnPrevTool(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

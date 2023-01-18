@@ -9,8 +9,13 @@ public class Tool : MonoBehaviour
 
     public ToolUser User { set { m_user = value; } }
 
-    public virtual void Use()
+    public virtual void UsePrimaryAction()
     {
-        Debug.Log(m_user + " used Tool:" + m_data.toolName);
+        Debug.Log(m_user + " used Tool:" + m_data.toolName + " (Primary Action)");
+    }
+
+    public virtual void UseSecondaryAction()
+    {
+        Debug.Log(m_user + " used Tool:" + m_data.toolName + " (Secondary Action)");
     }
 }

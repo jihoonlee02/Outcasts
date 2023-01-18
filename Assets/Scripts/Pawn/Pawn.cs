@@ -40,7 +40,7 @@ public class Pawn : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
-        m_animator = GetComponent<Animator>();
+        m_animator = GetComponentInChildren<Animator>();
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class Pawn : MonoBehaviour
     /// <param name="inputValue">
     /// This is the raw value given by an external input source
     /// </param>
-    public void Move(Vector2 inputVector)
+    public virtual void Move(Vector2 inputVector)
     {
         //Old way
         //transform.Translate((inputValue < 0 ? Vector2.left : (inputValue > 0 ? Vector2.right : Vector2.zero)) * Time.deltaTime * movementSpeed);
@@ -58,12 +58,15 @@ public class Pawn : MonoBehaviour
         //Movement Using Forces (direct reference from Dawnosaur)
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ?Mathf.Sign(inputVector.x) : 0;
 
+        m_animator.SetFloat("MoveY", inputVector.y);
+
         if (inputVector.x == 0)
         {
-            m_animator.Play("Idle");
+            m_animator.SetBool("IsIdle", true);
             return;
         }
 
+        m_animator.SetBool("IsIdle", false);
         m_animator.SetFloat("MoveX", inputVector.x);
         m_animator.Play("Movement");
 
