@@ -118,15 +118,25 @@ public class Pawn : MonoBehaviour
 
     public void Jump()
     {
-        if (lastGroundedTime > 0 && lastJumpTime > 0 && !isJumping)
+        //This allowed double jump o.O
+        //if (lastGroundedTime > 0 && lastJumpTime > 0 && !isJumping)
+        //{
+        //    m_rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        //    lastGroundedTime = 0;
+        //    isJumping = true;
+        //    lastJumpTime = jumpBufferTime;
+        //}
+
+        if (IsGrounded())
         {
             m_rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             lastGroundedTime = 0;
             isJumping = true;
             lastJumpTime = jumpBufferTime;
         }
+
     }
-     
+
     public void JumpCut()
     {
         if (m_rb.velocity.y > 0 && isJumping)
