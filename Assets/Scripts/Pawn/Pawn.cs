@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
-    [Header("Component References")]
+    [Header("Pawn Component References")]
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private Collider2D m_collider;
     [SerializeField] private Animator m_animator;
@@ -34,6 +34,8 @@ public class Pawn : MonoBehaviour
     private float lastGroundedTime;
     private float lastJumpTime;
     private bool isJumping;
+    private bool canMove;
+    private bool canJump;
     #endregion
 
     protected void Start()
@@ -41,6 +43,8 @@ public class Pawn : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
         m_animator = GetComponentInChildren<Animator>();
+        canMove = true;
+        canJump = true;
     }
 
     /// <summary>
@@ -54,7 +58,7 @@ public class Pawn : MonoBehaviour
     {
         //Old way
         //transform.Translate((inputValue < 0 ? Vector2.left : (inputValue > 0 ? Vector2.right : Vector2.zero)) * Time.deltaTime * movementSpeed);
-
+        if (!canMove) return;
         //Movement Using Forces (direct reference from Dawnosaur)
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ?Mathf.Sign(inputVector.x) : 0;
 
@@ -118,6 +122,8 @@ public class Pawn : MonoBehaviour
 
     public void Jump()
     {
+        if (!canJump) return;
+
         //This allowed double jump o.O
         //if (lastGroundedTime > 0 && lastJumpTime > 0 && !isJumping)
         //{
@@ -151,6 +157,41 @@ public class Pawn : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
-            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
+            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms") + LayerMask.GetMask("Players"));
     }
+
+    #region Togglers
+
+    //Movement
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    public void ToggleMovement()
+    {
+        canMove = !canMove;
+    }
+
+    public void DisableJump()
+    {
+        canJump = false;
+    }
+
+    public void EnableJump()
+    {
+        canJump = true;
+    }
+
+    public void ToggleJump()
+    {
+        canJump = !canJump;
+    }
+
+    #endregion
 }

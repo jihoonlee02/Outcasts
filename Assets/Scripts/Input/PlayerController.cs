@@ -10,11 +10,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Pawn controlledPawn;
     [SerializeField] private bool isDevMode;
 
+    public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
+
     private void Awake()
     {
         m_inputActions = new InputActions();
         m_playerInput = GetComponent<PlayerInput>();
-        //Adding Methods to inputActions using InputActions()
+
+        if (isDevMode) ControlPawn(GetComponent<PlayerPawn>());
+
+        //Old -- Adding Methods to inputActions using InputActions()
         //m_inputActions.Player.Jump.performed += JumpAction;
         //m_inputActions.Player.Jump.canceled += JumpAction;
         //m_inputActions.Player.Enable();
@@ -39,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Using a new InputActions()
+        //Old -- Using a new InputActions()
         //controlledPawn.Move(m_inputActions.Player.Movement.ReadValue<Vector2>());
 
         //Using PlayerInput itself
@@ -81,13 +86,9 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    public void DisableMovement()
+    public void ControlPawn(Pawn pawn)
     {
-        m_playerInput.actions["Movement"].Disable();
-    }
-
-    public void EnableMovement()
-    {
-        m_playerInput.actions["Movement"].Enable();
+        controlledPawn = pawn;
+        if (pawn.GetComponent<PlayerPawn>() != null) ((PlayerPawn)pawn).PC = this;
     }
 }

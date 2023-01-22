@@ -11,6 +11,8 @@ public class ToolUser : Pawn
         public SelectionNode next;
         public Tool tool;
 
+        public SelectionNode(Tool tool) { this.tool = tool; }
+
         public SelectionNode(Tool tool, SelectionNode next, SelectionNode prev)
         {
             this.tool = tool;
@@ -58,7 +60,9 @@ public class ToolUser : Pawn
 
         if (head == null)
         {
-            currToolNode = new SelectionNode(tool, currToolNode, currToolNode);
+            currToolNode = new SelectionNode(tool);
+            currToolNode.next = currToolNode;
+            currToolNode.prev = currToolNode;
             head = currToolNode;
             tail = currToolNode;
         }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1938542989246673666}
   - component: {fileID: 8745523029665336903}
-  - component: {fileID: 1280489421044293930}
+  - component: {fileID: 185810986149540189}
   - component: {fileID: 4704119343223125035}
   - component: {fileID: 7044494992268856869}
   - component: {fileID: 4902506508811616277}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1938542989347425519}
---- !u!114 &1280489421044293930
+--- !u!114 &185810986149540189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1938542989246673665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecd6220f78b90e4dbe8fd509d32618e, type: 3}
+  m_Script: {fileID: 11500000, guid: 309b45d3b2dfaee4990d85c5ff9869be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_rb: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_tools:
   - {fileID: 4091695789151834385}
   - {fileID: 4904042732700248127}
+  m_pc: {fileID: 0}
 --- !u!114 &4704119343223125035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,8 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerInput: {fileID: 8745523029665336903}
-  controlledPawn: {fileID: 1280489421044293930}
-  isDevMode: 0
+  controlledPawn: {fileID: 0}
+  isDevMode: 1
 --- !u!50 &7044494992268856869
 Rigidbody2D:
   serializedVersion: 4
