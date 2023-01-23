@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, direction == Vector2.up ? 90 : direction == Vector2.down ? -90 : 0);
     }
 
-    public void Impact()
+    public void OnImpact()
     {
         gameObject.SetActive(false);
     }
@@ -53,4 +53,18 @@ public class Projectile : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + m_movingDirection, Time.deltaTime * m_speed);
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.GetComponent<PlayerPawn>()) return;
+        OnImpact();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.GetComponent<PlayerPawn>()) return;
+        OnImpact();
+    }
+
+
 }

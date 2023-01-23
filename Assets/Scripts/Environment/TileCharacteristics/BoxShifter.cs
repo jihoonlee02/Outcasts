@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.MPE;
 using UnityEngine;
 
-public class BoxShifter : CollisionRespondent
+public class BoxShifter : MonoBehaviour, CollisionRespondent
 {
     [SerializeField] private BoxCollider2D m_leftCollider;
     [SerializeField] private BoxCollider2D m_rightCollider;
@@ -12,28 +12,25 @@ public class BoxShifter : CollisionRespondent
 
     [SerializeField] private Rigidbody2D m_rb;
 
-    public void InvokeCollisionRespose(Collision2D collision, string colliderImpacted)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void InvokeTriggerResponse(Collider2D collider, string colliderImpacted)
     {
-        var projectile = collider.gameObject.GetComponent<Projectile>();
-        projectile?.Impact();
+        var impacter = collider.gameObject.GetComponent<Projectile>();
+
+        if (impacter == null || impacter.GetType() != typeof(Projectile)) return;
+
         switch (colliderImpacted) 
         {
             case "right":
-                m_rb.velocity = Vector2.right;
+                m_rb.velocity += Vector2.left;
                 break;
             case "left":
-                m_rb.velocity = Vector2.left;
+                m_rb.velocity += Vector2.right;
                 break;
             case "up":
-                m_rb.velocity = Vector2.up;
+                m_rb.velocity += Vector2.down;
                 break;
             case "down":
-                m_rb.velocity = Vector2.down;
+                m_rb.velocity += Vector2.up;
                 break;
         }
     }

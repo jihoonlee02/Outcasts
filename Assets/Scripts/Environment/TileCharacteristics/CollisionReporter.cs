@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class CollisionReporter : MonoBehaviour
 {
-    [SerializeField] private CollisionRespondent m_cr;
-    [SerializeField] private string m_name;
+    [SerializeField] private GameObject m_cr;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        m_cr.InvokeCollisionRespose(collision, m_name);
+        m_cr.GetComponent<CollisionRespondent>()?.InvokeCollisionRespose(collision, gameObject.name);
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        m_cr.InvokeTriggerResponse(collider, m_name);
+        Debug.Log("It did this!");
+        m_cr.GetComponent<CollisionRespondent>()?.InvokeTriggerResponse(collider, gameObject.name);
     }
 
 }
