@@ -51,7 +51,7 @@ public class NailGun : Tool
 
         //Shoot left or right
         Pooler.Instance.Fire(ProjectileType.Nail, 
-            m_user.transform.position, Mathf.Sign(((PlayerPawn)m_user).PC.PlayerInputVector.x) * Vector2.right);
+            m_user.transform.position, Mathf.Sign(m_user.Animator.GetFloat("MoveX")) * Vector2.right);
     }
 
     public override void UseSecondaryAction()

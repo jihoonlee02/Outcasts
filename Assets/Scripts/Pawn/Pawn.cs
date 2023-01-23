@@ -157,7 +157,7 @@ public class Pawn : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
-            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms") + LayerMask.GetMask("Players"));
+            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
     }
 
     #region Togglers

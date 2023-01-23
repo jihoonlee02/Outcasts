@@ -126,6 +126,50 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Up",
+                    "id": "240d1f00-fc11-4235-bf28-6d61ff692a91",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "9f90b0e2-cf51-47b9-b229-2839a986c449",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "436bb541-91c5-421c-ba7d-00c30e4262b3",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "57d6175c-2cfb-4ac8-81b7-2f4f4b3b541f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Arrows [RightPlayer]",
                     "id": "70513e22-a42c-43de-857a-e1daccf8fd9b",
                     "path": "2DVector",
@@ -252,7 +296,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard;LocalKeyboard",
+                    "groups": "LocalKeyboard",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -261,6 +305,17 @@
                     "name": "",
                     "id": "96290cb9-72c6-45d9-8462-fcd25f1822ff",
                     "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3eb7bc85-e907-4c07-949b-42fd3b803a17",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -294,6 +349,17 @@
                     "name": "",
                     "id": "0f533a9b-61c6-4d10-90fc-bc9a260b5b6b",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "UseToolPrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e4f07b2-c95a-4c1b-8f20-0009c8cae804",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -347,6 +413,17 @@
                 },
                 {
                     "name": "",
+                    "id": "cc3bebff-90bf-4a0f-a915-a9e56230cefc",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseToolSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "834096ba-0aff-42e2-ab50-6b0dbdd3e1c0",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -359,7 +436,7 @@
                 {
                     "name": "",
                     "id": "85198256-0eea-463c-be10-db0fafad158e",
-                    "path": "<Keyboard>/period",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -381,7 +458,7 @@
                 {
                     "name": "",
                     "id": "7c8112bf-e8f8-4c50-b276-790b8e51acf1",
-                    "path": "<Keyboard>/comma",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
