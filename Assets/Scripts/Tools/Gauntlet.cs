@@ -8,7 +8,6 @@ public class Gauntlet : Tool
     [SerializeField] private BoxCollider2D m_collider;
 
     #region Technical
-
     private float currTime = 0f;
     private float animationLength = 0.5f; //Most likely will get replaced by the animation's clip time length
     private bool inUse;
