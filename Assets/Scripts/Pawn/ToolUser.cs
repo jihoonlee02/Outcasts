@@ -46,14 +46,17 @@ public class ToolUser : Pawn
 
     public void UseToolPrimaryAction() 
     {
+        Animator.speed = 1;
         currToolNode.tool.UsePrimaryAction();
     }
 
+    //Out of Scope
     public void UseToolSecondaryAction()
     {
         currToolNode.tool.UseSecondaryAction();
     }
 
+    //Was important, not really necessary now
     public void AddTool(Tool tool)
     {
         tool.User = this;
@@ -76,11 +79,13 @@ public class ToolUser : Pawn
         size++;
     }
 
+    //Sad but nothing
     public void RemoveTool(Tool tool)
     {
-
+        //Remains nothing
     }
 
+    //No point
     public void RemoveCurrTool()
     {
         if (currToolNode == null) 
@@ -103,6 +108,7 @@ public class ToolUser : Pawn
         size--;
     }
 
+    // Out of Scope -> Won't be in use, but will remain for future reason o.O
     public void NextTool()
     {
         currToolNode = currToolNode.next;

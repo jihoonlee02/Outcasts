@@ -9,7 +9,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 58915094ca074c04d9f61d08b2417021, type: 2}
+    m_Motion: {fileID: 7400000, guid: cebb4078e48a11c469bb1b10b9ac0c58, type: 2}
     m_Threshold: -0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -17,7 +17,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b11b7a68b42691e4eae04bf9a2919ccb, type: 2}
+    m_Motion: {fileID: 7400000, guid: 5f44e3fdfd6001d459e44227978d03c3, type: 2}
     m_Threshold: 0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -40,7 +40,7 @@ BlendTree:
   m_Name: Punch
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 6b06f43fe46b09d44b906645cf4b7511, type: 2}
+    m_Motion: {fileID: 7400000, guid: adba5802eb7e43a448c32d1930fea9ef, type: 2}
     m_Threshold: -0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -48,7 +48,7 @@ BlendTree:
     m_DirectBlendParameter: MoveX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: cc177458d79b2cf4e980cbed83d26fa8, type: 2}
+    m_Motion: {fileID: 7400000, guid: 4995fafcfd35de04e85d6a0f119c282c, type: 2}
     m_Threshold: 0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -114,7 +114,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 1040, y: 40, z: 0}
+  m_ExitPosition: {x: 860, y: 100, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7214208572017791999}
 --- !u!206 &-1659034391263094789
@@ -126,7 +126,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 9bef66d80015782459e9f29d0c3b33fe, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1ce49060c71293847acf5c1b35895a42, type: 2}
     m_Threshold: -0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -134,7 +134,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 8e392cef5cf73424ca42c560ed03d944, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1188d4764b192fd4cb2494e8f4cd0b85, type: 2}
     m_Threshold: 0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -154,7 +154,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tinker
+  m_Name: Ashe
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: MoveX

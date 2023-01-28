@@ -63,16 +63,8 @@ public class Pawn : MonoBehaviour
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ?Mathf.Sign(inputVector.x) : 0;
 
         m_animator.SetFloat("MoveY", inputVector.y);
-
-        if (inputVector.x == 0)
-        {
-            m_animator.SetBool("IsIdle", true);
-            return;
-        }
-
-        m_animator.SetBool("IsIdle", false);
-        m_animator.SetFloat("MoveX", inputVector.x);
-        m_animator.Play("Movement");
+        if (Mathf.Abs(inputVector.x) > 0.1f)
+            m_animator.SetFloat("MoveX", inputVector.x);
 
         //Movement code emulated from Dawnsaur Aug 10, 2021
         float targetSpeed = inputVector.x * movementSpeed;
@@ -80,6 +72,19 @@ public class Pawn : MonoBehaviour
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
         m_rb.AddForce(movement * Vector2.right);
+
+        if (Mathf.Abs(m_rb.velocity.x) < 0.01f)
+        {
+            m_animator.SetBool("IsIdle", true);
+            m_animator.speed = 1;
+            return;
+        }
+
+        m_animator.SetBool("IsIdle", false);
+        m_animator.Play("Movement");
+        m_animator.speed = Mathf.Abs(m_rb.velocity.x / 3);
+
+        //Add Force to movement
 
         //Friction code emulate from Dawnsaur Aug 10, 2021 
         if (lastGroundedTime > 0 && Mathf.Abs(inputVector.x) < 0.01f)
