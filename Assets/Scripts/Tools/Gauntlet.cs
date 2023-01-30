@@ -5,7 +5,8 @@ using UnityEngine;
 public class Gauntlet : Tool
 {
     [SerializeField] private Animator m_animator;
-    [SerializeField] private BoxCollider2D m_collider;
+    [SerializeField] private BoxCollider2D m_punchCollider;
+    [SerializeField] private BoxCollider2D m_grabCollider;
 
     #region Technical
     private float currTime = 0f;
@@ -15,7 +16,8 @@ public class Gauntlet : Tool
 
     public void Start()
     {
-        m_collider.enabled = false;
+        m_punchCollider.enabled = false;
+        m_grabCollider.enabled = false;
     }
 
     public override void UsePrimaryAction()
@@ -25,15 +27,20 @@ public class Gauntlet : Tool
         m_user.DisableMovement();
         m_user.DisableJump();
         m_user.Animator.Play("Punch");
-        m_collider.enabled = true;
+        m_punchCollider.enabled = true;
         inUse = false;
-        m_collider.offset = new Vector2(m_collider.offset.x * Mathf.Sign(((PlayerPawn)m_user).PC.PlayerInputVector.x), m_collider.offset.y);
+        m_punchCollider.offset = new Vector2(m_punchCollider.offset.x * Mathf.Sign(((PlayerPawn)m_user).PC.PlayerInputVector.x), m_punchCollider.offset.y);
         currTime = Time.time + animationLength;
+    }
+
+    public override void UseSecondaryAction()
+    {
+        m_grabCollider.enabled = true;
     }
 
     public void FixedUpdate()
     {
-        if (Time.time > currTime) { inUse = false; m_collider.enabled = false; m_user.EnableMovement(); m_user.EnableJump(); }
+        if (Time.time > currTime) { inUse = false; m_punchCollider.enabled = false; m_user.EnableMovement(); m_user.EnableJump(); }
     }
 
 

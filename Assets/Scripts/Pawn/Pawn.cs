@@ -5,37 +5,36 @@ using UnityEngine;
 public class Pawn : MonoBehaviour
 {
     [Header("Pawn Component References")]
-    [SerializeField] private Rigidbody2D m_rb;
-    [SerializeField] private Collider2D m_collider;
-    [SerializeField] private Animator m_animator;
+    [SerializeField] protected Rigidbody2D m_rb;
+    [SerializeField] protected Collider2D m_collider;
+    [SerializeField] protected Animator m_animator;
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
 
     #region Platforming Modifiers
     [Header("Movement Modifiers")]
-    [SerializeField] private float movementSpeed = 10f;
-    [SerializeField] private float acceleration = 7f;
-    [SerializeField] private float decceleration = 7f;
-    [SerializeField] private float velPower = 0.8f;
-    [SerializeField] private float frictionAmount = 0.25f;
+    [SerializeField] protected float movementSpeed = 10f;
+    [SerializeField] protected float acceleration = 7f;
+    [SerializeField] protected float decceleration = 7f;
+    [SerializeField] protected float velPower = 0.8f;
+    [SerializeField] protected float frictionAmount = 0.25f;
 
     [Header("Jump Modifiers")]
-    [SerializeField] private float jumpForce = 6f;
-    // New
-    [SerializeField, Range(0f, 1f)] private float jumpCutMultiplier = 0.1f;
-    [SerializeField] private float jumpCoyoteTime;
-    [SerializeField] private float jumpBufferTime;
-    [SerializeField] private float gravityScale;
-    [SerializeField] private float fallGravityMultiplier;
+    [SerializeField] protected float jumpForce = 6f;
+    [SerializeField, Range(0f, 1f)] protected float jumpCutMultiplier = 0.1f;
+    [SerializeField] protected float jumpCoyoteTime;
+    [SerializeField] protected float jumpBufferTime;
+    [SerializeField] protected float gravityScale;
+    [SerializeField] protected float fallGravityMultiplier;
     #endregion
 
     #region Technical
-    private float lastGroundedTime;
-    private float lastJumpTime;
-    private bool isJumping;
-    private bool canMove;
-    private bool canJump;
+    protected float lastGroundedTime;
+    protected float lastJumpTime;
+    protected bool isJumping;
+    protected bool canMove;
+    protected bool canJump;
     #endregion
 
     protected void Start()
@@ -71,7 +70,11 @@ public class Pawn : MonoBehaviour
         float speedDif = targetSpeed - m_rb.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-        m_rb.AddForce(movement * Vector2.right);
+
+        if (Mathf.Abs(inputVector.x) > 0)
+        {
+            m_rb.AddForce(movement * Vector2.right);
+        }
 
         if (Mathf.Abs(m_rb.velocity.x) < 0.01f)
         {
@@ -159,7 +162,7 @@ public class Pawn : MonoBehaviour
     }
 
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
             0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));

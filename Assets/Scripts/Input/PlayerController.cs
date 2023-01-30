@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerInput m_playerInput;
     [SerializeField] private InputActions m_inputActions;
-    [SerializeField] private Pawn controlledPawn;
+    [SerializeField] private PlayerPawn controlledPawn;
     [SerializeField] private bool isDevMode;
 
     public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
@@ -67,28 +67,28 @@ public class PlayerController : MonoBehaviour
 
     private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
-        ((ToolUser)controlledPawn).UseToolPrimaryAction();
+        controlledPawn.UseToolPrimaryAction();
     }
 
     private void UseToolSecondaryAction(InputAction.CallbackContext context)
     {
-        ((ToolUser)controlledPawn).UseToolSecondaryAction();
+        controlledPawn.UseToolSecondaryAction();
     }
 
     private void NextToolAction(InputAction.CallbackContext context)
     {
-        ((ToolUser)controlledPawn).NextTool();
+        controlledPawn.NextTool();
     }
 
     private void PrevToolAction(InputAction.CallbackContext context)
     {
-        ((ToolUser)controlledPawn).PrevTool();
+        controlledPawn.PrevTool();
     }
     #endregion
 
-    public void ControlPawn(Pawn pawn)
+    public void ControlPawn(PlayerPawn pawn)
     {
         controlledPawn = pawn;
-        if (pawn.GetComponent<PlayerPawn>() != null) ((PlayerPawn)pawn).PC = this;
+        pawn.PC = this;
     }
 }
