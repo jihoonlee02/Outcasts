@@ -11,6 +11,62 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isDevMode;
 
     public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
+    public bool JumpActive
+    {
+        set 
+        {
+            if (value)
+            {
+                m_playerInput.actions["Jump"].Enable();
+            } 
+            else
+            {
+                m_playerInput.actions["Jump"].Disable();
+            }        
+        }
+    }
+    public bool MoveActive
+    {
+        set
+        {
+            if (value)
+            {
+                m_playerInput.actions["Movement"].Enable();
+            }
+            else
+            {
+                m_playerInput.actions["Movement"].Disable();
+            }
+        }
+    }
+    public bool PrimaryActive
+    {
+        set
+        {
+            if (value)
+            {
+                m_playerInput.actions["UseToolPrimary"].Enable();
+            }
+            else
+            {
+                m_playerInput.actions["UseToolPrimary"].Disable();
+            }
+        }
+    }
+    public bool SecondaryActive
+    {
+        set
+        {
+            if (value)
+            {
+                m_playerInput.actions["UseToolSecondary"].Enable();
+            }
+            else
+            {
+                m_playerInput.actions["UseToolSecondary"].Disable();
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -32,6 +88,11 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["NextTool"].performed += NextToolAction;
         m_playerInput.actions["Prevtool"].performed += PrevToolAction;
         m_playerInput.actions.actionMaps[0].Enable();
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()

@@ -8,6 +8,8 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Rigidbody2D m_rb;
     [SerializeField] protected Collider2D m_collider;
     [SerializeField] protected Animator m_animator;
+    [SerializeField] protected AudioSource m_audioSource;
+    [SerializeField] protected PawnData m_pawnData;
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
@@ -35,6 +37,8 @@ public class Pawn : MonoBehaviour
     protected bool isJumping;
     protected bool canMove;
     protected bool canJump;
+    protected float moveSoundCoolDown;
+    protected float moveCurrentSoundTime;
     #endregion
 
     protected void Start()
@@ -42,8 +46,12 @@ public class Pawn : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
         m_animator = GetComponentInChildren<Animator>();
+        m_audioSource = GetComponentInChildren<AudioSource>();
         canMove = true;
         canJump = true;
+        moveSoundCoolDown = 0.5f;
+        moveCurrentSoundTime = Time.time;
+        m_audioSource.clip = m_pawnData.Footstep;
     }
 
     /// <summary>
@@ -86,6 +94,14 @@ public class Pawn : MonoBehaviour
         m_animator.SetBool("IsIdle", false);
         m_animator.Play("Movement");
         m_animator.speed = Mathf.Abs(m_rb.velocity.x / 3);
+
+
+        if (Time.time > moveCurrentSoundTime)
+        {
+            //m_audioSource.clip = m_pawnData.Footstep;
+            m_audioSource.Play();
+            moveCurrentSoundTime = Time.time + moveSoundCoolDown;
+        }
 
         //Add Force to movement
 
@@ -147,6 +163,8 @@ public class Pawn : MonoBehaviour
             lastGroundedTime = 0;
             isJumping = true;
             lastJumpTime = jumpBufferTime;
+            //m_audioSource.clip = m_pawnData.Jump;
+            //m_audioSource.Play();
         }
 
     }

@@ -10,7 +10,6 @@ public abstract class State
         m_factory= factory;
     }
     public abstract void EnterState();
-
     public abstract void UpdateState();
     public abstract void ExitState();
     public abstract void InitializeSubState();
