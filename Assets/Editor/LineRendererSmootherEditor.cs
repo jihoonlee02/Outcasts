@@ -19,6 +19,7 @@ public class LineRendererSmootherEditor : Editor
 
     private bool ExpandCurves = false;
     private BezierCurve[] Curves;
+    private BezierCurve[] EditorCurves;
 
     private void OnEnable() {
         Smoother = (LineRendererSmoother)target;
@@ -70,6 +71,7 @@ public class LineRendererSmootherEditor : Editor
 
                 if (Curves.Length != (Smoother.Line.positionCount - 1) / 3) {
                     Curves = new BezierCurve[(Smoother.Line.positionCount - 1) / 3];
+                    EditorCurves = new BezierCurve[(Smoother.Line.positionCount - 1) / 3];
                 }
             }
         }
@@ -103,10 +105,12 @@ public class LineRendererSmootherEditor : Editor
             if (Smoother.Line.useWorldSpace) {
                 for (int j = 0; j < 4; j++) {
                     Curves[i].Points[j] = Smoother.Line.GetPosition((i*3) + j);
+                    EditorCurves[i].Points[j] = Smoother.Line.GetPosition((i*3) + j);
                 }
             } else {
                 for (int j = 0; j < 4; j++) {
-                    Curves[i].Points[j] = Smoother.Line.GetPosition((i*3) + j) + Smoother.gameObject.transform.parent.parent.position;
+                    Curves[i].Points[j] = Smoother.Line.GetPosition((i*3) + j);
+                    EditorCurves[i].Points[j] = Smoother.Line.GetPosition((i*3) + j) + Smoother.gameObject.transform.parent.parent.position;
                 }
             }
         }
@@ -124,7 +128,7 @@ public class LineRendererSmootherEditor : Editor
 
     private void DrawSegments() {
         for (int i = 0; i < Curves.Length; i++) {
-            Vector3[] segments = Curves[i].GetSegments(SmoothingSections.intValue);
+            Vector3[] segments = EditorCurves[i].GetSegments(SmoothingSections.intValue);
             for (int j = 0; j <segments.Length - 1; j++) {
                 Handles.color = Color.white;
                 Handles.DrawLine(segments[j], segments[j + 1]);
@@ -139,15 +143,17 @@ public class LineRendererSmootherEditor : Editor
             Handles.Label(segments[segments.Length - 1], $"C{i} S{segments.Length - 1}");
             Handles.DotHandleCap(EditorGUIUtility.GetControlID(FocusType.Passive), segments[segments.Length - 1], Quaternion.identity, 0.05f, EventType.Repaint);
 
-            Handles.DrawLine(segments[segments.Length - 1], Curves[i].EndPosition);
+            Handles.DrawLine(segments[segments.Length - 1], EditorCurves[i].EndPosition);
         }
     }
 
     private void EnsureCurvesMatchLineRendererPositions() {
         if (Curves == null || Curves.Length != (Smoother.Line.positionCount - 1) / 3) {
             Curves = new BezierCurve[(Smoother.Line.positionCount - 1) / 3];
+            EditorCurves = new BezierCurve[(Smoother.Line.positionCount - 1) / 3];
             for (int i = 0; i < Curves.Length; i++) {
                 Curves[i] = new BezierCurve();
+                EditorCurves[i] = new BezierCurve();
             }
         }
     }

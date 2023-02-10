@@ -15713,12 +15713,27 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.015610695, y: -0.12905437, z: 0}
-  - {x: -0.12859368, y: -0.12171918, z: 0}
-  - {x: -0.19189894, y: -0.15000156, z: 0}
+  - {x: -0.045256063, y: -0.12791736, z: 0}
+  - {x: -0.07281912, y: -0.12842914, z: 0}
+  - {x: -0.09868091, y: -0.13047229, z: 0}
+  - {x: -0.123222455, y: -0.13392939, z: 0}
+  - {x: -0.1468248, y: -0.13868304, z: 0}
+  - {x: -0.16986904, y: -0.14461589, z: 0}
+  - {x: -0.19273615, y: -0.15161048, z: 0}
+  - {x: -0.2158072, y: -0.15954947, z: 0}
+  - {x: -0.23946324, y: -0.16831541, z: 0}
+  - {x: -0.26408532, y: -0.17779097, z: 0}
   - {x: -0.29005444, y: -0.18785867, z: 0}
-  - {x: -0.63183975, y: -0.45851922, z: 0}
-  - {x: -0.6621845, y: 0.21863815, z: 0}
-  - {x: -0.23540163, y: -0.016399384, z: 0}
+  - {x: -0.37543744, y: -0.239573, z: 0}
+  - {x: -0.44472048, y: -0.25267285, z: 0}
+  - {x: -0.49724668, y: -0.23554294, z: 0}
+  - {x: -0.53235924, y: -0.19656795, z: 0}
+  - {x: -0.5494015, y: -0.14413267, z: 0}
+  - {x: -0.54771686, y: -0.086621806, z: 0}
+  - {x: -0.5266483, y: -0.032420125, z: 0}
+  - {x: -0.48553926, y: 0.010087732, z: 0}
+  - {x: -0.42373297, y: 0.032516945, z: 0}
+  - {x: -0.34057266, y: 0.02648281, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.22348541
@@ -15772,7 +15787,7 @@ LineRenderer:
     textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!114 &1081730206
 MonoBehaviour:
@@ -15781,16 +15796,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081730203}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c38c97db9bd884dbe3ce5509066f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 4
   lineRend: {fileID: 1081730205}
+  spriteRend: {fileID: 6789700953088407824}
   targetDir: {fileID: 585739330}
-  targetDist: 0.21
-  smoothSpeed: 0.03
+  smoothSpeed: 0.57
 --- !u!114 &1081730207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15812,7 +15826,7 @@ MonoBehaviour:
   - {x: -0.63183975, y: -0.45851922, z: 0}
   - {x: -0.6621845, y: 0.21863815, z: 0}
   - {x: -0.23540163, y: -0.016399384, z: 0}
-  SmoothingSections: 12
+  SmoothingSections: 1
 --- !u!1 &1226954536
 GameObject:
   m_ObjectHideFlags: 0
@@ -16597,7 +16611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3676806068906383111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.87199974, y: -0.2900002, z: 0}
+  m_LocalPosition: {x: -1.05, y: -0.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16778,7 +16792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6789700953088407826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.38, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16799,7 +16813,7 @@ GameObject:
   - component: {fileID: 6789700953088407824}
   - component: {fileID: 6789700953088407834}
   m_Layer: 9
-  m_Name: Sprite
+  m_Name: TinkerSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
