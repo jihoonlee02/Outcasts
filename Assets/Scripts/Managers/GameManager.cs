@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerInputManager m_pim;
-    [SerializeField] private Pawn[] m_pawnsToControl;
+    [SerializeField] private PlayerPawn[] m_pawnsToControl;
 
     private int count = 0;
     public void SetPlayerControllerToPawn(PlayerInput pi)
