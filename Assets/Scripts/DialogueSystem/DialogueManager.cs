@@ -59,7 +59,7 @@ public class DialogueManager : MonoBehaviour
         {
             AdjustProfileSegment(dialogue.Profile);
             m_dialogueProducer.TypeSound = dialogue.TypeSound;
-            yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, TextEffect.Typewriter, 6f);
+            yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, 6f);
             //yield return new WaitUntil(() => PlayerController.Instance.PIA.UserInteraction.Ok.IsPressed());
             yield return new WaitForSeconds(0.1f);
         }
