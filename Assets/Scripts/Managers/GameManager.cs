@@ -5,6 +5,27 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null)
+                {
+                    Debug.LogError("GameManager Prefab is required in level scene!");
+                }
+            }
+
+            return instance;
+        }
+    }
+    #endregion 
+
+    [Header("Player Pawn Management")]
     [SerializeField] private PlayerInputManager m_pim;
     [SerializeField] private PlayerPawn[] m_pawnsToControl;
 

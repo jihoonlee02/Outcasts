@@ -15,6 +15,7 @@ public class Pawn : MonoBehaviour
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
+    public PawnData Data => m_pawnData;
 
     #region Platforming Modifiers
     [Header("Movement Modifiers")]

@@ -5,6 +5,26 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    #region Singleton
+    private static Camera instance;
+    public static Camera Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Camera>();
+                if (instance == null)
+                {
+                    Debug.LogError("Camera Prefab is required in level scene!");
+                }
+            }
+
+            return instance;
+        }
+    }
+    #endregion
+
     [Header("Modifiers")]
     [SerializeField, Range(1f, 10f)] private float m_moveSpeed = 1f;
     [SerializeField] private Vector3 targetPosition;
@@ -20,7 +40,7 @@ public class Camera : MonoBehaviour
 
     public void ShiftTo(Vector3 targetPosition)
     {
-        this.targetPosition = targetPosition;
+        this.targetPosition = new Vector3(targetPosition.x, targetPosition.y, -10f);
     }
 
     private void Update()
