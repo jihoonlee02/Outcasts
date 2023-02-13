@@ -40,7 +40,7 @@ public class TextProducer : MonoBehaviour
     /// <paramref name="effect">The Text effectType for writing the text to textLabel</param>
     /// <paramref name="a_amplifier">A float value that can be used for whatever the Text effect type requires it for</param>
     /// <returns></returns>
-    public Coroutine WriteText(string a_text, TextEffect a_effect = TextEffect.None, float a_amplifier = 0, float a_delay = 0)
+    public Coroutine WriteText(string a_text, ProduceEffect a_effect = ProduceEffect.None, float a_amplifier = 0, float a_delay = 0)
     {
         if (a_text == null)
         {
@@ -49,14 +49,14 @@ public class TextProducer : MonoBehaviour
 
         switch (a_effect)
         {
-            case TextEffect.Typewriter:
+            case ProduceEffect.Typewriter:
                 return StartCoroutine(TypeWriterEffect(a_text, a_amplifier, a_delay));
             default:
                 return StartCoroutine(NoneEffect(a_text));
         }    
     }
 
-    public Coroutine ReplaceTextWith(string a_text, TextEffect a_effect = TextEffect.None, float a_amplifier = 0, float a_delay = 0)
+    public Coroutine ReplaceTextWith(string a_text, ProduceEffect a_effect = ProduceEffect.None, float a_amplifier = 0, float a_delay = 0)
     {
         m_textLabel.text = string.Empty;
         return WriteText(a_text, a_effect, a_amplifier, a_delay);
@@ -102,7 +102,7 @@ public class TextProducer : MonoBehaviour
     }
 }
 
-public enum TextEffect
+public enum ProduceEffect
 {
     None,
     Typewriter
