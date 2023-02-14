@@ -29,11 +29,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerInputManager m_pim;
     [SerializeField] private PlayerPawn[] m_pawnsToControl;
 
+    private void Start()
+    {
+        foreach (Pawn pawn in m_pawnsToControl)
+            pawn.gameObject.SetActive(false);
+    }
+
     private int count = 0;
     public void SetPlayerControllerToPawn(PlayerInput pi)
     {
         pi.GetComponent<PlayerController>().ControlPawn(m_pawnsToControl[count]);
         pi.gameObject.name = m_pawnsToControl[count].name + " Player";
+        m_pawnsToControl[count].gameObject.SetActive(true);
         count++;
     }
 }
