@@ -10,11 +10,15 @@ public class CameraShake : MonoBehaviour
     [SerializeField, Range(0.1f, 1f)] private float m_speed = 1f;
 
     #region Technical
-    private Vector2 savedPosition;
+    private Vector3 savedPosition;
+    private bool isShaking = false;
+
+    public bool IsShaking => isShaking;
     #endregion
 
     public void StartShaking()
     {
+        isShaking = true;
         savedPosition = transform.position;
         StartCoroutine(Shake());
     }
@@ -24,6 +28,7 @@ public class CameraShake : MonoBehaviour
         m_strength = strength;
         m_radius = radius;
         m_speed = speed;
+        isShaking = true;
         savedPosition = transform.position;
         StartCoroutine(Shake());
     }
@@ -32,6 +37,7 @@ public class CameraShake : MonoBehaviour
     {
         StopAllCoroutines();
         transform.position = savedPosition;
+        isShaking = false;
     }
 
     private IEnumerator Shake()

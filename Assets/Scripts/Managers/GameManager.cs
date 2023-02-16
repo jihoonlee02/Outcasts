@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerInputManager m_pim;
     [SerializeField] private PlayerPawn[] m_pawnsToControl;
 
+    [Header("Level Management")]
+    [SerializeField] private LevelManager m_currentLevelManager;
+
+    public LevelManager CurrLevelManager => m_currentLevelManager;
+
     private void Start()
     {
         foreach (Pawn pawn in m_pawnsToControl)

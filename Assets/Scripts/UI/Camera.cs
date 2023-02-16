@@ -43,11 +43,24 @@ public class Camera : MonoBehaviour
         this.targetPosition = new Vector3(targetPosition.x, targetPosition.y, -10f);
     }
 
+    private void Start()
+    {
+        StartCoroutine(something());
+    }
+
     private void Update()
     {
-        if (transform.position != targetPosition)
+        if (transform.position != targetPosition && !m_cameraShaker.IsShaking)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
         }
+    }
+
+    private IEnumerator something()
+    {
+        yield return new WaitForSeconds(2.15f);
+        m_cameraShaker.StartShaking();
+        yield return new WaitForSeconds(0.35f);
+        m_cameraShaker.StopShaking();
     }
 }

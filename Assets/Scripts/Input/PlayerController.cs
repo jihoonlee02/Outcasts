@@ -85,8 +85,9 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Jump"].canceled += JumpAction;
         m_playerInput.actions["UseToolPrimary"].performed += UseToolPrimaryAction;
         m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
-        m_playerInput.actions["NextTool"].performed += NextToolAction;
-        m_playerInput.actions["Prevtool"].performed += PrevToolAction;
+        m_playerInput.actions["Interact"].performed += InteractAction;
+        //m_playerInput.actions["NextTool"].performed += NextToolAction;
+        //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
         m_playerInput.actions.actionMaps[0].Enable();
     }
 
@@ -144,6 +145,12 @@ public class PlayerController : MonoBehaviour
     private void PrevToolAction(InputAction.CallbackContext context)
     {
         controlledPawn.PrevTool();
+    }
+
+    //VERY COUPPLED DO NOT PUSH FOR FINAL GAME
+    private void InteractAction(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.CurrLevelManager.OnLevelExit();
     }
     #endregion
 

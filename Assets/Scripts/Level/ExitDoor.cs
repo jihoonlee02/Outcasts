@@ -17,7 +17,7 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Pawn>().Data.Name == m_targetPawn) timeTrigger += Time.deltaTime;
+        if (collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn) timeTrigger += Time.deltaTime;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
