@@ -6,6 +6,8 @@ public class PawnData : ScriptableObject
     [Header("Pawn Description")]
     [SerializeField] private string m_name;
 
+    public string Name => m_name;
+
     [Header("Pawn Audio Clips")]
     [SerializeField] private AudioClip m_voice;
     [SerializeField] private AudioClip m_footstep;

@@ -56,14 +56,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.GetComponent<PlayerPawn>()) return;
-        OnImpact();
+        Debug.Log("I was entered trigger!");
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Platforms"))
+            OnImpact();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.GetComponent<PlayerPawn>()) return;
-        OnImpact();
+        Debug.Log("I was entered Collision!");
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
+            OnImpact();
     }
 
 
