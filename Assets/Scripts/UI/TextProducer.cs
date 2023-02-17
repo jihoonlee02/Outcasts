@@ -10,6 +10,10 @@ using System.Collections.Generic;
 [RequireComponent(typeof(TMP_Text))]
 public class TextProducer : MonoBehaviour
 {
+    [Header("Use Settings")]
+    [SerializeField] private bool m_startOnEnable = false;
+    [SerializeField] private ProduceEffect m_startEffect = ProduceEffect.None;
+
     protected TMP_Text m_textLabel;
     protected AudioClip typeSound;
     protected AudioSource soundSource;
@@ -31,6 +35,14 @@ public class TextProducer : MonoBehaviour
     private void Start()
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
+    }
+
+    private void OnEnable()
+    {
+        if (m_startOnEnable)
+        {
+            ReplaceTextWith(m_textLabel.text, m_startEffect);
+        }
     }
 
     /// <summary>
@@ -75,7 +87,7 @@ public class TextProducer : MonoBehaviour
         for (int n = 0; n < a_text.Length; n++)
         {
             m_textLabel.text += a_text.Substring(n, 1);
-            soundSource.Play();
+            soundSource?.Play();
             yield return new WaitForSeconds(a_delay + (1 / (a_speed * 10f)));
         }
     }

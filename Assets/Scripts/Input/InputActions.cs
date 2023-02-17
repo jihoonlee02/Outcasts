@@ -98,6 +98,24 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlideLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""b680f5d7-6390-4909-abbe-8fcdf72798bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlideRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f9e10e4-7a13-4b20-98f0-8a9664371b4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -518,6 +536,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca7fa5be-6bd0-4496-813e-cc048b9663bc"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f08886f-9e24-4970-8ff2-5888dc892e6e"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -596,6 +636,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player_NextTool = m_Player.FindAction("NextTool", throwIfNotFound: true);
         m_Player_PrevTool = m_Player.FindAction("PrevTool", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_SlideLeft = m_Player.FindAction("SlideLeft", throwIfNotFound: true);
+        m_Player_SlideRight = m_Player.FindAction("SlideRight", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -666,6 +708,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_NextTool;
     private readonly InputAction m_Player_PrevTool;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_SlideLeft;
+    private readonly InputAction m_Player_SlideRight;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -678,6 +722,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @NextTool => m_Wrapper.m_Player_NextTool;
         public InputAction @PrevTool => m_Wrapper.m_Player_PrevTool;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @SlideLeft => m_Wrapper.m_Player_SlideLeft;
+        public InputAction @SlideRight => m_Wrapper.m_Player_SlideRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -711,6 +757,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @SlideLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlideLeft;
+                @SlideLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlideLeft;
+                @SlideLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlideLeft;
+                @SlideRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlideRight;
+                @SlideRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlideRight;
+                @SlideRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlideRight;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -739,6 +791,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @SlideLeft.started += instance.OnSlideLeft;
+                @SlideLeft.performed += instance.OnSlideLeft;
+                @SlideLeft.canceled += instance.OnSlideLeft;
+                @SlideRight.started += instance.OnSlideRight;
+                @SlideRight.performed += instance.OnSlideRight;
+                @SlideRight.canceled += instance.OnSlideRight;
             }
         }
     }
@@ -813,6 +871,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnNextTool(InputAction.CallbackContext context);
         void OnPrevTool(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSlideLeft(InputAction.CallbackContext context);
+        void OnSlideRight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

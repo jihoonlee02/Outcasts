@@ -86,8 +86,12 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["UseToolPrimary"].performed += UseToolPrimaryAction;
         m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
-        //m_playerInput.actions["NextTool"].performed += NextToolAction;
-        //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
+        m_playerInput.actions["NextTool"].performed += NextToolAction;
+        m_playerInput.actions["Prevtool"].performed += PrevToolAction;
+
+        //WHY???
+        m_playerInput.actions["SlideLeft"].performed += InteractAction;
+        m_playerInput.actions["SlideRight"].performed += SlideRightAction;
         m_playerInput.actions.actionMaps[0].Enable();
     }
 
@@ -139,19 +143,30 @@ public class PlayerController : MonoBehaviour
 
     private void NextToolAction(InputAction.CallbackContext context)
     {
-        controlledPawn.NextTool();
+        //controlledPawn.NextTool();
+        //GameManager.Instance.CurrLevelManager.NextLevel();
+        SlideManager.Instance.NextSlide();
     }
 
     private void PrevToolAction(InputAction.CallbackContext context)
     {
-        controlledPawn.PrevTool();
+        //controlledPawn.PrevTool();
+        //GameManager.Instance.CurrLevelManager.PrevLevel();
+        SlideManager.Instance.PrevSlide();
     }
 
     //VERY COUPPLED DO NOT PUSH FOR FINAL GAME
     private void InteractAction(InputAction.CallbackContext context)
     {
-        GameManager.Instance.CurrLevelManager.OnLevelExit();
+        //GameManager.Instance.CurrLevelManager.OnLevelExit();
+        SlideManager.Instance.CurrSlide.RemoveInfo();
     }
+
+    private void SlideRightAction(InputAction.CallbackContext context)
+    {
+        SlideManager.Instance.CurrSlide.AddInfo();
+    }
+
     #endregion
 
     public void ControlPawn(PlayerPawn pawn)

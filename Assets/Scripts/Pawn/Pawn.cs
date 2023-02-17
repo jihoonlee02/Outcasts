@@ -100,10 +100,10 @@ public class Pawn : MonoBehaviour
         }
 
         //State Machine Please resolve this!!!
-        if (!isJumping) 
+        if (IsGrounded()) 
         {
             m_animator.SetBool("IsIdle", false);
-            m_animator.Play("Movement");
+            //m_animator.Play("Movement");
             m_animator.speed = Mathf.Abs(m_rb.velocity.x / 3);
             //float pitchCalc = 0.8f + Mathf.Abs(m_rb.velocity.x / 4);
             //m_audioSource.pitch = pitchCalc > 2f ? 2f : pitchCalc < 0.8f ? 0.8f : pitchCalc;
@@ -148,11 +148,13 @@ public class Pawn : MonoBehaviour
         {
             m_rb.gravityScale = gravityScale;
         }
+        m_animator.SetBool("IsGrounded", IsGrounded());
         if (IsGrounded())
         {
             isJumping = false;
             lastGroundedTime = jumpCoyoteTime;
         }
+        
         //Dev Reasons
         Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
         Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
@@ -181,6 +183,7 @@ public class Pawn : MonoBehaviour
             m_audioSource.pitch = 1.05f;
             m_audioSource.clip = m_pawnData.Jump;
             m_audioSource.loop = false;
+            m_animator.Play("Jump");
             m_audioSource.Play();
         }
 

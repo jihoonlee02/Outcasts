@@ -45,7 +45,7 @@ public class Camera : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(something());
+        
     }
 
     private void Update()
@@ -54,13 +54,5 @@ public class Camera : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
         }
-    }
-
-    private IEnumerator something()
-    {
-        yield return new WaitForSeconds(2.15f);
-        m_cameraShaker.StartShaking();
-        yield return new WaitForSeconds(0.35f);
-        m_cameraShaker.StopShaking();
     }
 }

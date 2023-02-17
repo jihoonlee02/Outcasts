@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     private int count = 0;
     public void SetPlayerControllerToPawn(PlayerInput pi)
     {
+        //Coupled
+        if (count > 1) return;
         pi.GetComponent<PlayerController>().ControlPawn(m_pawnsToControl[count]);
         pi.gameObject.name = m_pawnsToControl[count].name + " Player";
         m_pawnsToControl[count].gameObject.SetActive(true);
