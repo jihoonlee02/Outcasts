@@ -26,7 +26,7 @@ public class Camera : MonoBehaviour
     #endregion
 
     [Header("Modifiers")]
-    [SerializeField, Range(1f, 10f)] private float m_moveSpeed = 1f;
+    [SerializeField, Range(1f, 30f)] private float m_moveSpeed = 1f;
     [SerializeField] private Vector3 targetPosition;
 
     [Header("Playful")]

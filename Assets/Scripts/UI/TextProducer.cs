@@ -35,13 +35,14 @@ public class TextProducer : MonoBehaviour
     private void Start()
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
+        ReplaceTextWith("You Shouldn't Be Here!", m_startEffect, 1.2f);
     }
 
     private void OnEnable()
     {
         if (m_startOnEnable)
         {
-            ReplaceTextWith(m_textLabel.text, m_startEffect);
+            ReplaceTextWith("You Shouldn't Be Here!", m_startEffect, 1.2f);
         }
     }
 
