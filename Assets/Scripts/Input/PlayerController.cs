@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
     private void InteractAction(InputAction.CallbackContext context)
     {
         //GameManager.Instance.CurrLevelManager.OnLevelExit();
-        SlideManager.Instance.CurrSlide.RemoveInfo();
+        //SlideManager.Instance.CurrSlide.RemoveInfo();
     }
 
     private void SlideRightAction(InputAction.CallbackContext context)
