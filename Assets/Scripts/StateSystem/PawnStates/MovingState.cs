@@ -1,15 +1,18 @@
 public class MovingState : State
 {
-    public MovingState(PlayerStateMachine context, PlayerStateFactory factory) : base(context, factory) { }
+    public MovingState(Pawn context, PawnStateFactory factory) : base(context, factory) { }
 
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        if (m_context.IsGrounded)
+        {
+            SwitchState(m_factory.Grounded());
+        }
     }
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        m_context.Animator.Play("Movement");
     }
 
     public override void ExitState()
@@ -17,10 +20,6 @@ public class MovingState : State
         throw new System.NotImplementedException();
     }
 
-    public override void InitializeSubState()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public override void UpdateState()
     {

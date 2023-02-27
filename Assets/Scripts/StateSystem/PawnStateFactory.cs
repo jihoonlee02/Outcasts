@@ -1,14 +1,10 @@
-public class PlayerStateFactory
+public class PawnStateFactory
 {
-    private PlayerStateMachine m_context;
+    private Pawn m_context;
 
-    public PlayerStateFactory(PlayerStateMachine currentContext)
+    public PawnStateFactory(Pawn currentContext)
     {
         m_context = currentContext;
-    }
-    public State Idle()
-    {
-        return new IdleState(m_context, this);
     }
     public State Moving()
     {
@@ -21,6 +17,10 @@ public class PlayerStateFactory
     public State Grounded()
     {
         return new GroundedState(m_context, this);
+    }
+    public State Falling()
+    {
+        return new FallingState(m_context, this);
     }
     public State Shooting()
     {

@@ -15,7 +15,7 @@ public class PlayerStateMachine : ToolUser
 
     // State
     private State m_currentState;
-    private PlayerStateFactory m_states;
+    private PawnStateFactory m_states;
 
     public State CurrentState
     {
@@ -27,7 +27,7 @@ public class PlayerStateMachine : ToolUser
     public void Awake()
     {
         //StateMachine
-        m_states = new PlayerStateFactory(this);
+        m_states = new PawnStateFactory(this);
         m_currentState = m_states.Grounded();
         m_currentState.EnterState();
 

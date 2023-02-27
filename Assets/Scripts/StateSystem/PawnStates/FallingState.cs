@@ -1,6 +1,10 @@
-public class IdleState : State
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FallingState : State
 {
-    public IdleState(PlayerStateMachine context, PlayerStateFactory factory) : base(context, factory) { }
+    public FallingState(Pawn context, PawnStateFactory factory) : base(context, factory) {}
 
     public override void CheckSwitchState()
     {
@@ -13,11 +17,6 @@ public class IdleState : State
     }
 
     public override void ExitState()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void InitializeSubState()
     {
         throw new System.NotImplementedException();
     }
