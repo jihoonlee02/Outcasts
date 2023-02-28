@@ -8,8 +8,8 @@ public class EventManager
 {
     private static readonly object eventManagerLock = new object();
     private static EventManager eventManager;
-    private event Action<int> buttonPressed;
-    private event Action<int> buttonUnpressed;
+    private event Action<int> activated;
+    private event Action<int> deactivated;
 
     public static EventManager GetEventManager {
         get {
@@ -23,16 +23,16 @@ public class EventManager
             return eventManager;
         }
     }
-    public Action<int> ButtonPressed {
-        get => buttonPressed;
+    public Action<int> Activated {
+        get => activated;
         set {
-            buttonPressed = value;
+            activated = value;
         }
     }
-    public Action<int> ButtonUnpressed {
-        get => buttonUnpressed;
+    public Action<int> Deactivated {
+        get => deactivated;
         set {
-            buttonUnpressed = value;
+            deactivated = value;
         }
     }
 
