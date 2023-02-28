@@ -20,7 +20,7 @@ public class JumpingState : State
 
     public override void CheckSwitchState()
     {
-        if (m_context.IsGrounded())
+        if (m_context.IsGrounded)
         {
             SwitchState(m_factory.Grounded());
         }

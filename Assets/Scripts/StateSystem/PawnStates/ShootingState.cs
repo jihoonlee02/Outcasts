@@ -1,6 +1,6 @@
 public class ShootingState : State
 {
-    public ShootingState(PlayerStateMachine context, PlayerStateFactory factory) : base(context, factory) { }
+    public ShootingState(Pawn context, PawnStateFactory factory) : base(context, factory) { }
 
     public override void CheckSwitchState()
     {
@@ -15,11 +15,6 @@ public class ShootingState : State
     public override void ExitState()
     {
         
-    }
-
-    public override void InitializeSubState()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void UpdateState()
