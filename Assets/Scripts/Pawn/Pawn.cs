@@ -16,6 +16,7 @@ public class Pawn : MonoBehaviour
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
     public PawnData Data => m_pawnData;
+    public AudioSource AudioSource => m_audioSource;
 
     #region Platforming Modifiers
     [Header("Movement Modifiers")]
@@ -162,7 +163,9 @@ public class Pawn : MonoBehaviour
         //timer emulateed from Dawnsau Aug 10, 2021
         lastGroundedTime += Time.deltaTime;
         lastJumpTime += Time.deltaTime;
-        HandleAudio();
+        //HandleAudio();
+        m_currentState.UpdateState();
+        m_currentState.CheckSwitchState();
     }
 
     protected void FixedUpdate()
@@ -172,6 +175,7 @@ public class Pawn : MonoBehaviour
             0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
 
         isMoving = Mathf.Abs(m_rb.velocity.x) >= 0.001f;
+        isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
 
         //Make ending of jumps feel more fluid
         if (m_rb.velocity.y < 0)
@@ -185,7 +189,6 @@ public class Pawn : MonoBehaviour
         m_animator.SetBool("IsGrounded", isGrounded);
         if (isGrounded)
         {
-            isJumping = false;
             lastGroundedTime = jumpCoyoteTime;
         }
         HandlePhysics();
@@ -215,11 +218,11 @@ public class Pawn : MonoBehaviour
             lastGroundedTime = 0;
             isJumping = true;
             lastJumpTime = jumpBufferTime;
-            m_audioSource.pitch = 1.05f;
-            m_audioSource.clip = m_pawnData.Jump;
-            m_audioSource.loop = false;
-            m_animator.Play("Jump");
-            m_audioSource.Play();
+            //m_audioSource.pitch = 1.05f;
+            //m_audioSource.clip = m_pawnData.Jump;
+            //m_audioSource.loop = false;
+            //m_animator.Play("Jump");
+            //m_audioSource.Play();
         }
 
     }
@@ -236,7 +239,7 @@ public class Pawn : MonoBehaviour
 
     public void HandleAnimation()
     {
-        m_animator.speed = Mathf.Abs(m_rb.velocity.x / 3);
+        
     }
 
     public void HandleAudio()
@@ -255,14 +258,14 @@ public class Pawn : MonoBehaviour
         }
         if (!m_audioSource.isPlaying && isGrounded)
         {
-            m_audioSource.clip = m_pawnData.Footstep;
-            m_audioSource.loop = true;
-            m_audioSource.Play();
+            //m_audioSource.clip = m_pawnData.Footstep;
+            //m_audioSource.loop = true;
+            //m_audioSource.Play();
         }
         if (isGrounded) 
         {
-            float pitchCalc = m_minPitch + Mathf.Abs(m_rb.velocity.x / 3);
-            m_audioSource.pitch = pitchCalc > m_maxPitch ? m_maxPitch : pitchCalc < m_minPitch ? m_minPitch : pitchCalc;
+            //float pitchCalc = m_minPitch + Mathf.Abs(m_rb.velocity.x / 3);
+            //m_audioSource.pitch = pitchCalc > m_maxPitch ? m_maxPitch : pitchCalc < m_minPitch ? m_minPitch : pitchCalc;
         }     
     }
 

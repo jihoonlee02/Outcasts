@@ -8,21 +8,20 @@ public class FallingState : State
 
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        if (m_context.IsGrounded && m_context.IsMoving) 
+        {
+            SwitchState(m_factory.Moving());
+        } 
+        else if (m_context.IsGrounded) 
+        {
+            SwitchState(m_factory.Grounded());
+        }
     }
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
-    }
+        Debug.Log("Entering Falling State");
 
-    public override void ExitState()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void UpdateState()
-    {
-        throw new System.NotImplementedException();
+        m_context.Animator.Play("Falling");
     }
 }
