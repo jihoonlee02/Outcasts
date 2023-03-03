@@ -12,6 +12,7 @@ public class TextProducer : MonoBehaviour
 {
     [Header("Use Settings")]
     [SerializeField] private bool m_startOnEnable = false;
+    [SerializeField, Range(0f, 1f)] private float speed = 0.5f;
     [SerializeField] private ProduceEffect m_startEffect = ProduceEffect.None;
 
     protected TMP_Text m_textLabel;
@@ -35,7 +36,7 @@ public class TextProducer : MonoBehaviour
     private void Start()
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
-        ReplaceTextWith("You Shouldn't Be Here!", m_startEffect, 1.2f);
+        ReplaceTextWith(m_textLabel.text, m_startEffect, 5f * speed);
     }
 
     private void OnEnable()

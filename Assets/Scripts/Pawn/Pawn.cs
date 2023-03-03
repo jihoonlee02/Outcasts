@@ -12,6 +12,13 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
+    [SerializeField] private PlayerController m_pc;
+
+    public PlayerController PC
+    {
+        get { return m_pc; }
+        set { m_pc = value; }
+    }
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
@@ -191,7 +198,6 @@ public class Pawn : MonoBehaviour
         {
             lastGroundedTime = jumpCoyoteTime;
         }
-        HandlePhysics();
         
         //Dev Reasons
         Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
@@ -237,47 +243,14 @@ public class Pawn : MonoBehaviour
         lastJumpTime = 0;
     }
 
-    public void HandleAnimation()
+    public virtual void PrimaryAction()
     {
-        
+        Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
     }
 
-    public void HandleAudio()
+    public virtual void SecondaryAction()
     {
-        //Jump Audio
-        if (isJumping)
-        {
-            return;
-        }
-
-        //Movement Audio
-        if (Mathf.Abs(m_rb.velocity.x) < 0.01f)
-        {
-            m_audioSource.loop = false;
-            return;
-        }
-        if (!m_audioSource.isPlaying && isGrounded)
-        {
-            //m_audioSource.clip = m_pawnData.Footstep;
-            //m_audioSource.loop = true;
-            //m_audioSource.Play();
-        }
-        if (isGrounded) 
-        {
-            //float pitchCalc = m_minPitch + Mathf.Abs(m_rb.velocity.x / 3);
-            //m_audioSource.pitch = pitchCalc > m_maxPitch ? m_maxPitch : pitchCalc < m_minPitch ? m_minPitch : pitchCalc;
-        }     
-    }
-
-    //Resolve
-    private void HandlePhysics()
-    {
-        
-    }
-
-    public void HandleMoveAnimation()
-    {
-
+        Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Secondary Action");
     }
 
     #region Togglers

@@ -7,8 +7,9 @@ using UnityEditor;
 public class PlatformMover : MonoBehaviour
 {
     [Header("Options")]
+    [SerializeField] private int id;
     [SerializeField] private Vector2[] m_waypoints;
-    [SerializeField, Range(0f, 1f)] private float speed;
+    [SerializeField, Range(0f, 1f)] private float speed = 1f;
 
     private Vector2 currWaypoint;
     private bool isSelected => Selection.transforms.Contains(transform);
@@ -16,17 +17,32 @@ public class PlatformMover : MonoBehaviour
     private void Start()
     {
         currWaypoint = m_waypoints[0];
-        transform.position = currWaypoint;
+        transform.localPosition = currWaypoint;
+
+        EventManager.GetEventManager.Activated += MoveToA;
+        EventManager.GetEventManager.Deactivated += MoveToB;
     }
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currWaypoint, Time.deltaTime * 3f * speed);
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, currWaypoint, Time.deltaTime * 3f * speed);
     }
 
     public void MoveToWaypoint(int idx)
     {
         currWaypoint = m_waypoints[idx];
+    }
+
+    private void MoveToA(int id)
+    {
+        if (this.id == id)
+            MoveToWaypoint(1);
+    }
+
+    private void MoveToB(int id)
+    {
+        if (this.id == id)
+            MoveToWaypoint(0);
     }
 
     private void OnDrawGizmos()

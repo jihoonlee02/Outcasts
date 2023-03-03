@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerInput m_playerInput;
     [SerializeField] private InputActions m_inputActions;
-    [SerializeField] private PlayerPawn controlledPawn;
+    [SerializeField] private Pawn controlledPawn;
     [SerializeField] private bool isDevMode;
 
     public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
@@ -83,15 +83,16 @@ public class PlayerController : MonoBehaviour
         //Adding methods to inputActions in PlayerInput
         m_playerInput.actions["Jump"].performed += JumpAction;
         m_playerInput.actions["Jump"].canceled += JumpAction;
+        //Depricated Tbh
         m_playerInput.actions["UseToolPrimary"].performed += UseToolPrimaryAction;
         m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
-        m_playerInput.actions["NextTool"].performed += NextToolAction;
-        m_playerInput.actions["Prevtool"].performed += PrevToolAction;
+        //m_playerInput.actions["NextTool"].performed += NextToolAction;
+        //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
 
         //WHY???
-        m_playerInput.actions["SlideLeft"].performed += InteractAction;
-        m_playerInput.actions["SlideRight"].performed += SlideRightAction;
+        //m_playerInput.actions["SlideLeft"].performed += InteractAction;
+        //m_playerInput.actions["SlideRight"].performed += SlideRightAction;
         m_playerInput.actions.actionMaps[0].Enable();
     }
 
@@ -136,12 +137,12 @@ public class PlayerController : MonoBehaviour
 
     private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
-        controlledPawn.UseToolPrimaryAction();
+        ((ToolUser) controlledPawn).UseToolPrimaryAction();
     }
 
     private void UseToolSecondaryAction(InputAction.CallbackContext context)
     {
-        controlledPawn.UseToolSecondaryAction();
+        ((ToolUser)controlledPawn).UseToolSecondaryAction();
     }
 
     private void NextToolAction(InputAction.CallbackContext context)
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    public void ControlPawn(PlayerPawn pawn)
+    public void ControlPawn(Pawn pawn)
     {
         controlledPawn = pawn;
         pawn.PC = this;

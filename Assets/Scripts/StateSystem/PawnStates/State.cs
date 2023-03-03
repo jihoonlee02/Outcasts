@@ -9,8 +9,8 @@ public abstract class State
     protected PawnStateFactory m_factory;
     public State(Pawn context, PawnStateFactory factory) 
     { 
-        m_context= context;
-        m_factory= factory;
+        m_context = context;
+        m_factory = factory;
     }
     public virtual void EnterState() {}
     public virtual void UpdateState() {}
