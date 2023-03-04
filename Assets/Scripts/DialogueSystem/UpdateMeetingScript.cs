@@ -21,7 +21,8 @@ public class UpdateMeetingScript : MonoBehaviour
         if (cooldown < Time.time) 
         {
             orderreveal[idx++].SetActive(true);
-            cooldown = Time.time + delay[idx];
+            cooldown = Time.time + delay[idx % delay.Length];
         }
+        if (idx - 6 >= 0) orderreveal[idx - 6].SetActive(false);
     }
 }
