@@ -26,6 +26,8 @@ public class UpdateMeetingScript : MonoBehaviour
             StartCoroutine(FadeIn(orderreveal[idx++].GetComponent<CanvasGroup>()));
             cooldown = Time.time + delay[idx];
         }
+
+        if (idx - 6 >= 0) orderreveal[idx - 6].SetActive(false);
     }
 
     private IEnumerator FadeIn(CanvasGroup image) 
@@ -35,7 +37,5 @@ public class UpdateMeetingScript : MonoBehaviour
             image.alpha += 0.05f;
             yield return new WaitForSeconds(0.01f * speed);
         }
-        
-        if (idx - 6 >= 0) orderreveal[idx - 6].SetActive(false);
     }
 }
