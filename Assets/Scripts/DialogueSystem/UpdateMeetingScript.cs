@@ -6,6 +6,7 @@ public class UpdateMeetingScript : MonoBehaviour
 {
     [SerializeField] private float[] delay;
     [SerializeField] private GameObject[] orderreveal;
+    [SerializeField, Range(0.1f, 1f)] private float speed = 0.1f;
     private float cooldown;
     private int idx = 0;
     private void Start()
@@ -13,6 +14,7 @@ public class UpdateMeetingScript : MonoBehaviour
         foreach (GameObject go in orderreveal) 
         { 
             go.SetActive(false);
+            go.GetComponent<CanvasGroup>().alpha = 0f;
         }
         cooldown = Time.time + delay[idx];
     }
@@ -20,8 +22,19 @@ public class UpdateMeetingScript : MonoBehaviour
     {
         if (cooldown < Time.time) 
         {
-            orderreveal[idx++].SetActive(true);
+            orderreveal[idx].SetActive(true);
+            StartCoroutine(FadeIn(orderreveal[idx++].GetComponent<CanvasGroup>()));
             cooldown = Time.time + delay[idx];
         }
+    }
+
+    private IEnumerator FadeIn(CanvasGroup image) 
+    { 
+        while (image.alpha < 1f)
+        {
+            image.alpha += 0.05f;
+            yield return new WaitForSeconds(0.01f * speed);
+        }
+        
     }
 }

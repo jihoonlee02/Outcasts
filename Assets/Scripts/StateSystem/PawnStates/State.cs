@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 /// <summary>
 /// Class that defines the blueprints for State implementation for the Pawn class
 /// Uses an accompaniying factory, required in the instance to reduce coupling and quicker access
@@ -7,6 +8,8 @@ public abstract class State
 {
     protected Pawn m_context;
     protected PawnStateFactory m_factory;
+    protected State m_superState;
+    protected State m_subState;
     public State(Pawn context, PawnStateFactory factory) 
     { 
         m_context = context;
@@ -15,6 +18,7 @@ public abstract class State
     public virtual void EnterState() {}
     public virtual void UpdateState() {}
     public virtual void ExitState() {}
+    public virtual void InitizeSubState() {}
     /// <summary>
     /// Required checker that is intended to invoke SwitchState(new State) when needed
     /// This method is usually called within the context pawn.
@@ -29,5 +33,16 @@ public abstract class State
         ExitState();
         newState.EnterState();
         m_context.CurrentState = newState;
+    }
+
+    protected void SetSuperState(State newSuperState)
+    {
+        m_superState = newSuperState;
+    }
+
+    protected void SetSubState(State newSubState) 
+    { 
+        m_subState = newSubState;
+        newSubState.SetSubState(this);
     }
 }

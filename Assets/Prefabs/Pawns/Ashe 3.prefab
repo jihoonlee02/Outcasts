@@ -231,11 +231,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130537325049219109}
+  - component: {fileID: 1860670653781505588}
   - component: {fileID: 5788782832889509122}
   - component: {fileID: 8475706596464786226}
-  - component: {fileID: 1860670653781505588}
   m_Layer: 9
-  m_Name: Ashe 2
+  m_Name: Ashe 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,6 +260,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1860670653781505588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130537325049219110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4756bd7f3b1f26e42b82f60bbe034f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rb: {fileID: 5788782832889509122}
+  m_collider: {fileID: 8475706596464786226}
+  m_animator: {fileID: 5066155632926942779}
+  m_audioSource: {fileID: 3808633479875663444}
+  m_pawnData: {fileID: 11400000, guid: d2223ecf7f9cbbb4194eeea8e7df11b1, type: 2}
+  m_pc: {fileID: 0}
+  movementSpeed: 9
+  acceleration: 8
+  decceleration: 20
+  velPower: 0.7
+  frictionAmount: 0
+  jumpForce: 10
+  jumpCutMultiplier: 0.625
+  jumpCoyoteTime: 0
+  jumpBufferTime: 0
+  gravityScale: 1
+  fallGravityMultiplier: 1
+  m_minPitch: 0.8
+  m_maxPitch: 1.7
+  m_gauntletReference: {fileID: 8473621029046522648}
+  m_liftingRegion: {fileID: 4913691275906960489}
 --- !u!50 &5788782832889509122
 Rigidbody2D:
   serializedVersion: 4
@@ -307,39 +340,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.51697934, y: 1.2882245}
   m_EdgeRadius: 0
---- !u!114 &1860670653781505588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130537325049219110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4756bd7f3b1f26e42b82f60bbe034f1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rb: {fileID: 0}
-  m_collider: {fileID: 0}
-  m_animator: {fileID: 0}
-  m_audioSource: {fileID: 0}
-  m_pawnData: {fileID: 0}
-  m_pc: {fileID: 0}
-  movementSpeed: 9
-  acceleration: 8
-  decceleration: 20
-  velPower: 0.7
-  frictionAmount: 0
-  jumpForce: 10
-  jumpCutMultiplier: 0.625
-  jumpCoyoteTime: 0
-  jumpBufferTime: 0
-  gravityScale: 1
-  fallGravityMultiplier: 1
-  m_minPitch: 0.8
-  m_maxPitch: 1.7
-  m_gauntletReference: {fileID: 8473621029046522648}
-  m_liftingRegion: {fileID: 4913691275906960489}
 --- !u!1 &3808633479617949239
 GameObject:
   m_ObjectHideFlags: 0

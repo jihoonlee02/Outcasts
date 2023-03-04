@@ -22,16 +22,16 @@ public class PawnStateFactory
     {
         return new FallingState(m_context, this);
     }
-    public State Shooting()
-    {
-        return new ShootingState(m_context, this);
-    }
-    public State Punching()
-    {
-        return new PunchingState(m_context, this);
-    }
-    public State Lifting() 
-    { 
-        return new LiftingState(m_context, this);
-    }
+    //public State Shooting()
+    //{
+    //    return new ShootingState(m_context, this);
+    //}
+    //public State Punching()
+    //{
+    //    return new PunchingState(m_context, this);
+    //}
+    //public State Lifting() 
+    //{ 
+    //    return new LiftingState(m_context, this);
+    //}
 }

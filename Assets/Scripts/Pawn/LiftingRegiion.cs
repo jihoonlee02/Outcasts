@@ -7,11 +7,13 @@ public class LiftingRegiion : MonoBehaviour
     [SerializeField] private AshePawn parent;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        parent.IsLifting = true;
+        if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
+            parent.IsLifting = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        parent.IsLifting = false;
+        if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
+            parent.IsLifting = false;
     }
 }
