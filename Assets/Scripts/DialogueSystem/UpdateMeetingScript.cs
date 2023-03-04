@@ -36,5 +36,6 @@ public class UpdateMeetingScript : MonoBehaviour
             yield return new WaitForSeconds(0.01f * speed);
         }
         
+        if (idx - 6 >= 0) orderreveal[idx - 6].SetActive(false);
     }
 }
