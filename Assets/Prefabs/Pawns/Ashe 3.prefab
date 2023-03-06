@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 4ad0501da27572042ad78b7dd7f9d566, type: 2}
-  m_user: {fileID: 0}
-  m_animator: {fileID: 0}
+  m_user: {fileID: 1860670653781505588}
+  m_animator: {fileID: 6443063388588883332}
   m_punchCollider: {fileID: 6443063388588883335}
   m_grabCollider: {fileID: 0}
 --- !u!61 &6443063388588883335
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 8475706596464786226}
   m_Layer: 9
   m_Name: Ashe 3
-  m_TagString: Untagged
+  m_TagString: Ashe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,6 +674,54 @@ PrefabInstance:
       propertyPath: spriteRend
       value: 
       objectReference: {fileID: 5066155632926942769}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.46226418
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.46226418
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.46226418
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumColorKeys
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 833984484977224556, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_RootOrder
       value: 0

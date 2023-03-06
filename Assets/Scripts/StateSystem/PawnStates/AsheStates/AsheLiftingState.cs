@@ -49,5 +49,9 @@ public class AsheLiftingState : State
         {
             SwitchState(m_factory.AsheDefaultState());
         }
+        else if (((AshePawn)m_context).IsPunching)
+        {
+            SwitchState(m_factory.AshePunchingState());
+        }
     }
 }

@@ -25,7 +25,16 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             collision.transform.SetParent(oldParent, true);
-        }
-            
+        }       
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        
     }
 }

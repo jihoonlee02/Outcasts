@@ -145,19 +145,19 @@ public class PlayerController : MonoBehaviour
         controlledPawn.SecondaryAction();
     }
 
-    private void NextToolAction(InputAction.CallbackContext context)
-    {
-        //controlledPawn.NextTool();
-        //GameManager.Instance.CurrLevelManager.NextLevel();
-        SlideManager.Instance.NextSlide();
-    }
+    //private void NextToolAction(InputAction.CallbackContext context)
+    //{
+    //    //controlledPawn.NextTool();
+    //    //GameManager.Instance.CurrLevelManager.NextLevel();
+    //    SlideManager.Instance.NextSlide();
+    //}
 
-    private void PrevToolAction(InputAction.CallbackContext context)
-    {
-        //controlledPawn.PrevTool();
-        //GameManager.Instance.CurrLevelManager.PrevLevel();
-        SlideManager.Instance.PrevSlide();
-    }
+    //private void PrevToolAction(InputAction.CallbackContext context)
+    //{
+    //    //controlledPawn.PrevTool();
+    //    //GameManager.Instance.CurrLevelManager.PrevLevel();
+    //    SlideManager.Instance.PrevSlide();
+    //}
 
     //VERY COUPPLED DO NOT PUSH FOR FINAL GAME
     private void InteractAction(InputAction.CallbackContext context)

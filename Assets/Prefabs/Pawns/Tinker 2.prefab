@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 2600296315258561042}
   m_Layer: 9
   m_Name: Tinker 2
-  m_TagString: Untagged
+  m_TagString: Tinker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -734,6 +734,7 @@ MonoBehaviour:
   m_animator: {fileID: 0}
   m_audioSource: {fileID: 0}
   m_pawnData: {fileID: 11400000, guid: 8284e599ff70f2545bcb161bd29b1b80, type: 2}
+  m_pc: {fileID: 0}
   movementSpeed: 9
   acceleration: 8
   decceleration: 20
@@ -749,7 +750,6 @@ MonoBehaviour:
   m_maxPitch: 1.6
   m_tools:
   - {fileID: 1910975803770333381}
-  m_pc: {fileID: 0}
 --- !u!50 &134046781713132578
 Rigidbody2D:
   serializedVersion: 4
@@ -995,6 +995,34 @@ PrefabInstance:
     - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_Positions.Array.data[21].y
       value: -0.008490592
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.44250622
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8149186
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.27448428
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 833984484977224531, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 833984484977224556, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_RootOrder

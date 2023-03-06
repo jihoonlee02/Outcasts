@@ -11862,6 +11862,60 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &339761919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 339761921}
+  - component: {fileID: 339761922}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 10c146c2bb465e149a04c3a8735dac43, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &339761921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339761919}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.09, y: 2.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &339761922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339761919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ceabfb5f6cdcd4fb210fd36f06e282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 
+  m_tinker: {fileID: 0}
+  m_ashe: {fileID: 0}
+  currLevel:
+    tinkerSpawn: {x: 0, y: 0}
+    asheSpawn: {x: 0, y: 0}
+    sceneName: 
+    tinkerExitDoor: {fileID: 0}
+    asheExitDoor: {fileID: 0}
+  levels: []
 --- !u!1 &439122806
 GameObject:
   m_ObjectHideFlags: 0
@@ -24132,7 +24186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1861005647405611243, guid: e43dcaebb8ee79a4183adc4074047c9a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8838888
+      value: 1.8688177
       objectReference: {fileID: 0}
     - target: {fileID: 1861005647405611243, guid: e43dcaebb8ee79a4183adc4074047c9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24140,7 +24194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1861005647405611243, guid: e43dcaebb8ee79a4183adc4074047c9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.44
+      value: 0.447
       objectReference: {fileID: 0}
     - target: {fileID: 1861005648013195959, guid: e43dcaebb8ee79a4183adc4074047c9a, type: 3}
       propertyPath: m_Name
@@ -24264,6 +24318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ashe 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3130537325049219110, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5788782832889509122, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -24276,7 +24334,8 @@ PrefabInstance:
       propertyPath: m_user
       value: 
       objectReference: {fileID: 1525045485}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6443063388588883332, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
 --- !u!1 &984651956
 GameObject:
@@ -25547,9 +25606,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pim: {fileID: 996063257294589479}
   m_pawnsToControl:
-  - {fileID: 3131575330909427035}
   - {fileID: 1525045485}
-  m_currentLevelManager: {fileID: 0}
+  - {fileID: 3131575330909427035}
+  m_roomManager: {fileID: 0}
+  m_levelManager: {fileID: 0}
 --- !u!1001 &5331871878091556353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25568,6 +25628,18 @@ PrefabInstance:
     - target: {fileID: 4786329426744662084, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
       propertyPath: m_UseWorldSpace
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786329426744662084, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.48820755
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786329426744662084, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.48820755
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786329426744662084, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.6509434
       objectReference: {fileID: 0}
     - target: {fileID: 5331871878269861194, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
       propertyPath: m_Camera

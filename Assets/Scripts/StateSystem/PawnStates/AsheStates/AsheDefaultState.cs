@@ -47,9 +47,13 @@ public class AsheDefaultState : State
 
     public override void CheckSwitchState()
     {
-        if (((AshePawn)m_context).IsLifting)
+        if (((AshePawn)m_context).IsPunching)
+        {
+            SwitchState(m_factory.AshePunchingState());
+        }
+        else if (((AshePawn)m_context).IsLifting)
         {
             SwitchState(m_factory.AsheLifitngState());
-        }
+        }      
     }
 }

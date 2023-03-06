@@ -51,6 +51,16 @@ public class Pawn : MonoBehaviour
     protected float lastJumpTime;
     protected bool canMove;
     protected bool canJump;
+
+    public bool CanMove 
+    {
+        set { canMove = value; }
+    }
+    public bool CanJump
+    {
+        set { canJump = value; }
+    }
+
     #endregion
 
     #region State Info

@@ -30,9 +30,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Pawn[] m_pawnsToControl;
 
     [Header("Level Management")]
-    [SerializeField] private LevelManager m_currentLevelManager;
+    [SerializeField] private RoomManager m_roomManager;
+    [SerializeField] private LevelManager m_levelManager;
 
-    public LevelManager CurrLevelManager => m_currentLevelManager;
+    public RoomManager CurrRoomManager => m_roomManager;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
