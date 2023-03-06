@@ -191,7 +191,7 @@ public class Pawn : MonoBehaviour
 
     public void JumpCut()
     {
-        if (m_rb.velocity.y > 0 && isJumping)
+        if (m_rb.velocity.y > 0 && !isJumping)
         {
             m_rb.AddForce(Vector2.down * m_rb.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
         }
