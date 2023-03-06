@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Pawn Management")]
     [SerializeField] private PlayerInputManager m_pim;
-    [SerializeField] private PlayerPawn[] m_pawnsToControl;
+    [SerializeField] private Pawn[] m_pawnsToControl;
 
     [Header("Level Management")]
     [SerializeField] private LevelManager m_currentLevelManager;

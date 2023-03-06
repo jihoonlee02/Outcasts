@@ -137,12 +137,12 @@ public class PlayerController : MonoBehaviour
 
     private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
-        ((ToolUser) controlledPawn).UseToolPrimaryAction();
+        controlledPawn.PrimaryAction();
     }
 
     private void UseToolSecondaryAction(InputAction.CallbackContext context)
     {
-        ((ToolUser)controlledPawn).UseToolSecondaryAction();
+        controlledPawn.SecondaryAction();
     }
 
     private void NextToolAction(InputAction.CallbackContext context)

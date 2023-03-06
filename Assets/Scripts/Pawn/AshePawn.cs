@@ -12,7 +12,11 @@ public class AshePawn : Pawn
         get { return m_isLifting;}
         set { m_isLifting = value;}
     }
-
+    protected void Start()
+    {
+        base.Start();
+        CurrentState = m_states.AsheDefaultState();
+    }
     protected void Update()
     {
         base.Update();

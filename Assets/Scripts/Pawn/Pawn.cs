@@ -89,7 +89,7 @@ public class Pawn : MonoBehaviour
 
         //State Setup
         m_states = new PawnStateFactory(this);
-        m_currentState = m_states.Grounded();
+        m_currentState = m_states.PawnDefaultState();
     }
 
     /// <summary>
@@ -110,6 +110,16 @@ public class Pawn : MonoBehaviour
          * Setting the variables of these since the pawn's movement intention
          * should be reflected in the animation.
         */
+
+        if (Mathf.Abs(inputVector.x) > 0.001f)
+        {
+            isMoving = true;
+        }
+        else if (Mathf.Abs(m_rb.velocity.x) <= 0.001f)
+        {
+            isMoving = false;
+        }
+
         m_animator.SetFloat("MoveY", inputVector.y);
         if (Mathf.Abs(inputVector.x) > 0.1f)
             m_animator.SetFloat("MoveX", inputVector.x);
@@ -134,7 +144,6 @@ public class Pawn : MonoBehaviour
             amount *= Mathf.Sign(m_rb.velocity.x);
             m_rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
         }
-
         //Better if done in a state machine
         //if (Mathf.Abs(m_rb.velocity.x) < 0.001f)
         //{
@@ -171,8 +180,7 @@ public class Pawn : MonoBehaviour
         lastGroundedTime += Time.deltaTime;
         lastJumpTime += Time.deltaTime;
         //HandleAudio();
-        m_currentState.UpdateState();
-        m_currentState.CheckSwitchState();
+        m_currentState.UpdateStates();
     }
 
     protected void FixedUpdate()
@@ -180,8 +188,6 @@ public class Pawn : MonoBehaviour
         // Calculates if the Pawn is grounded (better than constantly invoking a subroutine call)
         isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
             0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
-
-        isMoving = Mathf.Abs(m_rb.velocity.x) >= 0.001f;
         isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
 
         //Make ending of jumps feel more fluid

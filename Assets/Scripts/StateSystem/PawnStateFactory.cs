@@ -22,6 +22,18 @@ public class PawnStateFactory
     {
         return new FallingState(m_context, this);
     }
+    public State PawnDefaultState()
+    {
+        return new PawnDefaultState(m_context, this);
+    }
+    public State AsheDefaultState() 
+    { 
+        return new AsheDefaultState(m_context, this);
+    }
+    public State AsheLifitngState()
+    {
+        return new AsheLiftingState(m_context, this);
+    }
     //public State Shooting()
     //{
     //    return new ShootingState(m_context, this);
