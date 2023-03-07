@@ -440,6 +440,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c4b13860-7912-4ddd-97e0-fc06362e0265"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""552bf0f7-5f81-4af6-abc9-59b0142d915a"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",

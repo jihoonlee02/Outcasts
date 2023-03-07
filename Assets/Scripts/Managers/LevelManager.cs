@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 // If one will be made it will have its own attachable script to
 // a prefab
 [Serializable, CreateAssetMenu(menuName = "Data/LevelData")]
-public class Level
+public class Level : ScriptableObject
 {
     public Vector2 tinkerSpawn;
     public Vector2 asheSpawn;
