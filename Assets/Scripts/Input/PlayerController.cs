@@ -114,7 +114,10 @@ public class PlayerController : MonoBehaviour
         //controlledPawn.Move(m_inputActions.Player.Movement.ReadValue<Vector2>());
 
         //Using PlayerInput itself
-        controlledPawn.Move(m_playerInput.actions["Movement"].ReadValue<Vector2>());
+        // Hardcoded threshold disgusting
+        Vector2 inputVector = m_playerInput.actions["Movement"].ReadValue<Vector2>();
+        inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ? Mathf.Sign(inputVector.x) : 0;
+        controlledPawn.Move(inputVector);
     }
 
     #region Actions

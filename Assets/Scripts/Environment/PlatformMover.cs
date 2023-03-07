@@ -1,56 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEditor;
 
 public class PlatformMover : MonoBehaviour
 {
-    [Header("Platform Points")]
-    [SerializeField] private Vector2 m_pointA;
-    [SerializeField] private Vector2 m_pointB;
-    [SerializeField] private Vector2 m_pointC;
-
-    [Header("Modifications")]
+    [Header("Options")]
+    [SerializeField] private Vector2[] m_waypoints;
     [SerializeField, Range(0f, 1f)] private float speed;
 
-    private bool shouldMove = false;
-    private bool secretMove = false;
+    private Vector2 currWaypoint;
+    private bool isSelected => Selection.transforms.Contains(transform);
 
     private void Start()
     {
-        transform.position = m_pointA;
+        currWaypoint = m_waypoints[0];
+        transform.position = currWaypoint;
     }
 
     private void Update()
     {
-        if (secretMove)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, m_pointC, Time.deltaTime * 3f * speed);
-        }
-        else if (shouldMove)
-        {
-            transform.position =  Vector2.MoveTowards(transform.position, m_pointB, Time.deltaTime * 3f * speed);
-        }
-        else
-        {
-            transform.position =  Vector2.MoveTowards(transform.position, m_pointA, Time.deltaTime * 3f * speed);
-        }
+        transform.position = Vector2.MoveTowards(transform.position, currWaypoint, Time.deltaTime * 3f * speed);
     }
 
-    public void MoveToPointB()
+    public void MoveToWaypoint(int idx)
     {
-        shouldMove = true;
-        secretMove = false;
+        currWaypoint = m_waypoints[idx];
     }
 
-    public void MoveToPointA()
+    private void OnDrawGizmos()
     {
-        shouldMove = false;
-        secretMove = false;
+        
     }
 
-    public void MoveToPointC()
+    private void OnDrawGizmosSelected()
     {
-        shouldMove = false;
-        secretMove = true;
+        if (m_waypoints == null || !isSelected) return;
+        for (int i = 0; i < m_waypoints.Length; i++)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(m_waypoints[i], 0.2f);
+
+            for (int j = i + 1; j < m_waypoints.Length; j++)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(m_waypoints[i], m_waypoints[j]);
+            }
+        }
     }
 }
