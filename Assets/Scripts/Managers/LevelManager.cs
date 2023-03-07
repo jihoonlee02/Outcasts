@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (currLevel.asheExitDoor.OnDoor && currLevel.tinkerExitDoor.OnDoor) OnLevelExit();
+        //if (currLevel.asheExitDoor.OnDoor && currLevel.tinkerExitDoor.OnDoor) OnLevelExit();
     }
 
     public void OnLevelExit()

@@ -10,14 +10,12 @@ public class PlatformMover : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private Vector2[] m_waypoints;
     [SerializeField, Range(0f, 1f)] private float speed = 1f;
-
-    private Vector2 currWaypoint;
     private bool isSelected => Selection.transforms.Contains(transform);
+    private int idx = 0;
 
     private void Start()
     {
-        currWaypoint = m_waypoints[0];
-        transform.localPosition = currWaypoint;
+        transform.localPosition = m_waypoints[idx];
 
         EventManager.GetEventManager.Activated += MoveToA;
         EventManager.GetEventManager.Deactivated += MoveToB;
@@ -25,12 +23,12 @@ public class PlatformMover : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition = Vector2.MoveTowards(transform.localPosition, currWaypoint, Time.deltaTime * 3f * speed);
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
     }
 
     public void MoveToWaypoint(int idx)
     {
-        currWaypoint = m_waypoints[idx];
+        this.idx = idx;
     }
 
     private void MoveToA(int id)
