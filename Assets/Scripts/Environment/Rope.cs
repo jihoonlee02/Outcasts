@@ -24,7 +24,7 @@ public class Rope : MonoBehaviour
 
     private void Update() {
         for (int i = 0; i <= numOfLinks; i++) {
-            lineRenderer.SetPosition(i, gameObject.transform.localPosition + gameObject.transform.GetChild(i + 1).transform.localPosition);
+            lineRenderer.SetPosition(i, gameObject.transform.localPosition + gameObject.transform.GetChild(i).transform.localPosition);
         }
     }
 
