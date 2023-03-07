@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8473621029046522648}
   - component: {fileID: 6443063388588883335}
   - component: {fileID: 6443063388588883332}
+  - component: {fileID: 8177433821788091460}
   m_Layer: 9
   m_Name: Gauntlet
   m_TagString: Gauntlet
@@ -50,7 +51,7 @@ MonoBehaviour:
   m_user: {fileID: 1860670653781505588}
   m_animator: {fileID: 6443063388588883332}
   m_punchCollider: {fileID: 6443063388588883335}
-  m_grabCollider: {fileID: 0}
+  m_grabCollider: {fileID: 8177433821788091460}
 --- !u!61 &6443063388588883335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2847066, y: 0.11062437}
+  m_Offset: {x: 0.36929512, y: 0.9428654}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25698185, y: 0.3594076}
+  m_Size: {x: 0.32534027, y: 0.38363838}
   m_EdgeRadius: 0
 --- !u!95 &6443063388588883332
 Animator:
@@ -97,6 +98,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &8177433821788091460
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968298746680066189}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.24, y: 0.67}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.37, y: 0.94}
+  m_EdgeRadius: 0
 --- !u!1 &2100192524187280813
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5066155632926942771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.09, y: 0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -732,7 +759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 833984484977224556, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5599998
+      value: -0.56000006
       objectReference: {fileID: 0}
     - target: {fileID: 833984484977224556, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_LocalPosition.z
