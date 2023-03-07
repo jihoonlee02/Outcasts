@@ -29,7 +29,7 @@ public class Tail : MonoBehaviour
         for (int i = 0; i < length; i++) {
             tailPositions[i] = lineRend.GetPosition(i);
             tailPositionsFlipped[i] = new Vector3(-tailPositions[i].x, tailPositions[i].y, tailPositions[i].z);
-            segmentPoses[i] = targetDir.position + tailPositions[i];
+            segmentPoses[i] = tailPositions[i];
         }
     }
 
@@ -43,6 +43,7 @@ public class Tail : MonoBehaviour
             // Vector3 targetPos = segmentPoses[i - 1] + (segmentPoses[i] - segmentPoses[i-1]).normalized * targetDist;
             // segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentVel[i], smoothSpeed);
             segmentPoses[i] = ((segmentPoses[i] - segmentPoses[i-1]) * ((correctTailP[i]-correctTailP[i-1]).magnitude/(segmentPoses[i] - segmentPoses[i-1]).magnitude)) + segmentPoses[i-1];
+            segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetDir.position + correctTailP[i], ref segmentVel[i], smoothSpeed);
         }
         lineRend.SetPositions(segmentPoses);
     }

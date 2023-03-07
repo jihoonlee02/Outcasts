@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dee312248aebe04b81fb0d407a27587, type: 3}
+  m_Name: TinkerData
+  m_EditorClassIdentifier: 
+  m_name: Tinker
+  m_voice: {fileID: 0}
+  m_footstep: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+  m_jump: {fileID: 8300000, guid: 48e14ba659cbb4f4f94ee82165408747, type: 3}
+  m_scratchPadSounds: []
+  min_pitch: 0.8
+  max_pitch: 1.65
