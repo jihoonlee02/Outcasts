@@ -42,27 +42,27 @@ public class Button : MonoBehaviour
                 transform.position = Vector3.LerpUnclamped(transform.position, buttonPos, timer/lengthOfTime);
             }
             timer += Time.deltaTime;
-        }
-        
+        }   
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
         if (entered == 0 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker"))) {
-            entered++;
             buttonPressed = true;
             timer = 0f;
             EventManager.GetEventManager.Activated.Invoke(id);
         }
+        entered++;
     }
+
 
     private void OnTriggerExit2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker"))) {
-            entered--;
+        if (entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker"))) { 
             buttonPressed = false;
             timer = 0f;
             EventManager.GetEventManager.Deactivated.Invoke(id);
         }
+        entered--;
     }
 }
