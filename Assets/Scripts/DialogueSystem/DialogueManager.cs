@@ -27,13 +27,10 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private TextProducer m_dialogueProducer;
     [SerializeField] private Image profile;
-    private CanvasGroup dialogueBox;
+    [SerializeField] private GameObject dialogueBox;
 
     private void Start()
     {
-        m_dialogueProducer = GetComponentInChildren<TextProducer>();
-        profile = transform.GetChild(1).GetComponent<Image>();
-        dialogueBox = GetComponent<CanvasGroup>();
         HideDialogue();
     }
 
@@ -42,15 +39,16 @@ public class DialogueManager : MonoBehaviour
         
     }
 
-    public Coroutine DisplayDialogue(DialogueObject a_dialogueObject)
+    public void DisplayDialogue(DialogueObject a_dialogueObject)
     {
-        dialogueBox.alpha = 1f;
-        return StartCoroutine(RunThroughDialogue(a_dialogueObject));
+        dialogueBox.GetComponent<Animator>().Play("Appear");
+        StartCoroutine(RunThroughDialogue(a_dialogueObject));
     }
+
 
     public void HideDialogue()
     {
-        dialogueBox.alpha = 0f;
+        dialogueBox.GetComponent<Animator>().Play("Disappear");
     }
 
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
@@ -60,8 +58,7 @@ public class DialogueManager : MonoBehaviour
             AdjustProfileSegment(dialogue.Profile);
             m_dialogueProducer.TypeSound = dialogue.TypeSound;
             yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, 6f);
-            //yield return new WaitUntil(() => PlayerController.Instance.PIA.UserInteraction.Ok.IsPressed());
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(dialogue.WaitTime);
         }
 
         HideDialogue();

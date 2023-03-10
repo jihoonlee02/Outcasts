@@ -13,7 +13,7 @@ public class AshePunchingState : State
 
     public override void EnterState()
     {
-        Debug.Log("Switched to AshePunching");
+        m_context.RB.AddRelativeForce(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 20f * Vector2.right);
         m_context.CanJump = false;
         m_context.CanMove = false;
         ((AshePawn)m_context).LifitingRegion.enabled = false;

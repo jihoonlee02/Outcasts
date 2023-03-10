@@ -8,7 +8,7 @@ public class JumpingState : State
     }
     public override void EnterState()
     {
-        Debug.Log("Enter Jumping State");
+        //Debug.Log("Enter Jumping State");
         m_context.AudioSource.loop = false;
         m_context.AudioSource.pitch = 1f;
         m_context.AudioSource.clip = m_context.Data.Jump;

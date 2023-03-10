@@ -22,11 +22,13 @@ public struct Dialogue
 { 
     [SerializeField] private Sprite profile;
     [SerializeField] private AudioClip typeSound;
+    [SerializeField] private float waitTime;
     [SerializeField] [TextArea] private string text;
 
     public Sprite Profile => profile;
     public AudioClip TypeSound => typeSound;
     public string Text => text;
+    public float WaitTime => waitTime;
 }
 
 //#if UNITY_EDITOR

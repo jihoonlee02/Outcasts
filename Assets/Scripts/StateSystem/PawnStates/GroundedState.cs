@@ -8,7 +8,7 @@ public class GroundedState : State
     }
     public override void EnterState()
     {
-        Debug.Log("Switched to Grounded");
+        //Debug.Log("Switched to Grounded");
         m_context.Animator.speed = 1;
         m_context.Animator.Play(m_animationName + m_superState.AnimationName);
     }

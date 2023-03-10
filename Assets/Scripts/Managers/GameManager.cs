@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
     {
         if (m_visualCanvas == null) { Debug.LogError("Error: VisualCanvas is Missing as an instance in GameManger!"); }
         AddSceneToQueue(initialScenesToEnqueue);
+
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(m_visualCanvas);
+        DontDestroyOnLoad(m_tinker);
+        DontDestroyOnLoad(m_ashe);
     }
 
     private bool control_tinker = false;

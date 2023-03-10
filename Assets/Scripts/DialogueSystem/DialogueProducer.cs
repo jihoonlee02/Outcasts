@@ -15,7 +15,7 @@ public class DialogueProducer : TextProducer
             char character = (char) a_text.Substring(n, 1).ToCharArray()[0];
             if (Time.time >= soundDelay)
             {
-                soundSource.Play();
+                soundSource?.Play();
                 soundDelay = 0.1f + Time.time;
             }
         
