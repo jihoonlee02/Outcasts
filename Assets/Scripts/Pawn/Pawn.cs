@@ -13,6 +13,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
+    [SerializeField] protected HingeJoint2D m_hingeJoint;
     [SerializeField] protected PlayerController m_pc;
 
     public PlayerController PC
@@ -48,10 +49,18 @@ public class Pawn : MonoBehaviour
     [SerializeField, Range(-1f, 2f)] protected float m_maxPitch = 1.5f;
 
     #region Technical
+    protected GameObject ropeSegment;
     protected float lastGroundedTime;
     protected float lastJumpTime;
     protected bool canMove;
     protected bool canJump;
+    protected bool ropeAttached;
+    public GameObject RopeSegment {
+        get => ropeSegment;
+        set {
+            ropeSegment = value;
+        }
+    }
 
     public bool CanMove 
     {
@@ -90,6 +99,8 @@ public class Pawn : MonoBehaviour
         m_collider = GetComponent<Collider2D>();
         m_animator = GetComponentInChildren<Animator>();
         m_audioSource = GetComponentInChildren<AudioSource>();
+        m_hingeJoint = GetComponent<HingeJoint2D>();
+        m_hingeJoint.enabled = false;
 
         //Technical
         canMove = true;
@@ -204,7 +215,10 @@ public class Pawn : MonoBehaviour
         //    isJumping = true;
         //    lastJumpTime = jumpBufferTime;
         //}
-
+        if (ropeAttached) {
+            ToggleGrabRope();
+            isGrounded = true;
+        }
         if (isGrounded)
         {
             m_rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -230,7 +244,23 @@ public class Pawn : MonoBehaviour
         lastJumpTime = 0;
     }
 
-    public virtual void PrimaryAction(InputAction.CallbackContext context)
+    public void ToggleGrabRope() {
+        if (!ropeAttached) {
+            if (EventManager.GetEventManager.TinkerRopeAttach != null) {
+                EventManager.GetEventManager.TinkerRopeAttach.Invoke(this.gameObject);
+                //transform.position = RopeSegment.transform.position;
+                //RopeSegment.transform
+                m_hingeJoint.enabled = true;
+                m_hingeJoint.connectedBody = RopeSegment.GetComponent<Rigidbody2D>();
+                ropeAttached = true;
+            }
+        } else {
+            m_hingeJoint.enabled = false;
+            ropeAttached = false;
+        }
+    }
+
+     public virtual void PrimaryAction(InputAction.CallbackContext context)
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
     }

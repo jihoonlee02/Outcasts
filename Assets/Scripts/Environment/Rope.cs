@@ -24,7 +24,11 @@ public class Rope : MonoBehaviour
 
     private void Update() {
         for (int i = 0; i <= numOfLinks; i++) {
-            lineRenderer.SetPosition(i, gameObject.transform.localPosition + gameObject.transform.GetChild(i).transform.localPosition);
+            if (anchored) {
+                lineRenderer.SetPosition(i, gameObject.transform.localPosition + gameObject.transform.GetChild(i+1).transform.localPosition);
+            } else {
+                lineRenderer.SetPosition(i, gameObject.transform.localPosition + gameObject.transform.GetChild(i).transform.localPosition);
+            }
         }
     }
 
@@ -47,7 +51,10 @@ public class Rope : MonoBehaviour
         
         Destroy(end);
         //Transform baseTransform = new Transform(transform);
-        GameObject firstLink = Instantiate(linkPrefab, transform);
+        GameObject firstLink = Instantiate(linkPrefab, parentTrans, Quaternion.identity, transform);
+        Quaternion linkRot = Quaternion.AngleAxis(Vector3.Angle(Vector3.down, end.transform.localPosition - start.transform.localPosition), Vector3.forward);
+        firstLink.transform.GetChild(0).localRotation = linkRot;
+        //firstLink.transform.GetChild(0).localRotation = Quaternion.AngleAxis(90, Vector3.forward);
         if (anchored) {
             firstLink.GetComponent<HingeJoint2D>().connectedBody = start.GetComponent<Rigidbody2D>();
         } else {
@@ -57,7 +64,8 @@ public class Rope : MonoBehaviour
         
         Rigidbody2D prevRB = firstLink.GetComponent<Rigidbody2D>();
         for (int i = 1; i <= numOfLinks; i++) {
-            GameObject link = Instantiate(linkPrefab, transform);
+            GameObject link = Instantiate(linkPrefab, parentTrans + ((linkPrefab.transform.localScale.x * i) * (new Vector3(ropeVec.x, ropeVec.y, 0))), Quaternion.identity, transform);
+            link.transform.GetChild(0).localRotation = linkRot;
             HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
             joint.connectedAnchor = ropeVec;
             joint.connectedBody = prevRB;
