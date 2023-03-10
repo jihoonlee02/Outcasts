@@ -13,12 +13,12 @@ public class AshePunchingState : State
 
     public override void EnterState()
     {
-        m_context.RB.AddRelativeForce(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 20f * Vector2.right);
         m_context.CanJump = false;
         m_context.CanMove = false;
         ((AshePawn)m_context).LifitingRegion.enabled = false;
         m_context.Animator.speed = 1;
         m_context.Animator.Play(m_animationName);
+        m_context.AudioSource.clip = m_context.Data.ScratchPadSounds[0];
     }
     public override void UpdateState()
     {
