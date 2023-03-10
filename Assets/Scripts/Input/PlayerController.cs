@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         // Hardcoded threshold disgusting
         Vector2 inputVector = m_playerInput.actions["Movement"].ReadValue<Vector2>();
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ? Mathf.Sign(inputVector.x) : 0;
-        controlledPawn.Move(inputVector);
+        controlledPawn?.Move(inputVector);
     }
 
     #region Actions
