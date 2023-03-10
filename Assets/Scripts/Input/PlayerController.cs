@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
         m_playerInput.actions["UseToolSecondary"].canceled += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
+        m_playerInput.actions["Pause"].performed += PauseAction;
         //m_playerInput.actions["NextTool"].performed += NextToolAction;
         //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
 
@@ -173,6 +174,11 @@ public class PlayerController : MonoBehaviour
     private void SlideRightAction(InputAction.CallbackContext context)
     {
         SlideManager.Instance.CurrSlide.AddInfo();
+    }
+
+    private void PauseAction(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.TogglePause();
     }
 
     #endregion

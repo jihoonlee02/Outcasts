@@ -26,6 +26,6 @@ public class MainMenu : MonoBehaviour
     private IEnumerator DelaySceneLoad(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        SceneManager.LoadSceneAsync("Hub");
+        SceneManager.LoadSceneAsync("Setup");
     }
 }

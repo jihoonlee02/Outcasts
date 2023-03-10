@@ -7,6 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Button : Invoker
 {
+    [SerializeField] private bool pressOnce = false;
     [SerializeField]
     private bool heavy = false;
     [SerializeField]
@@ -60,7 +61,7 @@ public class Button : Invoker
         if (entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker"))) { 
             buttonPressed = false;
             timer = 0f;
-            Deactivate();
+            if (!pressOnce) Deactivate();
         }
         entered--;
     }

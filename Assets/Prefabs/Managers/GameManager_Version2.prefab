@@ -119,8 +119,9 @@ MonoBehaviour:
   m_visualCanvas: {fileID: 0}
   m_characterSelection: {fileID: 0}
   m_doorTransition: {fileID: 0}
+  m_pauseMenu: {fileID: 0}
   m_roomManager: {fileID: 0}
   m_levelManager: {fileID: 0}
   m_currScene: 
   initialScenesToEnqueue:
-  - Level1
+  - Hub

@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextProducer m_dialogueProducer;
     [SerializeField] private Image profile;
     [SerializeField] private GameObject dialogueBox;
+    private bool inProduction;
 
     private void Start()
     {
@@ -41,6 +42,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayDialogue(DialogueObject a_dialogueObject)
     {
+        if (inProduction) return;
+        inProduction = true;
         dialogueBox.GetComponent<Animator>().Play("Appear");
         StartCoroutine(RunThroughDialogue(a_dialogueObject));
     }
@@ -49,6 +52,7 @@ public class DialogueManager : MonoBehaviour
     public void HideDialogue()
     {
         dialogueBox.GetComponent<Animator>().Play("Disappear");
+        inProduction = false;
     }
 
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
@@ -67,6 +71,7 @@ public class DialogueManager : MonoBehaviour
 
     private void AdjustProfileSegment(Sprite a_profile)
     {
+        if (a_profile == null) return;
         profile.sprite = null;
         profile.CrossFadeAlpha(0f, 0f, true);
         m_dialogueProducer.GetComponent<TMP_Text>().margin = new Vector4(0, 0, 0, 0);
