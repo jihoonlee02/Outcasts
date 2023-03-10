@@ -12,6 +12,13 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
+    [SerializeField] protected PlayerController m_pc;
+
+    public PlayerController PC
+    {
+        get { return m_pc; }
+        set { m_pc = value; }
+    }
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
@@ -44,6 +51,16 @@ public class Pawn : MonoBehaviour
     protected float lastJumpTime;
     protected bool canMove;
     protected bool canJump;
+
+    public bool CanMove 
+    {
+        set { canMove = value; }
+    }
+    public bool CanJump
+    {
+        set { canJump = value; }
+    }
+
     #endregion
 
     #region State Info
@@ -82,7 +99,7 @@ public class Pawn : MonoBehaviour
 
         //State Setup
         m_states = new PawnStateFactory(this);
-        m_currentState = m_states.Grounded();
+        m_currentState = m_states.PawnDefaultState();
     }
 
     /// <summary>
@@ -96,19 +113,27 @@ public class Pawn : MonoBehaviour
     {
         //Movement Using Forces (direct reference from Dawnosaur)
 
-        //Should be handled by Input
-        //inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ?Mathf.Sign(inputVector.x) : 0;
-
         /*
          * Setting the variables of these since the pawn's movement intention
          * should be reflected in the animation.
         */
+
+        if (Mathf.Abs(inputVector.x) > 0.001f)
+        {
+            isMoving = true;
+        }
+        else if (Mathf.Abs(m_rb.velocity.x) <= 0.001f)
+        {
+            isMoving = false;
+        }
+
         m_animator.SetFloat("MoveY", inputVector.y);
         if (Mathf.Abs(inputVector.x) > 0.1f)
             m_animator.SetFloat("MoveX", inputVector.x);
 
         //Movement code emulated from Dawnsaur Aug 10, 2021
         //Physics Calculation of Pawn Movement
+        //Relative force to adjust local position specifically when inside platforms
         
         if (canMove && Mathf.Abs(inputVector.x) > 0)
         {
@@ -116,7 +141,7 @@ public class Pawn : MonoBehaviour
             float speedDif = targetSpeed - m_rb.velocity.x;
             float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
             float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-            m_rb.AddForce(movement * Vector2.right);
+            m_rb.AddRelativeForce(movement * Vector2.right);
         }
 
         //Add Force to movement
@@ -125,37 +150,8 @@ public class Pawn : MonoBehaviour
         {
             float amount = Mathf.Min(Mathf.Abs(m_rb.velocity.x), Mathf.Abs(frictionAmount));
             amount *= Mathf.Sign(m_rb.velocity.x);
-            m_rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+            m_rb.AddRelativeForce(Vector2.right * -amount, ForceMode2D.Impulse);
         }
-
-        //Better if done in a state machine
-        //if (Mathf.Abs(m_rb.velocity.x) < 0.001f)
-        //{
-        //    m_animator.SetBool("IsIdle", true);
-        //    m_animator.speed = 1;
-
-        //    //if (m_audioSource.clip == m_pawnData.Footstep)
-        //    //    m_audioSource.clip = null;
-        //    return;
-        //}
-
-        ////State Machine Please resolve this!!!
-        //if (isGrounded) 
-        //{
-        //    m_animator.SetBool("IsIdle", false);
-        //    //m_animator.Play("Movement");
-        //    m_animator.speed = Mathf.Abs(m_rb.velocity.x / 3);
-        //    //float pitchCalc = 0.8f + Mathf.Abs(m_rb.velocity.x / 4);
-        //    //m_audioSource.pitch = pitchCalc > 2f ? 2f : pitchCalc < 0.8f ? 0.8f : pitchCalc;
-        //}
-
-        //Sound Handle
-        //if (!m_audioSource.isPlaying && IsGrounded())
-        //{
-        //    m_audioSource.clip = m_pawnData.Footstep;
-        //    m_audioSource.loop = true;
-        //    m_audioSource.Play();
-        //}
     }
 
     protected void Update()
@@ -164,8 +160,7 @@ public class Pawn : MonoBehaviour
         lastGroundedTime += Time.deltaTime;
         lastJumpTime += Time.deltaTime;
         //HandleAudio();
-        m_currentState.UpdateState();
-        m_currentState.CheckSwitchState();
+        m_currentState.UpdateStates();
     }
 
     protected void FixedUpdate()
@@ -173,8 +168,6 @@ public class Pawn : MonoBehaviour
         // Calculates if the Pawn is grounded (better than constantly invoking a subroutine call)
         isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
             0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
-
-        isMoving = Mathf.Abs(m_rb.velocity.x) >= 0.001f;
         isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
 
         //Make ending of jumps feel more fluid
@@ -191,7 +184,6 @@ public class Pawn : MonoBehaviour
         {
             lastGroundedTime = jumpCoyoteTime;
         }
-        HandlePhysics();
         
         //Dev Reasons
         Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
@@ -214,7 +206,7 @@ public class Pawn : MonoBehaviour
 
         if (isGrounded)
         {
-            m_rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            m_rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             lastGroundedTime = 0;
             isJumping = true;
             lastJumpTime = jumpBufferTime;
@@ -229,55 +221,22 @@ public class Pawn : MonoBehaviour
 
     public void JumpCut()
     {
-        if (m_rb.velocity.y > 0 && isJumping)
+        if (m_rb.velocity.y > 0 && !isJumping)
         {
-            m_rb.AddForce(Vector2.down * m_rb.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
+            m_rb.AddRelativeForce(Vector2.down * m_rb.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
         }
 
         lastJumpTime = 0;
     }
 
-    public void HandleAnimation()
+    public virtual void PrimaryAction()
     {
-        
+        Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
     }
 
-    public void HandleAudio()
+    public virtual void SecondaryAction()
     {
-        //Jump Audio
-        if (isJumping)
-        {
-            return;
-        }
-
-        //Movement Audio
-        if (Mathf.Abs(m_rb.velocity.x) < 0.01f)
-        {
-            m_audioSource.loop = false;
-            return;
-        }
-        if (!m_audioSource.isPlaying && isGrounded)
-        {
-            //m_audioSource.clip = m_pawnData.Footstep;
-            //m_audioSource.loop = true;
-            //m_audioSource.Play();
-        }
-        if (isGrounded) 
-        {
-            //float pitchCalc = m_minPitch + Mathf.Abs(m_rb.velocity.x / 3);
-            //m_audioSource.pitch = pitchCalc > m_maxPitch ? m_maxPitch : pitchCalc < m_minPitch ? m_minPitch : pitchCalc;
-        }     
-    }
-
-    //Resolve
-    private void HandlePhysics()
-    {
-        
-    }
-
-    public void HandleMoveAnimation()
-    {
-
+        Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Secondary Action");
     }
 
     #region Togglers

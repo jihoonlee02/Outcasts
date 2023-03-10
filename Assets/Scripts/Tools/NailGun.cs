@@ -6,9 +6,8 @@ public class NailGun : Tool
 {
     [SerializeField] private Projectile projectile;
 
-    public override void UsePrimaryAction()
+    public void UsePrimaryAction(Vector2 inputVector)
     {
-        var inputVector = ((PlayerPawn)m_user).PC.PlayerInputVector;
         //Shoot Up or Down
         if (Mathf.Abs(inputVector.y) > 0.9)
         {
@@ -18,7 +17,7 @@ public class NailGun : Tool
         }
 
         //Shoot Up-Right Diagonally
-        if (inputVector.y >= 0.45f && ((PlayerPawn)m_user).PC.PlayerInputVector.x >= 0.1f)
+        if (inputVector.y >= 0.45f && (inputVector.x >= 0.1f))
         {
             Pooler.Instance.Fire(ProjectileType.Nail,
                 m_user.transform.position, new Vector2(0.5f, 0.5f));

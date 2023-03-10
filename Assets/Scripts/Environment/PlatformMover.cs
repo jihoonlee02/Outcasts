@@ -4,34 +4,35 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-public class PlatformMover : MonoBehaviour
+public class PlatformMover : Invokee
 {
     [Header("Options")]
     [SerializeField] private Vector2[] m_waypoints;
-    [SerializeField, Range(0f, 1f)] private float speed;
-
-    private Vector2 currWaypoint;
+    [SerializeField, Range(0f, 1f)] private float speed = 1f;
     private bool isSelected => Selection.transforms.Contains(transform);
+    private int idx = 0;
 
     private void Start()
     {
-        currWaypoint = m_waypoints[0];
-        transform.position = currWaypoint;
+        transform.localPosition = m_waypoints[idx];
     }
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currWaypoint, Time.deltaTime * 3f * speed);
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
     }
 
     public void MoveToWaypoint(int idx)
     {
-        currWaypoint = m_waypoints[idx];
+        this.idx = idx;
     }
-
-    private void OnDrawGizmos()
+    protected override void OnActivate()
     {
-        
+        MoveToWaypoint(1);
+    }
+    protected override void OnDeactivate()
+    {
+        MoveToWaypoint(0);
     }
 
     private void OnDrawGizmosSelected()

@@ -1,88 +1,77 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Locations")]
-    [SerializeField] private Vector2 m_tinkerSpawn;
-    [SerializeField] private Vector2 m_asheSpawn;
+    [Header("Pawns")]
+    //[SerializeField] private Pawn m_tinker;
+    //[SerializeField] private Pawn m_ashe;
     [SerializeField] private ExitDoor m_tinkerExitDoor;
     [SerializeField] private ExitDoor m_asheExitDoor;
+    [SerializeField] private Transform m_tinkerSpawn;
+    [SerializeField] private Transform m_asheSpawn;
+    //public Pawn Tinker => m_tinker;
+    //public Pawn Ashe => m_ashe;
 
-    //Fully Version will be scene transition rather than position transition
-    [Header("Next Level Event")]
-    [SerializeField] private Vector2 m_currLevelPosition;
-    [SerializeField] private Level[] m_levels;
-
-    [Header("Pawns")]
-    [SerializeField] private Pawn m_tinker;
-    [SerializeField] private Pawn m_ashe;
-    public Pawn Tinker => m_tinker;
-    public Pawn Ashe => m_ashe;
-
-    #region Technical
-    private int levelNum = 0;
-    #endregion
-
-    public bool ViewingLevel => (Vector2)Camera.Instance.transform.position == m_currLevelPosition;
-
+    //Level Manager will not handle next levels, that is gamemanagers job
+    //[SerializeField] private Level currLevel;
+    //[SerializeField] private Level[] levels;
+    private void Awake()
+    {   
+        // Old Function of Level Manager
+        //for (int i = 0; i < levels.Length - 1; i++)
+        //{
+        //    levels[i].nextLevel = levels[i + 1];
+        //}
+    }
     private void Start()
     {
-        m_tinker.transform.position = m_levels[levelNum].tinkerSpawn;
-        m_ashe.transform.position = m_levels[levelNum].asheSpawn;
-        m_tinkerExitDoor = m_levels[levelNum].tinkerDoor;
-        m_asheExitDoor = m_levels[levelNum].asheDoor;
-        m_currLevelPosition = m_levels[levelNum].levelPosition;
-        Camera.Instance.ShiftTo(m_levels[levelNum].levelPosition);
+        GameManager.Instance.LevelManager = this;
+        GameManager.Instance.Tinker.transform.localPosition = m_tinkerSpawn.position;
+        GameManager.Instance.Ashe.transform.localPosition = m_asheSpawn.position;
+        GameManager.Instance.Tinker.gameObject.SetActive(true);
+        GameManager.Instance.Ashe.gameObject.SetActive(true);
+
+        m_tinkerSpawn.gameObject.SetActive(false);
+        m_asheSpawn.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (m_tinkerExitDoor.OnDoor && m_asheExitDoor.OnDoor) OnLevelExit();
+        // Though this is in the update method, it should only get invoked once...
+        // ...hopefully
+        if (m_asheExitDoor.OnDoor && m_tinkerExitDoor.OnDoor) OnLevelExit();
     }
 
     public void OnLevelExit()
     {
-        SlideManager.Instance.NextSlide();
-    }
+        // If Tinker and Ashe had a an animation entering the doors, this would be invoked here!
+        // For now!
+        GameManager.Instance.Tinker.gameObject.SetActive(false);
+        GameManager.Instance.Ashe.gameObject.SetActive(false);
 
-    //For Developer Purpose!!!
-    public void NextLevel()
-    {
-        levelNum = (levelNum + 1) % m_levels.Length;
-        m_tinker.transform.position = m_levels[levelNum].tinkerSpawn;
-        m_ashe.transform.position = m_levels[levelNum].asheSpawn;
-        m_tinkerExitDoor = m_levels[levelNum].tinkerDoor;
-        m_asheExitDoor = m_levels[levelNum].asheDoor;
-        m_currLevelPosition = m_levels[levelNum].levelPosition;
-        Camera.Instance.ShiftTo(m_levels[levelNum].levelPosition);
-    }
+        //DialogueManager.Instance.DisplayDialogue();
 
-    public void PrevLevel()
-    {
-        levelNum = (levelNum - 1 < 0 ? (m_levels.Length - 1) : levelNum - 1) % m_levels.Length;
-        m_tinker.transform.position = m_levels[levelNum].tinkerSpawn;
-        m_ashe.transform.position = m_levels[levelNum].asheSpawn;
-        m_tinkerExitDoor = m_levels[levelNum].tinkerDoor;
-        m_asheExitDoor = m_levels[levelNum].asheDoor;
-        m_currLevelPosition = m_levels[levelNum].levelPosition;
-        Camera.Instance.ShiftTo(m_levels[levelNum].levelPosition);
+        //This shouldn't be done immeditly
+        GameManager.Instance.TransitionToNextScene();
     }
 }
 
 // Temp Level Struct
 // If one will be made it will have its own attachable script to
 // a prefab
-[Serializable]
-public struct Level
-{
-    public Vector2 tinkerSpawn;
-    public Vector2 asheSpawn;
-    public Vector2 levelPosition;
-    public ExitDoor tinkerDoor;
-    public ExitDoor asheDoor;
-}
-
+//[Serializable, CreateAssetMenu(menuName = "Data/LevelData")]
+//public class Level : ScriptableObject
+//{
+//    public Vector2 tinkerSpawn;
+//    public Vector2 asheSpawn;
+//    public string sceneName;
+//    public ExitDoor tinkerExitDoor;
+//    public ExitDoor asheExitDoor;
+//    public Level nextLevel;
+//}
 

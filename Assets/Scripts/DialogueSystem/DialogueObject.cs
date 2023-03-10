@@ -9,7 +9,7 @@ using System;
 //using UnityEditorInternal;
 //#endif
 
-[CreateAssetMenu(menuName = "Dialogue/DialogueObject")]
+[CreateAssetMenu(menuName = "Data/DialogueObject")]
 public class DialogueObject : ScriptableObject
 {
     [SerializeField] private Dialogue[] dialogue;    

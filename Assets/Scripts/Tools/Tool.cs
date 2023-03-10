@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tool : MonoBehaviour
 {
     [SerializeField] protected ToolData m_data;
-    [SerializeField] protected ToolUser m_user;
+    [SerializeField] protected Pawn m_user;
 
     public ToolUser User { set { m_user = value; } }
 

@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class NailActivator : MonoBehaviour
+public class NailActivator : Invoker
 {
-    [SerializeField] private UnityEvent m_hitActiveEvent;
-    [SerializeField] private UnityEvent m_hitInactiveEvent;
-
     private SpriteRenderer m_spriteRenderer;
     private bool isActive = false;
 
@@ -20,26 +17,16 @@ public class NailActivator : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActive)
+        if (!isActive)
         {
-            m_hitInactiveEvent.Invoke();
-            m_spriteRenderer.color = Color.gray;
+            Activate();
+            m_spriteRenderer.color = Color.green;
         }  
         else
         {
-            m_hitActiveEvent.Invoke();
-            m_spriteRenderer.color = Color.green;
+            Deactivate();
+            m_spriteRenderer.color = Color.gray;
         }
         isActive = !isActive;
-    }
-
-    public void Activate()
-    {
-        isActive = true;
-    }
-
-    public void InActivate()
-    {
-        isActive = false;
     }
 }

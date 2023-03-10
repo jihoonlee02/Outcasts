@@ -31,8 +31,10 @@ public class Camera : MonoBehaviour
 
     [Header("Playful")]
     [SerializeField] private CameraShake m_cameraShaker;
+    [SerializeField] private CameraFollow m_cameraFollow;
 
     public CameraShake CamShaker => m_cameraShaker;
+    public CameraFollow CameraFollow => m_cameraFollow;
 
     #region Technical
 
@@ -50,9 +52,9 @@ public class Camera : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position != targetPosition && !m_cameraShaker.IsShaking)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
-        }
+        //if (transform.position != targetPosition && !m_cameraShaker.IsShaking)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
+        //}
     }
 }

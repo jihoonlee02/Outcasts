@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class PlatformPivot : MonoBehaviour
 {
-    [SerializeField] private Collider2D m_triggerBox;
+    [SerializeField] private Transform attachTo;
+    private Transform oldParent;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerPawn>() != null)
-            collision.transform.SetParent(transform, false);
+        if (collision.GetComponent<Rigidbody2D>() != null)
+        {
+            oldParent = collision.transform.parent;
+            collision.transform.SetParent(attachTo, true);
+        }
+            
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerPawn>() != null)
-            collision.transform.parent = null;
+        if (collision.GetComponent<Rigidbody2D>() != null)
+            collision.transform.SetParent(oldParent, true);
     }
 }
