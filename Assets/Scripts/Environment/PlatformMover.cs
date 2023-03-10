@@ -12,14 +12,30 @@ public class PlatformMover : Invokee
     private bool isSelected => Selection.transforms.Contains(transform);
     private int idx = 0;
 
+    private List<Transform> objectsOnPlatform;
+    private Vector2 moveDifference;
+    public int moveDifferenceMultiplier;
+    private Vector2 oldMoveDifference;
+
     private void Start()
     {
         transform.localPosition = m_waypoints[idx];
+        objectsOnPlatform = new List<Transform>();
+        moveDifference = transform.localPosition;
     }
 
     private void Update()
     {
+        oldMoveDifference = moveDifference;
+        moveDifference = transform.localPosition;
         transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
+        moveDifference -= (Vector2) transform.localPosition;
+
+        foreach(var objectOnPlatform in objectsOnPlatform)
+        {
+            moveDifference *= -1;
+            objectOnPlatform.Translate(moveDifference);
+        }
     }
 
     public void MoveToWaypoint(int idx)
@@ -48,6 +64,25 @@ public class PlatformMover : Invokee
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(m_waypoints[i], m_waypoints[j]);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
+        if (objectOnPlatform != null)
+        {
+            objectsOnPlatform.Add(objectOnPlatform.transform);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+        var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
+        if (objectOnPlatform != null)
+        {
+            objectsOnPlatform.Remove(objectOnPlatform.transform);
         }
     }
 }
