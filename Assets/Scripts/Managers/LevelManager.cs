@@ -20,6 +20,9 @@ public class LevelManager : MonoBehaviour
     //Level Manager will not handle next levels, that is gamemanagers job
     //[SerializeField] private Level currLevel;
     //[SerializeField] private Level[] levels;
+
+    [Header("Dev Details")]
+    [SerializeField] private bool isSetupScene = false;
     private void Awake()
     {   
         // Old Function of Level Manager
@@ -41,6 +44,13 @@ public class LevelManager : MonoBehaviour
 
         m_tinkerSpawn.gameObject.SetActive(false);
         m_asheSpawn.gameObject.SetActive(false);
+
+        if (isSetupScene)
+        {
+            GameManager.Instance.LoadToScene("Hub");
+            return;
+        }
+
         GameManager.Instance.DoorTransition.OpenDoors();
         AudioManager.Instance.PlayAudio();
     }
@@ -54,8 +64,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnLevelExit()
     {
-        // If Tinker and Ashe had a an animation entering the doors, this would be invoked here!
-        // For now!
+        // So that Tinker n' Ashe don't start invoking this a billion times
         GameManager.Instance.Tinker.gameObject.SetActive(false);
         GameManager.Instance.Ashe.gameObject.SetActive(false);
 
@@ -63,6 +72,11 @@ public class LevelManager : MonoBehaviour
 
         //This shouldn't be done immeditly
         GameManager.Instance.TransitionToNextScene();
+    }
+
+    public void RunDialogueToCanvas(DialogueObject dialogueObject)
+    {
+        DialogueManager.Instance.DisplayDialogue(dialogueObject);
     }
 }
 

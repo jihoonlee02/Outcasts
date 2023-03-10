@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Class <c>TextProducer</c> functions when attached directly to a game object with the TMP component
 /// </summary>
-[RequireComponent(typeof(TMP_Text))]
+[RequireComponent(typeof(TMP_Text), typeof(AudioSource))]
 public class TextProducer : MonoBehaviour
 {
     [Header("Use Settings")]
@@ -37,6 +37,7 @@ public class TextProducer : MonoBehaviour
     private void Start()
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
+        soundSource = GetComponent<AudioSource>();
         initialText = m_textLabel.text;
         ReplaceTextWith(initialText, m_startEffect, 5f * speed);
     }

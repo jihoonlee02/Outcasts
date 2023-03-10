@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.36929512, y: 0.9428654}
+  m_Offset: {x: 0.44686222, y: 0.17530632}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32534027, y: 0.38363838}
+  m_Size: {x: 0.31900907, y: 0.22287035}
   m_EdgeRadius: 0
 --- !u!95 &6443063388588883332
 Animator:
@@ -111,7 +111,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.24, y: 0.67}
+  m_Offset: {x: -0.24000001, y: -0.003546238}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37, y: 0.94}
+  m_Size: {x: 0.37, y: 1.3555431}
   m_EdgeRadius: 0
 --- !u!1 &2100192524187280813
 GameObject:
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_animator: {fileID: 5066155632926942779}
   m_audioSource: {fileID: 3808633479875663444}
   m_pawnData: {fileID: 11400000, guid: d2223ecf7f9cbbb4194eeea8e7df11b1, type: 2}
+  m_hingeJoint: {fileID: 0}
   m_pc: {fileID: 0}
   movementSpeed: 9
   acceleration: 8
@@ -655,7 +656,7 @@ SpriteRenderer:
   m_SortingLayerID: -228331019
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1570894474, guid: 8337a33b9fe9e4841969986a186f558b, type: 3}
+  m_Sprite: {fileID: 1776414900, guid: 3835d751fd6594948a41f39bce7a84de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -9,6 +9,7 @@ public class PlatformMover : Invokee
     [Header("Options")]
     [SerializeField] private Vector2[] m_waypoints;
     [SerializeField, Range(0f, 1f)] private float speed = 1f;
+    [SerializeField] private bool autoMove;
 
     # if UNITY_EDITOR
     private bool isSelected => Selection.transforms.Contains(transform);
@@ -28,6 +29,7 @@ public class PlatformMover : Invokee
     
     private void Update()
     {
+        if (autoMove && (Vector2)transform.localPosition == m_waypoints[idx]) idx = (idx + 1) % m_waypoints.Length;
         moveDifference = transform.localPosition;
         transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
         moveDifference -= (Vector2) transform.localPosition;

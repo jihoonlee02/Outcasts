@@ -39,13 +39,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject m_visualCanvas;
     [SerializeField] private CharacterSelection m_characterSelection;
     [SerializeField] private DoorTransition m_doorTransition;
+    [SerializeField] private GameObject m_pauseMenu;
 
     public DoorTransition DoorTransition => m_doorTransition;
 
     [Header("Level Management")]
     [SerializeField] private RoomManager m_roomManager;
     [SerializeField] private LevelManager m_levelManager;
-
+    
     public RoomManager CurrRoomManager => m_roomManager;
     public LevelManager LevelManager
     {
@@ -59,23 +60,20 @@ public class GameManager : MonoBehaviour
     [Header("Dev Settings")]
     [SerializeField] private string[] initialScenesToEnqueue;
 
+    private bool isPaused = false;
+
     private void Awake()
     {
         m_currScene = SceneManager.GetActiveScene().name;
         
-
         m_scenes = new Queue<string>();
 
-        foreach (var scene in initialScenesToEnqueue)
-        {
-            m_scenes.Enqueue(scene);
-        }
+        AddSceneToQueue(initialScenesToEnqueue);
     }
 
     private void Start()
     {
         if (m_visualCanvas == null) { Debug.LogError("Error: VisualCanvas is Missing as an instance in GameManger!"); }
-        AddSceneToQueue(initialScenesToEnqueue);
 
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(m_visualCanvas);
@@ -113,6 +111,7 @@ public class GameManager : MonoBehaviour
         if (pawn == m_ashe) control_ashe = true;
         if (pawn == m_tinker) control_tinker = true;
         pi.GetComponent<PlayerController>().ControlPawn(pawn);
+        
     }
 
     public void HandlePlayerControllerExit(PlayerInput pi)
@@ -145,26 +144,52 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void TogglePause()
+    {
+        if (isPaused) UnPauseGame();
+        else PauseGame();
+    }
+    public void PauseGame()
+    {
+        isPaused = true;
+        m_pauseMenu.SetActive(true);
+    }
+
+    public void UnPauseGame()
+    {
+        isPaused = false;
+        m_pauseMenu.SetActive(false);
+    }
+
 
 
     #region Scene Management
 
-    public void TransitionToNextScene()
+
+    public void LoadToScene(string scene)
     {
-        m_currScene = m_scenes.Dequeue();
+        m_currScene = scene;
+        //Dev Bs only
+        if (m_currScene == "Hub")
+        {
+            ClearSceneQueue();
+            AddSceneToQueue(new string[] { "Level1", "Level3" });
+        }
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(m_visualCanvas);
         DontDestroyOnLoad(m_tinker);
         DontDestroyOnLoad(m_ashe);
         m_doorTransition.CloseDoors();
         StartCoroutine(DelaySceneLoad(2f));
-
+    }
+    public void TransitionToNextScene()
+    {
+        LoadToScene(m_currScene = m_scenes.Count > 0 ? m_scenes.Dequeue() : "Hub");
     }
 
-    public void LoadToScene(string scene)
+    public void ReloadCurrentScene()
     {
-        m_doorTransition.CloseDoors();
-        StartCoroutine(DelaySceneLoad(2f));
+        LoadToScene(m_currScene);
     }
 
     public void AddSceneToQueue(string scene)
@@ -176,6 +201,11 @@ public class GameManager : MonoBehaviour
     {
         foreach (string scene in scenes)
             m_scenes.Enqueue(scene);
+    }
+
+    public void ClearSceneQueue()
+    {
+        m_scenes.Clear();
     }
 
     #endregion
