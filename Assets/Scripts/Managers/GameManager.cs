@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -36,9 +35,12 @@ public class GameManager : MonoBehaviour
     public Pawn Tinker => m_tinker;
     public Pawn Ashe => m_ashe;
 
-    [Header("Important Game Comoponents")]
+    [Header("UI Comoponents")]
     [SerializeField] private GameObject m_visualCanvas;
     [SerializeField] private CharacterSelection m_characterSelection;
+    [SerializeField] private DoorTransition m_doorTransition;
+
+    public DoorTransition DoorTransition => m_doorTransition;
 
     [Header("Level Management")]
     [SerializeField] private RoomManager m_roomManager;
@@ -149,12 +151,15 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(m_visualCanvas);
         DontDestroyOnLoad(m_tinker);
         DontDestroyOnLoad(m_ashe);
-        SceneManager.LoadSceneAsync(m_currScene != null ? m_currScene : "Hub");
+        m_doorTransition.CloseDoors();
+        StartCoroutine(DelaySceneLoad(2f));
+
     }
 
     public void LoadToScene(string scene)
     {
-        SceneManager.LoadSceneAsync(scene != null ? scene : "Hub");
+        m_doorTransition.CloseDoors();
+        StartCoroutine(DelaySceneLoad(2f));
     }
 
     public void AddSceneToQueue(string scene)
@@ -169,4 +174,10 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    private IEnumerator DelaySceneLoad(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadSceneAsync(m_currScene != null ? m_currScene : "Hub");
+    }
 }

@@ -33,7 +33,7 @@ public class Camera : MonoBehaviour
     [SerializeField] private CameraShake m_cameraShaker;
     [SerializeField] private CameraFollow m_cameraFollow;
 
-    public CameraShake CamShaker => m_cameraShaker;
+    public CameraShake CameraShaker => m_cameraShaker;
     public CameraFollow CameraFollow => m_cameraFollow;
 
     #region Technical

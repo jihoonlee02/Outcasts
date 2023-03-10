@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +13,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private ExitDoor m_asheExitDoor;
     [SerializeField] private Transform m_tinkerSpawn;
     [SerializeField] private Transform m_asheSpawn;
+    [SerializeField] private AudioClip m_music;
     //public Pawn Tinker => m_tinker;
     //public Pawn Ashe => m_ashe;
 
@@ -36,8 +36,13 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Tinker.gameObject.SetActive(true);
         GameManager.Instance.Ashe.gameObject.SetActive(true);
 
+        if (AudioManager.Instance.CurrentAudio != m_music)
+            AudioManager.Instance.SetAudioClip(m_music);
+
         m_tinkerSpawn.gameObject.SetActive(false);
         m_asheSpawn.gameObject.SetActive(false);
+        GameManager.Instance.DoorTransition.OpenDoors();
+        AudioManager.Instance.PlayAudio();
     }
 
     private void Update()

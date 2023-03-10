@@ -33,6 +33,18 @@ public class CameraShake : MonoBehaviour
         StartCoroutine(Shake());
     }
 
+    public void StartShakingFor(float seconds)
+    {
+        StartShaking();
+        StartCoroutine(ShakeFor(seconds));
+    }
+
+    public void StartShakingFor(float seconds, float strength = 0.25f, float radius = 0.125f, float speed = 1f)
+    {
+        StartShaking(strength, radius, speed);
+        StartCoroutine(ShakeFor(seconds));
+    }
+
     public void StopShaking()
     {
         StopAllCoroutines();
@@ -51,5 +63,11 @@ public class CameraShake : MonoBehaviour
             transform.Translate(power, 0f, 0f);
             yield return new WaitForSeconds(1/(m_speed * 1000f));
         }
+    }
+
+    private IEnumerator ShakeFor(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        StopShaking();
     }
 }
