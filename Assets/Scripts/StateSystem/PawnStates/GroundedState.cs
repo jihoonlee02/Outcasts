@@ -2,8 +2,21 @@ using UnityEngine;
 
 public class GroundedState : State
 {
-    public GroundedState(Pawn context, PawnStateFactory factory) : base(context, factory) {}
+    public GroundedState(Pawn context, PawnStateFactory factory) : base(context, factory) 
+    {
+        m_animationName = "Idle";
+    }
+    public override void EnterState()
+    {
+        //Debug.Log("Switched to Grounded");
+        m_context.Animator.speed = 1;
+        m_context.Animator.Play(m_animationName + m_superState.AnimationName);
+    }
 
+    public override void UpdateState()
+    {
+        CheckSwitchState();
+    }
     public override void CheckSwitchState()
     {
         if (m_context.IsJumping)
@@ -18,12 +31,5 @@ public class GroundedState : State
         {
             SwitchState(m_factory.Falling());
         }
-    }
-
-    public override void EnterState()
-    {
-        Debug.Log("Switched to Grounded");
-        m_context.Animator.speed = 1;
-        m_context.Animator.Play("Idle");
     }
 }

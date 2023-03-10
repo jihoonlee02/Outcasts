@@ -2,25 +2,28 @@ using UnityEngine;
 
 public class JumpingState : State
 {
-    public JumpingState(Pawn context, PawnStateFactory factory) : base(context, factory) { }
+    public JumpingState(Pawn context, PawnStateFactory factory) : base(context, factory) 
+    {
+        m_animationName = "Jump";
+    }
     public override void EnterState()
     {
-        Debug.Log("Enter Jumping State");
+        //Debug.Log("Enter Jumping State");
         m_context.AudioSource.loop = false;
-        m_context.AudioSource.pitch = 1.05f;
+        m_context.AudioSource.pitch = 1f;
         m_context.AudioSource.clip = m_context.Data.Jump;
-        m_context.Animator.Play("Jump");
+        m_context.Animator.Play(m_animationName + m_superState.AnimationName);
         m_context.AudioSource.Play();
     }
 
     public override void ExitState()
     {
-        m_context.AudioSource.pitch = 1f;
+
     }
 
     public override void UpdateState()
     {
-        
+        CheckSwitchState();
     }
 
     public override void CheckSwitchState()

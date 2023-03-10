@@ -12,11 +12,13 @@ public class TextProducer : MonoBehaviour
 {
     [Header("Use Settings")]
     [SerializeField] private bool m_startOnEnable = false;
+    [SerializeField, Range(0f, 1f)] private float speed = 0.8f;
     [SerializeField] private ProduceEffect m_startEffect = ProduceEffect.None;
 
     protected TMP_Text m_textLabel;
     protected AudioClip typeSound;
     protected AudioSource soundSource;
+    protected string initialText;
 
     private readonly List<Punctuation> punctuations = new List<Punctuation>()
     {
@@ -35,14 +37,15 @@ public class TextProducer : MonoBehaviour
     private void Start()
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
-        ReplaceTextWith("You Shouldn't Be Here!", m_startEffect, 1.2f);
+        initialText = m_textLabel.text;
+        ReplaceTextWith(initialText, m_startEffect, 5f * speed);
     }
 
     private void OnEnable()
     {
         if (m_startOnEnable)
         {
-            ReplaceTextWith("You Shouldn't Be Here!", m_startEffect, 1.2f);
+            ReplaceTextWith(initialText, m_startEffect, 5f * speed);
         }
     }
 

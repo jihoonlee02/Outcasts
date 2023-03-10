@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Invokee
 {
-    [SerializeField]
-    private int id;
     [SerializeField]
     private bool open;
     [SerializeField]
@@ -33,9 +31,6 @@ public class Door : MonoBehaviour
         }
         //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
         doorDist = Vector3.Distance(doorPosDown, doorPosUp);
-
-        EventManager.GetEventManager.Activated += OpenDoor;
-        EventManager.GetEventManager.Deactivated += CloseDoor;
     }
 
     // Update is called once per frame
@@ -47,24 +42,20 @@ public class Door : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, doorPosDown, ref doorVel, timeToOpen * perOpen);
         }
     }
-    private void OnDestroy() {
-        EventManager.GetEventManager.Activated -= OpenDoor;
-        EventManager.GetEventManager.Deactivated -= CloseDoor;
+
+    //Open Door Logic
+    protected override void OnActivate()
+    {
+        Debug.Log("Open");
+        perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosUp) / doorDist : Vector3.Distance(transform.position, doorPosDown);
+        open = !open;    
     }
 
-    private void OpenDoor(int id) {
-        if (this.id == id) {
-            Debug.Log("Open");
-            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosUp) / doorDist : Vector3.Distance(transform.position, doorPosDown);
-            open = !open;
-        }
-    }
-
-    private void CloseDoor(int id) {
-        if (this.id == id) {
-            Debug.Log("Close");
-            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosDown) / doorDist : Vector3.Distance(transform.position, doorPosUp) / doorDist;
-            open = !open;
-        }
+    //Close Door Logic
+    protected override void OnDeactivate()
+    {
+        Debug.Log("Close");
+        perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosDown) / doorDist : Vector3.Distance(transform.position, doorPosUp) / doorDist;
+        open = !open;
     }
 }

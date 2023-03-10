@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Pawns/PawnData"), System.Serializable]
+[CreateAssetMenu(menuName = "Data/PawnData"), System.Serializable]
 public class PawnData : ScriptableObject
 {
     [Header("Pawn Description")]

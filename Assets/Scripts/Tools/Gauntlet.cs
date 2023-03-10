@@ -12,35 +12,61 @@ public class Gauntlet : Tool
     private float currTime = 0f;
     private float animationLength = 0.5f; //Most likely will get replaced by the animation's clip time length
     private bool inUse;
+    private float offsetXpunch;
+    private float offsetYpunch;
+    private float offsetXGrab;
+    private float offsetYGrab;
+    private Grabbable item;
     #endregion
 
     public void Start()
     {
         m_punchCollider.enabled = false;
+        offsetXpunch = m_punchCollider.offset.x;
+        offsetYpunch = m_punchCollider.offset.y;
+        offsetXGrab = m_grabCollider.offset.x;
+        offsetYGrab = m_grabCollider.offset.y;
         m_grabCollider.enabled = false;
     }
 
     public override void UsePrimaryAction()
     {
         if (inUse) { return; }
-        //m_animator.SetFloat("MoveX", Mathf.Sign(m_user.Animator.GetFloat("MoveX")));
-        m_user.DisableMovement();
-        m_user.DisableJump();
-        m_user.Animator.Play("Punch");
         m_punchCollider.enabled = true;
-        inUse = false;
-        m_punchCollider.offset = new Vector2(m_punchCollider.offset.x * Mathf.Sign(((PlayerPawn)m_user).PC.PlayerInputVector.x), m_punchCollider.offset.y);
+        inUse = true;
+        m_punchCollider.offset = new Vector2(offsetXpunch * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYpunch);
         currTime = Time.time + animationLength;
+        ((AshePawn)m_user).IsPunching = true;
     }
 
     public override void UseSecondaryAction()
     {
+        if (item != null) 
+        {
+            item.UnGrab(m_user);
+            item = null;
+            return;
+        }
+        if (inUse) { return; }
         m_grabCollider.enabled = true;
+        inUse = true;
+        m_punchCollider.offset = new Vector2(offsetXGrab * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYGrab);
+        currTime = Time.time + animationLength;
+        ((AshePawn)m_user).IsPunching = true;
     }
 
     public void FixedUpdate()
     {
-        if (Time.time > currTime) { inUse = false; m_punchCollider.enabled = false; m_user.EnableMovement(); m_user.EnableJump(); }
+        if (Time.time > currTime) { inUse = false; m_punchCollider.enabled = false; ((AshePawn)m_user).IsPunching = false;
+            m_grabCollider.enabled = false;
+        }
+    }
+    //For the grab collider
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Grabbable grabbable = collision.gameObject.GetComponent<Grabbable>();
+        grabbable?.Grab(m_user);
+        item = grabbable;
     }
 
 

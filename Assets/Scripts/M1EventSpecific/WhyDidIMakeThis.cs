@@ -18,10 +18,10 @@ public class WhyDidIMakeThis : MonoBehaviour
     private IEnumerator something()
     {
         yield return new WaitForSeconds(2.35f);
-        Camera.Instance.CamShaker.StartShaking();
-        GameManager.Instance.CurrLevelManager.Tinker.Jump();
-        GameManager.Instance.CurrLevelManager.Ashe.Jump();
+        Camera.Instance.CameraShaker.StartShaking();
+        GameManager.Instance.CurrRoomManager.Tinker.Jump();
+        GameManager.Instance.CurrRoomManager.Ashe.Jump();
         yield return new WaitForSeconds(0.35f);
-        Camera.Instance.CamShaker.StopShaking();
+        Camera.Instance.CameraShaker.StopShaking();
     }
 }

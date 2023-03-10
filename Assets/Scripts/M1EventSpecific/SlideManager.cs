@@ -26,20 +26,20 @@ public class SlideManager : MonoBehaviour
     public void NextSlide()
     {
         slides[index].gameObject.SetActive(false);
-        GameManager.Instance.CurrLevelManager.NextLevel();
+        GameManager.Instance.CurrRoomManager.NextRoom();
         index = (index + 1) % slides.Length;
     }
 
     public void PrevSlide()
     {
         slides[index].gameObject.SetActive(false);
-        GameManager.Instance.CurrLevelManager.PrevLevel();
+        GameManager.Instance.CurrRoomManager.PrevRoom();
         index = (index - 1 < 0 ? (slides.Length - 1) : index - 1) % slides.Length;
     }
 
     private void Update()
     {
-        if (GameManager.Instance.CurrLevelManager.ViewingLevel)
+        if (GameManager.Instance.CurrRoomManager.ViewingRoom)
         {
             slides[index].gameObject.SetActive(true);
             currSlide = slides[index];
