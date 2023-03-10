@@ -16,6 +16,8 @@ MonoBehaviour:
   m_voice: {fileID: 0}
   m_footstep: {fileID: 8300000, guid: 9ea7251dd897ba340baff3218d0fe2c6, type: 3}
   m_jump: {fileID: 8300000, guid: 66e914259f355f347b46b60c15f2a7fc, type: 3}
-  m_scratchPadSounds: []
+  m_scratchPadSounds:
+  - {fileID: 8300000, guid: 2cc0f719058faf049a332711f295e8db, type: 3}
+  - {fileID: 8300000, guid: cbb8d65c67467e64d8d0dec55981fb43, type: 3}
   min_pitch: 0.85
   max_pitch: 2

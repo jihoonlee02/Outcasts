@@ -50,6 +50,14 @@ public class PawnStateFactory
     {
         return new AshePunchingState(m_context, this);
     }
+    public State TinkerDefaultState()
+    {
+        return new TinkerDefaultState(m_context, this);
+    }
+    public State TinkerShootState()
+    {
+        return new TinkerShootState(m_context, this);
+    }
     //public State Moving()
     //{
     //    if (moving_state == null) moving_state = new MovingState(m_context, this);
