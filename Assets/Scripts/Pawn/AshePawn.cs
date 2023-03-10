@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AshePawn : Pawn
 {
@@ -28,12 +29,12 @@ public class AshePawn : Pawn
     {
         base.Update();
     }
-    public override void PrimaryAction()
+    public override void PrimaryAction(InputAction.CallbackContext context)
     {
         m_gauntletReference.UsePrimaryAction();
     }
 
-    public override void SecondaryAction()
+    public override void SecondaryAction(InputAction.CallbackContext context)
     {
         m_gauntletReference.UseSecondaryAction();
     }

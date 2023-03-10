@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Pawn : MonoBehaviour
@@ -12,7 +13,6 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
-    [SerializeField] protected HingeJoint2D m_hingeJoint;
     [SerializeField] protected PlayerController m_pc;
 
     public PlayerController PC
@@ -53,13 +53,6 @@ public class Pawn : MonoBehaviour
     protected float lastJumpTime;
     protected bool canMove;
     protected bool canJump;
-    protected bool ropeAttached;
-    public GameObject RopeSegment {
-        get => ropeSegment;
-        set {
-            ropeSegment = value;
-        }
-    }
 
     public bool CanMove 
     {
@@ -259,34 +252,7 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    public void HandleAnimation()
-    {
-        Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
-    }
-
-    public void HandleAudio()
-    {
-        //Jump Audio
-        if (isJumping)
-        {
-            return;
-        }
-
-        //Movement Audio
-        if (Mathf.Abs(m_rb.velocity.x) < 0.01f)
-        {
-            m_audioSource.loop = false;
-            return;
-        }
-        if (!m_audioSource.isPlaying && isGrounded)
-        {
-            //m_audioSource.clip = m_pawnData.Footstep;
-            //m_audioSource.loop = true;
-            //m_audioSource.Play();
-        }
-    }
-
-    public virtual void PrimaryAction()
+     public virtual void PrimaryAction()
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
     }
