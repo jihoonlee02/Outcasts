@@ -15,11 +15,8 @@ public class PlatformMover : Invokee
     #endif
     private int idx = 0;
     private Vector2 moveDifference;
-
     private List<Transform> objectsOnPlatform;
-    private Vector2 moveDifference;
     public int moveDifferenceMultiplier;
-    private Vector2 oldMoveDifference;
 
     private void Start()
     {
@@ -31,7 +28,6 @@ public class PlatformMover : Invokee
     
     private void Update()
     {
-        oldMoveDifference = moveDifference;
         moveDifference = transform.localPosition;
         transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
         moveDifference -= (Vector2) transform.localPosition;
