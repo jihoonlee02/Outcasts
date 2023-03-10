@@ -13,6 +13,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
+    [SerializeField] protected HingeJoint2D m_hingeJoint;
     [SerializeField] protected PlayerController m_pc;
 
     public PlayerController PC
@@ -53,6 +54,13 @@ public class Pawn : MonoBehaviour
     protected float lastJumpTime;
     protected bool canMove;
     protected bool canJump;
+    protected bool ropeAttached;
+    public GameObject RopeSegment {
+        get => ropeSegment;
+        set {
+            ropeSegment = value;
+        }
+    }
 
     public bool CanMove 
     {
@@ -252,12 +260,12 @@ public class Pawn : MonoBehaviour
         }
     }
 
-     public virtual void PrimaryAction()
+     public virtual void PrimaryAction(InputAction.CallbackContext context)
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
     }
 
-    public virtual void SecondaryAction()
+    public virtual void SecondaryAction(InputAction.CallbackContext context)
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Secondary Action");
     }
