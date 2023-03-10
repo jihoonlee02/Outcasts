@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 1263e2904ed623940b212c2c057bb6aa, type: 2}
-  m_user: {fileID: 0}
+  m_user: {fileID: 3429405416336426983}
   projectile: {fileID: 6334426370693832413, guid: 9aefd794e2f779a44ab98732c4708ba8, type: 3}
 --- !u!1 &8860901101698846982
 GameObject:
@@ -688,7 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8860901101698846981}
-  - component: {fileID: 7100780312920150874}
+  - component: {fileID: 3429405416336426983}
   - component: {fileID: 134046781713132578}
   - component: {fileID: 2600296315258561042}
   m_Layer: 9
@@ -717,7 +717,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7100780312920150874
+--- !u!114 &3429405416336426983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8860901101698846982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309b45d3b2dfaee4990d85c5ff9869be, type: 3}
+  m_Script: {fileID: 11500000, guid: 40573e3e7ca92d9438681d23d2cc047f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_rb: {fileID: 0}
@@ -746,10 +746,9 @@ MonoBehaviour:
   jumpBufferTime: 0
   gravityScale: 1
   fallGravityMultiplier: 1
-  m_minPitch: 0.45
-  m_maxPitch: 1.6
-  m_tools:
-  - {fileID: 1910975803770333381}
+  m_minPitch: 0.8
+  m_maxPitch: 1.5
+  m_nailGunReference: {fileID: 1910975803770333381}
 --- !u!50 &134046781713132578
 Rigidbody2D:
   serializedVersion: 4

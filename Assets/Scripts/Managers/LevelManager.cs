@@ -8,14 +8,14 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [Header("Pawns")]
-    [SerializeField] private Pawn m_tinker;
-    [SerializeField] private Pawn m_ashe;
+    //[SerializeField] private Pawn m_tinker;
+    //[SerializeField] private Pawn m_ashe;
     [SerializeField] private ExitDoor m_tinkerExitDoor;
     [SerializeField] private ExitDoor m_asheExitDoor;
-    [SerializeField] private Vector2 m_tinkerSpawn;
-    [SerializeField] private Vector2 m_asheSpawn;
-    public Pawn Tinker => m_tinker;
-    public Pawn Ashe => m_ashe;
+    [SerializeField] private Transform m_tinkerSpawn;
+    [SerializeField] private Transform m_asheSpawn;
+    //public Pawn Tinker => m_tinker;
+    //public Pawn Ashe => m_ashe;
 
     //Level Manager will not handle next levels, that is gamemanagers job
     //[SerializeField] private Level currLevel;
@@ -30,14 +30,14 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        foreach (Pawn pawn in GameManager.Instance.PlayerPawns)
-        {
-            if (pawn.Data.name == "Tinker") m_tinker = pawn;
-            else if (pawn.Data.name == "Ashe") m_ashe = pawn;
-        }
+        GameManager.Instance.LevelManager = this;
+        GameManager.Instance.Tinker.transform.localPosition = m_tinkerSpawn.position;
+        GameManager.Instance.Ashe.transform.localPosition = m_asheSpawn.position;
+        GameManager.Instance.Tinker.gameObject.SetActive(true);
+        GameManager.Instance.Ashe.gameObject.SetActive(true);
 
-        m_tinker.transform.position = m_tinkerSpawn;
-        m_ashe.transform.position = m_asheSpawn;
+        m_tinkerSpawn.gameObject.SetActive(false);
+        m_asheSpawn.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -51,8 +51,8 @@ public class LevelManager : MonoBehaviour
     {
         // If Tinker and Ashe had a an animation entering the doors, this would be invoked here!
         // For now!
-        m_tinker.gameObject.SetActive(false);
-        m_ashe.gameObject.SetActive(false);
+        GameManager.Instance.Tinker.gameObject.SetActive(false);
+        GameManager.Instance.Ashe.gameObject.SetActive(false);
 
         //DialogueManager.Instance.DisplayDialogue();
 

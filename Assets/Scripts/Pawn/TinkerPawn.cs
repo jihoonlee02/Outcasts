@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TinkerPawn : Pawn
 {
-    [SerializeField] private Tool m_nailGunReference;
+    [SerializeField] private NailGun m_nailGunReference;
     public override void PrimaryAction()
     {
-        m_nailGunReference.UsePrimaryAction();
+        m_nailGunReference.UsePrimaryAction(m_pc.PlayerInputVector);
     }
 
     public override void SecondaryAction()

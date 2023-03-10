@@ -12,7 +12,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
-    [SerializeField] private PlayerController m_pc;
+    [SerializeField] protected PlayerController m_pc;
 
     public PlayerController PC
     {

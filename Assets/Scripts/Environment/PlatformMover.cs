@@ -4,10 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-public class PlatformMover : MonoBehaviour
+public class PlatformMover : Invokee
 {
     [Header("Options")]
-    [SerializeField] private int id;
     [SerializeField] private Vector2[] m_waypoints;
     [SerializeField, Range(0f, 1f)] private float speed = 1f;
     private bool isSelected => Selection.transforms.Contains(transform);
@@ -16,9 +15,6 @@ public class PlatformMover : MonoBehaviour
     private void Start()
     {
         transform.localPosition = m_waypoints[idx];
-
-        EventManager.GetEventManager.Activated += MoveToA;
-        EventManager.GetEventManager.Deactivated += MoveToB;
     }
 
     private void Update()
@@ -30,22 +26,13 @@ public class PlatformMover : MonoBehaviour
     {
         this.idx = idx;
     }
-
-    private void MoveToA(int id)
+    protected override void OnActivate()
     {
-        if (this.id == id)
-            MoveToWaypoint(1);
+        MoveToWaypoint(1);
     }
-
-    private void MoveToB(int id)
+    protected override void OnDeactivate()
     {
-        if (this.id == id)
-            MoveToWaypoint(0);
-    }
-
-    private void OnDrawGizmos()
-    {
-        
+        MoveToWaypoint(0);
     }
 
     private void OnDrawGizmosSelected()
