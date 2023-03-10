@@ -37,6 +37,7 @@ public class PlayerStateMachine : ToolUser
         m_playerInput.actions["Jump"].canceled += OnJump;
         m_playerInput.actions["UseToolPrimary"].performed += OnPrimaryUse;
         m_playerInput.actions["UseToolSecondary"].performed += OnSecondaryUse;
+        m_playerInput.actions["Interact"].performed += OnInteract;
         m_playerInput.actions["NextTool"].performed += NextToolAction;
         m_playerInput.actions["Prevtool"].performed += PrevToolAction;
         m_playerInput.actions.actionMaps[0].Enable();
@@ -67,6 +68,10 @@ public class PlayerStateMachine : ToolUser
     private void OnSecondaryUse(InputAction.CallbackContext context)
     {
         UseToolSecondaryAction();
+    }
+
+    private void OnInteract(InputAction.CallbackContext context) {
+        //GrabRope();
     }
 
     private void NextToolAction(InputAction.CallbackContext context)

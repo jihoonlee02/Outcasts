@@ -10,6 +10,7 @@ public class EventManager
     private static EventManager eventManager;
     private event Action<int> activated;
     private event Action<int> deactivated;
+    private event Action<GameObject> tinkerRopeAttach;
 
     public static EventManager GetEventManager {
         get {
@@ -33,6 +34,13 @@ public class EventManager
         get => deactivated;
         set {
             deactivated = value;
+        }
+    }
+
+    public Action<GameObject> TinkerRopeAttach {
+        get => tinkerRopeAttach;
+        set {
+            tinkerRopeAttach = value;
         }
     }
 

@@ -163,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         //GameManager.Instance.CurrLevelManager.OnLevelExit();
         //SlideManager.Instance.CurrSlide.RemoveInfo();
+        controlledPawn.ToggleGrabRope();
     }
 
     private void SlideRightAction(InputAction.CallbackContext context)

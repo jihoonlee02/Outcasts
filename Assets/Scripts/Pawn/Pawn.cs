@@ -12,6 +12,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected Animator m_animator;
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
+    [SerializeField] protected HingeJoint2D m_hingeJoint;
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
@@ -40,10 +41,18 @@ public class Pawn : MonoBehaviour
     [SerializeField, Range(-1f, 2f)] protected float m_maxPitch = 1.5f;
 
     #region Technical
+    protected GameObject ropeSegment;
     protected float lastGroundedTime;
     protected float lastJumpTime;
     protected bool canMove;
     protected bool canJump;
+    protected bool ropeAttached;
+    public GameObject RopeSegment {
+        get => ropeSegment;
+        set {
+            ropeSegment = value;
+        }
+    }
     #endregion
 
     #region State Info
@@ -72,6 +81,8 @@ public class Pawn : MonoBehaviour
         m_collider = GetComponent<Collider2D>();
         m_animator = GetComponentInChildren<Animator>();
         m_audioSource = GetComponentInChildren<AudioSource>();
+        m_hingeJoint = GetComponent<HingeJoint2D>();
+        m_hingeJoint.enabled = false;
 
         //Technical
         canMove = true;
@@ -211,7 +222,10 @@ public class Pawn : MonoBehaviour
         //    isJumping = true;
         //    lastJumpTime = jumpBufferTime;
         //}
-
+        if (ropeAttached) {
+            ToggleGrabRope();
+            isGrounded = true;
+        }
         if (isGrounded)
         {
             m_rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -235,6 +249,22 @@ public class Pawn : MonoBehaviour
         }
 
         lastJumpTime = 0;
+    }
+
+    public void ToggleGrabRope() {
+        if (!ropeAttached) {
+            if (EventManager.GetEventManager.TinkerRopeAttach != null) {
+                EventManager.GetEventManager.TinkerRopeAttach.Invoke(this.gameObject);
+                //transform.position = RopeSegment.transform.position;
+                //RopeSegment.transform
+                m_hingeJoint.enabled = true;
+                m_hingeJoint.connectedBody = RopeSegment.GetComponent<Rigidbody2D>();
+                ropeAttached = true;
+            }
+        } else {
+            m_hingeJoint.enabled = false;
+            ropeAttached = false;
+        }
     }
 
     public void HandleAnimation()
