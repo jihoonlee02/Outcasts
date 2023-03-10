@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
         //Depricated Tbh
         m_playerInput.actions["UseToolPrimary"].performed += UseToolPrimaryAction;
         m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
+        m_playerInput.actions["UseToolSecondary"].canceled += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
         //m_playerInput.actions["NextTool"].performed += NextToolAction;
         //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
@@ -139,12 +140,12 @@ public class PlayerController : MonoBehaviour
 
     private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
-        controlledPawn.PrimaryAction();
+        controlledPawn.PrimaryAction(context);
     }
 
     private void UseToolSecondaryAction(InputAction.CallbackContext context)
     {
-        controlledPawn.SecondaryAction();
+        controlledPawn.SecondaryAction(context);
     }
 
     //private void NextToolAction(InputAction.CallbackContext context)

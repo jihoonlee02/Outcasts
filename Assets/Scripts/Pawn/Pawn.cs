@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Pawn : MonoBehaviour
@@ -229,12 +230,12 @@ public class Pawn : MonoBehaviour
         lastJumpTime = 0;
     }
 
-    public virtual void PrimaryAction()
+    public virtual void PrimaryAction(InputAction.CallbackContext context)
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
     }
 
-    public virtual void SecondaryAction()
+    public virtual void SecondaryAction(InputAction.CallbackContext context)
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Secondary Action");
     }
