@@ -1,16 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 //Can be destroyed by GameObjects that invoke break on collision
 public class Breakable : MonoBehaviour
 {
+    private ParticleSystem particle;
+    private BoxCollider2D collider;
+    private TilemapRenderer renderer;
     [SerializeField] private bool m_requiresAshe = true;
     [SerializeField, Tooltip("No Implementation with this one yet")] 
     private bool m_requiresTinker = false;
-    public void Break()
+
+    private void Start() {
+        particle = gameObject.GetComponent<ParticleSystem>();
+        collider = gameObject.GetComponent<BoxCollider2D>();
+        renderer = gameObject.GetComponentInChildren<TilemapRenderer>();
+
+    }
+
+    public IEnumerator Break()
     {
-        gameObject.SetActive(false);
+        particle.Play();
+        collider.enabled = false;
+        renderer.enabled = false;
+
+        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,7 +35,7 @@ public class Breakable : MonoBehaviour
         if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
         else if (m_requiresAshe && collision.gameObject.tag == "Gauntlet")
         {
-            Break();
+            StartCoroutine(Break());
         }
     }
 
@@ -27,7 +44,7 @@ public class Breakable : MonoBehaviour
         if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
         else if (m_requiresAshe && collider.gameObject.tag == "Gauntlet")
         {
-            Break();
+            StartCoroutine(Break());
         }
     }
 }

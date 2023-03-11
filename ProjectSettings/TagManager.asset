@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Rope
   - Platforms
   - Players
   - 
@@ -35,12 +35,12 @@ TagManager:
   - 
   - 
   - 
-  - Rope
   - 
   - 
   - 
   - 
   - 
+  - Foreground
   m_SortingLayers:
   - name: Default
     uniqueID: 0
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4066636277
+    locked: 0
+  - name: Particles
+    uniqueID: 521774795
     locked: 0
