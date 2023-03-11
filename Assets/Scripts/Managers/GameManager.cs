@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         if (m_currScene == "Hub")
         {
             ClearSceneQueue();
-            AddSceneToQueue(new string[] { "Level1", "Level3" });
+            AddSceneToQueue(initialScenesToEnqueue);
         }
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(m_visualCanvas);

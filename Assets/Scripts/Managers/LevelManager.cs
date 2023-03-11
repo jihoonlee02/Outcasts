@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("Dev Details")]
     [SerializeField] private bool isSetupScene = false;
+    [SerializeField] private UnityEvent invokeAtStart;
     private void Awake()
     {   
         // Old Function of Level Manager
@@ -53,6 +55,8 @@ public class LevelManager : MonoBehaviour
 
         GameManager.Instance.DoorTransition.OpenDoors();
         AudioManager.Instance.PlayAudio();
+
+        invokeAtStart.Invoke();
     }
 
     private void Update()

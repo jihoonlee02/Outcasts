@@ -18,7 +18,9 @@ public class AshePunchingState : State
         ((AshePawn)m_context).LifitingRegion.enabled = false;
         m_context.Animator.speed = 1;
         m_context.Animator.Play(m_animationName);
+        m_context.AudioSource.pitch = 1;
         m_context.AudioSource.clip = m_context.Data.ScratchPadSounds[0];
+        m_context.AudioSource.Play();
     }
     public override void UpdateState()
     {
