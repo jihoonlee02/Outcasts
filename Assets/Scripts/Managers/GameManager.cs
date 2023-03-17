@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         m_scenes = new Queue<string>();
 
         AddSceneToQueue(initialScenesToEnqueue);
+
+        SceneManager.activeSceneChanged += OnSceneChange;
     }
 
     private void Start()
@@ -161,26 +163,14 @@ public class GameManager : MonoBehaviour
         m_pauseMenu.SetActive(false);
     }
 
-
-
     #region Scene Management
 
 
     public void LoadToScene(string scene)
     {
         m_currScene = scene;
-        //Dev Bs only
-        if (m_currScene == "Hub")
-        {
-            ClearSceneQueue();
-            AddSceneToQueue(initialScenesToEnqueue);
-        }
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(m_visualCanvas);
-        DontDestroyOnLoad(m_tinker);
-        DontDestroyOnLoad(m_ashe);
         m_doorTransition.CloseDoors();
-        StartCoroutine(DelaySceneLoad(2f));
+        StartCoroutine(LoadSceneWithDelay(1.2f));
     }
     public void TransitionToNextScene()
     {
@@ -208,11 +198,22 @@ public class GameManager : MonoBehaviour
         m_scenes.Clear();
     }
 
-    #endregion
+    private void OnSceneChange(Scene current, Scene next)
+    {
+        //Dev Bs only
+        if (m_currScene == "Hub")
+        {
+            ClearSceneQueue();
+            AddSceneToQueue(initialScenesToEnqueue);
+        }
+        DontDestroyOnLoad(transform.parent);
+    }
 
-    private IEnumerator DelaySceneLoad(float seconds)
+    private IEnumerator LoadSceneWithDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadSceneAsync(m_currScene != null ? m_currScene : "Hub");
-    }
+    } 
+
+    #endregion
 }

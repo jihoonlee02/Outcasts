@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 /// <summary>
 /// Class <c>TextProducer</c> functions when attached directly to a game object with the TMP component
+/// Supports audio production
 /// </summary>
 [RequireComponent(typeof(TMP_Text), typeof(AudioSource))]
 public class TextProducer : MonoBehaviour
@@ -15,10 +16,14 @@ public class TextProducer : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float speed = 0.8f;
     [SerializeField] private ProduceEffect m_startEffect = ProduceEffect.None;
 
+    [Header("Punctuation Adjustments")]
+
     protected TMP_Text m_textLabel;
     protected AudioClip typeSound;
     protected AudioSource soundSource;
     protected string initialText;
+
+    public TMP_Text TMP_access => m_textLabel;
 
     private readonly List<Punctuation> punctuations = new List<Punctuation>()
     {
@@ -34,12 +39,19 @@ public class TextProducer : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
         soundSource = GetComponent<AudioSource>();
-        initialText = m_textLabel.text;
-        ReplaceTextWith(initialText, m_startEffect, 5f * speed);
+    }
+
+    private void Start()
+    {
+        if (m_startOnEnable)
+        {  
+            initialText = m_textLabel.text;
+            ReplaceTextWith(initialText, m_startEffect, 5f * speed);
+        }   
     }
 
     private void OnEnable()
@@ -88,13 +100,16 @@ public class TextProducer : MonoBehaviour
     }
     
     protected virtual IEnumerator TypeWriterEffect(string a_text, float a_speed, float a_delay)
-    {  
+    {
+        char c;
         for (int n = 0; n < a_text.Length; n++)
         {
-            m_textLabel.text += a_text.Substring(n, 1);
+            c = a_text[n];
+            m_textLabel.text += c;
             soundSource?.Play();
-            yield return new WaitForSeconds(a_delay + (1 / (a_speed * 10f)));
+            yield return new WaitForSeconds(PunctuationTime(c) + (1 / (a_speed * 10f)));
         }
+        yield return new WaitForSeconds(a_delay);
     }
 
     #endregion
