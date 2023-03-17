@@ -48,7 +48,6 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(RunThroughDialogue(a_dialogueObject));
     }
 
-
     public void HideDialogue()
     {
         dialogueBox.GetComponent<Animator>().Play("Disappear");
@@ -61,8 +60,7 @@ public class DialogueManager : MonoBehaviour
         {
             AdjustProfileSegment(dialogue.Profile);
             m_dialogueProducer.TypeSound = dialogue.TypeSound;
-            yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, 6f);
-            yield return new WaitForSeconds(dialogue.WaitTime);
+            yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
         }
 
         HideDialogue();
@@ -71,14 +69,17 @@ public class DialogueManager : MonoBehaviour
 
     private void AdjustProfileSegment(Sprite a_profile)
     {
-        if (a_profile == null) return;
+        if (profile == null) return;
+        profile.gameObject.SetActive(true);
         profile.sprite = null;
         profile.CrossFadeAlpha(0f, 0f, true);
-        m_dialogueProducer.GetComponent<TMP_Text>().margin = new Vector4(0, 0, 0, 0);
+        m_dialogueProducer.TMP_access.margin = new Vector4(0, 0, 0, 0);
+        m_dialogueProducer.TMP_access.alignment = TextAlignmentOptions.Center;
         profile.sprite = a_profile;
         if (profile.sprite != null)
         {
-            m_dialogueProducer.GetComponent<TMP_Text>().margin = new Vector4(250f, 0, 0, 0);
+            m_dialogueProducer.TMP_access.margin = new Vector4(250f, 0, 0, 0);
+            m_dialogueProducer.TMP_access.alignment = TextAlignmentOptions.Left;
             profile.CrossFadeAlpha(1f, 0f, true);
         }
     }

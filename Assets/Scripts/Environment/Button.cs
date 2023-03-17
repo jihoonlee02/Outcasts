@@ -47,7 +47,7 @@ public class Button : Invoker
 
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (entered == 0 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker"))) {
+        if (entered == 0 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) {
             buttonPressed = true;
             timer = 0f;
             Activate();
@@ -58,7 +58,7 @@ public class Button : Invoker
 
     private void OnTriggerExit2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker"))) { 
+        if (entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) { 
             buttonPressed = false;
             timer = 0f;
             if (!pressOnce) Deactivate();

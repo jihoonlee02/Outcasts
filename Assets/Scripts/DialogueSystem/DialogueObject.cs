@@ -12,9 +12,22 @@ using System;
 [CreateAssetMenu(menuName = "Data/DialogueObject")]
 public class DialogueObject : ScriptableObject
 {
-    [SerializeField] private Dialogue[] dialogue;    
+    //[Header("Overrides")]
+    //[SerializeField] private Sprite profile;
+    //[SerializeField] private float speed;
+    //[SerializeField] private float delay;
+    //[SerializeField] private AudioClip typeSound;
 
+    [SerializeField] private Dialogue[] dialogue;
     public Dialogue[] Dialogue => dialogue;
+
+    private void Awake()
+    {
+        //foreach (var dialogue in dialogue)
+        //{
+        //    if (profile != null) dialogue.Profile = profile;
+        //}
+    }
 }
 
 [System.Serializable]
@@ -22,13 +35,15 @@ public struct Dialogue
 { 
     [SerializeField] private Sprite profile;
     [SerializeField] private AudioClip typeSound;
-    [SerializeField] private float waitTime;
+    [SerializeField] private float speed;
+    [SerializeField] private float delay;
     [SerializeField] [TextArea] private string text;
 
     public Sprite Profile => profile;
     public AudioClip TypeSound => typeSound;
     public string Text => text;
-    public float WaitTime => waitTime;
+    public float Speed => speed;
+    public float Delay => delay;
 }
 
 //#if UNITY_EDITOR

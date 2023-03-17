@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -23,19 +24,21 @@ public class LevelManager : MonoBehaviour
 
     [Header("Dev Details")]
     [SerializeField] private bool isSetupScene = false;
+    [SerializeField] private UnityEvent invokeAtStart;
+    [SerializeField] private bool isTesting = false;
+    [SerializeField] private GameObject levelThings;
     private void Awake()
     {   
-        // Old Function of Level Manager
-        //for (int i = 0; i < levels.Length - 1; i++)
-        //{
-        //    levels[i].nextLevel = levels[i + 1];
-        //}
+        if (isTesting & !isSetupScene)
+        {
+            Instantiate(levelThings);
+        }
     }
     private void Start()
     {
         GameManager.Instance.LevelManager = this;
-        GameManager.Instance.Tinker.transform.localPosition = m_tinkerSpawn.position;
-        GameManager.Instance.Ashe.transform.localPosition = m_asheSpawn.position;
+        GameManager.Instance.Tinker.transform.position = m_tinkerSpawn.position;
+        GameManager.Instance.Ashe.transform.position = m_asheSpawn.position;
         GameManager.Instance.Tinker.gameObject.SetActive(true);
         GameManager.Instance.Ashe.gameObject.SetActive(true);
 
@@ -53,13 +56,16 @@ public class LevelManager : MonoBehaviour
 
         GameManager.Instance.DoorTransition.OpenDoors();
         AudioManager.Instance.PlayAudio();
+
+        invokeAtStart.Invoke();  
     }
 
     private void Update()
     {
         // Though this is in the update method, it should only get invoked once...
         // ...hopefully
-        if (m_asheExitDoor.OnDoor && m_tinkerExitDoor.OnDoor) OnLevelExit();
+        if (m_asheExitDoor != null && m_tinkerExitDoor != null 
+            && m_asheExitDoor.OnDoor && m_tinkerExitDoor.OnDoor) OnLevelExit();
     }
 
     public void OnLevelExit()
@@ -72,11 +78,6 @@ public class LevelManager : MonoBehaviour
 
         //This shouldn't be done immeditly
         GameManager.Instance.TransitionToNextScene();
-    }
-
-    public void RunDialogueToCanvas(DialogueObject dialogueObject)
-    {
-        DialogueManager.Instance.DisplayDialogue(dialogueObject);
     }
 }
 

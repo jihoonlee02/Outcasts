@@ -13,7 +13,9 @@ public class TinkerShootState : State
 
     public override void EnterState()
     {
-        //Debug.Log("Switched to AsheDefault");
+        m_context.AudioSource.pitch = 1;
+        m_context.AudioSource.clip = m_context.Data.ScratchPadSounds[0];
+        m_context.AudioSource.Play();
     }
     public override void UpdateState()
     {
