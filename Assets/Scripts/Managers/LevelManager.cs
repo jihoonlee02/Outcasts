@@ -57,7 +57,9 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.DoorTransition.OpenDoors();
         AudioManager.Instance.PlayAudio();
 
-        invokeAtStart.Invoke();  
+        invokeAtStart.Invoke();
+
+        GameManager.Instance.IsTesting = isTesting;
     }
 
     private void Update()

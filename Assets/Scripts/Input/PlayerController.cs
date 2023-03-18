@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["UseToolSecondary"].canceled += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
         m_playerInput.actions["Pause"].performed += PauseAction;
+        m_playerInput.actions["Swap"].performed += SwapAction;
         //m_playerInput.actions["NextTool"].performed += NextToolAction;
         //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
 
@@ -98,6 +99,9 @@ public class PlayerController : MonoBehaviour
         //m_playerInput.actions["SlideLeft"].performed += InteractAction;
         //m_playerInput.actions["SlideRight"].performed += SlideRightAction;
         m_playerInput.actions.actionMaps[0].Enable();
+
+        //Testing Actions
+        m_playerInput.actions["Swap"].Disable();
     }
 
     private void Start()
@@ -181,11 +185,28 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.TogglePause();
     }
 
+    private void SwapAction(InputAction.CallbackContext context)
+    {
+        if (controlledPawn == GameManager.Instance.Ashe)
+        {
+            ControlPawn(GameManager.Instance.Tinker);
+        }
+        else if (controlledPawn == GameManager.Instance.Tinker)
+        {
+            ControlPawn(GameManager.Instance.Ashe);
+        }
+    }
+
     #endregion
 
     public void ControlPawn(Pawn pawn)
     {
         controlledPawn = pawn;
         pawn.PC = this;
+    }
+
+    public void OnTesting()
+    {
+        m_playerInput.actions["Swap"].Enable();
     }
 }

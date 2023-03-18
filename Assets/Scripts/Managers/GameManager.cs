@@ -59,9 +59,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Dev Settings")]
     [SerializeField] private string[] initialScenesToEnqueue;
+    
 
     private bool isPaused = false;
-
+    private bool isTesting = false;
+    public bool IsTesting
+    {
+        set { isTesting = value; }
+    }
     private void Awake()
     {
         m_currScene = SceneManager.GetActiveScene().name;
@@ -110,10 +115,17 @@ public class GameManager : MonoBehaviour
 
     public void GivePawn(PlayerInput pi, Pawn pawn)
     {
-        if (pawn == m_ashe) control_ashe = true;
-        if (pawn == m_tinker) control_tinker = true;
-        pi.GetComponent<PlayerController>().ControlPawn(pawn);
-        
+        if (pawn == m_ashe)
+        {
+            control_ashe = true;
+        }
+        else if (pawn == m_tinker) 
+        { 
+            control_tinker = true;
+        }
+        var pc = pi.GetComponent<PlayerController>();
+        pc.ControlPawn(pawn);
+        if (isTesting) pc.OnTesting();
     }
 
     public void HandlePlayerControllerExit(PlayerInput pi)
