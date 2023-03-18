@@ -10,10 +10,10 @@ public class Breakable : MonoBehaviour
     private ParticleSystem particle;
     private BoxCollider2D collider;
     private TilemapRenderer renderer;
+    private AudioSource m_AudioSource;
     [SerializeField] private bool m_requiresAshe = true;
     [SerializeField, Tooltip("No Implementation with this one yet")] 
-    private bool m_requiresTinker = false;
-    [SerializeField] private AudioSource m_AudioSource;
+    private bool m_requiresTinker = false; 
 
     private void Start() 
     {
