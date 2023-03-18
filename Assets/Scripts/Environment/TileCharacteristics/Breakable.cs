@@ -7,17 +7,30 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Collider2D), typeof(MeshRenderer), typeof(AudioSource))]
 public class Breakable : MonoBehaviour
 {
+    private ParticleSystem particle;
+    private BoxCollider2D collider;
+    private TilemapRenderer renderer;
     [SerializeField] private bool m_requiresAshe = true;
     [SerializeField, Tooltip("No Implementation with this one yet")] 
     private bool m_requiresTinker = false;
     [SerializeField] private AudioSource m_AudioSource;
-    [SerializeField] private Collider2D m_collider2D;
-    [SerializeField] private Renderer m_renderer;
 
-    public void Break()
+    private void Start() 
     {
-        m_collider2D.enabled = false;
-        m_renderer.enabled = false;
+        particle = gameObject.GetComponent<ParticleSystem>();
+        collider = gameObject.GetComponent<BoxCollider2D>();
+        renderer = gameObject.GetComponentInChildren<TilemapRenderer>();
+        m_AudioSource = gameObject.GetComponent<AudioSource>();
+    }
+
+    public IEnumerator Break()
+    {
+        particle.Play();
+        collider.enabled = false;
+        renderer.enabled = false;
+
+        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,7 +39,7 @@ public class Breakable : MonoBehaviour
         else if (m_requiresAshe && collision.gameObject.tag == "Gauntlet")
         {
             m_AudioSource.Play();
-            Break();
+            StartCoroutine(Break());
         }
     }
 
@@ -36,7 +49,7 @@ public class Breakable : MonoBehaviour
         else if (m_requiresAshe && collider.gameObject.tag == "Gauntlet")
         {
             m_AudioSource.Play();
-            Break();
+            StartCoroutine(Break());
         }
     }
 }
