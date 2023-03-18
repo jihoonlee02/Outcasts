@@ -225,7 +225,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSetupScene: 0
-  testingMode: 0
   m_tinkerTemp: {fileID: 0}
   m_asheTemp: {fileID: 0}
 --- !u!1001 &7716874852448465236
@@ -374,3 +373,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb9df1ff9dc48946a8c57214a5f9dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTesting: 0
+  levelThings: {fileID: 4726994624310848868, guid: 0b2a11b01df352045acb9786d228d851, type: 3}

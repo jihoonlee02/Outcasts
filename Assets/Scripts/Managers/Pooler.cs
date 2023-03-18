@@ -52,5 +52,5 @@ public class Pooler : MonoBehaviour
 
 public enum ProjectileType
 {
-    Nail = 20
+    Nail = 4
 }

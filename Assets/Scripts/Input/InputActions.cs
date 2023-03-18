@@ -125,6 +125,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Swap"",
+                    ""type"": ""Button"",
+                    ""id"": ""77dfc742-bb9c-430c-a407-8715a0c18008"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -664,6 +673,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b49af10-0b15-4960-9a3d-b54e7517b247"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Swap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8070dcfd-579f-4b5d-9eba-a35888ba1c92"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Swap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1235,6 +1266,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player_SlideLeft = m_Player.FindAction("SlideLeft", throwIfNotFound: true);
         m_Player_SlideRight = m_Player.FindAction("SlideRight", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Swap = m_Player.FindAction("Swap", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1317,6 +1349,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SlideLeft;
     private readonly InputAction m_Player_SlideRight;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Swap;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -1332,6 +1365,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @SlideLeft => m_Wrapper.m_Player_SlideLeft;
         public InputAction @SlideRight => m_Wrapper.m_Player_SlideRight;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Swap => m_Wrapper.m_Player_Swap;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1374,6 +1408,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Swap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwap;
+                @Swap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwap;
+                @Swap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwap;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1411,6 +1448,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Swap.started += instance.OnSwap;
+                @Swap.performed += instance.OnSwap;
+                @Swap.canceled += instance.OnSwap;
             }
         }
     }
@@ -1560,6 +1600,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnSlideLeft(InputAction.CallbackContext context);
         void OnSlideRight(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSwap(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

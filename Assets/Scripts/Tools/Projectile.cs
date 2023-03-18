@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
 
     public void OnImpact()
     {
-        gameObject.SetActive(false);
+        this.enabled = false;
     }
 
     public void Update()
