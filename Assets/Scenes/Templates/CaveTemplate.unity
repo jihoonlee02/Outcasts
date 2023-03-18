@@ -3612,7 +3612,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -3876,6 +3876,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537018556823743, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.001999
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537018556823743, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.832999
+      objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_asheTemp
       value: 
@@ -3898,11 +3914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936495, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.46
+      value: -12.21
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936495, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.16
+      value: 7.17
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936495, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3935,6 +3951,22 @@ PrefabInstance:
     - target: {fileID: 997537019407936495, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458870240339787482, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458870240339787482, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086819379482808960, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.637
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086819379482808960, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.789
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
@@ -16730,7 +16762,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

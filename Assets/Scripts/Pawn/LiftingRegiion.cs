@@ -15,8 +15,8 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = true;
             tinkerPawn.IsHeld = true;
-            oldParent = tinkerPawn.transform.parent;
-            tinkerPawn.transform.SetParent(transform, true);
+            //oldParent = tinkerPawn.transform.parent;
+            //tinkerPawn.transform.SetParent(transform, true);
             //tinkerPawn.FixedJoint.connectedBody = ashe.RB;
             //tinkerPawn.transform.position = new Vector3(ashe.transform.position.x, tinkerPawn.transform.position.y, tinkerPawn.transform.position.z);
             return;
@@ -33,7 +33,7 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
-            tinkerPawn.transform.SetParent(oldParent, true);
+            //tinkerPawn.transform.SetParent(oldParent, true);
             //tinkerPawn.GetComponent<FixedJoint2D>().connectedBody = null;
             return;
         }       

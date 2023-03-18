@@ -15,6 +15,7 @@ public class AsheLiftingState : State
     public override void EnterState()
     {
         Debug.Log("Switched to AsheLifting");
+        
     }
     public override void ExitState() { }
     public override void InitializeSubState()

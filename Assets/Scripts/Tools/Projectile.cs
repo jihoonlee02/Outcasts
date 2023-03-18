@@ -8,17 +8,20 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float m_speed = 1.5f;
     [SerializeField] private SpriteRenderer m_sr;
+    [SerializeField] private Rigidbody2D m_rb;
 
     public void Awake()
     {
         m_movingDirection = Vector2.zero;
         m_sr = GetComponent<SpriteRenderer>();
+        m_rb = GetComponent<Rigidbody2D>();
     }
 
     public void Fire(Vector2 spawnPos, Vector2 direction)
     {
         transform.position = spawnPos;
         m_movingDirection = direction;
+        enabled = true;
 
         m_sr.flipX = direction == Vector2.left;
         if (direction == new Vector2(0.5f, 0.5f))
@@ -46,7 +49,8 @@ public class Projectile : MonoBehaviour
 
     public void OnImpact()
     {
-        this.enabled = false;
+        enabled = false;
+        m_rb.velocity = Vector3.zero;
     }
 
     public void Update()

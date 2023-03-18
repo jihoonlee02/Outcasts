@@ -595,7 +595,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1860670653781505588, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
   m_PrefabInstance: {fileID: 4726994624127458345}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7703494628517172239}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4756bd7f3b1f26e42b82f60bbe034f1b, type: 3}
@@ -606,35 +606,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3130537325049219109, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
   m_PrefabInstance: {fileID: 4726994624127458345}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7703494628517172239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3130537325049219110, guid: e4611bd87db713d4b8e3552f475b62ad, type: 3}
-  m_PrefabInstance: {fileID: 4726994624127458345}
-  m_PrefabAsset: {fileID: 0}
---- !u!233 &4726994624003929443
-HingeJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7703494628517172239}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 12.47998, y: 3.0899963}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!1001 &8514986531491157623
 PrefabInstance:
   m_ObjectHideFlags: 0
