@@ -7,7 +7,13 @@ public class TinkerPawn : Pawn
 {
     [SerializeField] private NailGun m_nailGunReference;
     private bool m_isShooting;
+    private bool m_isHeld;
     public bool IsShooting => m_isShooting;
+    public bool IsHeld
+    {
+        get { return m_isHeld; }
+        set { m_isHeld = value; }
+    }
     protected void Start()
     {
         base.Start();

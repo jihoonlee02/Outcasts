@@ -46,6 +46,7 @@ public class Door : Invokee
     //Open Door Logic
     protected override void OnActivate()
     {
+        if (open) return;
         Debug.Log("Open");
         perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosUp) / doorDist : Vector3.Distance(transform.position, doorPosDown);
         open = !open;    
@@ -54,6 +55,7 @@ public class Door : Invokee
     //Close Door Logic
     protected override void OnDeactivate()
     {
+        if (!open) return;
         Debug.Log("Close");
         perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosDown) / doorDist : Vector3.Distance(transform.position, doorPosUp) / doorDist;
         open = !open;

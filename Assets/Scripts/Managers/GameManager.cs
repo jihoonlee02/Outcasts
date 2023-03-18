@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(m_tinker);
         DontDestroyOnLoad(m_ashe);
         m_doorTransition.CloseDoors();
-        StartCoroutine(DelaySceneLoad(2f));
+        StartCoroutine(DelaySceneLoad(1f));
     }
     public void TransitionToNextScene()
     {

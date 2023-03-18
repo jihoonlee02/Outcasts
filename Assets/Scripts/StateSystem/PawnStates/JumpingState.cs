@@ -23,7 +23,7 @@ public class JumpingState : State
 
     public override void UpdateState()
     {
-        CheckSwitchState();
+        //CheckSwitchState();
     }
 
     public override void CheckSwitchState()

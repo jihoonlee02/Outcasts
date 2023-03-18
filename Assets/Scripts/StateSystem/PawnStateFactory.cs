@@ -1,3 +1,5 @@
+using System.Xml;
+
 public class PawnStateFactory
 {
     private Pawn m_context;
@@ -17,6 +19,11 @@ public class PawnStateFactory
     public PawnStateFactory(Pawn currentContext)
     {
         m_context = currentContext;
+    }
+
+    public State None()
+    {
+        return new NoneState(m_context, this);
     }
     public State Moving()
     {
@@ -57,6 +64,10 @@ public class PawnStateFactory
     public State TinkerShootState()
     {
         return new TinkerShootState(m_context, this);
+    }
+    public State TinkerHeldState()
+    {
+        return new TinkerHeldState(m_context, this);
     }
     //public State Moving()
     //{

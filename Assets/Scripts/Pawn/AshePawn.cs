@@ -25,10 +25,6 @@ public class AshePawn : Pawn
         base.Start();
         CurrentState = m_states.AsheDefaultState();
     }
-    protected void Update()
-    {
-        base.Update();
-    }
     public override void PrimaryAction(InputAction.CallbackContext context)
     {
         m_gauntletReference.UsePrimaryAction();

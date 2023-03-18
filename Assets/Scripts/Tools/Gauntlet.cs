@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Gauntlet : Tool
 {
+    [SerializeField] private float m_forcePower;
     [SerializeField] private Animator m_animator;
     [SerializeField] private BoxCollider2D m_punchCollider;
     [SerializeField] private BoxCollider2D m_grabCollider;
+
+    public float ForcePower => Mathf.Sign(m_user.Animator.GetFloat("MoveX")) * m_forcePower;
 
     #region Technical
     private float currTime = 0f;
@@ -32,9 +35,9 @@ public class Gauntlet : Tool
     public override void UsePrimaryAction()
     {
         if (inUse) { return; }
-        m_punchCollider.enabled = true;
+        Debug.Log("Punch");
+        //m_punchCollider.enabled = true;
         inUse = true;
-        m_punchCollider.offset = new Vector2(offsetXpunch * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYpunch);
         currTime = Time.time + animationLength;
         ((AshePawn)m_user).IsPunching = true;
     }
