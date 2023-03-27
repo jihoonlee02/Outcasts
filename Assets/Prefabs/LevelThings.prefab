@@ -510,6 +510,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b98c2ffc200a440bfa3d6c01117f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5679544607799563834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1101239141706687364, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+  m_PrefabInstance: {fileID: 4726994623011894718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b98c2ffc200a440bfa3d6c01117f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6275004686630944320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1624923242781363198, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
@@ -641,6 +652,10 @@ PrefabInstance:
       propertyPath: m_characterSelection
       value: 
       objectReference: {fileID: 5133138435997716654}
+    - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
+      propertyPath: m_characterSelection2
+      value: 
+      objectReference: {fileID: 5679544607799563834}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: initialScenesToEnqueue.Array.size
       value: 0
