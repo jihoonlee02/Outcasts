@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float m_speed = 1.5f;
     [SerializeField] private SpriteRenderer m_sr;
     [SerializeField] private Rigidbody2D m_rb;
-
+    private Transform priorParent;
     public void Awake()
     {
         m_movingDirection = Vector2.zero;
@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
 
     public void Fire(Vector2 spawnPos, Vector2 direction)
     {
+        transform.SetParent(priorParent, true);
         transform.position = spawnPos;
         m_movingDirection = direction;
         enabled = true;
@@ -47,10 +48,14 @@ public class Projectile : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, direction == Vector2.up ? 90 : direction == Vector2.down ? -90 : 0);
     }
 
-    public void OnImpact()
+    public void OnImpact(GameObject impactee)
     {
-        enabled = false;
+        priorParent = transform.parent;
         m_rb.velocity = Vector3.zero;
+        enabled = false;
+        transform.SetParent(impactee.transform, true);
+        
+
     }
 
     public void Update()
@@ -60,16 +65,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("I was entered trigger!");
+        //Debug.Log("I was entered trigger!");
         if (collider.gameObject.layer == LayerMask.NameToLayer("Platforms"))
-            OnImpact();
+            OnImpact(collider.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("I was entered Collision!");
+        //Debug.Log("I was entered Collision!");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
-            OnImpact();
+            OnImpact(collision.gameObject);
     }
 
 
