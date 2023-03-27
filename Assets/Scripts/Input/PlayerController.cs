@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isDevMode;
 
     public Pawn ControlledPawn => controlledPawn;
+    public PlayerInput PlayerInput => m_playerInput;
 
     public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
     public bool JumpActive
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        m_inputActions = new InputActions();
+        //m_inputActions = new InputActions();
         m_playerInput = GetComponent<PlayerInput>();
 
         if (isDevMode) ControlPawn(GetComponent<PlayerPawn>());
@@ -85,20 +87,20 @@ public class PlayerController : MonoBehaviour
         //Adding methods to inputActions in PlayerInput
         m_playerInput.actions["Jump"].performed += JumpAction;
         m_playerInput.actions["Jump"].canceled += JumpAction;
-        //Depricated Tbh
         m_playerInput.actions["UseToolPrimary"].performed += UseToolPrimaryAction;
         m_playerInput.actions["UseToolSecondary"].performed += UseToolSecondaryAction;
         m_playerInput.actions["UseToolSecondary"].canceled += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
         m_playerInput.actions["Pause"].performed += PauseAction;
         m_playerInput.actions["Swap"].performed += SwapAction;
-        //m_playerInput.actions["NextTool"].performed += NextToolAction;
-        //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
 
         //WHY???
+        //m_playerInput.actions["NextTool"].performed += NextToolAction;
+        //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
         //m_playerInput.actions["SlideLeft"].performed += InteractAction;
         //m_playerInput.actions["SlideRight"].performed += SlideRightAction;
         m_playerInput.actions.actionMaps[0].Enable();
+        m_playerInput.actions.actionMaps[1].Enable();
 
         //Testing Actions
         m_playerInput.actions["Swap"].Disable();
@@ -124,6 +126,8 @@ public class PlayerController : MonoBehaviour
 
         //Using PlayerInput itself
         // Hardcoded threshold disgusting
+        // CURRENTLY HANDLES PAWN PHYSICS! -> When its not called, the physics and animation stops working correctly
+        // Pawn should be handling its own physics while this should delgate the force, thats it!
         Vector2 inputVector = m_playerInput.actions["Movement"].ReadValue<Vector2>();
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ? Mathf.Sign(inputVector.x) : 0;
         controlledPawn?.Move(inputVector);
@@ -182,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
     private void PauseAction(InputAction.CallbackContext context)
     {
-        GameManager.Instance.TogglePause();
+        GameManager.Instance.TogglePause(this);
     }
 
     private void SwapAction(InputAction.CallbackContext context)
@@ -208,5 +212,14 @@ public class PlayerController : MonoBehaviour
     public void OnTesting()
     {
         m_playerInput.actions["Swap"].Enable();
+    }
+    public void EnablePawnControl()
+    {
+        m_playerInput.actions.actionMaps[0].Enable();
+    }
+    public void DisablePawnControl()
+    {
+        m_playerInput.actions.actionMaps[0].Disable();
+        m_playerInput.actions["Pause"].Enable();
     }
 }

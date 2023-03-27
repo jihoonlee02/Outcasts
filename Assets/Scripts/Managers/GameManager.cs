@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -28,8 +30,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Pawn Management")]
     [SerializeField] private PlayerInputManager m_pim;
-    //[SerializeField] private Pawn[] m_pawnsToControl;
-    //public Pawn[] PlayerPawns => m_pawnsToControl;
     [SerializeField] private Pawn m_tinker;
     [SerializeField] private Pawn m_ashe;
     public Pawn Tinker => m_tinker;
@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
     [Header("UI Comoponents")]
     [SerializeField] private GameObject m_visualCanvas;
     [SerializeField] private CharacterSelection m_characterSelection;
+    [SerializeField] private CharacterSelection m_characterSelection2;
     [SerializeField] private DoorTransition m_doorTransition;
-    [SerializeField] private GameObject m_pauseMenu;
 
     public DoorTransition DoorTransition => m_doorTransition;
 
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     private bool control_tinker = false;
     private bool control_ashe = false;
+
     public void HandlePlayerControllerEnter(PlayerInput pi)
     {
         DontDestroyOnLoad(pi);
@@ -105,12 +106,6 @@ public class GameManager : MonoBehaviour
         {
             GivePawn(pi, m_tinker);
         }
-        //Coupled
-        //if (count > 1) return;
-        //pi.GetComponent<PlayerController>().ControlPawn(m_pawnsToControl[count]);
-        //pi.gameObject.name = m_pawnsToControl[count].name + " Player";
-        //m_pawnsToControl[count].gameObject.SetActive(true);
-        //count++;
     }
 
     public void GivePawn(PlayerInput pi, Pawn pawn)
@@ -123,9 +118,10 @@ public class GameManager : MonoBehaviour
         { 
             control_tinker = true;
         }
-        var pc = pi.GetComponent<PlayerController>();
-        pc.ControlPawn(pawn);
-        if (isTesting) pc.OnTesting();
+        pawn.PC = pi.GetComponent<PlayerController>();
+        pawn.PC.ControlPawn(pawn);
+        pawn.PC.EnablePawnControl();
+        if (isTesting) pawn.PC.OnTesting();
     }
 
     public void HandlePlayerControllerExit(PlayerInput pi)
@@ -134,10 +130,12 @@ public class GameManager : MonoBehaviour
         if (returnPawn == m_tinker)
         {
             control_tinker = false;
+            m_characterSelection.Select_Tinker.interactable = true;
         }
         else if (returnPawn == m_ashe)
         {
             control_ashe = false;
+            m_characterSelection.Select_Ashe.interactable = true;
         }
 
         pi.GetComponent<PlayerController>().ControlPawn(null);
@@ -145,34 +143,52 @@ public class GameManager : MonoBehaviour
 
     public void OpenUpPlayerSelecitonMenu(PlayerInput pi)
     {
-        m_characterSelection.Display();
-        m_characterSelection.Select_Tinker.onClick.AddListener(delegate { GivePawn(pi, m_tinker); m_characterSelection.Hide(); });
-        m_characterSelection.Select_Ashe.onClick.AddListener(delegate { GivePawn(pi, m_ashe); m_characterSelection.Hide(); });
-        //Coupled
-        //if (m_pawnsToControl.Length - count <= 1) SetPlayerControllerToPawn(pi);
-        //if (m_pawnsToControl.Length - count <= 0) return;
-        //m_visualCanvas.SetActive(true);
-        //pi.GetComponent<PlayerController>().ControlPawn(m_pawnsToControl[count]);
-        //pi.gameObject.name = m_pawnsToControl[count].name + " Player";
-        //m_pawnsToControl[count].gameObject.SetActive(true);
+        var pc = pi.GetComponent<PlayerController>();
+        // Thank you for being nice PC
+        pc.PlayerInput.actions["Pause"].Disable();
 
+        //This could have been just done through an array, but as we are only having two pawns to keep track of
+        //This will do fine no matter its icckyniss
+        if (pi.playerIndex == 0)
+        {
+            m_characterSelection.Display(false, pi.playerIndex + 1);
+            m_characterSelection.Select_Tinker.onClick.AddListener(delegate { GivePawn(pi, m_tinker); });
+            m_characterSelection.Select_Ashe.onClick.AddListener(delegate { GivePawn(pi, m_ashe); });
+
+            pc.GetComponentInChildren<MultiplayerEventSystem>().playerRoot = m_characterSelection.gameObject;
+            pc.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(m_characterSelection.Select_Tinker.gameObject);
+        }
+        else
+        {
+            m_characterSelection2.Display(true, pi.playerIndex + 1);
+            m_characterSelection2.Select_Tinker.onClick.AddListener(delegate { GivePawn(pi, m_tinker); });
+            m_characterSelection2.Select_Ashe.onClick.AddListener(delegate { GivePawn(pi, m_ashe); });
+
+            pc.GetComponentInChildren<MultiplayerEventSystem>().playerRoot = m_characterSelection2.gameObject;
+            pc.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(m_characterSelection2.Select_Tinker.gameObject);
+        }
     }
 
-    public void TogglePause()
+    public void TogglePause(PlayerController pc = null)
     {
+        Debug.Log(isPaused);
         if (isPaused) UnPauseGame();
-        else PauseGame();
+        else PauseGame(pc);
     }
-    public void PauseGame()
+    public void PauseGame(PlayerController pc = null)
     {
         isPaused = true;
-        m_pauseMenu.SetActive(true);
+        Tinker.PC?.DisablePawnControl();
+        Ashe.PC?.DisablePawnControl();
+        UIManager.Instance.OpenPauseMenu(pc);
     }
 
     public void UnPauseGame()
     {
         isPaused = false;
-        m_pauseMenu.SetActive(false);
+        Tinker.PC?.EnablePawnControl();
+        Ashe.PC?.EnablePawnControl();
+        UIManager.Instance.ClosePauseMenu();
     }
 
     #region Scene Management
