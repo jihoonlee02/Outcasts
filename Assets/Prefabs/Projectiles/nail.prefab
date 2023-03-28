@@ -100,8 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 13
-  m_sr: {fileID: 0}
-  m_rb: {fileID: 0}
 --- !u!58 &8068791275168548914
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,7 +113,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23396084, y: 0.010103434}
+  m_Offset: {x: 0.2339608, y: 0.010103434}
   serializedVersion: 2
   m_Radius: 0.15824637
 --- !u!50 &-8528460923896469708
