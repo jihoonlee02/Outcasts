@@ -391,26 +391,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5331871878269861194, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1226954538}
-    - target: {fileID: 8297262605328527791, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_EnableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860901101698846981, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 141551224575190783, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -639,5 +619,45 @@ PrefabInstance:
       propertyPath: m_levelManager
       value: 
       objectReference: {fileID: 1052266083}
+    - target: {fileID: 7957175299544094513, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: initialScenesToEnqueue.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957175299544094513, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: initialScenesToEnqueue.Array.data[0]
+      value: Hub
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957175299544094513, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: initialScenesToEnqueue.Array.data[1]
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957175299544094513, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: initialScenesToEnqueue.Array.data[2]
+      value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957175299544094513, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: initialScenesToEnqueue.Array.data[3]
+      value: Level4
+      objectReference: {fileID: 0}
+    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331871878269861194, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1226954538}
+    - target: {fileID: 8297262605328527791, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_EnableCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860901101698846981, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
