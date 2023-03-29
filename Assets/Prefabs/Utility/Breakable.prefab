@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 3153669504158435918}
   - component: {fileID: 6776052672634301757}
   - component: {fileID: 4506408984735033289}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Breakable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_requiresAshe: 1
   m_requiresTinker: 0
-  m_AudioSource: {fileID: 0}
 --- !u!212 &6504745310413052669
 SpriteRenderer:
   m_ObjectHideFlags: 0

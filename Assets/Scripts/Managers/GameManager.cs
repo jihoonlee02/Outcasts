@@ -82,10 +82,10 @@ public class GameManager : MonoBehaviour
     {
         if (m_visualCanvas == null) { Debug.LogError("Error: VisualCanvas is Missing as an instance in GameManger!"); }
 
+        // Initial Unaffected Dont Destroys
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(m_visualCanvas);
-        DontDestroyOnLoad(m_tinker);
-        DontDestroyOnLoad(m_ashe);
+        DontDestroyOnLoad(transform.parent);
     }
 
     private bool control_tinker = false;
@@ -234,7 +234,10 @@ public class GameManager : MonoBehaviour
             ClearSceneQueue();
             AddSceneToQueue(initialScenesToEnqueue);
         }
-        DontDestroyOnLoad(transform.parent);
+
+        // Stuff Not to Destroy On Load
+        DontDestroyOnLoad(m_tinker);
+        DontDestroyOnLoad(m_ashe);
     }
 
     private IEnumerator LoadSceneWithDelay(float seconds)

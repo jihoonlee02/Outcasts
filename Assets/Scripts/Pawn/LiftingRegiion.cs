@@ -15,6 +15,7 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = true;
             tinkerPawn.IsHeld = true;
+            tinkerPawn.RB.velocity = Vector2.zero;
             //oldParent = tinkerPawn.transform.parent;
             //tinkerPawn.transform.SetParent(transform, true);
             //tinkerPawn.FixedJoint.connectedBody = ashe.RB;
@@ -23,6 +24,12 @@ public class LiftingRegiion : MonoBehaviour
         }
 
         // Physical Object defintion
+        var physical = collision.gameObject.GetComponent<Grabbable>();
+        if (physical != null)
+        {
+            ashe.IsLifting = true;
+            physical.transform.SetParent(transform, true);
+        }
             
     }
 
