@@ -21,7 +21,7 @@ public abstract class State
         m_factory = factory;
     }
     public virtual void EnterState() {}
-    public abstract void UpdateState();
+    public virtual void UpdateState() {}
     public virtual void ExitState() {}
     public virtual void InitializeSubState() {}
     /// <summary>
@@ -46,6 +46,7 @@ public abstract class State
     {
         UpdateState();
         m_subState?.UpdateStates();
+        CheckSwitchState();
     }
 
     public void ExitStates()

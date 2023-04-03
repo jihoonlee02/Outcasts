@@ -4,20 +4,23 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 //Can be destroyed by GameObjects that invoke break on collision
+[RequireComponent(typeof(Collider2D), typeof(MeshRenderer), typeof(AudioSource))]
 public class Breakable : MonoBehaviour
 {
     private ParticleSystem particle;
     private BoxCollider2D collider;
     private TilemapRenderer renderer;
+    private AudioSource m_AudioSource;
     [SerializeField] private bool m_requiresAshe = true;
     [SerializeField, Tooltip("No Implementation with this one yet")] 
-    private bool m_requiresTinker = false;
+    private bool m_requiresTinker = false; 
 
-    private void Start() {
+    private void Start() 
+    {
         particle = gameObject.GetComponent<ParticleSystem>();
         collider = gameObject.GetComponent<BoxCollider2D>();
         renderer = gameObject.GetComponentInChildren<TilemapRenderer>();
-
+        m_AudioSource = gameObject.GetComponent<AudioSource>();
     }
 
     public IEnumerator Break()
@@ -35,6 +38,7 @@ public class Breakable : MonoBehaviour
         if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
         else if (m_requiresAshe && collision.gameObject.tag == "Gauntlet")
         {
+            m_AudioSource.Play();
             StartCoroutine(Break());
         }
     }
@@ -44,6 +48,7 @@ public class Breakable : MonoBehaviour
         if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
         else if (m_requiresAshe && collider.gameObject.tag == "Gauntlet")
         {
+            m_AudioSource.Play();
             StartCoroutine(Break());
         }
     }

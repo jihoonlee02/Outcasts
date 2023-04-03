@@ -16,7 +16,7 @@ public class FallingState : State
     }
     public override void UpdateState()
     {
-        CheckSwitchState();
+ 
     }
     public override void CheckSwitchState()
     {

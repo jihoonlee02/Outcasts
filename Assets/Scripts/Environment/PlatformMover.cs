@@ -12,7 +12,7 @@ public class PlatformMover : Invokee
     [SerializeField] private bool autoMove;
 
     # if UNITY_EDITOR
-    private bool isSelected => Selection.transforms.Contains(transform);
+    private bool isSelected => UnityEditor.Selection.transforms.Contains(transform);
     #endif
     private int idx = 0;
     private Vector2 moveDifference;

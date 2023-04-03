@@ -15,7 +15,7 @@ public class GroundedState : State
 
     public override void UpdateState()
     {
-        CheckSwitchState();
+        //CheckSwitchState();
     }
     public override void CheckSwitchState()
     {

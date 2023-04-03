@@ -17,7 +17,7 @@ public class TinkerDefaultState : State
     }
     public override void UpdateState()
     {
-        CheckSwitchState();
+
     }
     public override void ExitState()
     {
@@ -47,9 +47,9 @@ public class TinkerDefaultState : State
 
     public override void CheckSwitchState()
     {
-        if (((TinkerPawn)m_context).IsShooting)
+        if (((TinkerPawn)m_context).IsHeld)
         {
-            SwitchState(m_factory.TinkerShootState());
+            SwitchState(m_factory.TinkerHeldState());
         }
     }
 }

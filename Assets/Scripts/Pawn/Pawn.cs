@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected AudioSource m_audioSource;
     [SerializeField] protected PawnData m_pawnData;
     [SerializeField] protected HingeJoint2D m_hingeJoint;
+    [SerializeField] protected FixedJoint2D m_fixedJoint;
     [SerializeField] protected PlayerController m_pc;
 
     public PlayerController PC
@@ -24,6 +26,7 @@ public class Pawn : MonoBehaviour
 
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
+    public FixedJoint2D FixedJoint => m_fixedJoint;
     public PawnData Data => m_pawnData;
     public AudioSource AudioSource => m_audioSource;
 
@@ -97,10 +100,12 @@ public class Pawn : MonoBehaviour
         //Unity Components
         m_rb = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
-        m_animator = GetComponentInChildren<Animator>();
-        m_audioSource = GetComponentInChildren<AudioSource>();
+        //m_animator = GetComponentInChildren<Animator>();
+        //m_audioSource = GetComponentInChildren<AudioSource>();
         m_hingeJoint = GetComponent<HingeJoint2D>();
+        m_fixedJoint = GetComponent<FixedJoint2D>();
         m_hingeJoint.enabled = false;
+        m_fixedJoint.enabled = false;
 
         //Technical
         canMove = true;
@@ -151,7 +156,7 @@ public class Pawn : MonoBehaviour
         {
             float targetSpeed = inputVector.x * movementSpeed;
             float speedDif = targetSpeed - m_rb.velocity.x;
-            float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+            float accelRate = (Mathf.Abs(targetSpeed) > 0.1f) ? acceleration : decceleration;
             float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
             m_rb.AddRelativeForce(movement * Vector2.right);
         }
@@ -203,7 +208,7 @@ public class Pawn : MonoBehaviour
         Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, m_collider.bounds.extents.y), Vector2.right * (m_collider.bounds.extents.x), Color.green);
     }
 
-    public void Jump()
+    public virtual void Jump()
     {
         if (!canJump) return;
 

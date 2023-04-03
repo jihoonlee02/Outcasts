@@ -5,9 +5,16 @@ using UnityEngine;
 public class NailGun : Tool
 {
     [SerializeField] private Projectile projectile;
+    private AudioSource m_audioSource;
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+        m_audioSource.clip = m_user.Data.ScratchPadSounds[0];
+    }
 
     public void UsePrimaryAction(Vector2 inputVector)
     {
+        m_audioSource.Play();
         //Shoot Up or Down
         if (Mathf.Abs(inputVector.y) > 0.9)
         {

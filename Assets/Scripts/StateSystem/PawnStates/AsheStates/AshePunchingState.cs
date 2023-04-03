@@ -9,10 +9,12 @@ public class AshePunchingState : State
     {
         m_isRootState = true;
         m_animationName = "Punching";
+        InitializeSubState();
     }
 
     public override void EnterState()
     {
+        Debug.Log("Enter Punching State");
         m_context.CanJump = false;
         m_context.CanMove = false;
         ((AshePawn)m_context).LifitingRegion.enabled = false;
@@ -22,10 +24,6 @@ public class AshePunchingState : State
         m_context.AudioSource.clip = m_context.Data.ScratchPadSounds[0];
         m_context.AudioSource.Play();
     }
-    public override void UpdateState()
-    {
-        CheckSwitchState();
-    }
     public override void ExitState() 
     {
         m_context.CanJump = true;
@@ -34,7 +32,8 @@ public class AshePunchingState : State
     }
     public override void InitializeSubState()
     {
-        
+        SetSubState(m_factory.None());
+        m_subState.EnterState();
     }
 
     public override void CheckSwitchState()

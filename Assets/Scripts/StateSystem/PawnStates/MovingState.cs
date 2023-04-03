@@ -7,7 +7,7 @@ public class MovingState : State
     }
     public override void EnterState()
     {
-        //Debug.Log("Entered Moving State");
+        Debug.Log("Entered Moving State");
 
         m_context.AudioSource.clip = m_context.Data.Footstep;
         m_context.AudioSource.loop = true;
@@ -24,8 +24,6 @@ public class MovingState : State
         m_context.AudioSource.pitch = pitchCalc > m_context.Data.MaxPitch ? 
             m_context.Data.MaxPitch : pitchCalc < m_context.Data.MinPitch ? 
             m_context.Data.MinPitch : pitchCalc;
-
-        CheckSwitchState();
     }
     public override void ExitState()
     {
