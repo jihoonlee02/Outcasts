@@ -6,6 +6,7 @@ public abstract class Invokee : MonoBehaviour
 {
     [Header("Inovkee Details")]
     [SerializeField] protected int id;
+    [SerializeField] protected float delay = 0f;
 
     protected void Awake()
     {
@@ -23,7 +24,7 @@ public abstract class Invokee : MonoBehaviour
     {
         if (other_id == id) 
         {
-            OnActivate();
+            StartCoroutine(DelayActivate());        
         }
     }
 
@@ -38,4 +39,10 @@ public abstract class Invokee : MonoBehaviour
     protected abstract void OnActivate();
 
     protected abstract void OnDeactivate();
+
+    private IEnumerator DelayActivate()
+    {
+        yield return delay;
+        OnActivate();
+    }
 }
