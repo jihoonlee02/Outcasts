@@ -16784,7 +16784,6 @@ GameObject:
   - component: {fileID: 1203824115}
   - component: {fileID: 1203824117}
   - component: {fileID: 1203824116}
-  - component: {fileID: 1203824118}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -16809,8 +16808,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -466, y: 205.23}
-  m_SizeDelta: {x: 647.9304, y: 410.4535}
+  m_AnchoredPosition: {x: -503, y: 175}
+  m_SizeDelta: {x: 542.3148, y: 483.9117}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203824116
 MonoBehaviour:
@@ -16832,7 +16831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0b6d9ddbd0d294543b1ec2c6a51d23b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91506590f0ba1e34888d789c2829863e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16850,21 +16849,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203824114}
   m_CullTransparentMesh: 1
---- !u!114 &1203824118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203824114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5.56, y: -1.37}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1226954536
 GameObject:
   m_ObjectHideFlags: 0
