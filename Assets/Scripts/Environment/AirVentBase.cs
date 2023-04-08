@@ -19,16 +19,16 @@ public class AirVentBase : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("test");
-        Rigidbody2D otherRB = other.rigidbody;
+        Rigidbody2D otherRB = other.attachedRigidbody;
         if (otherRB.mass > 2) {
             Debug.Log("lol lmao");
             airVent.Deactivate();
         }
     }
-    private void OnCollisionExit2D(Collision2D other) {
-        Rigidbody2D otherRB = other.rigidbody;
+    private void OnTriggerExit2D(Collider2D other) {
+        Rigidbody2D otherRB = other.attachedRigidbody;
         if (otherRB.mass > 2) {
             airVent.Activate();
         }

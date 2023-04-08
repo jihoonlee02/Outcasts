@@ -43,7 +43,6 @@ public class AirVent : MonoBehaviour
         windAreaCol.enabled = activated;
         windAngle = transform.rotation.eulerAngles.z;
         airPivot = gameObject.transform.parent;
-        Debug.Log(windAngle);
         if (windAngle == 0) {
             holdObject = true;
         }
@@ -55,7 +54,6 @@ public class AirVent : MonoBehaviour
     void Update()
     {
         windAreaCol.enabled = activated;
-        Debug.Log(windAreaCol.enabled);
     }
 
     public void Activate() {
