@@ -85,7 +85,7 @@ public class AirVent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         GameObject gObject = other.gameObject;
         Rigidbody2D gRBody = other.attachedRigidbody;
-        if (gObject.layer == 9 || gObject.tag == "physical" || gObject.tag == "Ashe") {
+        if (gObject.tag == "physical" || gObject.tag == "Tinker") {
             if (gRBody.velocity.y < 0) {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y/5.0f);
             }
@@ -95,7 +95,7 @@ public class AirVent : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         GameObject gObject = other.gameObject;
         Rigidbody2D gRBody = other.attachedRigidbody;
-        if (gObject.layer == 9 || gObject.tag == "physical" || gObject.tag == "Ashe") {
+        if (gObject.tag == "physical" || gObject.tag == "Tinker") {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
             if (gObject.tag == "physical" && holdObject) {
