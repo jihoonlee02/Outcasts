@@ -6,6 +6,7 @@ public class AirVentBase : MonoBehaviour
 {
     private BoxCollider2D baseCollider;
     private AirVent airVent;
+    private int counter;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +25,19 @@ public class AirVentBase : MonoBehaviour
         Rigidbody2D otherRB = other.attachedRigidbody;
         if (otherRB.mass > 2 || other.gameObject.tag == "Ashe") {
             Debug.Log("lol lmao");
-            airVent.Deactivate();
+            counter++;
+            if (counter == 1) {
+                airVent.Deactivate();
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
         if (otherRB.mass > 2 || other.gameObject.tag == "Ashe") {
-            airVent.Activate();
+            counter--;
+            if (counter == 0) {
+                airVent.Activate();
+            }
         }
     }
 }
