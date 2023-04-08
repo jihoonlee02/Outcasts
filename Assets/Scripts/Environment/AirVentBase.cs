@@ -22,14 +22,14 @@ public class AirVentBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("test");
         Rigidbody2D otherRB = other.attachedRigidbody;
-        if (otherRB.mass > 2) {
+        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe") {
             Debug.Log("lol lmao");
             airVent.Deactivate();
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
-        if (otherRB.mass > 2) {
+        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe") {
             airVent.Activate();
         }
     }
