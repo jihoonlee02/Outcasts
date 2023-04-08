@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
 
         if (isSetupScene)
         {
-            GameManager.Instance.LoadToScene("Hub");
+            GameManager.Instance.TransitionToNextScene();
             return;
         }
 

@@ -34,6 +34,7 @@ public class DialogueObject : ScriptableObject
 public struct Dialogue
 { 
     [SerializeField] private Sprite profile;
+    [SerializeField] private ProfileAlignment alignment;
     [SerializeField] private AudioClip typeSound;
     [SerializeField] private float speed;
     [SerializeField] private float delay;
@@ -44,6 +45,13 @@ public struct Dialogue
     public string Text => text;
     public float Speed => speed;
     public float Delay => delay;
+    public ProfileAlignment Alignment => alignment;
+}
+
+public enum ProfileAlignment
+{
+    Left,
+    Right
 }
 
 //#if UNITY_EDITOR

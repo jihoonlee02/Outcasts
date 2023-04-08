@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Door : Invokee
 {
@@ -12,6 +13,7 @@ public class Door : Invokee
     private Vector3 doorPosUp;
     private Vector3 doorVel = Vector3.zero;
     private SpriteRenderer spriteRenderer;
+    private TilemapRenderer tilemapRenderer;
     private float doorDist;
     private float perOpen = 1.0f;
     private bool initOpen;
@@ -21,16 +23,40 @@ public class Door : Invokee
     {
         initOpen = open;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        if (!open) {
+        if (spriteRenderer != null)
+        {
             doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            doorPosUp = doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
-        } else {
-            doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            doorPosDown = doorPosUp + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+            if (!open)
+            {
+                doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                doorPosUp = doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+            }
+            else
+            {
+                doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                doorPosDown = doorPosUp + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+            }
+            //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+            doorDist = Vector3.Distance(doorPosDown, doorPosUp);
+        } else
+        {
+            tilemapRenderer = gameObject.GetComponentInChildren<TilemapRenderer>();
+            doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            if (!open)
+            {
+                doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                doorPosUp = doorPosDown + (Vector3.up * tilemapRenderer.bounds.size.y * transform.localScale.y);
+            }
+            else
+            {
+                doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                doorPosDown = doorPosUp + (Vector3.down * tilemapRenderer.bounds.size.y * transform.localScale.y);
+            }
+            //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+            doorDist = Vector3.Distance(doorPosDown, doorPosUp);
         }
-        //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
-        doorDist = Vector3.Distance(doorPosDown, doorPosUp);
+            
+        
     }
 
     // Update is called once per frame

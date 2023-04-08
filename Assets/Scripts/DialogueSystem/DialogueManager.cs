@@ -58,8 +58,9 @@ public class DialogueManager : MonoBehaviour
     {
         foreach (Dialogue dialogue in a_dialogueObject.Dialogue)
         {
-            AdjustProfileSegment(dialogue.Profile);
+            AdjustProfileSegment(dialogue.Profile, dialogue.Alignment);
             m_dialogueProducer.TypeSound = dialogue.TypeSound;
+            m_dialogueProducer.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
             yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
         }
 
@@ -67,19 +68,19 @@ public class DialogueManager : MonoBehaviour
         yield return null;
     }
 
-    private void AdjustProfileSegment(Sprite a_profile)
+    private void AdjustProfileSegment(Sprite a_profile, ProfileAlignment alignment)
     {
         if (profile == null) return;
         profile.gameObject.SetActive(true);
         profile.sprite = null;
         profile.CrossFadeAlpha(0f, 0f, true);
-        m_dialogueProducer.TMP_access.margin = new Vector4(0, 0, 0, 0);
         m_dialogueProducer.TMP_access.alignment = TextAlignmentOptions.Center;
         profile.sprite = a_profile;
         if (profile.sprite != null)
         {
-            m_dialogueProducer.TMP_access.margin = new Vector4(250f, 0, 0, 0);
-            m_dialogueProducer.TMP_access.alignment = TextAlignmentOptions.Left;
+            profile.transform.localPosition = new Vector3(Mathf.Abs(profile.transform.localPosition.x) * (alignment == ProfileAlignment.Right ? 1 : -1) 
+                , profile.transform.localPosition.y, profile.transform.localPosition.z);
+            m_dialogueProducer.TMP_access.alignment = alignment == ProfileAlignment.Right ? TextAlignmentOptions.Right : TextAlignmentOptions.Left;
             profile.CrossFadeAlpha(1f, 0f, true);
         }
     }
