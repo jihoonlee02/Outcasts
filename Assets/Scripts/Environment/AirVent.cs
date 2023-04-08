@@ -85,9 +85,11 @@ public class AirVent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         GameObject gObject = other.gameObject;
         Rigidbody2D gRBody = other.attachedRigidbody;
-        if (gObject.tag == "physical" || gObject.tag == "Tinker") {
-            if (gRBody.velocity.y < 0) {
+        if (gRBody.velocity.y < 0) {
+            if (gObject.tag == "Tinker") {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y/5.0f);
+            } else if (gObject.tag == "physical") {
+                gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
             }
         }
     }
@@ -98,11 +100,14 @@ public class AirVent : MonoBehaviour
         if (gObject.tag == "physical" || gObject.tag == "Tinker") {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
-            if (gObject.tag == "physical" && holdObject) {
-                if (gObject.transform.position.x < transform.position.x && gRBody.velocity.x < 0) {
+            if (gObject.tag == "physical") {
+                if (gRBody.velocity.y < 0) {
+                    gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
+                }
+                if (holdObject && gObject.transform.position.x < transform.position.x && gRBody.velocity.x < 0) {
                     gRBody.AddForce(windAngQuat * (Vector2.right * holdForce * Vector3.Distance(gObject.transform.position, gameObject.transform.position)));
                 }
-                else if (gObject.transform.position.x > transform.position.x && gRBody.velocity.x > 0) {
+                else if (holdObject && gObject.transform.position.x > transform.position.x && gRBody.velocity.x > 0) {
                     gRBody.AddForce(windAngQuat * (Vector2.left * holdForce * Vector3.Distance(gObject.transform.position, gameObject.transform.position)));
                 }
             }
