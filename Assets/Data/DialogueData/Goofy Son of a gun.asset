@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Goofy Son of a gun
   m_EditorClassIdentifier: 
   dialogue:
-  - profile: {fileID: 21300000, guid: bd818279abeabd8499d58aee41f4bf4c, type: 3}
+  - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+    alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 0
-    delay: 5
+    speed: 3
+    delay: 3
     text: Hello I see you made a funny mess!!!
-  - profile: {fileID: 21300000, guid: c8bde00b18cf4f04c88793e2c62ddd98, type: 3}
+  - profile: {fileID: 21300000, guid: 2bbcdd7718097384fa77f69fea9d2c82, type: 3}
+    alignment: 1
     typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
-    speed: 0
+    speed: 3
     delay: 2
     text: Im dapper yo!

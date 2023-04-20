@@ -204,6 +204,14 @@ public class GameManager : MonoBehaviour
     {
         LoadToScene(m_currScene = m_scenes.Count > 0 ? m_scenes.Dequeue() : "Hub");
     }
+    public void QuitToMainMenu()
+    {
+        LoadToScene("MainMenu");
+    }
+    public void QuitToDesktop()
+    {
+        Application.Quit();
+    }
 
     public void ReloadCurrentScene()
     {
@@ -233,6 +241,18 @@ public class GameManager : MonoBehaviour
         {
             ClearSceneQueue();
             AddSceneToQueue(initialScenesToEnqueue);
+        }
+
+        if (next.name == "MainMenu")
+        {
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(m_visualCanvas, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(transform.parent.gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(m_tinker.PC.gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(m_ashe.PC.gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(m_tinker.gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(m_ashe.gameObject, SceneManager.GetActiveScene());
+            return;
         }
 
         // Stuff Not to Destroy On Load

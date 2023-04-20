@@ -43,15 +43,7 @@ public class TextProducer : MonoBehaviour
     {
         m_textLabel = GetComponent<TextMeshProUGUI>();
         soundSource = GetComponent<AudioSource>();
-    }
-
-    private void Start()
-    {
-        if (m_startOnEnable)
-        {  
-            initialText = m_textLabel.text;
-            ReplaceTextWith(initialText, m_startEffect, 5f * speed);
-        }   
+        initialText = m_textLabel.text;
     }
 
     private void OnEnable()

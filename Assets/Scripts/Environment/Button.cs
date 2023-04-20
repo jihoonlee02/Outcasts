@@ -18,6 +18,7 @@ public class Button : Invoker
     private float timer;
     private bool buttonPressed;
     [SerializeField] private Transform m_pushableButton;
+    private AudioSource buttonPressSound;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Button : Invoker
         buttonVel = Vector3.zero;
         entered = 0;
         buttonPressed = false;
+        buttonPressSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,9 +46,10 @@ public class Button : Invoker
 
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (entered == 0 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) {
+        if (!buttonPressed && entered == 0 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) {
             buttonPressed = true;
             timer = 0f;
+            buttonPressSound.Play();
             Activate();
         }
         entered++;
@@ -55,7 +58,7 @@ public class Button : Invoker
 
     private void OnTriggerExit2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (!pressOnce && entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) { 
+        if (!pressOnce && buttonPressed && entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) { 
             buttonPressed = false;
             timer = 0f;
             Deactivate();

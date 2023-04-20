@@ -13,7 +13,8 @@ public class Breakable : MonoBehaviour
     private AudioSource m_AudioSource;
     [SerializeField] private bool m_requiresAshe = true;
     [SerializeField, Tooltip("No Implementation with this one yet")] 
-    private bool m_requiresTinker = false; 
+    private bool m_requiresTinker = false;
+    private bool broken = false;
 
     private void Start() 
     {
@@ -36,20 +37,25 @@ public class Breakable : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
-        else if (m_requiresAshe && collision.gameObject.tag == "Gauntlet")
+        else if (!broken && (m_requiresAshe && collision.gameObject.tag == "Gauntlet"))
         {
             m_AudioSource.Play();
             StartCoroutine(Break());
+            broken = true;
         }
     }
-
+    // && (collision.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f 
+    //        || collision.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f))
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
-        else if (m_requiresAshe && collider.gameObject.tag == "Gauntlet")
+        if (!broken && (m_requiresAshe && collider.gameObject.tag == "Gauntlet") || (collider.gameObject.tag == "physical") && (collider.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 4f
+            || collider.gameObject.GetComponent<Rigidbody2D>().velocity.y >= 4f))
         {
             m_AudioSource.Play();
             StartCoroutine(Break());
+            broken = true;
         }
     }
+    // && (collider.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f
+    //        || collider.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f))
 }
