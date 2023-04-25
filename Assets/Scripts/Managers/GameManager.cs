@@ -266,10 +266,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadSceneAsync(m_currScene);
         //This doesn't do what you think it does
-        if (!SceneManager.GetSceneByName(m_currScene).IsValid())
-        {
-            SceneManager.LoadSceneAsync("Hub");
-        } 
+        //if (!SceneManager.GetSceneByName(m_currScene).IsValid())
+        //{
+        //    SceneManager.LoadSceneAsync("Hub");
+        //} 
      
     } 
 

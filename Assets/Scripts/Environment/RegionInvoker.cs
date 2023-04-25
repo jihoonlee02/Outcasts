@@ -6,14 +6,35 @@ using UnityEngine;
 public class RegionInvoker : Invoker
 {
     [SerializeField] private bool triggerOnce = true;
+    [Header("Player Specific")]
     [SerializeField] private bool playerTrigger = true;
+    [SerializeField] private bool uniqueID = false;
+    [SerializeField] private int tinkerSpecificID;
+    [SerializeField] private int asheSpecificID;
+
+    [Header("Object Specific")]
     [SerializeField] private bool requireSpecficObjects = false;
     [SerializeField] private string[] tags;
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (playerTrigger && (collider.gameObject.layer == LayerMask.NameToLayer("Players")))
         {
-            Activate();
+            if (uniqueID)
+            {
+                if (collider.gameObject.tag == "Tinker")
+                {
+                    Activate(tinkerSpecificID);
+                }
+                else if (collider.gameObject.tag == "Ashe")
+                {
+                    Activate(asheSpecificID);
+                }
+            }
+            else
+            {
+                Activate();
+            }
+            
 
             if (triggerOnce) 
             { 
@@ -26,7 +47,22 @@ public class RegionInvoker : Invoker
     {
         if (playerTrigger && (collision.gameObject.layer == LayerMask.NameToLayer("Players")))
         {
-            Activate();
+            if (uniqueID)
+            {
+                if (collision.gameObject.tag == "Tinker")
+                {
+                    Activate(tinkerSpecificID);
+                }
+                else if (collision.gameObject.tag == "Ashe")
+                {
+                    Activate(asheSpecificID);
+                }
+            }
+            else
+            {
+                Activate();
+            }
+
 
             if (triggerOnce)
             {

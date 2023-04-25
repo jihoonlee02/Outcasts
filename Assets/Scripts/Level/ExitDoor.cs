@@ -10,10 +10,13 @@ public class ExitDoor : MonoBehaviour
     private bool isTargetPawnOnDoor;
     public bool OnDoor;
     private Animator m_animator;
+    private float closeCoolDown;
+    private float targetTime;
 
     private void Start()
     {
         m_animator = GetComponentInChildren<Animator>();
+        closeCoolDown = 0f;
     }
 
     private void Update()
@@ -26,6 +29,7 @@ public class ExitDoor : MonoBehaviour
         if (collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn)
         {
             m_animator.Play("DoorOpen");
+            targetTime = Time.time + closeCoolDown;
             timeTrigger += Time.deltaTime;
         }
         
@@ -33,6 +37,15 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn)
+        {
+            StartCoroutine(TriggerUntilCooldown());
+        }  
+    }
+
+    private IEnumerator TriggerUntilCooldown()
+    {
+        yield return new WaitUntil(delegate { return Time.time > targetTime; });
         timeTrigger = 0;
         m_animator.Play("DoorClose");
     }

@@ -9,6 +9,7 @@ public class AshePawn : Pawn
     [SerializeField] private Collider2D m_liftingRegion; 
     private bool m_isLifting = false;
     private bool m_isPunching = false;
+    public GameObject HeldObject;
     public bool IsLifting
     {
         get { return m_isLifting;}

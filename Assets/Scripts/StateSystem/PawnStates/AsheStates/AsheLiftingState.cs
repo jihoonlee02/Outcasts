@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AsheLiftingState : State
 {
+    private float m_followingY;
     public AsheLiftingState(Pawn context, PawnStateFactory factory) : base(context, factory)
     {
         m_isRootState = true;
@@ -15,9 +16,22 @@ public class AsheLiftingState : State
     public override void EnterState()
     {
         Debug.Log("Switched to AsheLifting");
-        
+        m_followingY = ((AshePawn)m_context).HeldObject.transform.position.y - m_context.transform.position.y + 0.01f;
+
     }
-    public override void ExitState() { }
+    public override void UpdateState()
+    {
+        ((AshePawn)m_context).HeldObject.transform.position 
+            = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
+    }
+    public override void ExitState() 
+    {
+        //if (((AshePawn)m_context).HeldObject.tag == "Tinker")
+        //{
+        //    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
+        //}
+        ((AshePawn)m_context).HeldObject = null;
+    }
     public override void InitializeSubState()
     {
         if (m_context.IsJumping)
@@ -48,6 +62,8 @@ public class AsheLiftingState : State
         }
         else if (((AshePawn)m_context).IsPunching)
         {
+            ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>()
+                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.01f, 0.01f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());
         }
     }
