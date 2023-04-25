@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8337a33b9fe9e4841969986a186f558b
+guid: e8aa6b6dab17390499861696b6b565bb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 28
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,169 +117,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ashe-Animation_0
+      name: Ashe-Animation-lifting_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 40
-        width: 16
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bc3d1af1d3818f429e0a148cb0b95c1
-      internalID: -1570894474
+      spriteID: 349140c516e5ca0499a8475fe13b9672
+      internalID: 1697402613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_1
+      name: Ashe-Animation-lifting_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 40
-        width: 16
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dbf1c7ecd2f952499e97d5371a15bda
-      internalID: -1852031129
+      spriteID: 896ab22e2b0f0534e8854f2c704d1535
+      internalID: 1271564955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_2
+      name: Ashe-Animation-lifting_2
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 40
-        width: 16
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa7459be136586f4abbc5262d96c601e
-      internalID: 2015286772
+      spriteID: 0907ff4421f5d0e4481c839307bfc0c0
+      internalID: -1964484554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_3
+      name: Ashe-Animation-lifting_3
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 40
-        width: 16
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8042d410ef8b2f41bffc831cbe193a0
-      internalID: -136937883
+      spriteID: 902ffa6e3faf2a5429a0a827208376fa
+      internalID: 1496905006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_4
+      name: Ashe-Animation-lifting_4
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 24
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd2e8f8874d2bc34f874309f2a16f3de
-      internalID: 1641368749
+      spriteID: aaf60d483835e2949b3c67f2b83f32df
+      internalID: 633157391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_5
+      name: Ashe-Animation-lifting_5
       rect:
         serializedVersion: 2
-        x: 36
+        x: 32
         y: 0
-        width: 24
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d1272922b906242a7c7aa341484b3a
-      internalID: -998909562
+      spriteID: b2995555e152c4444b1d276da0a8d307
+      internalID: -2002437441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_6
+      name: Ashe-Animation-lifting_6
       rect:
         serializedVersion: 2
-        x: 67
+        x: 64
         y: 0
-        width: 24
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f248fa0e7780ee4eba3ccba5ea63a45
-      internalID: 1060237389
+      spriteID: c984b0ef3144b5946913617fc6c9f0f8
+      internalID: -307804083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ashe-Animation_7
+      name: Ashe-Animation-lifting_7
       rect:
         serializedVersion: 2
-        x: 100
+        x: 96
         y: 0
-        width: 24
-        height: 38
+        width: 32
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d0ff84088e59c44dba23f12344e3f6e
-      internalID: 536357738
+      spriteID: e718e3b513447b749a683763cb46c521
+      internalID: 583919334
       vertices: []
       indices: 
       edges: []
@@ -295,14 +295,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ashe-Animation_4: 1641368749
-      Ashe-Animation_7: 536357738
-      Ashe-Animation_6: 1060237389
-      Ashe-Animation_3: -136937883
-      Ashe-Animation_0: -1570894474
-      Ashe-Animation_5: -998909562
-      Ashe-Animation_1: -1852031129
-      Ashe-Animation_2: 2015286772
+      Ashe-Animation-lifting_8: 709921789
+      Ashe-Animation-lifting_0: 1697402613
+      Ashe-Animation-lifting_4: 633157391
+      Ashe-Animation-lifting_7: 583919334
+      Ashe-Animation-lifting_3: 1496905006
+      Ashe-Animation-lifting_1: 1271564955
+      Ashe-Animation-lifting_5: -2002437441
+      Ashe-Animation-lifting_6: -307804083
+      Ashe-Animation-lifting_2: -1964484554
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

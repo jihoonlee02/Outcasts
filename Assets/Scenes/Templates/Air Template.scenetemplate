@@ -64,9 +64,13 @@ MonoBehaviour:
   description: This is the default setup with the air dungeon border.
   preview: {fileID: -1315712725023975718}
   dependencies:
+  - dependency: {fileID: 7400000, guid: 218e315ccae00344e9c5b05243c28822, type: 2}
+    instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 08340abd47b21c84a8f8ad3d457a2621, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 4ad0501da27572042ad78b7dd7f9d566, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 7400000, guid: 615bb1b9da1813146a17bf8bebb5e033, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: ca797c05d234a4c438f57e771c3803c4, type: 3}
     instantiationMode: 1
@@ -77,6 +81,8 @@ MonoBehaviour:
   - dependency: {fileID: 11400000, guid: 63f4bd437d38c714eb236feca9d965bf, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 8284e599ff70f2545bcb161bd29b1b80, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 7400000, guid: 341467f66f9e51c4ab8dcd74350afe1b, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 41a20e765d3a89a4bae1c0a0e11cf751, type: 3}
     instantiationMode: 1
@@ -100,9 +106,9 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 27dfca10093fd1940a0f9d6207dfaace, type: 3}
     instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 6a237171e2346e3458db37eb0f90d42b, type: 3}
-    instantiationMode: 1
   - dependency: {fileID: 8159073791152440076, guid: a3dedffaea7a09f4a8a8e069d4f534bd, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 6a237171e2346e3458db37eb0f90d42b, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: a91fc9fd988468b4790ca4fbaf7b2375, type: 3}
     instantiationMode: 1
@@ -142,11 +148,11 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
     instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 3835d751fd6594948a41f39bce7a84de, type: 3}
+  - dependency: {fileID: 7400000, guid: adba5802eb7e43a448c32d1930fea9ef, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: f6235528fbecc58419148ab30492d660, type: 3}
     instantiationMode: 1
-  - dependency: {fileID: 7400000, guid: adba5802eb7e43a448c32d1930fea9ef, type: 2}
+  - dependency: {fileID: 2800000, guid: 3835d751fd6594948a41f39bce7a84de, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 6c8600d14b83905408ac5f4d454779ee, type: 2}
     instantiationMode: 1
@@ -196,6 +202,8 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 4995fafcfd35de04e85d6a0f119c282c, type: 2}
     instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+    instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 94d1e182166f8e54daa443d636b71cc4, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 0d53ab7868f8f464aa5e67f0e98cad1f, type: 2}
@@ -224,6 +232,8 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 9100000, guid: 3a1405c658826ae4e9ed2caa06864954, type: 2}
     instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: e8aa6b6dab17390499861696b6b565bb, type: 3}
+    instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 6b06f43fe46b09d44b906645cf4b7511, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 08a04b12dd0d5ec4da08f074806d5bf7, type: 3}
@@ -237,6 +247,8 @@ MonoBehaviour:
   - dependency: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 1b7023f5b0f18454ea9f7e5a9db08136, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 7400000, guid: b344561642317fb478bacd7218c78ba0, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 7400000, guid: 10c83c559f363404ebf230b38ca3a5de, type: 2}
     instantiationMode: 1

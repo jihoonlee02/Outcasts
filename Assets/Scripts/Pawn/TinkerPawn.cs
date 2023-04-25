@@ -45,11 +45,11 @@ public class TinkerPawn : Pawn
         if (isGrounded)
         {
             m_rb.mass = initialMass;
+            //if (CurrentState != m_states.TinkerHeldState()) 
             m_rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             lastGroundedTime = 0;
             isJumping = true;
             lastJumpTime = jumpBufferTime;
         }
-
     }
 }
