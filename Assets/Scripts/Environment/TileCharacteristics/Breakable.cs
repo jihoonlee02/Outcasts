@@ -48,9 +48,12 @@ public class Breakable : MonoBehaviour
     //        || collision.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f))
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        var vel = collider.gameObject.GetComponent<Rigidbody2D>().velocity;
-        if (!broken && (m_requiresAshe && collider.gameObject.tag == "Gauntlet") 
-            || (collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= 4f || Mathf.Abs(vel.y) >= 4f))
+        var rb = collider.gameObject.GetComponent<Rigidbody2D>();
+        var vel = Vector2.zero;
+        if (rb != null) vel = rb.velocity;
+
+        if (!broken && ((m_requiresAshe && collider.gameObject.tag == "Gauntlet") 
+            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= 4f || Mathf.Abs(vel.y) >= 4f))))
         {
             m_AudioSource.Play();
             StartCoroutine(Break());

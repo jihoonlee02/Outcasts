@@ -77,16 +77,16 @@ public class Rope : MonoBehaviour
             linePositions[i] = parentTrans + gameObject.transform.GetChild(i + 1).transform.localPosition;
         }
 
-        //if (attachment != null)
-        //{
-        //    GameObject link = Instantiate(attachment);
-        //    link.transform.GetChild(0).localRotation = linkRot;
-        //    HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
-        //    joint.connectedAnchor = ropeVec;
-        //    joint.connectedBody = prevRB;
-
-        //    lineRenderer.SetPosition(numOfLinks + 1, parentTrans + gameObject.transform.GetChild(numOfLinks + 1 + 1).transform.localPosition);
-        //    linePositions[numOfLinks + 1] = parentTrans + gameObject.transform.GetChild(numOfLinks + 1 + 1).transform.localPosition;
-        //}
+        if (attachment != null)
+        {
+            GameObject link = Instantiate(attachment);
+            link.transform.GetChild(0).localRotation = linkRot;
+            HingeJoint2D joint = link.AddComponent<HingeJoint2D>();
+            joint.connectedAnchor = ropeVec;
+            joint.connectedBody = prevRB;
+            
+            lineRenderer.SetPosition(numOfLinks + 1, parentTrans + gameObject.transform.GetChild(numOfLinks + 1 + 1).transform.localPosition);
+            linePositions[numOfLinks + 1] = parentTrans + gameObject.transform.GetChild(numOfLinks + 1 + 1).transform.localPosition;
+        }
     }
 }

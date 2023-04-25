@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -263,7 +264,13 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadSceneWithDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        SceneManager.LoadSceneAsync(m_currScene != null ? m_currScene : "Hub");
+        SceneManager.LoadSceneAsync(m_currScene);
+        //This doesn't do what you think it does
+        if (!SceneManager.GetSceneByName(m_currScene).IsValid())
+        {
+            SceneManager.LoadSceneAsync("Hub");
+        } 
+     
     } 
 
     #endregion
