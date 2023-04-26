@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
         //m_playerInput.actions["SlideLeft"].performed += InteractAction;
         //m_playerInput.actions["SlideRight"].performed += SlideRightAction;
         m_playerInput.actions.actionMaps[0].Enable();
+        m_playerInput.actions["Pause"].Disable();
         m_playerInput.actions.actionMaps[1].Enable();
 
         //Testing Actions
@@ -207,6 +208,7 @@ public class PlayerController : MonoBehaviour
     {
         controlledPawn = pawn;
         pawn.PC = this;
+        m_playerInput.actions["Pause"].Enable();
     }
 
     public void OnTesting()

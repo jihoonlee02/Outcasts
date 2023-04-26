@@ -9,7 +9,7 @@ public class DialogueInvokee : Invokee
 
     private void Start()
     {
-        if (m_playOnAwake) DialogueManager.Instance.DisplayDialogue(m_dialogueObject);
+        if (m_playOnAwake) StartCoroutine(ActivateWithDelay());
     }
 
     protected override void OnActivate()
@@ -20,6 +20,12 @@ public class DialogueInvokee : Invokee
     protected override void OnDeactivate()
     {
         
+    }
+
+    private IEnumerator ActivateWithDelay()
+    {
+        yield return new WaitForSeconds(delay);
+        DialogueManager.Instance.DisplayDialogue(m_dialogueObject);
     }
 
 

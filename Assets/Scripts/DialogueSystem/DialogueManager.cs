@@ -50,8 +50,17 @@ public class DialogueManager : MonoBehaviour
 
     public void HideDialogue()
     {
-        dialogueBox.GetComponent<Animator>().Play("Disappear");
-        inProduction = false;
+        if (inProduction)
+        {
+            dialogueBox.GetComponent<Animator>().Play("Disappear");
+            inProduction = false;
+        }  
+    }
+
+    public void StopDialogue()
+    {
+        StopAllCoroutines();
+        HideDialogue();
     }
 
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
