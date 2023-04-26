@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool isTesting = false;
     [SerializeField] private GameObject levelThings;
 
+    private bool exited = false;
+
     
     private void Awake()
     {   
@@ -72,7 +74,7 @@ public class LevelManager : MonoBehaviour
     {
         // Though this is in the update method, it should only get invoked once...
         // ...hopefully
-        if (m_asheExitDoor != null && m_tinkerExitDoor != null 
+        if (!exited && m_asheExitDoor != null && m_tinkerExitDoor != null 
             && m_asheExitDoor.OnDoor && m_tinkerExitDoor.OnDoor) OnLevelExit();
     }
 
@@ -87,6 +89,7 @@ public class LevelManager : MonoBehaviour
         //This shouldn't be done immeditly
         if (useSetupDefault) GameManager.Instance.TransitionToNextScene();
         else GameManager.Instance.LoadToScene(m_nextScene);
+        exited = true;
 
     }
 }

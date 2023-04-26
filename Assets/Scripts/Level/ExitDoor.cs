@@ -16,7 +16,7 @@ public class ExitDoor : MonoBehaviour
     private void Start()
     {
         m_animator = GetComponentInChildren<Animator>();
-        closeCoolDown = 0f;
+        closeCoolDown = 0.5f;
     }
 
     private void Update()

@@ -12,11 +12,13 @@ public class AsheLiftingState : State
         m_animationName = "Lifting";
         InitializeSubState();
     }
-
+    private float prevMass = 0f;
     public override void EnterState()
     {
         Debug.Log("Switched to AsheLifting");
-        m_followingY = ((AshePawn)m_context).HeldObject.transform.position.y - m_context.transform.position.y + 0.01f;
+        m_followingY = ((AshePawn)m_context).HeldObject.transform.position.y - m_context.transform.position.y - 0.01f;
+        //prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
+        //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
 
     }
     public override void UpdateState()
@@ -30,6 +32,7 @@ public class AsheLiftingState : State
         //{
         //    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
         //}
+        //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         ((AshePawn)m_context).HeldObject = null;
     }
     public override void InitializeSubState()
@@ -63,7 +66,7 @@ public class AsheLiftingState : State
         else if (((AshePawn)m_context).IsPunching)
         {
             ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>()
-                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.01f, 0.01f), ForceMode2D.Impulse);
+                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.0009f, 0.0009f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());
         }
     }

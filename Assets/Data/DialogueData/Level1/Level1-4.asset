@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627f7f95e7685b94886791dcf97a0164, type: 3}
+  m_Name: Level1-4
+  m_EditorClassIdentifier: 
+  dialogue:
+  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
+    speed: 3
+    delay: 1.8
+    text: Maybe I could shoot that gry square using 'X or []'

@@ -53,7 +53,7 @@ public class Gauntlet : Tool
         if (inUse) { return; }
         m_grabCollider.enabled = true;
         inUse = true;
-        m_punchCollider.offset = new Vector2(offsetXGrab * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYGrab);
+        m_grabCollider.offset = new Vector2(offsetXGrab * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYGrab);
         currTime = Time.time + animationLength;
         ((AshePawn)m_user).IsPunching = true;
     }
@@ -68,8 +68,15 @@ public class Gauntlet : Tool
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Grabbable grabbable = collision.gameObject.GetComponent<Grabbable>();
-        grabbable?.Grab(m_user);
-        item = grabbable;
+        if (grabbable != null)
+        {
+            ((AshePawn)m_user).IsLifting = true;
+            grabbable.transform.SetParent(transform, true);
+            grabbable.transform.position = new Vector3(grabbable.transform.position.x, ((AshePawn)m_user).transform.position.y + 5f);
+            ((AshePawn)m_user).HeldObject = grabbable.gameObject;
+            grabbable.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+        
     }
 
 

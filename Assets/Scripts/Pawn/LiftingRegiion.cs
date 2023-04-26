@@ -38,7 +38,6 @@ public class LiftingRegiion : MonoBehaviour
         if (physical != null)
         {
             ashe.IsLifting = true;
-            physical.transform.SetParent(transform, true);
         }
             
     }
@@ -50,7 +49,7 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
-            cooldownTime = Time.time + delay;
+            //cooldownTime = Time.time + delay;
             //tinkerPawn.transform.SetParent(oldParent, true);
             //tinkerPawn.GetComponent<FixedJoint2D>().connectedBody = null;
             return;
@@ -66,7 +65,7 @@ public class LiftingRegiion : MonoBehaviour
             tinkerPawn.IsHeld = true;
             ashe.HeldObject = tinkerPawn.gameObject;
             tinkerPawn.RB.velocity = Vector2.zero;
-            cooldownTime = Time.time + delay;
+            //cooldownTime = Time.time + delay;
             //oldParent = tinkerPawn.transform.parent;
             //tinkerPawn.transform.SetParent(transform, true);
             //tinkerPawn.FixedJoint.connectedBody = ashe.RB;
@@ -79,7 +78,8 @@ public class LiftingRegiion : MonoBehaviour
         if (physical != null)
         {
             ashe.IsLifting = true;
-            physical.transform.SetParent(transform, true);
+            ashe.HeldObject = physical.gameObject;
+            physical.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 
@@ -90,10 +90,20 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
-            cooldownTime = Time.time + delay;
+            //cooldownTime = Time.time + delay;
             //tinkerPawn.transform.SetParent(oldParent, true);
             //tinkerPawn.GetComponent<FixedJoint2D>().connectedBody = null;
             return;
+        }
+
+        // Physical Object defintion
+        var physical = collision.gameObject.GetComponent<Grabbable>();
+        if (physical != null)
+        {
+            ashe.IsLifting = true;
+            physical.transform.SetParent(transform, true);
+            ashe.HeldObject = physical.gameObject;
+            physical.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 

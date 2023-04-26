@@ -31,6 +31,14 @@ public class Breakable : MonoBehaviour
         renderer.enabled = false;
 
         yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<Projectile>())
+            {
+                child.SetParent(Pooler.Instance.transform, false);
+                child.gameObject.SetActive(false);
+            }
+        }
         Destroy(gameObject);
     }
 
