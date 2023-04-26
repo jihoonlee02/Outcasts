@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayDialogue(DialogueObject a_dialogueObject)
     {
-        if (inProduction) return;
+        if (inProduction) StopAllCoroutines();
         inProduction = true;
         dialogueBox.GetComponent<Animator>().Play("Appear");
         StartCoroutine(RunThroughDialogue(a_dialogueObject));
@@ -50,8 +50,17 @@ public class DialogueManager : MonoBehaviour
 
     public void HideDialogue()
     {
-        dialogueBox.GetComponent<Animator>().Play("Disappear");
-        inProduction = false;
+         dialogueBox.GetComponent<Animator>().Play("Disappear");
+         inProduction = false;
+    }
+
+    public void StopDialogue()
+    {
+        if (inProduction)
+        {
+            StopAllCoroutines();
+            HideDialogue();
+        }        
     }
 
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)

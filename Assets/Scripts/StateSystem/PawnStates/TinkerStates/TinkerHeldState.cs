@@ -20,6 +20,7 @@ public class TinkerHeldState : State
         if (m_context.IsJumping) 
         {
             SwitchState(m_factory.TinkerDefaultState());
+            //m_context.RB.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
         }
     }
 
@@ -34,14 +35,14 @@ public class TinkerHeldState : State
         //m_context.FixedJoint.enabled = true;
         m_context.RB.mass = 0f;
         //Distance between tinker's center position and Ashe's center position
-        m_followingY = m_context.transform.position.y - GameManager.Instance.Ashe.transform.position.y - 0.01f;
+        m_followingY = m_context.transform.position.y - GameManager.Instance.Ashe.transform.position.y;
     }
 
     public override void UpdateState()
     {
         //Couppled Line Right, however this can only really happen if Ashe exists -> This is the hope
         //m_context.transform.position = new Vector3(GameManager.Instance.Ashe.transform.position.x, m_context.transform.position.y, m_context.transform.position.z);
-        m_context.transform.position = new Vector3(GameManager.Instance.Ashe.transform.position.x, m_followingY + GameManager.Instance.Ashe.transform.position.y, m_context.transform.position.z);
+        //m_context.transform.position = new Vector3(GameManager.Instance.Ashe.transform.position.x, m_followingY + GameManager.Instance.Ashe.transform.position.y, m_context.transform.position.z);
         //m_worldPosition = m_context.transform.position.x != 0 ? m_context.transform.position : m_worldPosition;
     }
 

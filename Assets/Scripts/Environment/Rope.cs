@@ -8,6 +8,8 @@ public class Rope : MonoBehaviour
     private bool anchored;
     [SerializeField]
     private float spaceBetweenLinks = 0.1f;
+    [SerializeField]
+    private GameObject attachment;
 
     private int numOfLinks;
     private Vector3[] linePositions;
@@ -32,7 +34,7 @@ public class Rope : MonoBehaviour
         }
     }
 
-    private void GenerateRope() {
+    protected virtual void GenerateRope() {
         start = gameObject.transform.GetChild(0).gameObject;
         end = gameObject.transform.GetChild(1).gameObject;
         linkPrefab = (GameObject)Resources.Load("Prefabs/Rope/Link", typeof(GameObject));
@@ -63,6 +65,7 @@ public class Rope : MonoBehaviour
         }
         
         Rigidbody2D prevRB = firstLink.GetComponent<Rigidbody2D>();
+        Transform lastLink = null;
         for (int i = 1; i <= numOfLinks; i++) {
             GameObject link = Instantiate(linkPrefab, parentTrans + ((linkPrefab.transform.localScale.x * i) * (new Vector3(ropeVec.x, ropeVec.y, 0))), Quaternion.identity, transform);
             link.transform.GetChild(0).localRotation = linkRot;
@@ -73,6 +76,19 @@ public class Rope : MonoBehaviour
 
             lineRenderer.SetPosition(i, parentTrans + gameObject.transform.GetChild(i + 1).transform.localPosition);
             linePositions[i] = parentTrans + gameObject.transform.GetChild(i + 1).transform.localPosition;
+            if (i == numOfLinks) lastLink = link.transform;
+        }
+
+        if (attachment != null)
+        {
+            GameObject link = Instantiate(attachment);
+            link.transform.GetChild(0).localRotation = linkRot;
+            HingeJoint2D joint = link.AddComponent<HingeJoint2D>();
+            joint.connectedAnchor = ropeVec;
+            joint.connectedBody = prevRB;
+            attachment.transform.SetParent(lastLink, false);
+            lineRenderer.SetPosition(numOfLinks + 1, parentTrans + gameObject.transform.GetChild(numOfLinks + 1 + 1).transform.localPosition);
+            linePositions[numOfLinks + 1] = parentTrans + gameObject.transform.GetChild(numOfLinks + 1 + 1).transform.localPosition;
         }
     }
 }

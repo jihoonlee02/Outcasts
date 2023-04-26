@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 6594316072152207534}
   - component: {fileID: 4913691275906960489}
   - component: {fileID: 8514101592737147089}
+  - component: {fileID: 6018755371134081558}
   m_Layer: 8
   m_Name: AshHead
   m_TagString: Untagged
@@ -250,6 +251,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ashe: {fileID: 1860670653781505588}
+--- !u!61 &6018755371134081558
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100192524187280813}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.002537042, y: 4.871324}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7209038, y: 4.438443}
+  m_EdgeRadius: 0
 --- !u!1 &3130537325049219110
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +511,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228331019
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 473671796, guid: d0eff5c2c3224e541b786731df3f8e4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -700,9 +727,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228331019
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1776414900, guid: 3835d751fd6594948a41f39bce7a84de, type: 3}
+  m_Sprite: {fileID: 1271564955, guid: e8aa6b6dab17390499861696b6b565bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

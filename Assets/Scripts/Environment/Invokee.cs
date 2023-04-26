@@ -42,7 +42,7 @@ public abstract class Invokee : MonoBehaviour
 
     private IEnumerator DelayActivate()
     {
-        yield return delay;
+        yield return new WaitForSeconds(delay);
         OnActivate();
     }
 }

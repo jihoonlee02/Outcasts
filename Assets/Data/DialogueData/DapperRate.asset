@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - profile: {fileID: 0}
+    alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    waitTime: 4
+    speed: 0
+    delay: 0
     text: Thank you for playing in the M2 Demo!
   - profile: {fileID: 0}
+    alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    waitTime: 3
+    speed: 0
+    delay: 0
     text: Here's a Dapper Rat!

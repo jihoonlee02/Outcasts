@@ -9,6 +9,7 @@ TagManager:
   - Rope
   - Gauntlet
   - physical
+  - projectile
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Door
+    uniqueID: 2231994689
     locked: 0
   - name: Projectiles
     uniqueID: 1321301849

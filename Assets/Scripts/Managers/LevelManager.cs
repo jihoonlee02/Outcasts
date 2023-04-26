@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Pawns")]
+    [Header("Level Attributes")]
     //[SerializeField] private Pawn m_tinker;
     //[SerializeField] private Pawn m_ashe;
     [SerializeField] private ExitDoor m_tinkerExitDoor;
@@ -15,13 +15,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform m_tinkerSpawn;
     [SerializeField] private Transform m_asheSpawn;
     [SerializeField] private AudioClip m_music;
+    [SerializeField] private bool useSetupDefault = false;
+    [SerializeField] private string m_nextScene;
     //public Pawn Tinker => m_tinker;
     //public Pawn Ashe => m_ashe;
 
     //Level Manager will not handle next levels, that is gamemanagers job
     //[SerializeField] private Level currLevel;
     //[SerializeField] private Level[] levels;
-    
+
 
 
     [Header("Dev Details")]
@@ -29,6 +31,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private UnityEvent invokeAtStart;
     [SerializeField] private bool isTesting = false;
     [SerializeField] private GameObject levelThings;
+
+    private bool exited = false;
+
+    
     private void Awake()
     {   
         if (isTesting & !isSetupScene)
@@ -50,13 +56,13 @@ public class LevelManager : MonoBehaviour
         m_tinkerSpawn.gameObject.SetActive(false);
         m_asheSpawn.gameObject.SetActive(false);
 
-        if (isSetupScene)
-        {
-            GameManager.Instance.TransitionToNextScene();
-            return;
-        }
+        
 
         GameManager.Instance.DoorTransition.OpenDoors();
+        if (isSetupScene)
+        {
+            return;
+        }
         AudioManager.Instance.PlayAudio();
 
         invokeAtStart.Invoke();
@@ -68,7 +74,7 @@ public class LevelManager : MonoBehaviour
     {
         // Though this is in the update method, it should only get invoked once...
         // ...hopefully
-        if (m_asheExitDoor != null && m_tinkerExitDoor != null 
+        if (!exited && m_asheExitDoor != null && m_tinkerExitDoor != null 
             && m_asheExitDoor.OnDoor && m_tinkerExitDoor.OnDoor) OnLevelExit();
     }
 
@@ -81,7 +87,10 @@ public class LevelManager : MonoBehaviour
         //DialogueManager.Instance.DisplayDialogue();
 
         //This shouldn't be done immeditly
-        GameManager.Instance.TransitionToNextScene();
+        if (useSetupDefault) GameManager.Instance.TransitionToNextScene();
+        else GameManager.Instance.LoadToScene(m_nextScene);
+        exited = true;
+
     }
 }
 

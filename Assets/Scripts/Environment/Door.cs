@@ -9,8 +9,11 @@ public class Door : Invokee
     private bool open;
     [SerializeField]
     private float timeToOpen = 0.5f;
+    [SerializeField] private bool horizontal = false;
     private Vector3 doorPosDown;
     private Vector3 doorPosUp;
+    private Vector3 doorPosRight;
+    private Vector3 doorPosLeft;
     private Vector3 doorVel = Vector3.zero;
     private SpriteRenderer spriteRenderer;
     private TilemapRenderer tilemapRenderer;
@@ -25,35 +28,76 @@ public class Door : Invokee
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
-            doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            if (!open)
+            if (horizontal)
             {
-                doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                doorPosUp = doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                doorPosRight = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                if (!open)
+                {
+                    doorPosRight = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosLeft = doorPosRight + (Vector3.left * spriteRenderer.sprite.bounds.size.x * transform.localScale.x);
+                }
+                else
+                {
+                    doorPosLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosRight = doorPosLeft + (Vector3.right * spriteRenderer.sprite.bounds.size.x * transform.localScale.x);
+                }
+                //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                doorDist = Vector3.Distance(doorPosRight, doorPosLeft);
             }
             else
             {
-                doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                doorPosDown = doorPosUp + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                if (!open)
+                {
+                    doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosUp = doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                }
+                else
+                {
+                    doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosDown = doorPosUp + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                }
+                //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                doorDist = Vector3.Distance(doorPosDown, doorPosUp);
             }
-            //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
-            doorDist = Vector3.Distance(doorPosDown, doorPosUp);
-        } else
+            
+        } 
+        else
         {
-            tilemapRenderer = gameObject.GetComponentInChildren<TilemapRenderer>();
-            doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            if (!open)
+            if (horizontal)
             {
-                doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                doorPosUp = doorPosDown + (Vector3.up * tilemapRenderer.bounds.size.y * transform.localScale.y);
+                tilemapRenderer = gameObject.GetComponentInChildren<TilemapRenderer>();
+                doorPosRight = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                if (!open)
+                {
+                    doorPosRight = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosLeft = doorPosRight + (Vector3.left * tilemapRenderer.bounds.size.x * transform.localScale.x);
+                }
+                else
+                {
+                    doorPosLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosRight = doorPosLeft + (Vector3.right * tilemapRenderer.bounds.size.x * transform.localScale.x);
+                }
+                //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                doorDist = Vector3.Distance(doorPosRight, doorPosLeft);
             }
             else
             {
-                doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                doorPosDown = doorPosUp + (Vector3.down * tilemapRenderer.bounds.size.y * transform.localScale.y);
+                tilemapRenderer = gameObject.GetComponentInChildren<TilemapRenderer>();
+                doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                if (!open)
+                {
+                    doorPosDown = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosUp = doorPosDown + (Vector3.up * tilemapRenderer.bounds.size.y * transform.localScale.y);
+                }
+                else
+                {
+                    doorPosUp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    doorPosDown = doorPosUp + (Vector3.down * tilemapRenderer.bounds.size.y * transform.localScale.y);
+                }
+                //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
+                doorDist = Vector3.Distance(doorPosDown, doorPosUp);
             }
-            //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
-            doorDist = Vector3.Distance(doorPosDown, doorPosUp);
         }
             
         
@@ -62,11 +106,28 @@ public class Door : Invokee
     // Update is called once per frame
     void Update()
     {
-        if (open) {
-            transform.position = Vector3.SmoothDamp(transform.position, doorPosUp, ref doorVel, timeToOpen * perOpen);
-        } else {
-            transform.position = Vector3.SmoothDamp(transform.position, doorPosDown, ref doorVel, timeToOpen * perOpen);
+        if (horizontal)
+        {
+            if (open)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, doorPosLeft, ref doorVel, timeToOpen * perOpen);
+            }
+            else
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, doorPosRight, ref doorVel, timeToOpen * perOpen);
+            }
         }
+        else
+        {
+            if (open)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, doorPosUp, ref doorVel, timeToOpen * perOpen);
+            }
+            else
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, doorPosDown, ref doorVel, timeToOpen * perOpen);
+            }
+        }   
     }
 
     //Open Door Logic
@@ -74,7 +135,15 @@ public class Door : Invokee
     {
         if (open) return;
         Debug.Log("Open");
-        perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosUp) / doorDist : Vector3.Distance(transform.position, doorPosDown);
+        if (horizontal)
+        {
+            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosLeft) / doorDist : Vector3.Distance(transform.position, doorPosRight);
+        }
+        else
+        {
+            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosUp) / doorDist : Vector3.Distance(transform.position, doorPosDown);
+        }
+        
         open = !open;    
     }
 
@@ -83,7 +152,15 @@ public class Door : Invokee
     {
         if (!open) return;
         Debug.Log("Close");
-        perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosDown) / doorDist : Vector3.Distance(transform.position, doorPosUp) / doorDist;
+        if (horizontal)
+        {
+            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosRight) / doorDist : Vector3.Distance(transform.position, doorPosLeft) / doorDist;
+        }
+        else
+        {
+            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosDown) / doorDist : Vector3.Distance(transform.position, doorPosUp) / doorDist;
+        }
+        
         open = !open;
     }
 }
