@@ -246,13 +246,10 @@ public class GameManager : MonoBehaviour
 
         if (next.name == "MainMenu")
         {
-            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
-            SceneManager.MoveGameObjectToScene(m_visualCanvas, SceneManager.GetActiveScene());
-            SceneManager.MoveGameObjectToScene(transform.parent.gameObject, SceneManager.GetActiveScene());
-            SceneManager.MoveGameObjectToScene(m_tinker.PC.gameObject, SceneManager.GetActiveScene());
-            SceneManager.MoveGameObjectToScene(m_ashe.PC.gameObject, SceneManager.GetActiveScene());
-            SceneManager.MoveGameObjectToScene(m_tinker.gameObject, SceneManager.GetActiveScene());
-            SceneManager.MoveGameObjectToScene(m_ashe.gameObject, SceneManager.GetActiveScene());
+            Destroy(transform.parent.gameObject);
+            Destroy(m_tinker.PC.gameObject);
+            Destroy(m_ashe.PC.gameObject);
+            Destroy(gameObject);
             return;
         }
 

@@ -20,6 +20,7 @@ public class TinkerHeldState : State
         if (m_context.IsJumping) 
         {
             SwitchState(m_factory.TinkerDefaultState());
+            //m_context.RB.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
         }
     }
 

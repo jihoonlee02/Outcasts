@@ -13,7 +13,7 @@ public class LiftingRegiion : MonoBehaviour
 
     private void Start()
     {
-        delay = 0.2f;
+        delay = 0.4f; // 0.4f was better
         cooldownTime = Time.time;
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,7 +49,7 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
-            //cooldownTime = Time.time + delay;
+            cooldownTime = Time.time + delay;
             //tinkerPawn.transform.SetParent(oldParent, true);
             //tinkerPawn.GetComponent<FixedJoint2D>().connectedBody = null;
             return;
@@ -59,13 +59,13 @@ public class LiftingRegiion : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
-        if (tinkerPawn != null)
+        if (Time.time > cooldownTime && tinkerPawn != null)
         {
             ashe.IsLifting = true;
             tinkerPawn.IsHeld = true;
             ashe.HeldObject = tinkerPawn.gameObject;
             tinkerPawn.RB.velocity = Vector2.zero;
-            //cooldownTime = Time.time + delay;
+            //cooldownTime = Time.time + delay; //This is the sus one
             //oldParent = tinkerPawn.transform.parent;
             //tinkerPawn.transform.SetParent(transform, true);
             //tinkerPawn.FixedJoint.connectedBody = ashe.RB;
@@ -86,13 +86,11 @@ public class LiftingRegiion : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
-        if (tinkerPawn != null)
+        if (tinkerPawn != null) //This is the sus one
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
-            //cooldownTime = Time.time + delay;
-            //tinkerPawn.transform.SetParent(oldParent, true);
-            //tinkerPawn.GetComponent<FixedJoint2D>().connectedBody = null;
+            cooldownTime = Time.time + delay;
             return;
         }
 

@@ -66,7 +66,7 @@ public class AsheLiftingState : State
         else if (((AshePawn)m_context).IsPunching)
         {
             ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>()
-                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.0009f, 0.0009f), ForceMode2D.Impulse);
+                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.0007f, 0.0007f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());
         }
     }
