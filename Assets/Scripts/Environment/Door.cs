@@ -34,12 +34,12 @@ public class Door : Invokee
                 if (!open)
                 {
                     doorPosRight = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    doorPosLeft = doorPosRight + (Vector3.left * spriteRenderer.sprite.bounds.size.x * transform.localScale.x);
+                    doorPosLeft = doorPosRight + (Vector3.left * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
                 }
                 else
                 {
                     doorPosLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    doorPosRight = doorPosLeft + (Vector3.right * spriteRenderer.sprite.bounds.size.x * transform.localScale.x);
+                    doorPosRight = doorPosLeft + (Vector3.right * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
                 }
                 //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
                 doorDist = Vector3.Distance(doorPosRight, doorPosLeft);
@@ -71,12 +71,12 @@ public class Door : Invokee
                 if (!open)
                 {
                     doorPosRight = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    doorPosLeft = doorPosRight + (Vector3.left * tilemapRenderer.bounds.size.x * transform.localScale.x);
+                    doorPosLeft = doorPosRight + (Vector3.left * tilemapRenderer.bounds.size.y * transform.localScale.y);
                 }
                 else
                 {
                     doorPosLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    doorPosRight = doorPosLeft + (Vector3.right * tilemapRenderer.bounds.size.x * transform.localScale.x);
+                    doorPosRight = doorPosLeft + (Vector3.right * tilemapRenderer.bounds.size.y * transform.localScale.y);
                 }
                 //doorPosUp = !open ? doorPosDown + (Vector3.up * spriteRenderer.sprite.bounds.size.y * transform.localScale.y) : doorPosDown + (Vector3.down * spriteRenderer.sprite.bounds.size.y * transform.localScale.y);
                 doorDist = Vector3.Distance(doorPosRight, doorPosLeft);
