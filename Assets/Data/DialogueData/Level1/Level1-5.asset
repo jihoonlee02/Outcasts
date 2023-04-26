@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627f7f95e7685b94886791dcf97a0164, type: 3}
-  m_Name: Level1-3
+  m_Name: Level1-5
   m_EditorClassIdentifier: 
   dialogue:
-  - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
     alignment: 1
     typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
     speed: 3
-    delay: 3
-    text: Hmm, I think I can punch using 'X or []' to break this
+    delay: 2
+    text: Stop goofing off already!
+  - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
+    speed: 3
+    delay: 1.8
+    text: Just let me up

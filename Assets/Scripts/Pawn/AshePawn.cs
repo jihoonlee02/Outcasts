@@ -33,6 +33,6 @@ public class AshePawn : Pawn
 
     public override void SecondaryAction(InputAction.CallbackContext context)
     {
-        m_gauntletReference.UseSecondaryAction();
+        //m_gauntletReference.UseSecondaryAction();
     }
 }

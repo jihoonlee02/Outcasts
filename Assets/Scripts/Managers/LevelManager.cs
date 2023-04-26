@@ -56,13 +56,13 @@ public class LevelManager : MonoBehaviour
         m_tinkerSpawn.gameObject.SetActive(false);
         m_asheSpawn.gameObject.SetActive(false);
 
-        if (isSetupScene)
-        {
-            GameManager.Instance.TransitionToNextScene();
-            return;
-        }
+        
 
         GameManager.Instance.DoorTransition.OpenDoors();
+        if (isSetupScene)
+        {
+            return;
+        }
         AudioManager.Instance.PlayAudio();
 
         invokeAtStart.Invoke();
