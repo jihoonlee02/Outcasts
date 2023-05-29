@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2888086, g: 0.14056125, b: 0.114383124, a: 1}
+  m_IndirectSpecularColor: {r: 0.29936957, g: 0.29936957, b: 0.29936957, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23445,6 +23445,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331871878269861194, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1226954538}
+    - target: {fileID: 8297262605328527791, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_EnableCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860901101698846981, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 141551224575190783, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -23523,7 +23543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690306616174003480, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_Spacing
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 728977824691471658, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_SendPointerHoverToParent
@@ -23631,6 +23651,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806318643212420735, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402336608854451944, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4690877073918105173, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
@@ -23767,7 +23791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275004686630944320, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6275004686677371962, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23900,26 +23924,6 @@ PrefabInstance:
     - target: {fileID: 8819943228152742313, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: MainHub
-      objectReference: {fileID: 0}
-    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 435766722861800184, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5331871878269861194, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1226954538}
-    - target: {fileID: 8297262605328527791, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_EnableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860901101698846981, guid: 274e0df8704fefb42befa7ef6d75e10a, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
