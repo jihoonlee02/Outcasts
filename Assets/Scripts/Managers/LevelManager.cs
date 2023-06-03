@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
     
     private void Awake()
     {   
-        if (isTesting & !isSetupScene)
+        if (GameObject.Find("LevelThings") == null && !isSetupScene)
         {
             Instantiate(levelThings);
         }

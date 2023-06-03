@@ -71,7 +71,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         m_currScene = SceneManager.GetActiveScene().name;
-        
+        isPaused = false;
+
+
         m_scenes = new Queue<string>();
 
         AddSceneToQueue(initialScenesToEnqueue);
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour
             control_tinker = true;
         }
         pawn.PC = pi.GetComponent<PlayerController>();
+        pawn.PC.PlayerInput.actions["Pause"].Disable();
         pawn.PC.ControlPawn(pawn);
         pawn.PC.EnablePawnControl();
         if (isTesting) pawn.PC.OnTesting();
@@ -127,26 +130,27 @@ public class GameManager : MonoBehaviour
 
     public void HandlePlayerControllerExit(PlayerInput pi)
     {
-        var returnPawn = pi.GetComponent<PlayerController>().ControlledPawn;
-        if (returnPawn == m_tinker)
+        var pc = pi.GetComponent<PlayerController>();
+        if (pc.ControlledPawn == m_tinker)
         {
             control_tinker = false;
             m_characterSelection.Select_Tinker.interactable = true;
         }
-        else if (returnPawn == m_ashe)
+        else if (pc.ControlledPawn == m_ashe)
         {
             control_ashe = false;
             m_characterSelection.Select_Ashe.interactable = true;
         }
 
-        pi.GetComponent<PlayerController>().ControlPawn(null);
+        pc.ControlPawn(null);
+        Destroy(pc);
     }
 
     public void OpenUpPlayerSelecitonMenu(PlayerInput pi)
     {
         var pc = pi.GetComponent<PlayerController>();
         // Thank you for being nice PC
-        pc.PlayerInput.actions["Pause"].Disable();
+        //
 
         //This could have been just done through an array, but as we are only having two pawns to keep track of
         //This will do fine no matter its icckyniss
@@ -247,9 +251,16 @@ public class GameManager : MonoBehaviour
             AddSceneToQueue(initialScenesToEnqueue);
         }
 
-        if (next.name == "MainMenu") { 
-            if (m_tinker.PC != null) Destroy(m_tinker.PC.gameObject);
-            if (m_ashe.PC != null) Destroy(m_ashe.PC.gameObject);
+        if (next.name == "MainMenu") {
+            if (m_tinker.PC != null)
+            {
+                Destroy(m_tinker.PC.gameObject);
+            }
+
+            if (m_ashe.PC != null)
+            {
+                Destroy(m_ashe.PC.gameObject);
+            }
             
             Destroy(transform.parent.gameObject);
             return;

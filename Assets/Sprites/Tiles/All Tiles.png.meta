@@ -935,7 +935,6 @@ TextureImporter:
       - - {x: -7, y: 7}
         - {x: -7, y: -7}
         - {x: 2, y: -7}
-        - {x: 2, y: -2}
         - {x: 7, y: -2}
         - {x: 7, y: 7}
       tessellationDetail: 0
@@ -986,7 +985,6 @@ TextureImporter:
       physicsShape:
       - - {x: -7, y: 7}
         - {x: -7, y: -2}
-        - {x: -2, y: -2}
         - {x: -2, y: -7}
         - {x: 7, y: -7}
         - {x: 7, y: 7}
@@ -1061,10 +1059,9 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 2, y: -2}
-        - {x: 2, y: -7}
+      - - {x: -2, y: -7}
         - {x: 7, y: -7}
-        - {x: 7, y: -2}
+        - {x: 7, y: 2}
       tessellationDetail: 0
       bones: []
       spriteID: 2bf777d6d3629b74798b573d29baebd3
@@ -1112,9 +1109,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -7, y: -7}
-        - {x: -2, y: -7}
-        - {x: -2, y: -2}
-        - {x: -7, y: -2}
+        - {x: 2, y: -7}
+        - {x: -7, y: 2}
       tessellationDetail: 0
       bones: []
       spriteID: 793d4b6d5648c514aa77cd9876ed12ad
@@ -1324,9 +1320,8 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 2, y: 7}
-        - {x: 2, y: 3}
-        - {x: 7, y: 3}
+      - - {x: -2, y: 7}
+        - {x: 7, y: -2}
         - {x: 7, y: 7}
       tessellationDetail: 0
       bones: []
@@ -1375,9 +1370,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -7, y: 7}
-        - {x: -7, y: 3}
-        - {x: -2, y: 3}
-        - {x: -2, y: 7}
+        - {x: -7, y: -2}
+        - {x: 2, y: 7}
       tessellationDetail: 0
       bones: []
       spriteID: 5d44561540611a04e8924c5dbe43f13d
@@ -1503,7 +1497,6 @@ TextureImporter:
         - {x: -7, y: -7}
         - {x: 7, y: -7}
         - {x: 7, y: 2}
-        - {x: 2, y: 2}
         - {x: 2, y: 7}
       tessellationDetail: 0
       bones: []
@@ -1552,7 +1545,6 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -2, y: 7}
-        - {x: -2, y: 2}
         - {x: -7, y: 2}
         - {x: -7, y: -7}
         - {x: 7, y: -7}
@@ -1789,7 +1781,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      All Tiles_54: -1593898373
+      All Tiles_50: 1562012691
       All Tiles_64: 1102867965
       All Tiles_23: -1093330620
       All Tiles_21: -1701379064
@@ -1855,10 +1847,10 @@ TextureImporter:
       All Tiles_32: 1403525571
       All Tiles_49: -1127373950
       All Tiles_11: 449987092
+      All Tiles_18: 1782120917
       All Tiles_63: -500460135
       All Tiles_60: -729356920
-      All Tiles_50: 1562012691
-      All Tiles_18: 1782120917
+      All Tiles_54: -1593898373
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
