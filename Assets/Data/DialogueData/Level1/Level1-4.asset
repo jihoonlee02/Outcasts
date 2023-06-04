@@ -15,7 +15,10 @@ MonoBehaviour:
   dialogue:
   - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
     alignment: 0
-    typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 3
     delay: 1.8
     text: Maybe I could shoot that gray square using 'X or []'
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

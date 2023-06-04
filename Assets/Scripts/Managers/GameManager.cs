@@ -63,11 +63,6 @@ public class GameManager : MonoBehaviour
     
 
     private bool isPaused = false;
-    private bool isTesting = false;
-    public bool IsTesting
-    {
-        set { isTesting = value; }
-    }
     private void Awake()
     {
         m_currScene = SceneManager.GetActiveScene().name;
@@ -125,7 +120,6 @@ public class GameManager : MonoBehaviour
         pawn.PC.PlayerInput.actions["Pause"].Disable();
         pawn.PC.ControlPawn(pawn);
         pawn.PC.EnablePawnControl();
-        if (isTesting) pawn.PC.OnTesting();
     }
 
     public void HandlePlayerControllerExit(PlayerInput pi)

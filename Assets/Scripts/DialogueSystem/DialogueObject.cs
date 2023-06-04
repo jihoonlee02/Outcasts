@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
+using UnityEngine.Events;
 
 //#if UNITY_EDITOR
 //using UnityEditor;
@@ -39,6 +36,7 @@ public struct Dialogue
     [SerializeField] private float speed;
     [SerializeField] private float delay;
     [SerializeField] [TextArea] private string text;
+    [SerializeField] private UnityEvent onDialogue;
 
     public Sprite Profile => profile;
     public AudioClip TypeSound => typeSound;
@@ -46,6 +44,7 @@ public struct Dialogue
     public float Speed => speed;
     public float Delay => delay;
     public ProfileAlignment Alignment => alignment;
+    public UnityEvent OnDialogue => onDialogue;
 }
 
 public enum ProfileAlignment

@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions.actionMaps[1].Enable();
 
         //Testing Actions
-        m_playerInput.actions["Swap"].Disable();
+        //m_playerInput.actions["Swap"].Disable();
     }
 
     private void Start()
@@ -211,10 +211,6 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Pause"].Enable();
     }
 
-    public void OnTesting()
-    {
-        m_playerInput.actions["Swap"].Enable();
-    }
     public void EnablePawnControl()
     {
         m_playerInput.actions.actionMaps[0].Enable();

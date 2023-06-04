@@ -17,6 +17,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected HingeJoint2D m_hingeJoint;
     [SerializeField] protected FixedJoint2D m_fixedJoint;
     [SerializeField] protected PlayerController m_pc;
+    [SerializeField] protected Transform m_pawnCanvas;
 
     public PlayerController PC
     {
@@ -119,6 +120,46 @@ public class Pawn : MonoBehaviour
         m_currentState = m_states.PawnDefaultState();
     }
 
+
+    protected void Update()
+    {
+        //timer emulateed from Dawnsau Aug 10, 2021
+        lastGroundedTime += Time.deltaTime;
+        lastJumpTime += Time.deltaTime;
+        //HandleAudio();
+        m_currentState.UpdateStates();
+    }
+
+    protected void FixedUpdate()
+    {
+        // Calculates if the Pawn is grounded (better than constantly invoking a subroutine call)
+        isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
+            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
+        isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
+
+        //Make ending of jumps feel more fluid
+        if (m_rb.velocity.y < 0)
+        {
+            m_rb.gravityScale = gravityScale * fallGravityMultiplier;
+        }
+        else
+        {
+            m_rb.gravityScale = gravityScale;
+        }
+        m_animator.SetBool("IsGrounded", isGrounded);
+        if (isGrounded)
+        {
+            lastGroundedTime = jumpCoyoteTime;
+        }
+
+        //Dev Reasons
+        Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
+        Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
+        Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, m_collider.bounds.extents.y), Vector2.right * (m_collider.bounds.extents.x), Color.green);
+    }
+
+    #region Platforming
+
     /// <summary>
     /// Handles Movement of attach gameobject and deals with updating movement related animations
     /// Movements are only left and right in this world
@@ -171,42 +212,6 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    protected void Update()
-    {
-        //timer emulateed from Dawnsau Aug 10, 2021
-        lastGroundedTime += Time.deltaTime;
-        lastJumpTime += Time.deltaTime;
-        //HandleAudio();
-        m_currentState.UpdateStates();
-    }
-
-    protected void FixedUpdate()
-    {
-        // Calculates if the Pawn is grounded (better than constantly invoking a subroutine call)
-        isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
-            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
-        isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
-
-        //Make ending of jumps feel more fluid
-        if (m_rb.velocity.y < 0)
-        {
-            m_rb.gravityScale = gravityScale * fallGravityMultiplier;
-        }
-        else
-        {
-            m_rb.gravityScale = gravityScale;
-        }
-        m_animator.SetBool("IsGrounded", isGrounded);
-        if (isGrounded)
-        {
-            lastGroundedTime = jumpCoyoteTime;
-        }
-        
-        //Dev Reasons
-        Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
-        Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
-        Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, m_collider.bounds.extents.y), Vector2.right * (m_collider.bounds.extents.x), Color.green);
-    }
 
     public virtual void Jump()
     {
@@ -274,6 +279,24 @@ public class Pawn : MonoBehaviour
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Secondary Action");
     }
+
+    #endregion
+
+    #region Pawn UI
+
+    public void Alert(float timeLength)
+    { 
+        StartCoroutine(alertEnum(timeLength));
+    }
+
+    private IEnumerator alertEnum(float timeLength)
+    {
+        m_pawnCanvas.Find("Alert").gameObject.SetActive(true);
+        yield return new WaitForSeconds(timeLength);
+        m_pawnCanvas.Find("Alert").gameObject.SetActive(false);
+    }
+
+    #endregion
 
     #region Togglers
 

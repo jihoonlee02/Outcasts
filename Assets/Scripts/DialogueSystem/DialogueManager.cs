@@ -70,6 +70,7 @@ public class DialogueManager : MonoBehaviour
             AdjustProfileSegment(dialogue.Profile, dialogue.Alignment);
             m_dialogueProducer.TypeSound = dialogue.TypeSound;
             m_dialogueProducer.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
+            dialogue.OnDialogue.Invoke();
             yield return m_dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
         }
 

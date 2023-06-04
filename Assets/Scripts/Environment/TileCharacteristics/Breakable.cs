@@ -28,7 +28,9 @@ public class Breakable : MonoBehaviour
     {
         particle.Play();
         collider.enabled = false;
-        renderer.enabled = false;
+        //renderer.enabled = false;
+        // Replaced with this in order to destroy floating nails
+        Destroy(renderer.gameObject);
 
         yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
         foreach (Transform child in transform)
@@ -61,7 +63,7 @@ public class Breakable : MonoBehaviour
         if (rb != null) vel = rb.velocity;
 
         if (!broken && ((m_requiresAshe && collider.gameObject.tag == "Gauntlet") 
-            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= 4f || Mathf.Abs(vel.y) >= 4f))))
+            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= 3f || Mathf.Abs(vel.y) >= 3f))))
         {
             m_AudioSource.Play();
             StartCoroutine(Break());
