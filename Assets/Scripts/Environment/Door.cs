@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Door : Invokee
 {
+    [Header("Door Fields")]
     [SerializeField]
     private bool open;
     [SerializeField]
