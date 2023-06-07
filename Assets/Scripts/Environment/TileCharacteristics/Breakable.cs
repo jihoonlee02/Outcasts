@@ -12,9 +12,10 @@ public class Breakable : MonoBehaviour
     private TilemapRenderer renderer;
     private AudioSource m_AudioSource;
     [SerializeField] private bool m_requiresAshe = true;
-    [SerializeField, Tooltip("No Implementation with this one yet")] 
+    [SerializeField, Tooltip("No Implementation with this one yet")]
     private bool m_requiresTinker = false;
     private bool broken = false;
+    [SerializeField] private float velocityImpact = 3f;
 
     private void Start() 
     {
@@ -63,7 +64,7 @@ public class Breakable : MonoBehaviour
         if (rb != null) vel = rb.velocity;
 
         if (!broken && ((m_requiresAshe && collider.gameObject.tag == "Gauntlet") 
-            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= 3f || Mathf.Abs(vel.y) >= 3f))))
+            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= velocityImpact || Mathf.Abs(vel.y) >= velocityImpact))))
         {
             m_AudioSource.Play();
             StartCoroutine(Break());

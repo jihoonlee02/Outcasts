@@ -10,10 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActions m_inputActions;
     [SerializeField] private Pawn controlledPawn;
     [SerializeField] private bool isDevMode;
-
     public Pawn ControlledPawn => controlledPawn;
     public PlayerInput PlayerInput => m_playerInput;
-
     public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
     public bool JumpActive
     {
