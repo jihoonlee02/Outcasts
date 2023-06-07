@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Invokee : MonoBehaviour
 {
+    [Header("Resources")]
+    [SerializeField] protected GameObject targetColor;
+
     [Header("Inovkee Details")]
     [SerializeField] protected int id;
     [SerializeField] protected float delay = 0f;
