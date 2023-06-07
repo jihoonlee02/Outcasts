@@ -8,7 +8,7 @@ public class PlatformMover : Invokee
 {
     [Header("Options")]
     [SerializeField] private Vector2[] m_waypoints;
-    [SerializeField, Range(0f, 1f)] private float speed = 1f;
+    [SerializeField, Range(0f, 10f)] private float speed = 1f;
     [SerializeField] private bool autoMove;
 
     # if UNITY_EDITOR
