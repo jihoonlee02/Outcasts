@@ -17,5 +17,8 @@ MonoBehaviour:
     alignment: 1
     typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
     speed: 3
-    delay: 3
+    delay: 4
     text: Hmm, I think I can punch using 'X or []' to break this
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

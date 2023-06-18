@@ -6,13 +6,17 @@ public class NailGun : Tool
 {
     [SerializeField] private Projectile projectile;
     [SerializeField] private bool directional;
+    [SerializeField] private int maxAmmo;
     private AudioSource m_audioSource;
+    private int currAmmo;
+
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
         m_audioSource.clip = m_user.Data.ScratchPadSounds[0];
     }
 
+    // Shoot the Nail Gun
     public void UsePrimaryAction(Vector2 inputVector)
     {
         m_audioSource.Play();
@@ -65,9 +69,9 @@ public class NailGun : Tool
             m_user.transform.position, Mathf.Sign(m_user.Animator.GetFloat("MoveX")) * Vector2.right);
     }
 
+    // Reload the Nail Gun
     public override void UseSecondaryAction()
     {
-        m_user.ToggleMovement();
-        m_user.ToggleJump();
+        //Pooler.Instance.
     }
 }
