@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,17 @@ public class TinkerPawn : Pawn
     }
     public override void PrimaryAction(InputAction.CallbackContext context)
     {
-        var direction = context.action.actionMap["Movement"].ReadValue<Vector2>();
+        Vector2 direction;
+
+        try
+        {
+            direction = context.action.actionMap["Movement"].ReadValue<Vector2>();
+        }
+        catch (Exception e)
+        {
+            direction = context.action.actionMap["MoveTinker"].ReadValue<Vector2>();
+        }
+        
         m_nailGunReference.UsePrimaryAction(direction);
     }
 

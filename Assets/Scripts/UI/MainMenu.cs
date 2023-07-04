@@ -50,12 +50,20 @@ public class MainMenu : MonoBehaviour
         m_iaa = GetComponent<InputSystemUIInputModule>().actionsAsset;
         m_eventSystem = GetComponent<EventSystem>();
         m_iaa.FindAction("Cancel").performed += BackAPanel;
+
+        m_eventSystem.SetSelectedGameObject(m_startGameButton);
     }
 
     public void StartGame()
     {
         m_doorTransition.CloseDoors();
-        StartCoroutine(DelaySceneLoad(2f));
+        StartCoroutine(DelaySceneLoad(2f, "Setup"));
+    }
+
+    public void StartGameSolo()
+    {
+        m_doorTransition.CloseDoors();
+        StartCoroutine(DelaySceneLoad(2f, "Setup_Solo"));
     }
 
     public void ExitGame()
@@ -63,10 +71,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private IEnumerator DelaySceneLoad(float seconds)
+    private IEnumerator DelaySceneLoad(float seconds, string scene_name)
     {
         yield return new WaitForSeconds(seconds);
-        SceneManager.LoadSceneAsync("Setup");
+        SceneManager.LoadSceneAsync(scene_name);
     }
 
     #region View Methods

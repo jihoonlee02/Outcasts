@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Pawn m_ashe;
     private PlayerController m_tinkerPC;
     private PlayerController m_ashePC;
+    private SoloController m_SC;
     public Pawn Tinker => m_tinker;
     public Pawn Ashe => m_ashe;
 
@@ -96,19 +97,36 @@ public class GameManager : MonoBehaviour
     public void HandlePlayerControllerEnter(PlayerInput pi)
     {
         DontDestroyOnLoad(pi);
-        if (m_tinkerPC == null && m_ashePC == null)
-        {
-            OpenUpPlayerSelecitonMenu(pi);
+
+        // Player Controller Moment
+        var pc = pi.GetComponent<PlayerController>();
+
+        if (pc != null)
+        { 
+            if (m_tinkerPC == null && m_ashePC == null)
+            {
+                OpenUpPlayerSelecitonMenu(pi);
+            }
+            else if (m_ashePC == null)
+            {
+                m_ashePC = pc;
+                GivePawn(m_ashePC, m_ashe);
+            }
+            else if (m_tinkerPC == null)
+            {
+                m_tinkerPC = pc;
+                GivePawn(m_tinkerPC, m_tinker);
+            }
+            return;
         } 
-        else if (m_ashePC == null)
+        
+        // Solo Controller Moment
+        var sc = pi.GetComponent<SoloController>();
+
+        if (sc != null)
         {
-            m_ashePC = pi.GetComponent<PlayerController>();
-            GivePawn(m_ashePC, m_ashe);
-        } 
-        else if (m_tinkerPC == null) 
-        {
-            m_tinkerPC = pi.GetComponent<PlayerController>();
-            GivePawn(m_tinkerPC, m_tinker);
+            sc.ControlTnAPawns((TinkerPawn)m_tinker, (AshePawn)m_ashe);
+            m_SC = sc;   
         }
     }
 
@@ -122,19 +140,33 @@ public class GameManager : MonoBehaviour
     public void HandlePlayerControllerExit(PlayerInput pi)
     {
         var pc = pi.GetComponent<PlayerController>();
-        if (pc.ControlledPawn == m_tinker)
+
+        if (pc != null)
         {
-            m_ashePC = null;
-            m_characterSelection.Select_Tinker.interactable = true;
-        }
-        else if (pc.ControlledPawn == m_ashe)
-        {
-            m_tinkerPC = null;
-            m_characterSelection.Select_Ashe.interactable = true;
+            if (pc.ControlledPawn == m_tinker)
+            {
+                m_ashePC = null;
+                m_characterSelection.Select_Tinker.interactable = true;
+            }
+            else if (pc.ControlledPawn == m_ashe)
+            {
+                m_tinkerPC = null;
+                m_characterSelection.Select_Ashe.interactable = true;
+            }
+
+            pc.ControlPawn(null);
+            Destroy(pc.gameObject);
+            return;
         }
 
-        pc.ControlPawn(null);
-        Destroy(pc.gameObject);
+        var sc = pi.GetComponent<SoloController>();
+        
+        if (sc != null)
+        {
+            // TODO: Fill out details corresponding to solo controller input
+            m_SC = null;
+            Destroy(sc.gameObject);
+        }
     }
 
     public void OpenUpPlayerSelecitonMenu(PlayerInput pi)
@@ -188,6 +220,7 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         m_tinkerPC?.DisablePawnControl();
         m_ashePC?.DisablePawnControl();
+        //m_SC?.DisablePawnControl();
         UIManager.Instance.OpenPauseMenu(pc);
     }
 
@@ -196,6 +229,7 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         m_tinkerPC?.EnablePawnControl();
         m_ashePC?.EnablePawnControl();
+        //m_SC?.EnablePawnControl();
         UIManager.Instance.ClosePauseMenu();
     }
 
@@ -265,6 +299,12 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(m_ashePC.gameObject);
                 m_ashePC = null;
+            }
+
+            if (m_SC != null)
+            {
+                Destroy(m_SC.gameObject);
+                m_SC = null;    
             }
             
             Destroy(transform.parent.gameObject);

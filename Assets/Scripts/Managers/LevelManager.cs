@@ -25,9 +25,10 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {   
-        if (GameObject.Find("LevelThings") == null && !isSetupScene)
+        if (GameObject.Find("LevelThings") == null 
+            && GameObject.Find("LevelThings SoloController Variant") == null && !isSetupScene)
         {
-            Instantiate(levelThings);
+            Instantiate(levelThings);    
         }
     }
     private void Start()
