@@ -28,9 +28,18 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
             ""id"": ""211a81ec-888f-4a32-afc5-f329cb458cb5"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""MoveTinker"",
                     ""type"": ""Value"",
                     ""id"": ""3aa1b4c7-2762-4337-81c4-ce7384986aab"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveAshe"",
+                    ""type"": ""Value"",
+                    ""id"": ""03447d57-1db0-481f-9a0c-7c6c249bccb8"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -144,7 +153,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -155,7 +164,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -166,7 +175,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -177,7 +186,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -188,7 +197,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -199,7 +208,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -210,7 +219,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -221,7 +230,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -232,7 +241,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -243,7 +252,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -254,7 +263,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -265,7 +274,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -276,7 +285,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -287,62 +296,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""AD [LeftPlayer]"",
-                    ""id"": ""6ce9b172-1d40-4bd5-b818-54c7799005fc"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Up"",
-                    ""id"": ""00cbe4ad-7634-49c9-9b2a-ae9a203aca08"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Down"",
-                    ""id"": ""f4406df7-340a-4fd5-870a-3ebf3d262ed4"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Left"",
-                    ""id"": ""3089d07d-d896-4b73-8999-35483819e599"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Right"",
-                    ""id"": ""d0341cfc-6a2a-483e-90c1-2c989a95f5a6"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""LocalKeyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -353,7 +307,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Movement"",
+                    ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -686,6 +640,61 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Swap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""AD [LeftPlayer]"",
+                    ""id"": ""28816a19-6630-4379-9f96-5cd021c634f4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""MoveAshe"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""3da32fbe-ae44-429c-892f-893123340986"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""MoveAshe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""5e87d5f3-2abd-48bb-9d7d-bc8cf3a34cfa"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""MoveAshe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""2a3c479c-3f57-460c-bea7-90a04e4a5809"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""MoveAshe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""9d893517-5dda-4c0f-87b3-ef2557b989e0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""MoveAshe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1244,7 +1253,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_MoveTinker = m_Player.FindAction("MoveTinker", throwIfNotFound: true);
+        m_Player_MoveAshe = m_Player.FindAction("MoveAshe", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_UseToolPrimary = m_Player.FindAction("UseToolPrimary", throwIfNotFound: true);
         m_Player_UseToolSecondary = m_Player.FindAction("UseToolSecondary", throwIfNotFound: true);
@@ -1327,7 +1337,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_MoveTinker;
+    private readonly InputAction m_Player_MoveAshe;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_UseToolPrimary;
     private readonly InputAction m_Player_UseToolSecondary;
@@ -1343,7 +1354,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
     {
         private @SoloInputActions m_Wrapper;
         public PlayerActions(@SoloInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @MoveTinker => m_Wrapper.m_Player_MoveTinker;
+        public InputAction @MoveAshe => m_Wrapper.m_Player_MoveAshe;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @UseToolPrimary => m_Wrapper.m_Player_UseToolPrimary;
         public InputAction @UseToolSecondary => m_Wrapper.m_Player_UseToolSecondary;
@@ -1364,9 +1376,12 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @MoveTinker.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTinker;
+                @MoveTinker.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTinker;
+                @MoveTinker.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTinker;
+                @MoveAshe.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAshe;
+                @MoveAshe.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAshe;
+                @MoveAshe.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAshe;
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
@@ -1404,9 +1419,12 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
+                @MoveTinker.started += instance.OnMoveTinker;
+                @MoveTinker.performed += instance.OnMoveTinker;
+                @MoveTinker.canceled += instance.OnMoveTinker;
+                @MoveAshe.started += instance.OnMoveAshe;
+                @MoveAshe.performed += instance.OnMoveAshe;
+                @MoveAshe.canceled += instance.OnMoveAshe;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -1560,7 +1578,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnMovement(InputAction.CallbackContext context);
+        void OnMoveTinker(InputAction.CallbackContext context);
+        void OnMoveAshe(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnUseToolPrimary(InputAction.CallbackContext context);
         void OnUseToolSecondary(InputAction.CallbackContext context);

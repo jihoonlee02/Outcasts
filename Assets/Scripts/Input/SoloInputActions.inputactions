@@ -6,9 +6,18 @@
             "id": "211a81ec-888f-4a32-afc5-f329cb458cb5",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "MoveTinker",
                     "type": "Value",
                     "id": "3aa1b4c7-2762-4337-81c4-ce7384986aab",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveAshe",
+                    "type": "Value",
+                    "id": "03447d57-1db0-481f-9a0c-7c6c249bccb8",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -122,7 +131,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -133,7 +142,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -144,7 +153,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -155,7 +164,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -166,7 +175,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -177,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -188,7 +197,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -199,7 +208,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -210,7 +219,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -221,7 +230,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -232,7 +241,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "LocalKeyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -243,7 +252,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "LocalKeyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -254,7 +263,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "LocalKeyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -265,62 +274,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "LocalKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "AD [LeftPlayer]",
-                    "id": "6ce9b172-1d40-4bd5-b818-54c7799005fc",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Up",
-                    "id": "00cbe4ad-7634-49c9-9b2a-ae9a203aca08",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "LocalKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "f4406df7-340a-4fd5-870a-3ebf3d262ed4",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "LocalKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Left",
-                    "id": "3089d07d-d896-4b73-8999-35483819e599",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "LocalKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "d0341cfc-6a2a-483e-90c1-2c989a95f5a6",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "LocalKeyboard",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -331,7 +285,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "MoveTinker",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -664,6 +618,61 @@
                     "action": "Swap",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "AD [LeftPlayer]",
+                    "id": "28816a19-6630-4379-9f96-5cd021c634f4",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "MoveAshe",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "3da32fbe-ae44-429c-892f-893123340986",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "MoveAshe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "5e87d5f3-2abd-48bb-9d7d-bc8cf3a34cfa",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "MoveAshe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "2a3c479c-3f57-460c-bea7-90a04e4a5809",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "MoveAshe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "9d893517-5dda-4c0f-87b3-ef2557b989e0",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "MoveAshe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

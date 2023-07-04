@@ -54,6 +54,11 @@ public class PlatformMover : Invokee
         MoveToWaypoint(0);
     }
 
+    public void ChangePlatformSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {

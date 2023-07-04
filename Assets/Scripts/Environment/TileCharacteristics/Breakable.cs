@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 //Can be destroyed by GameObjects that invoke break on collision
-[RequireComponent(typeof(Collider2D), typeof(MeshRenderer), typeof(AudioSource))]
+[RequireComponent(typeof(Collider2D), typeof(Renderer), typeof(AudioSource))]
 public class Breakable : MonoBehaviour
 {
     private ParticleSystem particle;

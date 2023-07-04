@@ -16,15 +16,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected PawnData m_pawnData;
     [SerializeField] protected HingeJoint2D m_hingeJoint;
     [SerializeField] protected FixedJoint2D m_fixedJoint;
-    [SerializeField] protected PlayerController m_pc;
     [SerializeField] protected Transform m_pawnCanvas;
-
-    public PlayerController PC
-    {
-        get { return m_pc; }
-        set { m_pc = value; }
-    }
-
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
     public FixedJoint2D FixedJoint => m_fixedJoint;

@@ -6,7 +6,8 @@ using UnityEngine;
 public class RegionInvoker : Invoker
 {
     [SerializeField] private bool triggerOnce = true;
-    
+    [SerializeField] private float stayTimeToTrigger = 0f;
+
     [Header("Player Specific")]
     [SerializeField] private bool playerTrigger = true;
     [SerializeField] private bool tinkerOnlyTrigger = false;
@@ -16,7 +17,7 @@ public class RegionInvoker : Invoker
     [SerializeField] private bool useUniqueID = false;
     [SerializeField] private int tinkerSpecificID;
     [SerializeField] private int asheSpecificID;
-    [SerializeField] private float stayTimeToTrigger = 0f;
+
 
     [Header("Object Specific")]
     [SerializeField] private bool requireSpecficObjects = false;

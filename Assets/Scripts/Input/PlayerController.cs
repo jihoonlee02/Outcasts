@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isDevMode;
     public Pawn ControlledPawn => controlledPawn;
     public PlayerInput PlayerInput => m_playerInput;
-    public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
     public bool JumpActive
     {
         set 
@@ -205,7 +204,6 @@ public class PlayerController : MonoBehaviour
     public void ControlPawn(Pawn pawn)
     {
         controlledPawn = pawn;
-        pawn.PC = this;
         m_playerInput.actions["Pause"].Enable();
     }
 
