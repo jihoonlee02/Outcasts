@@ -51,7 +51,8 @@ public class MainMenu : MonoBehaviour
         m_eventSystem = GetComponent<EventSystem>();
         m_iaa.FindAction("Cancel").performed += BackAPanel;
 
-        m_eventSystem.SetSelectedGameObject(m_startGameButton);
+        // Changing to mouse based system for ease
+        //m_eventSystem.SetSelectedGameObject(m_startGameButton);
     }
 
     public void StartGame()
@@ -100,14 +101,15 @@ public class MainMenu : MonoBehaviour
     // Inefficent, yet does the job
     public void BackAPanel(InputAction.CallbackContext context)
     {
-        if (m_currNode.Data == "Options")
-        {
-            m_eventSystem.SetSelectedGameObject(m_optionsButton);
-        }
-        else if (m_currNode.Data == "StartGame")
-        {
-            m_eventSystem.SetSelectedGameObject(m_startGameButton);
-        }
+        // Changing to mouse based system for ease
+        //if (m_currNode.Data == "Options")
+        //{
+        //    m_eventSystem.SetSelectedGameObject(m_optionsButton);
+        //}
+        //else if (m_currNode.Data == "StartGame")
+        //{
+        //    m_eventSystem.SetSelectedGameObject(m_startGameButton);
+        //}
         
         if (m_currNode.Parent != null && m_currNode.Parent.Data == "MainMenu")
         {
