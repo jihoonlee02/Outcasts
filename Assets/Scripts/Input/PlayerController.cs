@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -9,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput m_playerInput;
     [SerializeField] private InputActions m_inputActions;
     [SerializeField] private Pawn controlledPawn;
+
+    [Header("UI Components")]
+    [SerializeField] private TextMeshProUGUI m_pawnText;
+    [SerializeField] private GameObject m_controllerPanel;
     public Pawn ControlledPawn => controlledPawn;
     public PlayerInput PlayerInput => m_playerInput;
     public bool JumpActive
@@ -92,6 +97,10 @@ public class PlayerController : MonoBehaviour
         //m_playerInput.actions["Pause"].Disable();
         m_playerInput.actions.actionMaps[1].Enable();
     }
+    private void Start()
+    {
+        
+    }
     private void FixedUpdate()
     {
         //Old -- Using a new InputActions()
@@ -152,6 +161,8 @@ public class PlayerController : MonoBehaviour
     public void ControlPawn(Pawn pawn)
     {
         controlledPawn = pawn;
+        m_pawnText.text = pawn.Data.Name;
+        StartCoroutine(ShowControlSchemeUsed());
         m_playerInput.actions["Pause"].Enable();
     }
     public void EnablePawnControl()
@@ -162,5 +173,29 @@ public class PlayerController : MonoBehaviour
     {
         m_playerInput.actions.actionMaps[0].Disable();
         m_playerInput.actions["Pause"].Enable();
+    }
+    private IEnumerator ShowControlSchemeUsed()
+    {
+        if (controlledPawn.Data.Name == "Tinker")
+        {
+            var rectComponent = m_controllerPanel.GetComponent<RectTransform>();
+            var left = rectComponent.offsetMin.x;
+            var right = rectComponent.offsetMax.x;
+            rectComponent.offsetMin = new Vector2(Mathf.Abs(right), rectComponent.offsetMin.y);
+            rectComponent.offsetMax = new Vector2(Mathf.Abs(left), rectComponent.offsetMax.y);
+        }
+        m_controllerPanel.SetActive(true);
+        switch(m_playerInput.currentControlScheme)
+        {
+            case "Keyboard":
+                m_controllerPanel.transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            case "Controller":   
+            default:
+                m_controllerPanel.transform.GetChild(1).gameObject.SetActive(true);
+                break;
+        }
+        yield return new WaitForSeconds(7f);
+        m_controllerPanel.SetActive(false);
     }
 }
