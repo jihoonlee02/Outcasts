@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Door : Invokee
 {
+    [Header("Door Fields")]
     [SerializeField]
     private bool open;
     [SerializeField]
@@ -102,7 +103,6 @@ public class Door : Invokee
             
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -129,38 +129,12 @@ public class Door : Invokee
             }
         }   
     }
-
-    //Open Door Logic
     protected override void OnActivate()
     {
-        if (open) return;
-        Debug.Log("Open");
-        if (horizontal)
-        {
-            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosLeft) / doorDist : Vector3.Distance(transform.position, doorPosRight);
-        }
-        else
-        {
-            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosUp) / doorDist : Vector3.Distance(transform.position, doorPosDown);
-        }
-        
-        open = !open;    
+        open = !open;
     }
-
-    //Close Door Logic
     protected override void OnDeactivate()
     {
-        if (!open) return;
-        Debug.Log("Close");
-        if (horizontal)
-        {
-            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosRight) / doorDist : Vector3.Distance(transform.position, doorPosLeft) / doorDist;
-        }
-        else
-        {
-            perOpen = !initOpen ? Vector3.Distance(transform.position, doorPosDown) / doorDist : Vector3.Distance(transform.position, doorPosUp) / doorDist;
-        }
-        
         open = !open;
     }
 }

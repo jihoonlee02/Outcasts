@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -33,6 +34,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerInputManager m_pim;
     [SerializeField] private Pawn m_tinker;
     [SerializeField] private Pawn m_ashe;
+    private PlayerController m_tinkerPC;
+    private PlayerController m_ashePC;
+    private SoloController m_SC;
     public Pawn Tinker => m_tinker;
     public Pawn Ashe => m_ashe;
 
@@ -63,15 +67,17 @@ public class GameManager : MonoBehaviour
     
 
     private bool isPaused = false;
-    private bool isTesting = false;
-    public bool IsTesting
-    {
-        set { isTesting = value; }
-    }
     private void Awake()
     {
+        // Just in case the gameManager finds itself in the same scene
+        if (instance != null && FindObjectOfType<GameManager>() != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         m_currScene = SceneManager.GetActiveScene().name;
-        
+        isPaused = false;
+
         m_scenes = new Queue<string>();
 
         AddSceneToQueue(initialScenesToEnqueue);
@@ -89,72 +95,100 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(transform.parent);
     }
 
-    private bool control_tinker = false;
-    private bool control_ashe = false;
-
     public void HandlePlayerControllerEnter(PlayerInput pi)
     {
         DontDestroyOnLoad(pi);
-        if (!control_tinker && !control_ashe)
-        {
-            OpenUpPlayerSelecitonMenu(pi);
+
+        // Player Controller Moment
+        var pc = pi.GetComponent<PlayerController>();
+
+        if (pc != null)
+        { 
+            if (m_tinkerPC == null && m_ashePC == null)
+            {
+                OpenUpPlayerSelecitonMenu(pi);
+            }
+            else if (m_ashePC == null)
+            {
+                m_ashePC = pc;
+                GivePawn(m_ashePC, m_ashe);
+            }
+            else if (m_tinkerPC == null)
+            {
+                m_tinkerPC = pc;
+                GivePawn(m_tinkerPC, m_tinker);
+            }
+            return;
         } 
-        else if (!control_ashe)
+        
+        // Solo Controller Moment
+        var sc = pi.GetComponent<SoloController>();
+
+        if (sc != null)
         {
-            GivePawn(pi, m_ashe);
-        } 
-        else if (!control_tinker) 
-        {
-            GivePawn(pi, m_tinker);
+            sc.ControlTnAPawns((TinkerPawn)m_tinker, (AshePawn)m_ashe);
+            m_SC = sc;   
         }
     }
 
-    public void GivePawn(PlayerInput pi, Pawn pawn)
+    public void GivePawn(PlayerController pc, Pawn pawn)
     {
-        if (pawn == m_ashe)
-        {
-            control_ashe = true;
-        }
-        else if (pawn == m_tinker) 
-        { 
-            control_tinker = true;
-        }
-        pawn.PC = pi.GetComponent<PlayerController>();
-        pawn.PC.ControlPawn(pawn);
-        pawn.PC.EnablePawnControl();
-        if (isTesting) pawn.PC.OnTesting();
+        pc.PlayerInput.actions["Pause"].Disable();
+        pc.ControlPawn(pawn);
+        pc.EnablePawnControl();
     }
 
     public void HandlePlayerControllerExit(PlayerInput pi)
     {
-        var returnPawn = pi.GetComponent<PlayerController>().ControlledPawn;
-        if (returnPawn == m_tinker)
+        var pc = pi.GetComponent<PlayerController>();
+
+        if (pc != null)
         {
-            control_tinker = false;
-            m_characterSelection.Select_Tinker.interactable = true;
-        }
-        else if (returnPawn == m_ashe)
-        {
-            control_ashe = false;
-            m_characterSelection.Select_Ashe.interactable = true;
+            if (pc.ControlledPawn == m_tinker)
+            {
+                m_ashePC = null;
+                m_characterSelection.Select_Tinker.interactable = true;
+            }
+            else if (pc.ControlledPawn == m_ashe)
+            {
+                m_tinkerPC = null;
+                m_characterSelection.Select_Ashe.interactable = true;
+            }
+
+            pc.ControlPawn(null);
+            Destroy(pc.gameObject);
+            return;
         }
 
-        pi.GetComponent<PlayerController>().ControlPawn(null);
+        var sc = pi.GetComponent<SoloController>();
+        
+        if (sc != null)
+        {
+            // TODO: Fill out details corresponding to solo controller input
+            m_SC = null;
+            Destroy(sc.gameObject);
+        }
     }
 
     public void OpenUpPlayerSelecitonMenu(PlayerInput pi)
     {
         var pc = pi.GetComponent<PlayerController>();
         // Thank you for being nice PC
-        pc.PlayerInput.actions["Pause"].Disable();
+        //
 
         //This could have been just done through an array, but as we are only having two pawns to keep track of
         //This will do fine no matter its icckyniss
         if (pi.playerIndex == 0)
         {
             m_characterSelection.Display(false, pi.playerIndex + 1);
-            m_characterSelection.Select_Tinker.onClick.AddListener(delegate { GivePawn(pi, m_tinker); });
-            m_characterSelection.Select_Ashe.onClick.AddListener(delegate { GivePawn(pi, m_ashe); });
+            m_characterSelection.Select_Tinker.onClick.AddListener(delegate {
+                m_tinkerPC = pi.GetComponent<PlayerController>(); 
+                GivePawn(m_tinkerPC, m_tinker); 
+            });
+            m_characterSelection.Select_Ashe.onClick.AddListener(delegate {
+                m_ashePC = pi.GetComponent<PlayerController>();
+                GivePawn(m_ashePC, m_ashe);
+            });
 
             pc.GetComponentInChildren<MultiplayerEventSystem>().playerRoot = m_characterSelection.gameObject;
             pc.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(m_characterSelection.Select_Tinker.gameObject);
@@ -162,8 +196,14 @@ public class GameManager : MonoBehaviour
         else
         {
             m_characterSelection2.Display(true, pi.playerIndex + 1);
-            m_characterSelection2.Select_Tinker.onClick.AddListener(delegate { GivePawn(pi, m_tinker); });
-            m_characterSelection2.Select_Ashe.onClick.AddListener(delegate { GivePawn(pi, m_ashe); });
+            m_characterSelection2.Select_Tinker.onClick.AddListener(delegate {
+                m_tinkerPC = pi.GetComponent<PlayerController>();
+                GivePawn(m_tinkerPC, m_tinker);
+            });
+            m_characterSelection2.Select_Ashe.onClick.AddListener(delegate {
+                m_ashePC = pi.GetComponent<PlayerController>();
+                GivePawn(m_ashePC, m_ashe);
+            });
 
             pc.GetComponentInChildren<MultiplayerEventSystem>().playerRoot = m_characterSelection2.gameObject;
             pc.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(m_characterSelection2.Select_Tinker.gameObject);
@@ -179,16 +219,18 @@ public class GameManager : MonoBehaviour
     public void PauseGame(PlayerController pc = null)
     {
         isPaused = true;
-        Tinker.PC?.DisablePawnControl();
-        Ashe.PC?.DisablePawnControl();
+        m_tinkerPC?.DisablePawnControl();
+        m_ashePC?.DisablePawnControl();
+        //m_SC?.DisablePawnControl();
         UIManager.Instance.OpenPauseMenu(pc);
     }
 
     public void UnPauseGame()
     {
         isPaused = false;
-        Tinker.PC?.EnablePawnControl();
-        Ashe.PC?.EnablePawnControl();
+        m_tinkerPC?.EnablePawnControl();
+        m_ashePC?.EnablePawnControl();
+        //m_SC?.EnablePawnControl();
         UIManager.Instance.ClosePauseMenu();
     }
 
@@ -247,9 +289,24 @@ public class GameManager : MonoBehaviour
             AddSceneToQueue(initialScenesToEnqueue);
         }
 
-        if (next.name == "MainMenu") { 
-            if (m_tinker.PC != null) Destroy(m_tinker.PC.gameObject);
-            if (m_ashe.PC != null) Destroy(m_ashe.PC.gameObject);
+        if (next.name == "MainMenu") {
+            if (m_tinkerPC != null)
+            {
+                Destroy(m_tinkerPC.gameObject);
+                m_tinkerPC = null;
+            }
+
+            if (m_ashePC != null)
+            {
+                Destroy(m_ashePC.gameObject);
+                m_ashePC = null;
+            }
+
+            if (m_SC != null)
+            {
+                Destroy(m_SC.gameObject);
+                m_SC = null;    
+            }
             
             Destroy(transform.parent.gameObject);
             return;

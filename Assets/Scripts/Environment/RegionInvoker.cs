@@ -6,12 +6,18 @@ using UnityEngine;
 public class RegionInvoker : Invoker
 {
     [SerializeField] private bool triggerOnce = true;
+    [SerializeField] private float stayTimeToTrigger = 0f;
+
     [Header("Player Specific")]
     [SerializeField] private bool playerTrigger = true;
-    [SerializeField] private bool uniqueID = false;
+    [SerializeField] private bool tinkerOnlyTrigger = false;
+    [SerializeField] private bool asheOnlyTrigger = false;
+
+    [Header("Unique ID Activation")]
+    [SerializeField] private bool useUniqueID = false;
     [SerializeField] private int tinkerSpecificID;
     [SerializeField] private int asheSpecificID;
-    [SerializeField] private float stayTimeToTrigger = 0f;
+
 
     [Header("Object Specific")]
     [SerializeField] private bool requireSpecficObjects = false;
@@ -21,9 +27,15 @@ public class RegionInvoker : Invoker
     private void OnTriggerEnter2D(Collider2D collider)
     {
         TimeDuration = Time.time + stayTimeToTrigger;
+        if ((tinkerOnlyTrigger && collider.gameObject.tag != "Tinker")
+                    || (asheOnlyTrigger && collider.gameObject.tag != "Ashe"))
+        {
+            return;
+        }
+
         if (Time.time >= TimeDuration && playerTrigger && (collider.gameObject.layer == LayerMask.NameToLayer("Players")))
         {
-            if (uniqueID)
+            if (useUniqueID)
             {
                 if (collider.gameObject.tag == "Tinker")
                 {
@@ -35,7 +47,7 @@ public class RegionInvoker : Invoker
                 }
             }
             else
-            {
+            { 
                 Activate();
             }
             
@@ -49,9 +61,14 @@ public class RegionInvoker : Invoker
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if ((tinkerOnlyTrigger && collision.gameObject.tag != "Tinker")
+                    || (asheOnlyTrigger && collision.gameObject.tag != "Ashe"))
+        {
+            return;
+        }
         if (Time.time >= TimeDuration && playerTrigger && (collision.gameObject.layer == LayerMask.NameToLayer("Players")))
         {
-            if (uniqueID)
+            if (useUniqueID)
             {
                 if (collision.gameObject.tag == "Tinker")
                 {
@@ -77,9 +94,14 @@ public class RegionInvoker : Invoker
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if ((tinkerOnlyTrigger && collision.gameObject.tag != "Tinker")
+                    || (asheOnlyTrigger && collision.gameObject.tag != "Ashe"))
+        {
+            return;
+        }
         if (Time.time >= TimeDuration && playerTrigger && (collision.gameObject.layer == LayerMask.NameToLayer("Players")))
         {
-            if (uniqueID)
+            if (useUniqueID)
             {
                 if (collision.gameObject.tag == "Tinker")
                 {

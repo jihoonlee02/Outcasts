@@ -4,13 +4,21 @@ using UnityEngine;
 
 public abstract class Invokee : MonoBehaviour
 {
+    [Header("Resources")]
+    [SerializeField] protected GameObject targetColor;
+
     [Header("Inovkee Details")]
     [SerializeField] protected int id;
     [SerializeField] protected float delay = 0f;
+    [SerializeField] protected bool ActivateOnly;
+    [SerializeField] protected bool ActivateOnce;
 
     protected void Awake()
     {
         EventManager.GetEventManager.Activated += ReactOnActivate;
+
+        if (ActivateOnly) return;
+
         EventManager.GetEventManager.Deactivated += ReactOnDeactivate;
     }
 
@@ -25,7 +33,7 @@ public abstract class Invokee : MonoBehaviour
         if (other_id == id) 
         {
             StartCoroutine(DelayActivate());        
-        }
+        }    
     }
 
     private void ReactOnDeactivate(int other_id)
@@ -34,6 +42,8 @@ public abstract class Invokee : MonoBehaviour
         {
             OnDeactivate();
         }
+
+        if (ActivateOnce) EventManager.GetEventManager.Deactivated -= ReactOnDeactivate;
     }
 
     protected abstract void OnActivate();
@@ -44,5 +54,6 @@ public abstract class Invokee : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         OnActivate();
+        if (ActivateOnce) EventManager.GetEventManager.Activated -= ReactOnActivate;
     }
 }

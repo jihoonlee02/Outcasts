@@ -4,8 +4,14 @@ using UnityEngine;
 
 public abstract class Invoker : MonoBehaviour
 {
+    [Header("Resources")]
+    [SerializeField] private GameObject targetColor;
+
     [Header("Invoker Details")]
     [SerializeField] private int id;
+
+    // Switch ID system to color Id system?
+    [SerializeField, ColorUsage(true, true)] private Color colorId;
 
     protected void Activate()
     {

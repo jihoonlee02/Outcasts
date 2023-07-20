@@ -26,16 +26,17 @@ public class RoomManager : MonoBehaviour
 
     #region Technical
     private int roomIdx = 0;
+    private bool transitioned = false;
     #endregion
 
     public bool ViewingRoom => (Vector2)Camera.Instance.transform.position == m_currroomPosition;
 
     private void Start()
     {
-        m_tinker.transform.position = m_rooms[roomIdx].tinkerSpawn;
-        m_ashe.transform.position = m_rooms[roomIdx].asheSpawn;
-        m_ashePrevDoor = m_rooms[m_rooms.Length].asheDoor;
-        m_tinkerPrevDoor = m_rooms[m_rooms.Length].tinkerDoor;
+        //m_tinker.transform.position = m_rooms[roomIdx].tinkerSpawn;
+        //m_ashe.transform.position = m_rooms[roomIdx].asheSpawn;
+        m_ashePrevDoor = m_rooms[m_rooms.Length - 1].asheDoor;
+        m_tinkerPrevDoor = m_rooms[m_rooms.Length - 1].tinkerDoor;
         m_tinkerNextDoor = m_rooms[roomIdx].tinkerDoor;
         m_asheNextDoor = m_rooms[roomIdx].asheDoor;
         m_currroomPosition = m_rooms[roomIdx].roomPosition;
@@ -44,8 +45,32 @@ public class RoomManager : MonoBehaviour
 
     private void Update()
     {
-        if (m_tinkerNextDoor.OnDoor && m_asheNextDoor.OnDoor) NextRoom();
-        if (m_tinkerPrevDoor.OnDoor && m_ashePrevDoor.OnDoor) NextRoom();
+        if (m_tinkerNextDoor != null && m_asheNextDoor != null)
+        {
+            if (transitioned && (!m_tinkerNextDoor.OnDoor || !m_asheNextDoor.OnDoor))
+            {
+                transitioned = false;
+            } 
+            else if (!transitioned && m_tinkerNextDoor.OnDoor && m_asheNextDoor.OnDoor)
+            {
+                NextRoom();
+                transitioned = true;
+            }
+            
+        }
+        if (m_tinkerPrevDoor != null && m_ashePrevDoor != null)
+        {
+            if (transitioned && (!m_tinkerPrevDoor.OnDoor || !m_ashePrevDoor.OnDoor))
+            {
+                transitioned = false;
+            }
+            else if (!transitioned && m_tinkerPrevDoor.OnDoor && m_ashePrevDoor.OnDoor)
+            {
+                PrevRoom();
+                transitioned = true;
+            }
+            
+        }
     }
 
     public void OnLevelExit()
@@ -56,24 +81,39 @@ public class RoomManager : MonoBehaviour
     //For Developer Purpose!!!
     public void NextRoom()
     {
-        TransitionToRoom((roomIdx + 1) % m_rooms.Length);
+        TransitionToRoom((roomIdx + 1) % m_rooms.Length, false);
     }
 
     public void PrevRoom()
     {
-        TransitionToRoom((roomIdx - 1 < 0 ? (m_rooms.Length - 1) : roomIdx - 1) % m_rooms.Length);   
+        TransitionToRoom((roomIdx - 1 < 0 ? (m_rooms.Length - 1) : roomIdx - 1) % m_rooms.Length, true);   
     }
 
-    public void TransitionToRoom(int roomIdx)
+    public void TransitionToRoom(int roomIdx, bool isPrevious)
     {
         this.roomIdx = roomIdx;
-        m_tinker.transform.position = m_rooms[roomIdx].tinkerSpawn;
-        m_ashe.transform.position = m_rooms[roomIdx].asheSpawn;
-        m_tinkerPrevDoor = m_tinkerNextDoor;
-        m_ashePrevDoor = m_asheNextDoor;
 
-        m_tinkerNextDoor = m_rooms[roomIdx].tinkerDoor;
-        m_asheNextDoor = m_rooms[roomIdx].asheDoor;
+        if (m_rooms[roomIdx].useSpawn)
+        {
+            m_tinker.transform.position = m_rooms[roomIdx].tinkerSpawn;
+            m_ashe.transform.position = m_rooms[roomIdx].asheSpawn;
+        }   
+        
+        if (isPrevious)
+        {
+            m_tinkerNextDoor = m_tinkerPrevDoor;
+            m_asheNextDoor = m_ashePrevDoor;
+            m_tinkerPrevDoor = m_rooms[(roomIdx - 1 < 0 ? (m_rooms.Length - 1) : roomIdx - 1) % m_rooms.Length].tinkerDoor;
+            m_ashePrevDoor = m_rooms[(roomIdx - 1 < 0 ? (m_rooms.Length - 1) : roomIdx - 1) % m_rooms.Length].asheDoor;
+        }
+        else
+        {
+            m_tinkerPrevDoor = m_tinkerNextDoor;
+            m_ashePrevDoor = m_asheNextDoor;
+            m_tinkerNextDoor = m_rooms[roomIdx].tinkerDoor;
+            m_asheNextDoor = m_rooms[roomIdx].asheDoor;
+        }
+        
         m_currroomPosition = m_rooms[roomIdx].roomPosition;
         Camera.Instance.ShiftTo(m_rooms[roomIdx].roomPosition);
     }
@@ -85,6 +125,7 @@ public class RoomManager : MonoBehaviour
 [Serializable]
 public struct Room
 {
+    public bool useSpawn;
     public Vector2 tinkerSpawn;
     public Vector2 asheSpawn;
     public Vector2 roomPosition;

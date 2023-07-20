@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 //Can be destroyed by GameObjects that invoke break on collision
-[RequireComponent(typeof(Collider2D), typeof(MeshRenderer), typeof(AudioSource))]
+[RequireComponent(typeof(Collider2D), typeof(Renderer), typeof(AudioSource))]
 public class Breakable : MonoBehaviour
 {
     private ParticleSystem particle;
@@ -12,9 +12,10 @@ public class Breakable : MonoBehaviour
     private TilemapRenderer renderer;
     private AudioSource m_AudioSource;
     [SerializeField] private bool m_requiresAshe = true;
-    [SerializeField, Tooltip("No Implementation with this one yet")] 
+    [SerializeField, Tooltip("No Implementation with this one yet")]
     private bool m_requiresTinker = false;
     private bool broken = false;
+    [SerializeField] private float velocityImpact = 3f;
 
     private void Start() 
     {
@@ -28,7 +29,9 @@ public class Breakable : MonoBehaviour
     {
         particle.Play();
         collider.enabled = false;
-        renderer.enabled = false;
+        //renderer.enabled = false;
+        // Replaced with this in order to destroy floating nails
+        Destroy(renderer.gameObject);
 
         yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
         foreach (Transform child in transform)
@@ -61,7 +64,7 @@ public class Breakable : MonoBehaviour
         if (rb != null) vel = rb.velocity;
 
         if (!broken && ((m_requiresAshe && collider.gameObject.tag == "Gauntlet") 
-            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= 4f || Mathf.Abs(vel.y) >= 4f))))
+            || ((collider.gameObject.tag == "physical") && (Mathf.Abs(vel.x) >= velocityImpact || Mathf.Abs(vel.y) >= velocityImpact))))
         {
             m_AudioSource.Play();
             StartCoroutine(Break());

@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14eb93d655425f740a261b676bcd6a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetColor: {fileID: 0}
   id: 0
+  colorId: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &5475139566639154561
 SpriteRenderer:
   m_ObjectHideFlags: 0

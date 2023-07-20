@@ -26,9 +26,9 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn)
+        if (m_targetPawn == "" || collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn)
         {
-            m_animator.Play("DoorOpen");
+            m_animator?.Play("DoorOpen");
             targetTime = Time.time + closeCoolDown;
             timeTrigger += Time.deltaTime;
         }
@@ -37,7 +37,7 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn)
+        if (m_targetPawn == "" || collision.GetComponent<Pawn>()?.Data.Name == m_targetPawn)
         {
             StartCoroutine(TriggerUntilCooldown());
         }  
@@ -47,6 +47,6 @@ public class ExitDoor : MonoBehaviour
     {
         yield return new WaitUntil(delegate { return Time.time > targetTime; });
         timeTrigger = 0;
-        m_animator.Play("DoorClose");
+        m_animator?.Play("DoorClose");
     }
 }

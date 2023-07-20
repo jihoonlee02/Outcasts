@@ -8,8 +8,6 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [Header("Level Attributes")]
-    //[SerializeField] private Pawn m_tinker;
-    //[SerializeField] private Pawn m_ashe;
     [SerializeField] private ExitDoor m_tinkerExitDoor;
     [SerializeField] private ExitDoor m_asheExitDoor;
     [SerializeField] private Transform m_tinkerSpawn;
@@ -17,29 +15,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioClip m_music;
     [SerializeField] private bool useSetupDefault = false;
     [SerializeField] private string m_nextScene;
-    //public Pawn Tinker => m_tinker;
-    //public Pawn Ashe => m_ashe;
-
-    //Level Manager will not handle next levels, that is gamemanagers job
-    //[SerializeField] private Level currLevel;
-    //[SerializeField] private Level[] levels;
-
-
 
     [Header("Dev Details")]
     [SerializeField] private bool isSetupScene = false;
     [SerializeField] private UnityEvent invokeAtStart;
-    [SerializeField] private bool isTesting = false;
     [SerializeField] private GameObject levelThings;
 
     private bool exited = false;
 
-    
     private void Awake()
     {   
-        if (isTesting & !isSetupScene)
+        if (GameObject.Find("LevelThings") == null 
+            && GameObject.Find("LevelThings SoloController Variant") == null && !isSetupScene)
         {
-            Instantiate(levelThings);
+            Instantiate(levelThings);    
         }
     }
     private void Start()
@@ -66,8 +55,6 @@ public class LevelManager : MonoBehaviour
         AudioManager.Instance.PlayAudio();
 
         invokeAtStart.Invoke();
-
-        GameManager.Instance.IsTesting = isTesting;
     }
 
     private void Update()

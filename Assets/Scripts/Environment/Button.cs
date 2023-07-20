@@ -46,23 +46,29 @@ public class Button : Invoker
 
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (!buttonPressed && entered == 0 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) {
-            buttonPressed = true;
-            timer = 0f;
-            buttonPressSound.Play();
-            Activate();
-        }
-        entered++;
+        if ((otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) {
+            if (!buttonPressed && entered == 0)
+            {
+                buttonPressed = true;
+                timer = 0f;
+                buttonPressSound.Play();
+                Activate();
+            }
+            entered++;
+        }      
     }
 
 
     private void OnTriggerExit2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (!pressOnce && buttonPressed && entered == 1 && (otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) { 
-            buttonPressed = false;
-            timer = 0f;
-            Deactivate();
-        }
-        entered--;
+        if ((otherTag == "Ashe" || (!heavy && otherTag == "Tinker") || (otherTag == "physical"))) {
+            if (!pressOnce && buttonPressed && entered == 1)
+            {
+                buttonPressed = false;
+                timer = 0f;
+                Deactivate();
+            }
+            entered--;   
+        }      
     }
 }

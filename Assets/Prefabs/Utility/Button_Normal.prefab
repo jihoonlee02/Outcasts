@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7734e2ba4f1bf42ad18c71245d1be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetColor: {fileID: 2702512334087020182}
   id: 0
+  colorId: {r: 0, g: 0, b: 0, a: 0}
   pressOnce: 0
   heavy: 0
   lengthOfTime: 0.5
@@ -189,7 +191,7 @@ GameObject:
   - component: {fileID: 6786372555394364614}
   - component: {fileID: 4586747588699039630}
   - component: {fileID: 6296113407046416960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ButtonBsse
   m_TagString: Untagged
   m_Icon: {fileID: 0}

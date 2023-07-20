@@ -8,7 +8,7 @@ public class PlatformMover : Invokee
 {
     [Header("Options")]
     [SerializeField] private Vector2[] m_waypoints;
-    [SerializeField, Range(0f, 1f)] private float speed = 1f;
+    [SerializeField, Range(0f, 10f)] private float speed = 1f;
     [SerializeField] private bool autoMove;
 
     # if UNITY_EDITOR
@@ -18,6 +18,8 @@ public class PlatformMover : Invokee
     private Vector2 moveDifference;
     private List<Transform> objectsOnPlatform;
     public int moveDifferenceMultiplier;
+    private bool blocked = false;
+    private int count_collisions;
 
     private void Start()
     {
@@ -29,10 +31,13 @@ public class PlatformMover : Invokee
     
     private void Update()
     {
-        if (autoMove && (Vector2)transform.localPosition == m_waypoints[idx]) idx = (idx + 1) % m_waypoints.Length;
-        moveDifference = transform.localPosition;
-        transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
-        moveDifference -= (Vector2) transform.localPosition;
+        if (!blocked)
+        {
+            if (autoMove && (Vector2)transform.localPosition == m_waypoints[idx]) idx = (idx + 1) % m_waypoints.Length;
+            moveDifference = transform.localPosition;
+            transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
+            moveDifference -= (Vector2)transform.localPosition;
+        }
 
         foreach(var objectOnPlatform in objectsOnPlatform)
         {
@@ -44,6 +49,8 @@ public class PlatformMover : Invokee
     public void MoveToWaypoint(int idx)
     {
         this.idx = idx;
+        Debug.Log("Unblocked");
+        blocked = false;
     }
     protected override void OnActivate()
     {
@@ -52,6 +59,11 @@ public class PlatformMover : Invokee
     protected override void OnDeactivate()
     {
         MoveToWaypoint(0);
+    }
+
+    public void ChangePlatformSpeed(float speed)
+    {
+        this.speed = speed;
     }
 
 #if UNITY_EDITOR
@@ -83,11 +95,34 @@ public class PlatformMover : Invokee
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
         var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
         if (objectOnPlatform != null)
         {
             objectsOnPlatform.Remove(objectOnPlatform.transform);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
+        {
+            Debug.Log("Blocked");
+            count_collisions++;
+            blocked = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
+        {
+            count_collisions--;
+        }
+
+        if (count_collisions <= 0)
+        {
+            Debug.Log("Unblocked");
+            blocked = false;
         }
     }
 }

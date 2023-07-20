@@ -47,14 +47,14 @@ public class Camera : MonoBehaviour
 
     private void Start()
     {
-        
+        this.targetPosition = new Vector3(targetPosition.x, targetPosition.y, -10f);
     }
 
     private void Update()
     {
-        //if (transform.position != targetPosition && !m_cameraShaker.IsShaking)
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
-        //}
+        if (transform.position != targetPosition && !m_cameraShaker.IsShaking)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
+        }
     }
 }

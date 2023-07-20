@@ -221,20 +221,13 @@ MonoBehaviour:
   m_tinkerSpawn: {fileID: 997537018556823743}
   m_asheSpawn: {fileID: 997537018379257555}
   m_music: {fileID: 0}
+  useSetupDefault: 0
+  m_nextScene: 
   isSetupScene: 0
   invokeAtStart:
     m_PersistentCalls:
       m_Calls: []
-  isTesting: 0
-  levelThings: {fileID: 4726994624310848868, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
-  m_music: {fileID: 0}
-  invokeAtStart:
-    m_PersistentCalls:
-      m_Calls: []
-  isSetupScene: 0
-  testingMode: 0
-  m_tinkerTemp: {fileID: 0}
-  m_asheTemp: {fileID: 0}
+  levelThings: {fileID: 5894873018757677855, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
 --- !u!1001 &7716874852448465236
 PrefabInstance:
   m_ObjectHideFlags: 0

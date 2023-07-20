@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -9,12 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput m_playerInput;
     [SerializeField] private InputActions m_inputActions;
     [SerializeField] private Pawn controlledPawn;
-    [SerializeField] private bool isDevMode;
 
+    [Header("UI Components")]
+    [SerializeField] private TextMeshProUGUI m_pawnText;
+    [SerializeField] private GameObject m_controllerPanel;
     public Pawn ControlledPawn => controlledPawn;
     public PlayerInput PlayerInput => m_playerInput;
-
-    public Vector2 PlayerInputVector => m_playerInput.actions["Movement"].ReadValue<Vector2>();
     public bool JumpActive
     {
         set 
@@ -77,8 +78,6 @@ public class PlayerController : MonoBehaviour
         //m_inputActions = new InputActions();
         m_playerInput = GetComponent<PlayerInput>();
 
-        if (isDevMode) ControlPawn(GetComponent<PlayerPawn>());
-
         //Old -- Adding Methods to inputActions using InputActions()
         //m_inputActions.Player.Jump.performed += JumpAction;
         //m_inputActions.Player.Jump.canceled += JumpAction;
@@ -92,34 +91,16 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["UseToolSecondary"].canceled += UseToolSecondaryAction;
         m_playerInput.actions["Interact"].performed += InteractAction;
         m_playerInput.actions["Pause"].performed += PauseAction;
-        m_playerInput.actions["Swap"].performed += SwapAction;
+        //m_playerInput.actions["Swap"].performed += SwapAction;
 
-        //WHY???
-        //m_playerInput.actions["NextTool"].performed += NextToolAction;
-        //m_playerInput.actions["Prevtool"].performed += PrevToolAction;
-        //m_playerInput.actions["SlideLeft"].performed += InteractAction;
-        //m_playerInput.actions["SlideRight"].performed += SlideRightAction;
         m_playerInput.actions.actionMaps[0].Enable();
-        m_playerInput.actions["Pause"].Disable();
+        //m_playerInput.actions["Pause"].Disable();
         m_playerInput.actions.actionMaps[1].Enable();
-
-        //Testing Actions
-        m_playerInput.actions["Swap"].Disable();
     }
-
     private void Start()
     {
         
     }
-
-    private void Update()
-    {
-        if (isDevMode && Input.GetKeyDown(KeyCode.K))
-        {
-            controlledPawn.transform.position = Vector2.zero;
-        }
-    }
-
     private void FixedUpdate()
     {
         //Old -- Using a new InputActions()
@@ -133,7 +114,6 @@ public class PlayerController : MonoBehaviour
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ? Mathf.Sign(inputVector.x) : 0;
         controlledPawn?.Move(inputVector);
     }
-
     #region Actions
     private void JumpAction(InputAction.CallbackContext context)
     {
@@ -147,31 +127,14 @@ public class PlayerController : MonoBehaviour
             controlledPawn.JumpCut();
         }
     }
-
     private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
         controlledPawn.PrimaryAction(context);
     }
-
     private void UseToolSecondaryAction(InputAction.CallbackContext context)
     {
         controlledPawn.SecondaryAction(context);
     }
-
-    //private void NextToolAction(InputAction.CallbackContext context)
-    //{
-    //    //controlledPawn.NextTool();
-    //    //GameManager.Instance.CurrLevelManager.NextLevel();
-    //    SlideManager.Instance.NextSlide();
-    //}
-
-    //private void PrevToolAction(InputAction.CallbackContext context)
-    //{
-    //    //controlledPawn.PrevTool();
-    //    //GameManager.Instance.CurrLevelManager.PrevLevel();
-    //    SlideManager.Instance.PrevSlide();
-    //}
-
     //VERY COUPPLED DO NOT PUSH FOR FINAL GAME
     private void InteractAction(InputAction.CallbackContext context)
     {
@@ -179,17 +142,10 @@ public class PlayerController : MonoBehaviour
         //SlideManager.Instance.CurrSlide.RemoveInfo();
         controlledPawn.ToggleGrabRope();
     }
-
-    private void SlideRightAction(InputAction.CallbackContext context)
-    {
-        SlideManager.Instance.CurrSlide.AddInfo();
-    }
-
     private void PauseAction(InputAction.CallbackContext context)
     {
         GameManager.Instance.TogglePause(this);
     }
-
     private void SwapAction(InputAction.CallbackContext context)
     {
         if (controlledPawn == GameManager.Instance.Ashe)
@@ -201,19 +157,13 @@ public class PlayerController : MonoBehaviour
             ControlPawn(GameManager.Instance.Ashe);
         }
     }
-
     #endregion
-
     public void ControlPawn(Pawn pawn)
     {
         controlledPawn = pawn;
-        pawn.PC = this;
+        m_pawnText.text = pawn.Data.Name;
+        StartCoroutine(ShowControlSchemeUsed());
         m_playerInput.actions["Pause"].Enable();
-    }
-
-    public void OnTesting()
-    {
-        m_playerInput.actions["Swap"].Enable();
     }
     public void EnablePawnControl()
     {
@@ -223,5 +173,29 @@ public class PlayerController : MonoBehaviour
     {
         m_playerInput.actions.actionMaps[0].Disable();
         m_playerInput.actions["Pause"].Enable();
+    }
+    private IEnumerator ShowControlSchemeUsed()
+    {
+        if (controlledPawn.Data.Name == "Tinker")
+        {
+            var rectComponent = m_controllerPanel.GetComponent<RectTransform>();
+            var left = rectComponent.offsetMin.x;
+            var right = rectComponent.offsetMax.x;
+            rectComponent.offsetMin = new Vector2(Mathf.Abs(right), rectComponent.offsetMin.y);
+            rectComponent.offsetMax = new Vector2(Mathf.Abs(left), rectComponent.offsetMax.y);
+        }
+        m_controllerPanel.SetActive(true);
+        switch(m_playerInput.currentControlScheme)
+        {
+            case "Keyboard":
+                m_controllerPanel.transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            case "Controller":   
+            default:
+                m_controllerPanel.transform.GetChild(1).gameObject.SetActive(true);
+                break;
+        }
+        yield return new WaitForSeconds(7f);
+        m_controllerPanel.SetActive(false);
     }
 }
