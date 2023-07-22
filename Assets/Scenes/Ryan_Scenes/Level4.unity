@@ -479,7 +479,7 @@ MonoBehaviour:
     asheSpawn: {x: 0, y: 0}
     roomPosition: {x: 0, y: 0}
     tinkerDoor: {fileID: 199412880}
-    asheDoor: {fileID: 0}
+    asheDoor: {fileID: 199412880}
   - useSpawn: 0
     tinkerSpawn: {x: 0, y: 0}
     asheSpawn: {x: 0, y: 0}
@@ -15165,6 +15165,7 @@ GameObject:
   - component: {fileID: 199412879}
   - component: {fileID: 199412878}
   - component: {fileID: 199412880}
+  - component: {fileID: 199412881}
   m_Layer: 0
   m_Name: RoomTransition
   m_TagString: Untagged
@@ -15279,6 +15280,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_stayTime: 0.001
   m_targetPawn: Ashe
+  OnDoor: 0
+--- !u!114 &199412881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199412876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb9df1ff9dc48946a8c57214a5f9dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_stayTime: 0.001
+  m_targetPawn: Tinker
   OnDoor: 0
 --- !u!1 &533366505
 GameObject:
