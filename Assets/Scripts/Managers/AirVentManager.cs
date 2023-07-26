@@ -72,6 +72,7 @@ public class AirVentManager : MonoBehaviour
         airVentAL[1].Add(airVent);
         Transform airPivot = airVent.gameObject.transform.parent;
         airPivot.localScale = new Vector3(airPivot.localScale.x, 0, airPivot.localScale.z);
+        airVent.ChangePower(0);
         foreach (AirVent air in airVentAL[0]) {
             air.ChangePower(air.AirVentGroupStruct.airVentPower/airVentAL[0].Count);
         }
