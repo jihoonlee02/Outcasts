@@ -292,12 +292,14 @@ public class GameManager : MonoBehaviour
         if (next.name == "MainMenu") {
             if (m_tinkerPC != null)
             {
+                Debug.Log("Destroied Tinker");
                 Destroy(m_tinkerPC.gameObject);
                 m_tinkerPC = null;
             }
 
             if (m_ashePC != null)
             {
+                Debug.Log("Destroied Ashe");
                 Destroy(m_ashePC.gameObject);
                 m_ashePC = null;
             }
