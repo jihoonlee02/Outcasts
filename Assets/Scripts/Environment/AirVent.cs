@@ -35,12 +35,13 @@ public class AirVent : MonoBehaviour
         }
     }
     private static Hashtable airVentTable;
+    private Coroutine previousCo;
 
     // Start is called before the first frame update
     void Start()
     {
         windAreaCol = gameObject.GetComponent<BoxCollider2D>();
-        windAreaCol.enabled = activated;
+        windAreaCol.enabled = true;
         windAngle = transform.rotation.eulerAngles.z;
         airPivot = gameObject.transform.parent;
         if (windAngle == 0) {
@@ -53,7 +54,7 @@ public class AirVent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        windAreaCol.enabled = activated;
+        //windAreaCol.enabled = activated;
     }
 
     public void Activate() {
@@ -67,8 +68,10 @@ public class AirVent : MonoBehaviour
     }
 
     public void ChangePower(float power) {
-        StopCoroutine("ChangeHeight");
-        StartCoroutine(ChangeHeight(power));
+        if (previousCo != null) {
+            StopCoroutine(previousCo);
+        }
+        previousCo = StartCoroutine(ChangeHeight(power));
     }
     private IEnumerator ChangeHeight(float power) {
         Debug.Log("BRUH BRUH BURH");
