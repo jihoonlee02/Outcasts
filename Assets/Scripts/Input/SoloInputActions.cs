@@ -208,7 +208,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d50b2273-4b8c-4130-a791-7fc3e6cded6c"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
@@ -219,7 +219,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""82d6c101-ca9d-4ff4-9253-1b0a6968e682"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
