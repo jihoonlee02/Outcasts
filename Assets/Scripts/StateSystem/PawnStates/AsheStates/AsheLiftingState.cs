@@ -18,6 +18,7 @@ public class AsheLiftingState : State
     {
         Debug.Log("Switched to AsheLifting");
         m_followingY = ((AshePawn)m_context).HeldObject.transform.position.y - m_context.transform.position.y - 0.01f;
+
         //This is the new wack
         //((AshePawn)m_context).HeldObject.transform.position
         //    = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
@@ -26,8 +27,8 @@ public class AsheLiftingState : State
         //priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
         //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, false);
 
-        //prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
-        //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
+        prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
 
     }
     public override void UpdateState()
@@ -43,8 +44,8 @@ public class AsheLiftingState : State
             ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
         }
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
-        ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, false);
-        ((AshePawn)m_context).HeldObject = null;
+        //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, false);
+        //((AshePawn)m_context).HeldObject = null;
     }
     public override void InitializeSubState()
     {
