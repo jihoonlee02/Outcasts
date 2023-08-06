@@ -19,12 +19,12 @@ public class AsheLiftingState : State
         Debug.Log("Switched to AsheLifting");
         m_followingY = ((AshePawn)m_context).HeldObject.transform.position.y - m_context.transform.position.y - 0.01f;
         //This is the new wack
-        ((AshePawn)m_context).HeldObject.transform.position
-            = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
+        //((AshePawn)m_context).HeldObject.transform.position
+        //    = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
 
-        // Un convetional confusing shit
-        priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
-        ((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, false);
+        // Un convetional confusing shit --->> NEW
+        //priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
+        //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, false);
 
         //prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
         //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
@@ -32,17 +32,17 @@ public class AsheLiftingState : State
     }
     public override void UpdateState()
     {
-        // OG WOrking SHITT below here
-        //((AshePawn)m_context).HeldObject.transform.position 
-        //    = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);   
+        // OG WOrking SHITT below here ---->> Old
+        ((AshePawn)m_context).HeldObject.transform.position 
+            = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);   
     }
     public override void ExitState() 
     {
-        //if (((AshePawn)m_context).HeldObject.tag == "Tinker")
-        //{
-        //    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
-        //}
-        //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
+        if (((AshePawn)m_context).HeldObject.tag == "Tinker")
+        {
+            ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
+        }
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, false);
         ((AshePawn)m_context).HeldObject = null;
     }
