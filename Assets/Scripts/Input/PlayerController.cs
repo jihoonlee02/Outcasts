@@ -164,10 +164,12 @@ public class PlayerController : MonoBehaviour
         m_pawnText.text = pawn.Data.Name;
         StartCoroutine(ShowControlSchemeUsed());
         m_playerInput.actions["Pause"].Enable();
+        //m_playerInput.actions["PlayerJoin"].Disable();
     }
     public void EnablePawnControl()
     {
         m_playerInput.actions.actionMaps[0].Enable();
+        //m_playerInput.actions["PlayerJoin"].Disable();
     }
     public void DisablePawnControl()
     {
