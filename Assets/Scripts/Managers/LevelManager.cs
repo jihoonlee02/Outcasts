@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,8 +31,7 @@ public class LevelManager : MonoBehaviour
             Instantiate(levelThings);    
         }
     }
-    private void Start()
-    {
+    private void Start() {
         GameManager.Instance.LevelManager = this;
         GameManager.Instance.Tinker.transform.position = m_tinkerSpawn.position;
         GameManager.Instance.Ashe.transform.position = m_asheSpawn.position;
@@ -45,19 +44,16 @@ public class LevelManager : MonoBehaviour
         m_tinkerSpawn.gameObject.SetActive(false);
         m_asheSpawn.gameObject.SetActive(false);
 
-        
-
         GameManager.Instance.DoorTransition.OpenDoors();
         if (isSetupScene)
         {
             return;
         }
         AudioManager.Instance.PlayAudio();
-
         invokeAtStart.Invoke();
     }
 
-    private void Update()
+    private void Update() 
     {
         // Though this is in the update method, it should only get invoked once...
         // ...hopefully
