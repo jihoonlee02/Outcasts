@@ -49,7 +49,6 @@ public class PlatformMover : Invokee
     public void MoveToWaypoint(int idx)
     {
         this.idx = idx;
-        Debug.Log("Unblocked");
         blocked = false;
     }
     protected override void OnActivate()
@@ -106,7 +105,6 @@ public class PlatformMover : Invokee
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
         {
-            Debug.Log("Blocked");
             count_collisions++;
             blocked = true;
         }
@@ -121,7 +119,6 @@ public class PlatformMover : Invokee
 
         if (count_collisions <= 0)
         {
-            Debug.Log("Unblocked");
             blocked = false;
         }
     }

@@ -49,6 +49,7 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
+            ashe.HeldObject = null;
             cooldownTime = Time.time + delay;
             //tinkerPawn.transform.SetParent(oldParent, true);
             //tinkerPawn.GetComponent<FixedJoint2D>().connectedBody = null;
@@ -90,6 +91,7 @@ public class LiftingRegiion : MonoBehaviour
         {
             ashe.IsLifting = false;
             tinkerPawn.IsHeld = false;
+            ashe.HeldObject = null;
             cooldownTime = Time.time + delay;
             return;
         }
