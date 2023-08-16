@@ -31,6 +31,7 @@ public class AsheLiftingState : State
 
         prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
     }
     public override void UpdateState()
@@ -38,7 +39,7 @@ public class AsheLiftingState : State
         // OG WOrking SHITT below here ---->> Old
         // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
-            = new Vector3(m_context.transform.position.x, m_followingY + m_context.GetComponent<Collider2D>().bounds.center.y, ((AshePawn)m_context).HeldObject.transform.position.z);   
+            = new Vector3(m_context.transform.position.x, m_followingY + m_context.GetComponent<Collider2D>().bounds.center.y, ((AshePawn)m_context).HeldObject.transform.position.z);
     }
     public override void ExitState() 
     {

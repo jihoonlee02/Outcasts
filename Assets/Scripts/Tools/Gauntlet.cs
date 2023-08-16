@@ -50,7 +50,6 @@ public class Gauntlet : Tool
         if (((AshePawn)m_user).HeldObject != null) 
         {
             UsePrimaryAction();
-            ((AshePawn)m_user).HeldObject = null;
             return;
         }
         if (inUse) { return; }
@@ -60,7 +59,17 @@ public class Gauntlet : Tool
             0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 0.2f);
         foreach (RaycastHit2D hit2D in hit2Ds)
         {
-            Debug.Log(hit2D.collider.gameObject);
+            if (hit2D.collider.GetComponent<TinkerPawn>())
+            {
+                Debug.Log("Raycast Hit: " + hit2D.collider.gameObject);
+                currTime = Time.time + animationLength;
+                inUse = true;
+                ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).HeldObject.GetComponent<TinkerPawn>().IsHeld = true;
+                ((AshePawn)m_user).IsLifting = true;
+                return;
+            }
+
             if (hit2D.collider.GetComponent<Grabbable>())
             {
                 Debug.Log("Raycast Hit: " + hit2D.collider.gameObject);
