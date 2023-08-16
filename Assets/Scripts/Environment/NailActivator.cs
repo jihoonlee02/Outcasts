@@ -22,7 +22,7 @@ public class NailActivator : Invoker
     private void OnTriggerEnter2D(Collider2D collision)
     {
         count++;
-        if (!isActive)
+        if (!isActive && collision.GetComponent<Projectile>() != null)
         {
             isActive = true;
             Activate();
@@ -33,7 +33,7 @@ public class NailActivator : Invoker
     private void OnTriggerExit2D(Collider2D collision)
     {
         count--;
-        if (count == 0) 
+        if (count == 0 && collision.GetComponent<Projectile>() != null) 
         {
             isActive = false;
             Deactivate();

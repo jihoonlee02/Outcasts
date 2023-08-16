@@ -55,8 +55,9 @@ public class Gauntlet : Tool
         }
         if (inUse) { return; }
 
-        RaycastHit2D[] hit2Ds = Physics2D.BoxCastAll(userCollider.bounds.center + userCollider.bounds.extents, userCollider.bounds.extents,
-            0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 1f);
+        // Raycast that looks in front of Ashe Gauntlets based on orientation
+        RaycastHit2D[] hit2Ds = Physics2D.BoxCastAll(userCollider.bounds.center, userCollider.bounds.extents,
+            0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 0.2f);
         foreach (RaycastHit2D hit2D in hit2Ds)
         {
             Debug.Log(hit2D.collider.gameObject);
@@ -79,7 +80,7 @@ public class Gauntlet : Tool
 
     public void FixedUpdate()
     {
-        Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);
+        //Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);
         if (Time.time > currTime) 
         { 
             inUse = false; 

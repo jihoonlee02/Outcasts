@@ -18885,7 +18885,6 @@ Transform:
   - {fileID: 1714276505}
   - {fileID: 35186270}
   - {fileID: 948702994}
-  - {fileID: 2122496965}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19978,11 +19977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475139566639154560, guid: 18adb1303d7307c4d9eeb54d4f2a9f1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.21
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 5475139566639154560, guid: 18adb1303d7307c4d9eeb54d4f2a9f1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.82
+      value: -4.27
       objectReference: {fileID: 0}
     - target: {fileID: 5475139566639154560, guid: 18adb1303d7307c4d9eeb54d4f2a9f1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20037,7 +20036,7 @@ GameObject:
   - component: {fileID: 2122496967}
   - component: {fileID: 2122496966}
   m_Layer: 8
-  m_Name: Square
+  m_Name: BOX
   m_TagString: physical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20051,12 +20050,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122496964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.67, y: -5.14, z: 0}
+  m_LocalPosition: {x: 2.04, y: -4.59, z: 0}
   m_LocalScale: {x: 0.7145, y: 0.7145, z: 0.7145}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 984651958}
-  m_RootOrder: 5
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2122496966
 MonoBehaviour:
