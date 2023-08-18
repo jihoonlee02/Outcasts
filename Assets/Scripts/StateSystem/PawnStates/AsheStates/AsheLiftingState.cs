@@ -27,7 +27,7 @@ public class AsheLiftingState : State
 
         // Un convetional confusing shit --->> NEW
         priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
-        ((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, true);
+        //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, true);
 
         prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
@@ -48,7 +48,7 @@ public class AsheLiftingState : State
             ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
         }
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
-        ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
+        //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
         ((AshePawn)m_context).HeldObject = null;
     }
     public override void InitializeSubState()

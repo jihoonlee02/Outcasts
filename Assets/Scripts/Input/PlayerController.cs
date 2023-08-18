@@ -160,6 +160,11 @@ public class PlayerController : MonoBehaviour
     #endregion
     public void ControlPawn(Pawn pawn)
     {
+        if (pawn == null)
+        {
+            controlledPawn = pawn;
+            return;
+        }
         controlledPawn = pawn;
         m_pawnText.text = pawn.Data.Name;
         StartCoroutine(ShowControlSchemeUsed());

@@ -15,12 +15,12 @@ public abstract class Invoker : MonoBehaviour
 
     protected void Activate()
     {
-        EventManager.GetEventManager.Activated.Invoke(id);
+        EventManager.GetEventManager.Activated.Invoke(this.id);
     }
 
     protected void Deactivate()
     {
-        EventManager.GetEventManager.Deactivated.Invoke(id);
+        EventManager.GetEventManager.Deactivated.Invoke(this.id);
     }
 
     protected void Activate(int id)

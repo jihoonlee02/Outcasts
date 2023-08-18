@@ -252,18 +252,20 @@ public class GameManager : MonoBehaviour
         UnPauseGame();
         if (m_ashePC != null)
         {
-            Debug.Log("Ashe Pre: " + m_ashePC);
-            Debug.Log("Tinker Pre: " + m_tinkerPC);
-            Debug.Log("Destroied Ashe");
-            Destroy(m_ashePC.gameObject);
-            Debug.Log("Ashe: " + m_ashePC);
-            Debug.Log("Tinker: " + m_tinkerPC);
+            //Debug.Log("Ashe Pre: " + m_ashePC.ControlledPawn.name);
+            //Debug.Log("Tinker Pre: " + m_tinkerPC.ControlledPawn.name);
+            //Debug.Log("Destroied Ashe");
+            m_ashePC.ControlPawn(null);
+            //Destroy(m_ashePC.gameObject);
+            //Debug.Log("Ashe: " + m_ashePC != null ? m_ashePC.ControlledPawn.name : "");
+            //Debug.Log("Tinker: " + m_tinkerPC != null ? m_tinkerPC.ControlledPawn.name : "");
             m_ashePC = null;
         }
         if (m_tinkerPC != null)
         {
             Debug.Log("Destroied Tinker");
-            Destroy(m_tinkerPC.gameObject);
+            //Destroy(m_tinkerPC.gameObject);
+            m_tinkerPC.ControlPawn(null);
             m_tinkerPC = null;
         }
         if (m_SC != null)
@@ -331,7 +333,6 @@ public class GameManager : MonoBehaviour
         //{
         //    SceneManager.LoadSceneAsync("Hub");
         //} 
-     
     } 
 
     #endregion
