@@ -229,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100192524187280813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6268, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6221, z: 0}
   m_LocalScale: {x: 0.5134368, y: 0.00454626, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -340,7 +340,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035977766, y: 4.871324}
+  m_Offset: {x: -0.0359779, y: 4.987699}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -351,7 +351,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.82350373, y: 4.438443}
+  m_Size: {x: 0.823504, y: 4.671193}
   m_EdgeRadius: 0
 --- !u!1 &3130537325049219110
 GameObject:
@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 8475706596464786226}
   - component: {fileID: 4385874898039002077}
   - component: {fileID: 3255407902942686173}
+  - component: {fileID: 5872024378232928797}
   m_Layer: 9
   m_Name: Ashe 3
   m_TagString: Ashe
@@ -428,6 +429,7 @@ MonoBehaviour:
   m_maxPitch: 1.7
   m_gauntletReference: {fileID: 8473621029046522648}
   m_liftingRegion: {fileID: 4913691275906960489}
+  m_heldObjectCollider: {fileID: 5872024378232928797}
   HeldObject: {fileID: 0}
 --- !u!50 &5788782832889509122
 Rigidbody2D:
@@ -518,6 +520,32 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!61 &5872024378232928797
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130537325049219110}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.016584635, y: 0.775378}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.54, y: 0.77}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4456303, y: 0.22856045}
+  m_EdgeRadius: 0
 --- !u!1 &3808633479617949239
 GameObject:
   m_ObjectHideFlags: 0

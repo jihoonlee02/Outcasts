@@ -18,28 +18,29 @@ public class AsheLiftingState : State
     {
         Debug.Log("Switched to AsheLifting");
 
-        // Where you left off is here
-        m_followingY = ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_context.GetComponent<Collider2D>().bounds.extents.y;
+        // The Y above ashe's head to always follow
+        m_followingY = ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.y +m_context.GetComponent<Collider2D>().bounds.extents.y /*+ ((AshePawn)m_context).LifitingRegion.bounds.size.y*/;
 
-        //This is the new wack
-        //((AshePawn)m_context).HeldObject.transform.position
-        //    = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
-
-        // Un convetional confusing shit --->> NEW
+        // Set the held object to ashe as its parent
         priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
         //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, true);
 
+        // Set the mass of the Held object to 0 and store the previous and stop all of its previous movement
         prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
+        // Enable the Collision for the held object so that ashe cannot phase these objects through walls
+        ((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
+        ((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
+        ((AshePawn)m_context).HeldObjectCollider.enabled = true;
     }
     public override void UpdateState()
     {
         // OG WOrking SHITT below here ---->> Old
         // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
-            = new Vector3(m_context.transform.position.x, m_followingY + m_context.GetComponent<Collider2D>().bounds.center.y, ((AshePawn)m_context).HeldObject.transform.position.z);
+            = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
     }
     public override void ExitState() 
     {
@@ -49,7 +50,9 @@ public class AsheLiftingState : State
         }
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
+        ((AshePawn)m_context).HeldObjectCollider.enabled = false;
         ((AshePawn)m_context).HeldObject = null;
+        
     }
     public override void InitializeSubState()
     {

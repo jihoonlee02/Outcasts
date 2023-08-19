@@ -53,8 +53,8 @@ MonoBehaviour:
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
-    delay: 2
-    text: Ashe, Look! A button!
+    delay: 4
+    text: This looks like an abandoned dungeon?
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
@@ -62,8 +62,8 @@ MonoBehaviour:
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
-    delay: 4
-    text: Let's go in there, that may be the way out!
+    delay: 3
+    text: There may be the way out!
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
@@ -91,15 +91,6 @@ MonoBehaviour:
     speed: 6
     delay: 2
     text: Do we even know if it's safe?
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-  - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
-    alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 6
-    delay: 4
-    text: We don't have time to question it; let's go!
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
