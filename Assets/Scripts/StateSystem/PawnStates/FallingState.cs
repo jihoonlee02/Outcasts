@@ -10,7 +10,7 @@ public class FallingState : State
     }
     public override void EnterState()
     {
-        //.Log("Entering Falling State");
+        Debug.Log("Entering Falling State");
 
         m_context.Animator.Play(m_animationName + m_superState.AnimationName);
     }

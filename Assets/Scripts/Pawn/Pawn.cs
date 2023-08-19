@@ -129,6 +129,8 @@ public class Pawn : MonoBehaviour
             0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
         isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
 
+        Debug.Log(Data.name + " Grounded: " + isGrounded);
+
         //Make ending of jumps feel more fluid
         if (m_rb.velocity.y < 0)
         {

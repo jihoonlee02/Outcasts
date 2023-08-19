@@ -40,7 +40,11 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayDialogue(DialogueObject a_dialogueObject)
     {
-        if (inProduction) StopAllCoroutines();
+        if (inProduction)
+        {
+            StopAllCoroutines();
+            m_dialogueProducer.StopProduction();
+        }
         inProduction = true;
         dialogueBox.GetComponent<Animator>().Play("Appear");
         StartCoroutine(RunThroughDialogue(a_dialogueObject));

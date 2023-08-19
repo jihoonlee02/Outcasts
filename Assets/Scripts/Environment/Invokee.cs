@@ -12,6 +12,11 @@ public abstract class Invokee : MonoBehaviour
     [SerializeField] protected float delay = 0f;
     [SerializeField] protected bool ActivateOnly;
     [SerializeField] protected bool ActivateOnce;
+    [SerializeField] protected bool ActivateUpdate;
+
+    #region Technical
+    private float currentDelayTime = 0f;
+    #endregion
 
     protected void Awake()
     {
@@ -20,6 +25,17 @@ public abstract class Invokee : MonoBehaviour
         if (ActivateOnly) return;
 
         EventManager.GetEventManager.Deactivated += ReactOnDeactivate;
+    }
+
+    private void Update()
+    {
+        // Unused Polling version
+        //if (ActivateUpdate && Time.time >= currentDelayTime)
+        //{
+        //    OnActivate();
+        //    if (ActivateOnce) EventManager.GetEventManager.Activated -= ReactOnActivate;
+        //    ActivateUpdate = false;
+        //}
     }
 
     private void OnDestroy()
@@ -32,6 +48,8 @@ public abstract class Invokee : MonoBehaviour
     {
         if (other_id == id) 
         {
+            //ActivateUpdate = true;
+            //currentDelayTime = delay + Time.time;
             StartCoroutine(DelayActivate());        
         }    
     }

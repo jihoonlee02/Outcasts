@@ -12,6 +12,7 @@ public class Breakable : MonoBehaviour
     private TilemapRenderer renderer;
     private AudioSource m_AudioSource;
     [SerializeField] private bool m_requiresAshe = true;
+    [SerializeField] private bool m_requiresHands = false;
     [SerializeField, Tooltip("No Implementation with this one yet")]
     private bool m_requiresTinker = false;
     private bool broken = false;

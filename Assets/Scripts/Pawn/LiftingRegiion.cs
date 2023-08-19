@@ -18,8 +18,9 @@ public class LiftingRegiion : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!ashe.IsLifting)
+        if (Time.time > cooldownTime && !ashe.IsLifting)
         {
+            Debug.Log("Lifting");
             var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
             if (tinkerPawn != null)
             {

@@ -82,6 +82,10 @@ public class TextProducer : MonoBehaviour
         m_textLabel.text = string.Empty;
         return WriteText(a_text, a_effect, a_amplifier, a_delay);
     }
+    public void StopProduction()
+    {
+        StopAllCoroutines();
+    }
 
     #region All Text Effects
 
