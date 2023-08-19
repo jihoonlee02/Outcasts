@@ -31,9 +31,9 @@ public class AsheLiftingState : State
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         // Enable the Collision for the held object so that ashe cannot phase these objects through walls
-        ((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
-        ((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
-        ((AshePawn)m_context).HeldObjectCollider.enabled = true;
+        //((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
+        //((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
+        //((AshePawn)m_context).HeldObjectCollider.enabled = true;
     }
     public override void UpdateState()
     {
@@ -50,9 +50,9 @@ public class AsheLiftingState : State
         }
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
-        ((AshePawn)m_context).HeldObjectCollider.enabled = false;
+        //((AshePawn)m_context).HeldObjectCollider.enabled = false;
         ((AshePawn)m_context).HeldObject = null;
-        
+
     }
     public override void InitializeSubState()
     {
