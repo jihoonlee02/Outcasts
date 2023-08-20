@@ -1711,6 +1711,7 @@ GameObject:
   - component: {fileID: 7620294385219866036}
   - component: {fileID: 9069911434190323354}
   - component: {fileID: 7221943344494805003}
+  - component: {fileID: 2569203686857022867}
   m_Layer: 5
   m_Name: Chest Tracker
   m_TagString: Untagged
@@ -1798,6 +1799,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2569203686857022867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511431252362222903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab52b568158d606488f50f727fd551a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxNumberOfChests: 0
+  currNumberOfChestOpened: 0
+  m_trackerTextBox: {fileID: 5207151576817079513}
 --- !u!1 &5065621701673636944
 GameObject:
   m_ObjectHideFlags: 0

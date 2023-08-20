@@ -15,6 +15,7 @@ public class Chest : MonoBehaviour
         if (!isOpen && collision.GetComponent<Pawn>())
         {
             animator.Play("ChestOpen");
+            ChestTracker.Instance.FoundNewChest();
             isOpen = true;
         }
     }
