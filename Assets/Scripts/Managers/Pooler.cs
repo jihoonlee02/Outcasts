@@ -25,6 +25,7 @@ public class Pooler : MonoBehaviour
     private Projectile[] nails;
 
     [SerializeField] private Projectile nailFab;
+    [SerializeField] private Projectile pawTrolls; // For the Paws to shoot shit at tinker n ashe
 
     private void Awake()
     {
