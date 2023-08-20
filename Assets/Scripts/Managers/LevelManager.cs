@@ -75,6 +75,22 @@ public class LevelManager : MonoBehaviour
         exited = true;
 
     }
+    public void StopMusic()
+    {
+        AudioManager.Instance.StopAudio();
+    }
+    public void PauseMusic()
+    {
+        AudioManager.Instance.PauseAudio();
+    }
+    public void PlayMusic()
+    {
+        AudioManager.Instance.PlayAudio();
+    }
+    public void ChangeMusic(AudioClip clip)
+    {
+        AudioManager.Instance.SetAudioClip(m_music);
+    }
 }
 
 // Temp Level Struct

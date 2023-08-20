@@ -35,24 +35,18 @@ public class RegionInvoker : Invoker
         {
             return;
         }
-        if (collision.gameObject.tag == "Tinker")
-        {
-            tinkerInRegion = true;
-        }
-        else if (collision.gameObject.tag == "Ashe")
-        {
-            asheInRegion = true;
-        }
         if (triggerType != TriggerType.SpecificObjects && collision.gameObject.layer == LayerMask.NameToLayer("Players"))
         {
             if (triggerType == TriggerType.BothPlayersRequired)
             {
                 if (collision.gameObject.tag == "Tinker")
                 {
+                    tinkerInRegion = true;
                     if (!asheInRegion) return;     
                 }
                 else if (collision.gameObject.tag == "Ashe")
                 {
+                    asheInRegion = true;
                     if (!tinkerInRegion) return;
                 }
             }
@@ -100,10 +94,12 @@ public class RegionInvoker : Invoker
             {
                 if (collision.gameObject.tag == "Tinker")
                 {
+                    tinkerInRegion = true;
                     if (!asheInRegion) return;
                 }
                 else if (collision.gameObject.tag == "Ashe")
                 {
+                    asheInRegion = true;
                     if (!tinkerInRegion) return;
                 }
             }
@@ -144,17 +140,20 @@ public class RegionInvoker : Invoker
             || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe"))
         {
             return;
-        }
-        if (collision.gameObject.tag == "Tinker")
-        {
-            tinkerInRegion = false;
-        }
-        else if (collision.gameObject.tag == "Ashe")
-        {
-            asheInRegion = false;
-        }
+        } 
         if (triggerType != TriggerType.SpecificObjects && collision.gameObject.layer == LayerMask.NameToLayer("Players"))
         {
+            if (triggerType == TriggerType.BothPlayersRequired)
+            {
+                if (collision.gameObject.tag == "Tinker")
+                {
+                    tinkerInRegion = false;
+                }
+                else if (collision.gameObject.tag == "Ashe")
+                {
+                    asheInRegion = false;
+                }
+            }
             if (useUniqueID)
             {
                 if (collision.gameObject.tag == "Tinker")

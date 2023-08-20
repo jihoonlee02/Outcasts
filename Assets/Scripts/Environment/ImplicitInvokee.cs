@@ -16,4 +16,21 @@ public class ImplicitInvokee : Invokee
     {
         deactivate.Invoke();
     }
+
+    public void AlertAshe(float time)
+    {
+        GameManager.Instance.Ashe.Alert(time);
+    }
+    public void AlertTinker(float time)
+    {
+        GameManager.Instance.Tinker.Alert(time);
+    }
+    public void SetAsheMovement(bool move)
+    {
+        GameManager.Instance.Ashe.CanMove = move;
+    }
+    public void SetTinkerMovement(bool move)
+    {
+        GameManager.Instance.Tinker.CanMove = move;
+    }
 }

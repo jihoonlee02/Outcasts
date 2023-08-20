@@ -103,7 +103,7 @@ public class PlatformMover : Invokee
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
         {
             count_collisions++;
             blocked = true;
@@ -112,7 +112,7 @@ public class PlatformMover : Invokee
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
         {
             count_collisions--;
         }

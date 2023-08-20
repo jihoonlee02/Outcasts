@@ -34133,6 +34133,8 @@ MonoBehaviour:
   m_pawnName: Ashe
   m_speed: 2
   m_angleOffset: -90
+  target: {fileID: 0}
+  isChasing: 1
 --- !u!1 &1216714603
 GameObject:
   m_ObjectHideFlags: 0
@@ -34482,6 +34484,8 @@ MonoBehaviour:
   m_pawnName: Tinker
   m_speed: 2
   m_angleOffset: -90
+  target: {fileID: 0}
+  isChasing: 1
 --- !u!1 &1425598443
 GameObject:
   m_ObjectHideFlags: 0
