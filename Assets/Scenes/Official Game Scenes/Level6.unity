@@ -20069,7 +20069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df15c7b5e0dd9dc47b9a4d643891741a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collision: {fileID: 0}
 --- !u!114 &2122496967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20214,7 +20213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_nextScene
-      value: VGDevLastLevel
+      value: Level7
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936489, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_Name

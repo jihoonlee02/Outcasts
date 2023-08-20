@@ -47,6 +47,8 @@ MonoBehaviour:
   m_data: {fileID: 11400000, guid: 1263e2904ed623940b212c2c057bb6aa, type: 2}
   m_user: {fileID: 0}
   projectile: {fileID: 6334426370693832413, guid: 9aefd794e2f779a44ab98732c4708ba8, type: 3}
+  directional: 0
+  maxAmmo: 0
 --- !u!1 &1864015678534861899
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +120,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228331019
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 473671796, guid: d0eff5c2c3224e541b786731df3f8e4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -182,6 +184,11 @@ MonoBehaviour:
   m_rb: {fileID: 0}
   m_collider: {fileID: 0}
   m_animator: {fileID: 0}
+  m_audioSource: {fileID: 0}
+  m_pawnData: {fileID: 0}
+  m_hingeJoint: {fileID: 0}
+  m_fixedJoint: {fileID: 0}
+  m_pawnCanvas: {fileID: 0}
   movementSpeed: 9
   acceleration: 8
   decceleration: 20
@@ -193,9 +200,10 @@ MonoBehaviour:
   jumpBufferTime: 0
   gravityScale: 1
   fallGravityMultiplier: 1
+  m_minPitch: 0.8
+  m_maxPitch: 1.5
   m_tools:
   - {fileID: 5378963737160652268}
-  m_pc: {fileID: 0}
 --- !u!50 &5907868996374909195
 Rigidbody2D:
   serializedVersion: 4
@@ -316,7 +324,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228331019
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1789215519, guid: 444c48f1972ddb34fab3cd7a31bfae75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

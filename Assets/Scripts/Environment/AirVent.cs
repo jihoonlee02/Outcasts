@@ -91,7 +91,7 @@ public class AirVent : MonoBehaviour
         if (gRBody.velocity.y < 0) {
             if (gObject.tag == "Tinker") {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y/5.0f);
-            } else if (gObject.tag == "physical") {
+            } else if (gObject.tag == "physical" && !gObject.GetComponent<Box>() && !gObject.GetComponent<Box>().IsHeavy) {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
             }
         }
@@ -103,7 +103,7 @@ public class AirVent : MonoBehaviour
         if (gObject.tag == "physical" || gObject.tag == "Tinker") {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
-            if (gObject.tag == "physical") {
+            if (gObject.tag == "physical" && !gObject.GetComponent<Box>() && !gObject.GetComponent<Box>().IsHeavy) {
                 if (gRBody.velocity.y < 0) {
                     gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
                 }

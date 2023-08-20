@@ -61,7 +61,6 @@ public class Gauntlet : Tool
         {
             if (hit2D.collider.GetComponent<TinkerPawn>())
             {
-                Debug.Log("Raycast Hit: " + hit2D.collider.gameObject);
                 currTime = Time.time + animationLength;
                 inUse = true;
                 ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
@@ -72,7 +71,6 @@ public class Gauntlet : Tool
 
             if (hit2D.collider.GetComponent<Grabbable>())
             {
-                Debug.Log("Raycast Hit: " + hit2D.collider.gameObject);
                 currTime = Time.time + animationLength;
                 inUse = true;
                 ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
