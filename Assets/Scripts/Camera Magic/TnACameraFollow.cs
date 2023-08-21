@@ -9,6 +9,16 @@ public class TnACameraFollow : MonoBehaviour
     [SerializeField] private bool isLocked = true;
     [SerializeField] private bool lockVertical = true;
     [SerializeField] private bool lockHorizontal = false;
+
+    [Header("Bounds")]
+    [SerializeField] private float leftBound = 0;
+    [SerializeField] private bool boundTheLeft = false;
+    [SerializeField] private float rightBound;
+    [SerializeField] private bool boundTheRight = false;
+    [SerializeField] private float topBound;
+    [SerializeField] private bool boundTheTop = false;
+    [SerializeField] private float botBound;
+    [SerializeField] private bool boundTheBot = false;
     #region technical
     private Vector3 velocity;
     private void Start()
@@ -27,15 +37,32 @@ public class TnACameraFollow : MonoBehaviour
         {
             var centerPoint = GetCenterPoint();
             Vector3 newPosition = new Vector3(lockHorizontal ? transform.position.x : centerPoint.x, 
-                lockVertical ? transform.position.y : centerPoint.y, transform.position.z) + offset;
+                lockVertical ? transform.position.y : centerPoint.y, transform.position.z);
 
-            if (newPosition.x < 0)
+            bool inBound = false;
+            Vector3 boundedPosition = transform.position;
+            if (boundTheLeft && newPosition.x < leftBound)
             {
-                transform.position = Vector3.SmoothDamp(transform.position, Vector3.zero + offset, ref velocity, smoothTime);
-                return;
+                boundedPosition = new Vector3(leftBound, boundedPosition.y);
+                inBound = true;
+            }
+            else if (boundTheRight && newPosition.x > rightBound)
+            {
+                boundedPosition = new Vector3(rightBound, boundedPosition.y);
+                inBound = true;
+            }
+            if (boundTheBot && newPosition.y < botBound)
+            {
+                boundedPosition = new Vector3(boundedPosition.x, botBound);
+                inBound = true;
+            }
+            else if (boundTheTop && newPosition.y > topBound)
+            {
+                boundedPosition = new Vector3(boundedPosition.x, topBound);
+                inBound = true;
             }
 
-            transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+            transform.position = Vector3.SmoothDamp(transform.position, (inBound ? boundedPosition : newPosition) + offset, ref velocity, smoothTime);
         }
         
     }
