@@ -9078,6 +9078,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1624923244620380622, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
   m_PrefabInstance: {fileID: 4726994623011894718}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &6909449677954839278 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2196317698082817872, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+  m_PrefabInstance: {fileID: 4726994623011894718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4726994624127458345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9190,6 +9195,10 @@ PrefabInstance:
       propertyPath: m_doorTransition
       value: 
       objectReference: {fileID: 3701241665501357256}
+    - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
+      propertyPath: m_fadeTransition
+      value: 
+      objectReference: {fileID: 6909449677954839278}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_characterSelection
       value: 

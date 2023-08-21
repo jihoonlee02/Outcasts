@@ -18,6 +18,10 @@ public class LiftingRegiion : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.GetMask("Platforms"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
         if (Time.time > cooldownTime && !ashe.IsLifting)
         {
             Debug.Log("Lifting");

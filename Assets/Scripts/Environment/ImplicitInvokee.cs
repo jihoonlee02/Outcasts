@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class ImplicitInvokee : Invokee
 {
+    [Header("Implicit Specific")]
     [SerializeField] private UnityEvent activate;
     [SerializeField] private UnityEvent deactivate;
     protected override void OnActivate()

@@ -107,6 +107,7 @@ public class PlatformMover : Invokee
         {
             count_collisions++;
             blocked = true;
+            Debug.Log("BLOCKED BY " + collision.gameObject.name);
         }
     }
 
@@ -120,6 +121,7 @@ public class PlatformMover : Invokee
         if (count_collisions <= 0)
         {
             blocked = false;
+            Debug.Log("UN-BLOCKED");
         }
     }
 }

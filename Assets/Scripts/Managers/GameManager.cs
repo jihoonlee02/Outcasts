@@ -45,8 +45,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterSelection m_characterSelection;
     [SerializeField] private CharacterSelection m_characterSelection2;
     [SerializeField] private DoorTransition m_doorTransition;
+    [SerializeField] private CanvasGroup m_fadeTransition;
 
     public DoorTransition DoorTransition => m_doorTransition;
+    public CanvasGroup FadeTransition => m_fadeTransition;
 
     [Header("Level Management")]
     [SerializeField] private RoomManager m_roomManager;

@@ -68,14 +68,14 @@ public class RegionInvoker : Invoker
 
             if (triggerOnce)
             {
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
         else if (triggerType == TriggerType.SpecificObjects)
         {
             if (triggerOnce)
             {
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
     }
@@ -121,14 +121,14 @@ public class RegionInvoker : Invoker
 
             if (triggerOnce)
             {
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
         else if (triggerType == TriggerType.SpecificObjects)
         {
             if (triggerOnce)
             {
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
     }

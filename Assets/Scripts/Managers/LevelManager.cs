@@ -75,6 +75,10 @@ public class LevelManager : MonoBehaviour
         exited = true;
 
     }
+    public void ReloadLevel()
+    {
+        GameManager.Instance.ReloadCurrentScene();
+    }
     public void StopMusic()
     {
         AudioManager.Instance.StopAudio();

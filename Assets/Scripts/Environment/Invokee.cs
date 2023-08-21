@@ -13,6 +13,8 @@ public abstract class Invokee : MonoBehaviour
     [SerializeField] protected bool ActivateOnly;
     [SerializeField] protected bool ActivateOnce;
     [SerializeField] protected bool ActivateUpdate;
+    [SerializeField] private bool activateOnStart = false;
+    [SerializeField] private bool deactivateOnStart = false;
 
     #region Technical
     private float currentDelayTime = 0f;
@@ -25,6 +27,11 @@ public abstract class Invokee : MonoBehaviour
         if (ActivateOnly) return;
 
         EventManager.GetEventManager.Deactivated += ReactOnDeactivate;
+    }
+    protected void Start()
+    {
+        if (activateOnStart) ReactOnActivate(id);
+        if (deactivateOnStart) ReactOnDeactivate(id);
     }
 
     private void Update()
@@ -44,7 +51,7 @@ public abstract class Invokee : MonoBehaviour
         EventManager.GetEventManager.Deactivated -= ReactOnDeactivate;
     }
 
-    private void ReactOnActivate(int other_id)
+    protected void ReactOnActivate(int other_id)
     {
         if (other_id == id) 
         {
@@ -54,7 +61,7 @@ public abstract class Invokee : MonoBehaviour
         }    
     }
 
-    private void ReactOnDeactivate(int other_id)
+    protected void ReactOnDeactivate(int other_id)
     {
         if (other_id == id)
         {
