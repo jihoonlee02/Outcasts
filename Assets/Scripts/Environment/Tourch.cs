@@ -29,4 +29,15 @@ public class Tourch : MonoBehaviour
             duration_wind = Random.Range(8f, 20f) + Time.time;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Gauntlet" || collision.gameObject.layer == LayerMask.GetMask("Players"))
+        {
+            // TODO: Fix this logic for player swoosh
+            bool punchLeft = collision.gameObject.transform.parent.GetComponent<Animator>().GetFloat("MoveX") > 0;
+            m_animator.Play(punchLeft ? "Touch_wind_LR" : "Touch_wind_RL");
+            m_animator.SetBool("left", punchLeft);
+            duration_wind = Random.Range(8f, 20f) + Time.time;
+        }
+    }
 }

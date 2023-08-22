@@ -30584,30 +30584,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tourch
       objectReference: {fileID: 0}
-    - target: {fileID: 1103432169901876360, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1103432169901876360, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1428572
-      objectReference: {fileID: 0}
-    - target: {fileID: 1103432169901876360, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_Size.y
-      value: 1.1428572
-      objectReference: {fileID: 0}
-    - target: {fileID: 1103432169901876360, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1001669037, guid: 60d17e2ee1416074a953c78d4326a7ef, type: 3}
-    - target: {fileID: 1103432169901876360, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1103432169901876360, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1103432169901876362, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -30652,10 +30628,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1103432169901876363, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 474128007990cfc4aa527f08e847769c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52a1d6a55d527bd488609e3ed14fb351, type: 3}
 --- !u!1001 &5475139565539098705

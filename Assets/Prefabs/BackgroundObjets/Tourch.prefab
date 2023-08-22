@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1103432169901876360}
   - component: {fileID: 1103432169901876363}
   - component: {fileID: 6158846836123222469}
+  - component: {fileID: 6970111116629001642}
   m_Layer: 8
   m_Name: Tourch
   m_TagString: Untagged
@@ -75,15 +76,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2066731958, guid: 40b141a6d0a6a02469b914af959ec754, type: 3}
+  m_Sprite: {fileID: -1001669037, guid: 60d17e2ee1416074a953c78d4326a7ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1428572, y: 1.1428572}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1103432169901876363
@@ -96,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 1103432169901876357}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 540b1bfcde2fddd408f26a4bc7500b6e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 474128007990cfc4aa527f08e847769c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -118,3 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374ba56b5b65f3047ab8194d45f3ef52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &6970111116629001642
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103432169901876357}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.84
