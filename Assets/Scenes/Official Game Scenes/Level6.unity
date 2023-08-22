@@ -23197,7 +23197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226954536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 1, z: -10}
+  m_LocalPosition: {x: 1, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23291,14 +23291,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.5
-  isLocked: 0
+  isLocked: 1
   lockVertical: 0
   lockHorizontal: 0
   leftBound: 0
   boundTheLeft: 1
-  rightBound: 2.5
+  rightBound: 2.08
   boundTheRight: 1
-  topBound: 2.5
+  topBound: 2.08
   boundTheTop: 1
   botBound: 0
   boundTheBot: 1
@@ -23609,7 +23609,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8144938365021988196, guid: 796dd6bfd0a4db24b92947fb39ca2275, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 796dd6bfd0a4db24b92947fb39ca2275, type: 3}
 --- !u!1001 &1587896085
 PrefabInstance:

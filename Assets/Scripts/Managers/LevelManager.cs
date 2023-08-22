@@ -95,6 +95,10 @@ public class LevelManager : MonoBehaviour
     {
         AudioManager.Instance.SetAudioClip(m_music);
     }
+    public void ChangeNextScene(string nextScene)
+    {
+        m_nextScene = nextScene;
+    }
 }
 
 // Temp Level Struct

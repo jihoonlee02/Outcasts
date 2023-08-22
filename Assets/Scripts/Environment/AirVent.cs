@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class AirVent : MonoBehaviour
@@ -28,6 +29,8 @@ public class AirVent : MonoBehaviour
     private BoxCollider2D windAreaCol;
     private SpriteRenderer windAreaSR;
     private AirVentGroupStruct airVentGroupStruct;
+    private AudioSource ventSource;
+    public AudioSource VentSource => ventSource;
     public AirVentGroupStruct AirVentGroupStruct {
         get => airVentGroupStruct;
         set {
@@ -49,12 +52,14 @@ public class AirVent : MonoBehaviour
         }
         windAreaSR = gameObject.GetComponent<SpriteRenderer>();
         //windAreaSR.enabled = false;
+        ventSource = gameObject.GetComponent<AudioSource>();
+        ventSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //windAreaCol.enabled = activated;
+
     }
 
     public void Activate() {
@@ -74,13 +79,16 @@ public class AirVent : MonoBehaviour
         previousCo = StartCoroutine(ChangeHeight(power));
     }
     private IEnumerator ChangeHeight(float power) {
-        Debug.Log("BRUH BRUH BURH");
         float startScale = airPivot.localScale.y;
         float diffScale = power - startScale;
+        float newVolume = power / AirVentManager.Instance.TotalAirVentPower[airVentGroup].airVentPower;
+        float initialVolume = ventSource.volume;
+        float deltaVolume = newVolume - initialVolume;
         float elapsedTime = 0;
         while (elapsedTime <= 1.0f) {
             float lerpFactor = Mathf.SmoothStep(0f, 1f, elapsedTime / 1.0f);
             airPivot.localScale = new Vector3(airPivot.localScale.x, startScale + (diffScale * lerpFactor), airPivot.localScale.z);
+            ventSource.volume = initialVolume + (deltaVolume * lerpFactor);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

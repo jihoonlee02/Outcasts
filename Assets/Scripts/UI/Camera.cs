@@ -28,6 +28,7 @@ public class Camera : MonoBehaviour
     [Header("Modifiers")]
     [SerializeField, Range(1f, 30f)] private float m_moveSpeed = 1f;
     [SerializeField] private Vector3 targetPosition;
+    [SerializeField] private bool follow_enabled = false;
 
     [Header("Playful")]
     [SerializeField] private CameraShake m_cameraShaker;
@@ -52,7 +53,7 @@ public class Camera : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position != targetPosition && !m_cameraShaker.IsShaking)
+        if (follow_enabled&& transform.position != targetPosition && !m_cameraShaker.IsShaking)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, m_moveSpeed * Time.deltaTime);
         }
