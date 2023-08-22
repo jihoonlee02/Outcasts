@@ -75,6 +75,16 @@ public class LevelManager : MonoBehaviour
         exited = true;
 
     }
+    public void PausePawnControl()
+    {
+        GameManager.Instance.Ashe.CanMove = false;
+        GameManager.Instance.Tinker.CanMove = false;
+    }
+    public void ResumePawnControl()
+    {
+        GameManager.Instance.Ashe.CanMove = true;
+        GameManager.Instance.Tinker.CanMove = true;
+    }
     public void ReloadLevel()
     {
         GameManager.Instance.ReloadCurrentScene();
