@@ -17,6 +17,11 @@ public class AsheLiftingState : State
     public override void EnterState()
     {
         Debug.Log("Switched to AsheLifting");
+        if (((AshePawn)m_context).HeldObject == null)
+        {
+            ((AshePawn)m_context).IsLifting = false;
+            return;
+        }
 
         // The Y above ashe's head to always follow
         m_followingY = ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_context.GetComponent<Collider2D>().bounds.extents.y /* + ((AshePawn)m_context).liftingregion.GetComponent<Collider2D>().bounds.size.y*/;
@@ -41,6 +46,7 @@ public class AsheLiftingState : State
     }
     public override void UpdateState()
     {
+        if (((AshePawn)m_context).HeldObject == null) return;
         // OG WOrking SHITT below here ---->> Old
         // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
@@ -51,6 +57,10 @@ public class AsheLiftingState : State
         if (((AshePawn)m_context).HeldObject.tag == "Tinker")
         {
             ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
+        }
+        else if (((AshePawn)m_context).HeldObject.tag == "physical")
+        {
+            ((AshePawn)m_context).HeldObject.GetComponent<Grabbable>().UnGrab();
         }
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);

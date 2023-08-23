@@ -26,7 +26,6 @@ public class AirVentBase : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        Debug.Log("test");
         Rigidbody2D otherRB = other.attachedRigidbody;
         
         if ((otherRB.mass > 2 || other.gameObject.tag == "Ashe")) {

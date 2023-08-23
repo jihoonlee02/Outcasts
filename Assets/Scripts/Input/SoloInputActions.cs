@@ -125,6 +125,15 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b64e442-52da-4479-9475-1be38ddbbb7b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -358,6 +367,17 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""MoveTinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a3e4680-8235-4bf7-b556-319d3160fc54"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -927,6 +947,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         m_Player_SecondaryAshe = m_Player.FindAction("SecondaryAshe", throwIfNotFound: true);
         m_Player_InteractTinker = m_Player.FindAction("InteractTinker", throwIfNotFound: true);
         m_Player_InteractAshe = m_Player.FindAction("InteractAshe", throwIfNotFound: true);
+        m_Player_Join = m_Player.FindAction("Join", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1009,6 +1030,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SecondaryAshe;
     private readonly InputAction m_Player_InteractTinker;
     private readonly InputAction m_Player_InteractAshe;
+    private readonly InputAction m_Player_Join;
     public struct PlayerActions
     {
         private @SoloInputActions m_Wrapper;
@@ -1024,6 +1046,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         public InputAction @SecondaryAshe => m_Wrapper.m_Player_SecondaryAshe;
         public InputAction @InteractTinker => m_Wrapper.m_Player_InteractTinker;
         public InputAction @InteractAshe => m_Wrapper.m_Player_InteractAshe;
+        public InputAction @Join => m_Wrapper.m_Player_Join;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1066,6 +1089,9 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 @InteractAshe.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractAshe;
                 @InteractAshe.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractAshe;
                 @InteractAshe.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractAshe;
+                @Join.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
+                @Join.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
+                @Join.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1103,6 +1129,9 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 @InteractAshe.started += instance.OnInteractAshe;
                 @InteractAshe.performed += instance.OnInteractAshe;
                 @InteractAshe.canceled += instance.OnInteractAshe;
+                @Join.started += instance.OnJoin;
+                @Join.performed += instance.OnJoin;
+                @Join.canceled += instance.OnJoin;
             }
         }
     }
@@ -1234,6 +1263,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         void OnSecondaryAshe(InputAction.CallbackContext context);
         void OnInteractTinker(InputAction.CallbackContext context);
         void OnInteractAshe(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -114,10 +114,12 @@ public class SoloController : MonoBehaviour
     {
         m_tinkerPawn = tpawn;
         m_ashePawn = apawn;
+        m_playerInput.actions["Join"].Disable();
     }
     public void EnablePawnControl()
     {
         m_playerInput.actions.actionMaps[0].Enable();
+        m_playerInput.actions["Join"].Disable();
     }
     public void DisablePawnControl()
     {

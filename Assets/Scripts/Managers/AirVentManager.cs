@@ -39,6 +39,7 @@ public class AirVentManager : MonoBehaviour
 
     private void InitializeAirVents() {
         //totalAirVentPower = new Tuple<int, float>[numberOfAirVentGroups];
+        
         airVents = GameObject.FindObjectsOfType<AirVent>();
         airVentsHashtable = new Hashtable();
         foreach (AirVent airVent in airVents) {

@@ -32,13 +32,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Pawn Management")]
     [SerializeField] private PlayerInputManager m_pim;
-    [SerializeField] private Pawn m_tinker;
-    [SerializeField] private Pawn m_ashe;
+    [SerializeField] private TinkerPawn m_tinker;
+    [SerializeField] private AshePawn m_ashe;
     private PlayerController m_tinkerPC;
     private PlayerController m_ashePC;
     private SoloController m_SC;
-    public Pawn Tinker => m_tinker;
-    public Pawn Ashe => m_ashe;
+    public TinkerPawn Tinker => m_tinker;
+    public AshePawn Ashe => m_ashe;
     public PlayerController TinkerPC => m_tinkerPC;
     public PlayerController AshePC => m_ashePC;
     public SoloController SC => m_SC;

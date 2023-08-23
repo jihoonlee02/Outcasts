@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Grabbable : MonoBehaviour
 {
-    public void Grab(Pawn pawn)
+    public void Grab()
     {
         
     }
 
-    public void UnGrab(Pawn pawn)
+    public void UnGrab()
     {
-        
+        GameManager.Instance.Ashe.IsLifting = false;
     }
 }

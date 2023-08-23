@@ -6,10 +6,12 @@ public class Paw : MonoBehaviour
 {
     private Rigidbody2D m_rb;
     private Chase m_chaser;
+    private BoxCollider2D m_boxCollider;
     private void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_chaser = GetComponent<Chase>();
+        m_boxCollider = GetComponent<BoxCollider2D>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,17 +20,18 @@ public class Paw : MonoBehaviour
     }
     private void ReactOnNail()
     {
-        m_rb.velocity = Vector3.zero;
+        StartCoroutine(ChaseDisableFor(0.1f));
     }
     private void ReactOnPunch()
     {
-        m_rb.velocity = Vector3.zero;
-        StartCoroutine(ChaseDisableFor(3f));
+        StartCoroutine(ChaseDisableFor(2f));
     }
     private IEnumerator ChaseDisableFor(float seconds)
     {
         m_chaser.StopChase();
+        m_boxCollider.enabled = false;
         yield return new WaitForSeconds(seconds);
         m_chaser.StartChase();
+        m_boxCollider.enabled = true;
     }
 }

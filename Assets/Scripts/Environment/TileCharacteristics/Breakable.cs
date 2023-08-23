@@ -15,6 +15,7 @@ public class Breakable : MonoBehaviour
     [SerializeField] private bool m_requiresHands = false;
     [SerializeField, Tooltip("No Implementation with this one yet")]
     private bool m_requiresTinker = false;
+    [SerializeField] private bool restrictPhysicalBreaking = false;
     private bool broken = false;
     [SerializeField] private float velocityImpact = 3f;
 
@@ -25,7 +26,12 @@ public class Breakable : MonoBehaviour
         renderer = gameObject.GetComponentInChildren<TilemapRenderer>();
         m_AudioSource = gameObject.GetComponent<AudioSource>();
     }
-
+    public void ActivateBreak()
+    {
+        m_AudioSource.Play();
+        StartCoroutine(Break());
+        broken = true;
+    }
     public IEnumerator Break()
     {
         particle.Play();
@@ -48,6 +54,7 @@ public class Breakable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (restrictPhysicalBreaking) return;
         if (m_requiresAshe && m_requiresTinker) { Debug.Log("If and only if tinekr n ash lol"); }
         else if (!broken && (m_requiresAshe && collision.gameObject.tag == "Gauntlet"))
         {
@@ -60,6 +67,7 @@ public class Breakable : MonoBehaviour
     //        || collision.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f))
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (restrictPhysicalBreaking) return;
         var rb = collider.gameObject.GetComponent<Rigidbody2D>();
         var vel = Vector2.zero;
         if (rb != null) vel = rb.velocity;
