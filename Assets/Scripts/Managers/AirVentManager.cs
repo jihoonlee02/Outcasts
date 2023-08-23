@@ -64,7 +64,7 @@ public class AirVentManager : MonoBehaviour
                 airVent.AirVentGroupStruct = airVentGroup;
                 Transform airPivot = airVent.gameObject.transform.parent;
                 airPivot.localScale = new Vector3(airPivot.localScale.x, partialPower, airPivot.localScale.z);
-                airVent.VentSource.volume = partialPower / airVentGroup.airVentPower;
+                airVent.VentSource.volume = (partialPower / airVentGroup.airVentPower) * 0.8f;
                 //airVent.gameObject.transform.parent.localScale.y = partialPower;
             }
             foreach (AirVent airVent in tempAL[1]) {

@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     private SoloController m_SC;
     public Pawn Tinker => m_tinker;
     public Pawn Ashe => m_ashe;
+    public PlayerController TinkerPC => m_tinkerPC;
+    public PlayerController AshePC => m_ashePC;
+    public SoloController SC => m_SC;
 
     [Header("UI Comoponents")]
     [SerializeField] private GameObject m_visualCanvas;

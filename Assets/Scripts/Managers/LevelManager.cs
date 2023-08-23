@@ -77,13 +77,31 @@ public class LevelManager : MonoBehaviour
     }
     public void PausePawnControl()
     {
-        GameManager.Instance.Ashe.CanMove = false;
-        GameManager.Instance.Tinker.CanMove = false;
+        GameManager.Instance.AshePC?.DisablePawnControl();
+        GameManager.Instance.TinkerPC?.DisablePawnControl();
+        GameManager.Instance.SC?.DisablePawnControl();
     }
     public void ResumePawnControl()
     {
-        GameManager.Instance.Ashe.CanMove = true;
-        GameManager.Instance.Tinker.CanMove = true;
+        GameManager.Instance.AshePC?.EnablePawnControl();
+        GameManager.Instance.TinkerPC?.EnablePawnControl();
+        GameManager.Instance.SC?.EnablePawnControl();
+    }
+    public void FaceTinkerRight()
+    {
+        GameManager.Instance.Tinker.Animator.SetFloat("MoveX", 1);
+    }
+    public void FaceAsheRight()
+    {
+        GameManager.Instance.Ashe.Animator.SetFloat("MoveX", 1);
+    }
+    public void FaceTinkerLeft()
+    {
+        GameManager.Instance.Tinker.Animator.SetFloat("MoveX", -1);
+    }
+    public void FaceAsheLeft()
+    {
+        GameManager.Instance.Ashe.Animator.SetFloat("MoveX", -1);
     }
     public void ReloadLevel()
     {

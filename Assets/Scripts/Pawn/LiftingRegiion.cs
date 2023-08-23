@@ -70,7 +70,7 @@ public class LiftingRegiion : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {  
+    {
         if (Time.time > cooldownTime && !ashe.IsLifting)
         {
             Debug.Log("Lifting");
