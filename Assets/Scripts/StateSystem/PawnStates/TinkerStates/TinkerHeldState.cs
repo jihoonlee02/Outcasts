@@ -33,9 +33,8 @@ public class TinkerHeldState : State
     {
         m_context.CanMove = false;   
         //m_context.FixedJoint.enabled = true;
-        m_context.RB.mass = 0f;
-        //Distance between tinker's center position and Ashe's center position
-        m_followingY = m_context.transform.position.y - GameManager.Instance.Ashe.transform.position.y;
+        //m_context.RB.mass = 0f;
+        //Distance between tinker's center position and Ashe's center position THIS TRASH CAN GO AWAY!!!
     }
 
     public override void UpdateState()
@@ -51,6 +50,6 @@ public class TinkerHeldState : State
         m_context.CanMove = true;
         //m_context.transform.position = m_worldPosition;
         //m_context.FixedJoint.enabled = false;
-        m_context.RB.mass = 1f;
+        //m_context.RB.mass = 1f;
     }
 }

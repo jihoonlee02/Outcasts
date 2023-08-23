@@ -10,6 +10,7 @@ public class Gauntlet : Tool
     [SerializeField] private BoxCollider2D m_grabCollider;
 
     public float ForcePower => Mathf.Sign(m_user.Animator.GetFloat("MoveX")) * m_forcePower;
+    private Collider2D userCollider;
 
     #region Technical
     private float currTime = 0f;
@@ -30,6 +31,7 @@ public class Gauntlet : Tool
         offsetXGrab = m_grabCollider.offset.x;
         offsetYGrab = m_grabCollider.offset.y;
         m_grabCollider.enabled = false;
+        userCollider = m_user.GetComponent<Collider2D>();
     }
 
     public override void UsePrimaryAction()
@@ -44,40 +46,67 @@ public class Gauntlet : Tool
 
     public override void UseSecondaryAction()
     {
-        if (item != null) 
+        Debug.Log("Secondary Action gone through");
+        if (((AshePawn)m_user).HeldObject != null) 
         {
-            item.UnGrab(m_user);
-            item = null;
+            UsePrimaryAction();
             return;
         }
         if (inUse) { return; }
-        m_grabCollider.enabled = true;
-        inUse = true;
-        m_grabCollider.offset = new Vector2(offsetXGrab * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYGrab);
-        currTime = Time.time + animationLength;
-        ((AshePawn)m_user).IsPunching = true;
+
+        // Raycast that looks in front of Ashe Gauntlets based on orientation
+        RaycastHit2D[] hit2Ds = Physics2D.BoxCastAll(userCollider.bounds.center, userCollider.bounds.extents,
+            0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 0.2f);
+        foreach (RaycastHit2D hit2D in hit2Ds)
+        {
+            if (hit2D.collider.GetComponent<TinkerPawn>())
+            {
+                currTime = Time.time + animationLength;
+                inUse = true;
+                ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).HeldObject.GetComponent<TinkerPawn>().IsHeld = true;
+                ((AshePawn)m_user).IsLifting = true;
+                return;
+            }
+
+            if (hit2D.collider.GetComponent<Grabbable>())
+            {
+                currTime = Time.time + animationLength;
+                inUse = true;
+                ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).IsLifting = true;
+                return;
+            }
+        }
+
+        //m_grabCollider.enabled = true;
+        //m_grabCollider.offset = new Vector2(offsetXGrab * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), offsetYGrab);
+
+        //((AshePawn)m_user).IsPunching = true;  
     }
 
     public void FixedUpdate()
     {
-        if (Time.time > currTime) { inUse = false; m_punchCollider.enabled = false; ((AshePawn)m_user).IsPunching = false;
+        //Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);
+        if (Time.time > currTime) 
+        { 
+            inUse = false; 
+            m_punchCollider.enabled = false; 
+            ((AshePawn)m_user).IsPunching = false;
             m_grabCollider.enabled = false;
         }
     }
-    //For the grab collider
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Grabbable grabbable = collision.gameObject.GetComponent<Grabbable>();
-        if (grabbable != null)
-        {
-            ((AshePawn)m_user).IsLifting = true;
-            grabbable.transform.SetParent(transform, true);
-            grabbable.transform.position = new Vector3(grabbable.transform.position.x, ((AshePawn)m_user).transform.position.y + 5f);
-            ((AshePawn)m_user).HeldObject = grabbable.gameObject;
-            grabbable.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-        
-    }
-
-
+    // [DEPERACATED] For the grab collider
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Grabbable grabbable = collision.gameObject.GetComponent<Grabbable>();
+    //    if (grabbable != null)
+    //    {
+    //        ((AshePawn)m_user).IsLifting = true;
+    //        grabbable.transform.SetParent(transform, true);
+    //        grabbable.transform.position = new Vector3(grabbable.transform.position.x, ((AshePawn)m_user).transform.position.y + 5f);
+    //        ((AshePawn)m_user).HeldObject = grabbable.gameObject;
+    //        grabbable.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    //    }
+    //}
 }

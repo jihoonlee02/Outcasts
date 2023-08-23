@@ -41,7 +41,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Camera
   - Foreground
   m_SortingLayers:
   - name: Default
@@ -58,4 +58,10 @@ TagManager:
     locked: 0
   - name: Particles
     uniqueID: 521774795
+    locked: 0
+  - name: Foreground
+    uniqueID: 746182819
+    locked: 0
+  - name: UI
+    uniqueID: 1041299773
     locked: 0

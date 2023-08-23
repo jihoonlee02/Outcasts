@@ -8,10 +8,22 @@ public abstract class Invokee : MonoBehaviour
     [SerializeField] protected GameObject targetColor;
 
     [Header("Inovkee Details")]
-    [SerializeField] protected int id;
-    [SerializeField] protected float delay = 0f;
-    [SerializeField] protected bool ActivateOnly;
-    [SerializeField] protected bool ActivateOnce;
+    [SerializeField, Tooltip("ID to be invokeed by")] 
+    protected int id;
+    [SerializeField, Tooltip("Once Invoked, wait delay seconds")] 
+    protected float delay = 0f;
+    [SerializeField, Tooltip("Cannot Be Deactivated")] 
+    protected bool ActivateOnly;
+    [SerializeField, Tooltip("Runs Activate Once")] 
+    protected bool ActivateOnce;
+    [SerializeField, Tooltip("Runs Activate during scene load")] 
+    private bool activateOnStart = false;
+    [SerializeField, Tooltip("Runs Deactivate during scene load")] 
+    private bool deactivateOnStart = false;
+
+    #region Technical
+    private float currentDelayTime = 0f;
+    #endregion
 
     protected void Awake()
     {
@@ -21,22 +33,24 @@ public abstract class Invokee : MonoBehaviour
 
         EventManager.GetEventManager.Deactivated += ReactOnDeactivate;
     }
-
+    protected void Start()
+    {
+        if (activateOnStart) ReactOnActivate(id);
+        if (deactivateOnStart) ReactOnDeactivate(id);
+    }
     private void OnDestroy()
     {
         EventManager.GetEventManager.Activated -= ReactOnActivate;
         EventManager.GetEventManager.Deactivated -= ReactOnDeactivate;
     }
-
-    private void ReactOnActivate(int other_id)
+    protected void ReactOnActivate(int other_id)
     {
         if (other_id == id) 
         {
             StartCoroutine(DelayActivate());        
         }    
     }
-
-    private void ReactOnDeactivate(int other_id)
+    protected void ReactOnDeactivate(int other_id)
     {
         if (other_id == id)
         {

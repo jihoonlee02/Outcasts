@@ -241,7 +241,7 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ca3599b9-1c82-4df4-8b06-bbc9c2635e57"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",

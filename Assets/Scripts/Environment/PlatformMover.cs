@@ -49,7 +49,6 @@ public class PlatformMover : Invokee
     public void MoveToWaypoint(int idx)
     {
         this.idx = idx;
-        Debug.Log("Unblocked");
         blocked = false;
     }
     protected override void OnActivate()
@@ -104,25 +103,25 @@ public class PlatformMover : Invokee
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
         {
-            Debug.Log("Blocked");
             count_collisions++;
             blocked = true;
+            Debug.Log("BLOCKED BY " + collision.gameObject.name);
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Players"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
         {
             count_collisions--;
         }
 
         if (count_collisions <= 0)
         {
-            Debug.Log("Unblocked");
             blocked = false;
+            Debug.Log("UN-BLOCKED");
         }
     }
 }

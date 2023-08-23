@@ -42,4 +42,8 @@ public class AudioManager : MonoBehaviour
     {
         m_AudioSource.Stop();
     }
+    public void PauseAudio()
+    {
+        m_AudioSource.Pause();
+    }
 }

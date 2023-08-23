@@ -17,7 +17,7 @@ public class AshePunchingState : State
         Debug.Log("Enter Punching State");
         m_context.CanJump = false;
         m_context.CanMove = false;
-        ((AshePawn)m_context).LifitingRegion.enabled = false;
+        //((AshePawn)m_context).LifitingRegion.enabled = false;
         m_context.Animator.speed = 1;
         m_context.Animator.Play(m_animationName);
         m_context.AudioSource.pitch = 1;
@@ -28,7 +28,7 @@ public class AshePunchingState : State
     {
         m_context.CanJump = true;
         m_context.CanMove = true;
-        ((AshePawn)m_context).LifitingRegion.enabled = true;
+        //((AshePawn)m_context).LifitingRegion.enabled = true;
     }
     public override void InitializeSubState()
     {

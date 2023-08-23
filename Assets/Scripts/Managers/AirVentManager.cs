@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class AirVentManager : MonoBehaviour
 {
+    # region Singleton
+    private static AirVentManager instance;
+    public static AirVentManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<AirVentManager>();
+            }
+            return instance;
+        }
+    }
+    #endregion
     [SerializeField] private AirVentGroupStruct[] totalAirVentPower;
     private AirVent[] airVents;
     private static Hashtable airVentsHashtable;
+
+    public AirVentGroupStruct[] TotalAirVentPower => totalAirVentPower;
 
     private void Start() {
         InitializeAirVents();
@@ -47,6 +64,7 @@ public class AirVentManager : MonoBehaviour
                 airVent.AirVentGroupStruct = airVentGroup;
                 Transform airPivot = airVent.gameObject.transform.parent;
                 airPivot.localScale = new Vector3(airPivot.localScale.x, partialPower, airPivot.localScale.z);
+                airVent.VentSource.volume = partialPower / airVentGroup.airVentPower;
                 //airVent.gameObject.transform.parent.localScale.y = partialPower;
             }
             foreach (AirVent airVent in tempAL[1]) {

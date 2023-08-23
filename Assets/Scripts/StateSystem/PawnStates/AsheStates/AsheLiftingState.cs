@@ -6,6 +6,7 @@ using UnityEngine;
 public class AsheLiftingState : State
 {
     private float m_followingY;
+    private Transform priorParent;
     public AsheLiftingState(Pawn context, PawnStateFactory factory) : base(context, factory)
     {
         m_isRootState = true;
@@ -16,24 +17,51 @@ public class AsheLiftingState : State
     public override void EnterState()
     {
         Debug.Log("Switched to AsheLifting");
-        m_followingY = ((AshePawn)m_context).HeldObject.transform.position.y - m_context.transform.position.y - 0.01f;
-        //prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
-        //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
 
+        // The Y above ashe's head to always follow
+        m_followingY = ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_context.GetComponent<Collider2D>().bounds.extents.y /* + ((AshePawn)m_context).liftingregion.GetComponent<Collider2D>().bounds.size.y*/;
+
+        // Set the held object to ashe as its parent
+        priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
+        //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, true);
+
+        // Set the mass of the Held object to 0 and store the previous and stop all of its previous movement
+        prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        // Ignore the Collision of the HeldObjectCollider and the current HeldObject Collider --> mouth full IK but trust it works
+        //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, true);
+
+        // Enable the Collision for the held object so that ashe cannot phase these objects through walls
+        //((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
+        //((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
+        //((AshePawn)m_context).HeldObjectCollider.enabled = true;
+   
     }
     public override void UpdateState()
     {
+        // OG WOrking SHITT below here ---->> Old
+        // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
             = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
     }
     public override void ExitState() 
     {
-        //if (((AshePawn)m_context).HeldObject.tag == "Tinker")
-        //{
-        //    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
-        //}
-        //((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
+        if (((AshePawn)m_context).HeldObject.tag == "Tinker")
+        {
+            ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
+        }
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
+        //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
+
+        // Disable the HeldObjectCollider and remove the heldobject so that another object can get on top of ashe
+        //((AshePawn)m_context).HeldObjectCollider.enabled = false;
         ((AshePawn)m_context).HeldObject = null;
+
+        // Unignore the Collision of the HeldObjectCollider and the current HeldObject Collider
+        //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, false);
+
     }
     public override void InitializeSubState()
     {

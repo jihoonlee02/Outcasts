@@ -34,26 +34,26 @@ public class DialogueManager : MonoBehaviour
     {
         HideDialogue();
     }
-
     private void Update()
     {
         
     }
-
     public void DisplayDialogue(DialogueObject a_dialogueObject)
     {
-        if (inProduction) StopAllCoroutines();
+        if (inProduction)
+        {
+            StopAllCoroutines();
+            m_dialogueProducer.StopProduction();
+        }
         inProduction = true;
         dialogueBox.GetComponent<Animator>().Play("Appear");
         StartCoroutine(RunThroughDialogue(a_dialogueObject));
     }
-
     public void HideDialogue()
     {
          dialogueBox.GetComponent<Animator>().Play("Disappear");
          inProduction = false;
     }
-
     public void StopDialogue()
     {
         if (inProduction)
@@ -62,7 +62,6 @@ public class DialogueManager : MonoBehaviour
             HideDialogue();
         }        
     }
-
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
     {
         foreach (Dialogue dialogue in a_dialogueObject.Dialogue)
@@ -77,7 +76,6 @@ public class DialogueManager : MonoBehaviour
         HideDialogue();
         yield return null;
     }
-
     private void AdjustProfileSegment(Sprite a_profile, ProfileAlignment alignment)
     {
         if (profile == null) return;

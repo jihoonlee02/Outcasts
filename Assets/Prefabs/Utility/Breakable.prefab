@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4486160322312900680}
   - component: {fileID: 5474302852634819955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 6776052672634301757}
   - component: {fileID: 4506408984735033289}
   - component: {fileID: 8677002319889697766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Breakable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5525,5 +5525,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.078613, y: 2.06485}
+  m_Size: {x: 1.11, y: 2.07}
   m_EdgeRadius: 0

@@ -23,8 +23,9 @@ public class Door : Invokee
     private bool initOpen;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        base.Start();
         initOpen = open;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)

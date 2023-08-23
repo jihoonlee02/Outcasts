@@ -5,12 +5,6 @@ using UnityEngine;
 public class DialogueInvokee : Invokee
 {
     [SerializeField] private DialogueObject m_dialogueObject;
-    [SerializeField] private bool m_playOnAwake = false;
-
-    private void Start()
-    {
-        if (m_playOnAwake) StartCoroutine(ActivateWithDelay());
-    }
 
     protected override void OnActivate()
     {
@@ -21,13 +15,4 @@ public class DialogueInvokee : Invokee
     {
         
     }
-
-    private IEnumerator ActivateWithDelay()
-    {
-        yield return new WaitForSeconds(delay);
-        DialogueManager.Instance.DisplayDialogue(m_dialogueObject);
-    }
-
-
-
 }

@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class AshePawn : Pawn
 {
+    [Header("Ashe Specific")]
     [SerializeField] private Tool m_gauntletReference;
-    [SerializeField] private Collider2D m_liftingRegion; 
+    [SerializeField] private Collider2D m_liftingRegion;
+    [SerializeField] private Collider2D m_heldObjectCollider;
     private bool m_isLifting = false;
     private bool m_isPunching = false;
     public GameObject HeldObject;
@@ -21,6 +23,7 @@ public class AshePawn : Pawn
         set { m_isPunching = value;}
     }
     public Collider2D LifitingRegion => m_liftingRegion;
+    public Collider2D HeldObjectCollider => m_heldObjectCollider;
     protected void Start()
     {
         base.Start();
@@ -33,6 +36,6 @@ public class AshePawn : Pawn
 
     public override void SecondaryAction(InputAction.CallbackContext context)
     {
-        //m_gauntletReference.UseSecondaryAction();
+        m_gauntletReference.UseSecondaryAction();
     }
 }
