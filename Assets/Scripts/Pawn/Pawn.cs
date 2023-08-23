@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Numerics;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,6 +32,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected float decceleration = 7f;
     [SerializeField] protected float velPower = 0.8f;
     [SerializeField] protected float frictionAmount = 0.25f;
+    [SerializeField] protected float slopeAmount = 45.0f;
 
     [Header("Jump Modifiers")]
     [SerializeField] protected float jumpForce = 6f;
@@ -187,11 +190,17 @@ public class Pawn : MonoBehaviour
         
         if (canMove && Mathf.Abs(inputVector.x) > 0)
         {
+            Vector2 bottom = new Vector2(m_collider.bounds.center.x, m_collider.bounds.center.y - m_collider.bounds.extents.y);
+            Vector2 dir = inputVector.x > 0 ? Vector2.right : Vector2.left;
+            RaycastHit2D rayHit = Physics2D.Raycast(bottom, dir, m_collider.bounds.extents.x * 1.1f, 1 << 8);
+            float angle = Vector2.Angle(Vector2.up, rayHit.normal);
+            Debug.Log($"RayHit: {rayHit}; Angle: {angle}");
+
             float targetSpeed = inputVector.x * movementSpeed;
             float speedDif = targetSpeed - m_rb.velocity.x;
             float accelRate = (Mathf.Abs(targetSpeed) > 0.1f) ? acceleration : decceleration;
             float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-            m_rb.AddRelativeForce(movement * Vector2.right);
+            m_rb.AddRelativeForce(movement * Rotate(Vector2.right, angle));
         }
 
         //Add Force to movement
@@ -321,6 +330,14 @@ public class Pawn : MonoBehaviour
     public void ToggleJump()
     {
         canJump = !canJump;
+    }
+
+    private static Vector2 Rotate(Vector2 v, float delta)
+    {
+        return new Vector2(
+            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+        );
     }
 
     #endregion
