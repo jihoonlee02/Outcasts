@@ -27,7 +27,7 @@ public class Chase : MonoBehaviour
             : m_pawnName == "Ashe" ? GameManager.Instance.Ashe.transform : target;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isGrabbing) grabbedTarget.position = transform.position;
         moveDirection = (target.position - transform.position).normalized;

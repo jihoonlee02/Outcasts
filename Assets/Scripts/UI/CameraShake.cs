@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
     [SerializeField, Range(0f,1f)] private float m_strength = 0.1f;
     [SerializeField, Range(0f, 1f)] private float m_radius = 0.125f;
     [SerializeField, Range(0.1f, 5f)] private float m_speed = 1f;
-
+    
     #region Technical
     private Vector3 savedPosition;
     private bool isShaking = false;
@@ -17,10 +17,6 @@ public class CameraShake : MonoBehaviour
     public bool IsShaking => isShaking;
     private float coolDown;
     #endregion
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {
