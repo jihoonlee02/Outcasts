@@ -9004,6 +9004,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+--- !u!114 &218840655569145593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4796565575110425415, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+  m_PrefabInstance: {fileID: 4726994623011894718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &239258725281169169 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4813129861390781103, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
@@ -9482,6 +9493,10 @@ PrefabInstance:
       propertyPath: m_fadeTransition
       value: 
       objectReference: {fileID: 6909449677954839278}
+    - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
+      propertyPath: m_onScreenMessage
+      value: 
+      objectReference: {fileID: 218840655569145593}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_characterSelection
       value: 

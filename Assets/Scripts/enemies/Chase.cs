@@ -31,7 +31,7 @@ public class Chase : MonoBehaviour
     {
         moveDirection = (target.position - transform.position).normalized;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        m_rb.rotation = Mathf.Lerp(m_rb.rotation, angle + m_angleOffset, Time.deltaTime * m_speed);
+        m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, angle + m_angleOffset, Time.deltaTime * m_speed);
         if (isChasing) m_rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * m_speed;
         if (!isChasing) m_rb.velocity = Vector2.zero;
     }

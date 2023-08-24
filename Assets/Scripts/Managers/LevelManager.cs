@@ -127,6 +127,10 @@ public class LevelManager : MonoBehaviour
     {
         m_nextScene = nextScene;
     }
+    public void DisplayOnScreenMessage(string text)
+    {
+        GameManager.Instance.DisplayOnScreenMessage(text);
+    }
 }
 
 // Temp Level Struct

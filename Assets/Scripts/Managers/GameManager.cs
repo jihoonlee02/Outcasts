@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterSelection m_characterSelection2;
     [SerializeField] private DoorTransition m_doorTransition;
     [SerializeField] private CanvasGroup m_fadeTransition;
+    [SerializeField] private TextMeshProUGUI m_onScreenMessage; 
 
     public DoorTransition DoorTransition => m_doorTransition;
     public CanvasGroup FadeTransition => m_fadeTransition;
@@ -306,7 +307,11 @@ public class GameManager : MonoBehaviour
     {
         m_scenes.Clear();
     }
-
+    public void DisplayOnScreenMessage(string text)
+    {
+        m_onScreenMessage.text = text;
+        m_onScreenMessage.GetComponent<Animator>().Play("TextScroll");
+    }
     private void OnSceneChange(Scene current, Scene next)
     {
         //Dev Bs only
