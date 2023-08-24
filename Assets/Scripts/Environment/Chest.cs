@@ -5,15 +5,17 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     [SerializeField] private int chestID;
-    [SerializeField] private Sprite openChestSprite;
     private Animator animator;
     private bool isOpen = false;
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+    private void Start()
+    {
         if (ChestTracker.Instance.IsChestFound(chestID))
         {
-            GetComponent<SpriteRenderer>().sprite = openChestSprite;
+            animator.Play("ChestOpen");
             isOpen = true;
         }
     }

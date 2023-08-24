@@ -129,10 +129,10 @@ public class UIManager : MonoBehaviour
 
     public void OpenPauseMenu(PlayerController pc = null)
     {
-        m_pauseMenu.SetActive(true);
-        m_eventSystem.SetSelectedGameObject(m_pauseButt);
+        m_pauseMenu.SetActive(true); 
         if (pc != null)
         {
+            m_eventSystem.SetSelectedGameObject(m_pauseButt);
             m_inputSystemUIInputModule.actionsAsset = pc.PlayerInput.actions;
             m_playerPaused.text = pc.ControlledPawn.Data.Name + " Paused"; 
         }

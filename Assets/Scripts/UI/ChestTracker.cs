@@ -25,8 +25,7 @@ public class ChestTracker : MonoBehaviour
     private bool[] m_foundChests;
 
     private Animator m_animator;
-
-    private void Start()
+    private void Awake()
     {
         m_foundChests = new bool[maxNumberOfChests];
         m_animator = GetComponent<Animator>();
@@ -43,6 +42,11 @@ public class ChestTracker : MonoBehaviour
     public bool IsChestFound(int idx)
     {
         return m_foundChests[idx];
+    }
+    public void ResetChestCount()
+    {
+        m_foundChests = new bool[maxNumberOfChests];
+        currNumberOfChestOpened = 0;
     }
     private IEnumerator UpdateChestTracker()
     {
