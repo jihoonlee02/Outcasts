@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5120896779443531192}
   - component: {fileID: 5120896779443531195}
   - component: {fileID: 5303539546079778382}
+  - component: {fileID: 8912395904813211890}
   m_Layer: 8
   m_Name: RollingBall_stone
   m_TagString: physical
@@ -135,6 +136,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e73fc9aa6c9dc446a093d8a88abebfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8912395904813211890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120896779443531194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df15c7b5e0dd9dc47b9a4d643891741a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5120896779851631319

@@ -39,11 +39,11 @@ public class PlatformMover : Invokee
             moveDifference -= (Vector2)transform.localPosition;
         }
 
-        foreach(var objectOnPlatform in objectsOnPlatform)
-        {
-            moveDifference *= -1;
-            objectOnPlatform.Translate(moveDifference);
-        }
+        //foreach(var objectOnPlatform in objectsOnPlatform)
+       // {
+            //moveDifference *= -1;
+            //objectOnPlatform.Translate(moveDifference);
+       // }
     }
 
     public void MoveToWaypoint(int idx)
@@ -89,13 +89,14 @@ public class PlatformMover : Invokee
         if (objectOnPlatform != null)
         {
             objectsOnPlatform.Add(objectOnPlatform.transform);
+            objectOnPlatform.transform.SetParent(transform);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
-        if (objectOnPlatform != null)
+        if (objectOnPlatform != null && objectsOnPlatform.Contains(objectOnPlatform.transform))
         {
             objectsOnPlatform.Remove(objectOnPlatform.transform);
         }
