@@ -7,16 +7,16 @@ public class AirVentBase : MonoBehaviour
     private BoxCollider2D baseCollider;
     private AirVent airVent;
     private List<Collider2D> objectsOn;
-    private Vector2 xExtent;
-    private float yCenter;
+    private Vector2 Extent;
+    private Vector2 Center;
     // Start is called before the first frame update
     void Start()
     {
         baseCollider = GetComponent<BoxCollider2D>();
         airVent = GetComponentInChildren<AirVent>();
         objectsOn = new List<Collider2D>();
-        xExtent = new Vector2(baseCollider.bounds.center.x - baseCollider.bounds.extents.x, baseCollider.bounds.center.x + baseCollider.bounds.extents.x);
-        yCenter = baseCollider.bounds.center.y;
+        Extent = new Vector2(baseCollider.bounds.center.x - baseCollider.bounds.extents.x, baseCollider.bounds.center.x + baseCollider.bounds.extents.x);
+        Center = baseCollider.bounds.center;
     }
 
     // Update is called once per frame
@@ -28,14 +28,14 @@ public class AirVentBase : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
         
-        if ((otherRB.mass > 2 || other.gameObject.tag == "Ashe")) {
+        if ((otherRB.mass > 2 || other.gameObject.tag == "Ashe" || other.gameObject.tag == "door")) {
             CheckEnter(other);
             CheckExit(other);
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
-        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe") {
+        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe" || other.gameObject.tag == "door") {
             if (!objectsOn.Contains(other)) {
                 return;
             }
@@ -50,23 +50,32 @@ public class AirVentBase : MonoBehaviour
         if (objectsOn.Contains(other)) {
             return;
         }
-        if ((xExtent.x <= other.bounds.center.x && xExtent.y >= other.bounds.center.x && yCenter < other.bounds.center.y)) {
+        // if(Extent.x <= other.bounds.center.x){Debug.Log("Extent X");}
+        // if(Extent.y >= other.bounds.center.x){Debug.Log("Extent Y");}
+        // if(Center.y < other.bounds.center.y || Center.x < other.bounds.center.x){Debug.Log("Center or");}
+        // if ((Extent.x <= other.bounds.center.x && Extent.y >= other.bounds.center.x && Center.y < other.bounds.center.y)
+        // || (Extent.y <= other.bounds.center.y && Extent.x >= other.bounds.center.y && Center.x < other.bounds.center.x)) {
             objectsOn.Add(other);
             if (objectsOn.Count == 1) {
                 airVent.Deactivate();
             }
-        }
+        // }
     }
 
     private void CheckExit(Collider2D other) {
         if (!objectsOn.Contains(other)) {
             return;
         }
-        if ((xExtent.x > other.bounds.center.x || xExtent.y < other.bounds.center.x || yCenter >= other.bounds.center.y)) {
-            objectsOn.Remove(other);
+        objectsOn.Remove(other);
             if (objectsOn.Count == 0) {
                 airVent.Activate();
-            }
         }
+        // if ((Extent.x > other.bounds.center.x || Extent.y < other.bounds.center.x || Center.y >= other.bounds.center.y)
+        // && (Extent.y > other.bounds.center.y || Extent.x < other.bounds.center.y || Center.x >= other.bounds.center.x)) {
+        //     objectsOn.Remove(other);
+        //     if (objectsOn.Count == 0) {
+        //         airVent.Activate();
+        //     }
+        // }
     }
 }
