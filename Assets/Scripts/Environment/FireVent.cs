@@ -36,18 +36,12 @@ public class FireVent : Invokee
 
     protected override void OnActivate()
     {
-        /* DEV TEMP*/
-        m_flameCollider.gameObject.SetActive(true);
-        /**/
         m_flameCollider.enabled = true;
         durationSwitch = Time.time + activeDuration;
     }
 
     protected override void OnDeactivate()
     {
-        /* DEV TEMP*/
-        m_flameCollider.gameObject.SetActive(false);
-        /**/
         m_flameCollider.enabled = false;
         durationSwitch = Time.time + inactiveDuration;
     }
