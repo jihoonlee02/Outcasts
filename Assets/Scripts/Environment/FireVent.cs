@@ -33,6 +33,10 @@ public class FireVent : Invokee
             }
         }
     }
+    private void FixedUpdate()
+    {
+        
+    }
 
     protected override void OnActivate()
     {
