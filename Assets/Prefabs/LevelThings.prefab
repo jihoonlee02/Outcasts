@@ -8632,7 +8632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2569203686857022867, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
       propertyPath: maxNumberOfChests
-      value: 4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569203686857022867, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+      propertyPath: currNumberOfChestOpened
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2806507719991978643, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
       propertyPath: m_Navigation.m_Mode

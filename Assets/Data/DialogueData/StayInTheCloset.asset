@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: StayInTheCloset
   m_EditorClassIdentifier: 
   dialogue:
+  - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 8
+    delay: 4
+    text: 
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
   - profile: {fileID: 21300000, guid: ce4e0eae41dfc2e428cec599d3eccad6, type: 3}
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
@@ -26,8 +35,35 @@ MonoBehaviour:
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 8
-    delay: 4
-    text: Stop Laughing!!!
+    delay: 2
+    text: Quit Laughing!!!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 8
+    delay: 5
+    text: Its embarassing enough to look at this!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: ad34ede8eccf73a4cb319ffc17e51fba, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 8
+    delay: 8.5
+    text: There must be some kind of mistake?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: ce4e0eae41dfc2e428cec599d3eccad6, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 8
+    delay: 10
+    text: 
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

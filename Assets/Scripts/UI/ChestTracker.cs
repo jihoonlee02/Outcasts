@@ -23,6 +23,7 @@ public class ChestTracker : MonoBehaviour
     [SerializeField] private int currNumberOfChestOpened;
     [SerializeField] private TextMeshProUGUI m_trackerTextBox;
     private bool[] m_foundChests;
+    public bool IsAllChestsOpen => (currNumberOfChestOpened / maxNumberOfChests) == 1;
 
     private Animator m_animator;
     private void Awake()
