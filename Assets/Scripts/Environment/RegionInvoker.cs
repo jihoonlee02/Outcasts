@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -124,8 +125,9 @@ public class RegionInvoker : Invoker
                 Destroy(this);
             }
         }
-        else if (triggerType == TriggerType.SpecificObjects)
+        else if (triggerType == TriggerType.SpecificObjects && tags.Contains(collision.tag))
         {
+            Activate();
             if (triggerOnce)
             {
                 Destroy(this);
@@ -170,9 +172,9 @@ public class RegionInvoker : Invoker
                 Deactivate();
             }
         }
-        else if (triggerType == TriggerType.SpecificObjects)
+        else if (triggerType == TriggerType.SpecificObjects && tags.Contains(collision.tag))
         {
-            
+            Deactivate();
         }
     }
 

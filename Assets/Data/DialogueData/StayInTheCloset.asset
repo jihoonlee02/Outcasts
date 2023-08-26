@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: StayInTheCloset
   m_EditorClassIdentifier: 
   dialogue:
-  - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
-    alignment: 0
-    typeSound: {fileID: 0}
-    speed: 0
-    delay: 0
+  - profile: {fileID: 21300000, guid: ce4e0eae41dfc2e428cec599d3eccad6, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 8
+    delay: 4
     text: 
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 8
+    delay: 4
+    text: Stop Laughing!!!
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

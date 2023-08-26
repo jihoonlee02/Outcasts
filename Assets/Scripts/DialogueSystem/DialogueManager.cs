@@ -78,18 +78,19 @@ public class DialogueManager : MonoBehaviour
     }
     private void AdjustProfileSegment(Sprite a_profile, ProfileAlignment alignment)
     {
-        if (profile == null) return;
         profile.gameObject.SetActive(true);
         profile.sprite = null;
         profile.CrossFadeAlpha(0f, 0f, true);
         m_dialogueProducer.TMP_access.alignment = TextAlignmentOptions.Center;
         profile.sprite = a_profile;
-        if (profile.sprite != null)
-        {
-            profile.transform.localPosition = new Vector3(Mathf.Abs(profile.transform.localPosition.x) * (alignment == ProfileAlignment.Right ? 1 : -1) 
+
+        profile.transform.localPosition = new Vector3(Mathf.Abs(profile.transform.localPosition.x) * (alignment == ProfileAlignment.Right ? 1 : -1)
                 , profile.transform.localPosition.y, profile.transform.localPosition.z);
-            m_dialogueProducer.TMP_access.alignment = alignment == ProfileAlignment.Right ? TextAlignmentOptions.Right : TextAlignmentOptions.Left;
+        m_dialogueProducer.TMP_access.alignment = alignment == ProfileAlignment.Right ? TextAlignmentOptions.Right : TextAlignmentOptions.Left;
+        
+        if (a_profile != null)
+        {
             profile.CrossFadeAlpha(1f, 0f, true);
-        }
+        }      
     }
 }
