@@ -381,6 +381,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066958979}
     m_Modifications:
+    - target: {fileID: 6931623743688062152, guid: 9b670a98737d6a841a570bdf59cf58b0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6931623743688062157, guid: 9b670a98737d6a841a570bdf59cf58b0, type: 3}
       propertyPath: m_Name
       value: AirVentBase (3)
@@ -6442,7 +6446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8318851248448799853, guid: 45c6b99a6490e7e4eb627f59e85815c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -0.049
       objectReference: {fileID: 0}
     - target: {fileID: 8318851248448799853, guid: 45c6b99a6490e7e4eb627f59e85815c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20311,7 +20315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4390724550975800417, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: autoMove
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4390724550975800417, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: m_waypoints.Array.size
@@ -20462,11 +20466,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.95
+      value: 13.53
       objectReference: {fileID: 0}
     - target: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.09
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 997537018556823743, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.x
