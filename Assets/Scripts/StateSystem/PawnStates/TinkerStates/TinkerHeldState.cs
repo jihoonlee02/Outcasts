@@ -48,6 +48,7 @@ public class TinkerHeldState : State
     public override void ExitState()
     {
         m_context.CanMove = true;
+        GameManager.Instance.Ashe.IsLifting = false;
         //m_context.transform.position = m_worldPosition;
         //m_context.FixedJoint.enabled = false;
         //m_context.RB.mass = 1f;

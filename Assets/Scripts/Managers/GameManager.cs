@@ -32,13 +32,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Pawn Management")]
     [SerializeField] private PlayerInputManager m_pim;
-    [SerializeField] private Pawn m_tinker;
-    [SerializeField] private Pawn m_ashe;
+    [SerializeField] private TinkerPawn m_tinker;
+    [SerializeField] private AshePawn m_ashe;
     private PlayerController m_tinkerPC;
     private PlayerController m_ashePC;
     private SoloController m_SC;
-    public Pawn Tinker => m_tinker;
-    public Pawn Ashe => m_ashe;
+    public TinkerPawn Tinker => m_tinker;
+    public AshePawn Ashe => m_ashe;
+    public PlayerController TinkerPC => m_tinkerPC;
+    public PlayerController AshePC => m_ashePC;
+    public SoloController SC => m_SC;
 
     [Header("UI Comoponents")]
     [SerializeField] private GameObject m_visualCanvas;
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterSelection m_characterSelection2;
     [SerializeField] private DoorTransition m_doorTransition;
     [SerializeField] private CanvasGroup m_fadeTransition;
+    [SerializeField] private TextMeshProUGUI m_onScreenMessage; 
 
     public DoorTransition DoorTransition => m_doorTransition;
     public CanvasGroup FadeTransition => m_fadeTransition;
@@ -303,7 +307,11 @@ public class GameManager : MonoBehaviour
     {
         m_scenes.Clear();
     }
-
+    public void DisplayOnScreenMessage(string text)
+    {
+        m_onScreenMessage.text = text;
+        m_onScreenMessage.GetComponent<Animator>().Play("TextScroll");
+    }
     private void OnSceneChange(Scene current, Scene next)
     {
         //Dev Bs only

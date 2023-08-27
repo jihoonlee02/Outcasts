@@ -19,22 +19,35 @@ public class ChestTracker : MonoBehaviour
         }
     }
     #endregion
-    [SerializeField] private float maxNumberOfChests;
-    [SerializeField] private float currNumberOfChestOpened;
+    [SerializeField] private int maxNumberOfChests;
+    [SerializeField] private int currNumberOfChestOpened;
     [SerializeField] private TextMeshProUGUI m_trackerTextBox;
+    private bool[] m_foundChests;
+    public bool IsAllChestsOpen => (currNumberOfChestOpened / maxNumberOfChests) == 1;
 
     private Animator m_animator;
-
-    private void Start()
+    private void Awake()
     {
+        m_foundChests = new bool[maxNumberOfChests];
         m_animator = GetComponent<Animator>();
         m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + maxNumberOfChests.ToString();
     }
 
-    public void FoundNewChest()
+    public void FoundNewChest(int idx)
     {
+        if (m_foundChests[idx]) return;
+        m_foundChests[idx] = true;
         currNumberOfChestOpened++;
         StartCoroutine(UpdateChestTracker());
+    }
+    public bool IsChestFound(int idx)
+    {
+        return m_foundChests[idx];
+    }
+    public void ResetChestCount()
+    {
+        m_foundChests = new bool[maxNumberOfChests];
+        currNumberOfChestOpened = 0;
     }
     private IEnumerator UpdateChestTracker()
     {

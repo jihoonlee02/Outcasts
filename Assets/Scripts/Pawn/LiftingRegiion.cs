@@ -49,28 +49,23 @@ public class LiftingRegiion : MonoBehaviour
     {
         if (ashe.IsLifting)
         {
-            Debug.Log("Stopped lifting");
-            var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
-            if (tinkerPawn != null) //This is the sus one
+            if (ashe.HeldObject?.GetComponent<TinkerPawn>() != null)
             {
-                ashe.IsLifting = false;
-                tinkerPawn.IsHeld = false;
-                cooldownTime = Time.time + delay;
-                return;
-            }
-
-            // Physical Object defintion
-            var physical = collision.gameObject.GetComponent<Grabbable>();
-            if (physical != null)
-            {
-                ashe.IsLifting = false;
-                cooldownTime = Time.time + delay;
+                Debug.Log("Stopped lifting");
+                var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
+                if (tinkerPawn != null) //This is the sus one
+                {
+                    ashe.IsLifting = false;
+                    tinkerPawn.IsHeld = false;
+                    cooldownTime = Time.time + delay;
+                    return;
+                }
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {  
+    {
         if (Time.time > cooldownTime && !ashe.IsLifting)
         {
             Debug.Log("Lifting");
@@ -88,35 +83,38 @@ public class LiftingRegiion : MonoBehaviour
             if (physical != null)
             {
                 ashe.IsLifting = true;
+                physical.Grab();
                 ashe.HeldObject = physical.gameObject;
                 return;
             }
         }     
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (ashe.IsLifting)
-        {
-            Debug.Log("Stopped lifting");
-            var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
-            if (tinkerPawn != null) //This is the sus one
-            {
-                ashe.IsLifting = false;
-                tinkerPawn.IsHeld = false;
-                cooldownTime = Time.time + delay;
-                return;
-            }
-
-            // Physical Object defintion
-            var physical = collision.gameObject.GetComponent<Grabbable>();
-            if (physical != null)
-            {
-                ashe.IsLifting = false;
-                cooldownTime = Time.time + delay;
-            }
-        }      
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (ashe.IsLifting)
+    //    {
+    //        if (ashe.HeldObject?.GetComponent<TinkerPawn>() != null)
+    //        {
+    //            var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
+    //            if (tinkerPawn != null) //This is the sus one
+    //            {
+    //                ashe.IsLifting = false;
+    //                tinkerPawn.IsHeld = false;
+    //                Debug.Log("Tinker Hopped off");
+    //                cooldownTime = Time.time + delay;
+    //            }
+    //        }
+    //        else if (ashe.HeldObject?.GetComponent<Grabbable>() != null)
+    //        {
+    //            var physical = collision.gameObject.GetComponent<Grabbable>();
+    //            if (physical != null)
+    //            {
+    //                ashe.IsLifting = false;
+    //                cooldownTime = Time.time + delay;
+    //            }
+    //        }  
+    //    }      
+    //}
 
     private void OnDisable()
     {

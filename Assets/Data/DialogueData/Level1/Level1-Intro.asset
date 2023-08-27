@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627f7f95e7685b94886791dcf97a0164, type: 3}
+  m_Name: Level1-Intro
+  m_EditorClassIdentifier: 
+  dialogue:
+  - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: ooof
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: We got away from them
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: We were almost caught
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: Can you be a little less reckless
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: Reckless?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: Come on ashe!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: We've been in worst spots before!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: I know this cave on the back behind my paw!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: I'll find us a way out!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 3
+    text: ...
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 3
+    text: What's with that look?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 2bbcdd7718097384fa77f69fea9d2c82, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 3
+    text: Do you even know where we are?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: Uh...
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

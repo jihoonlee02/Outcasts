@@ -16,7 +16,7 @@ public class PlatformMover : Invokee
     #endif
     private int idx = 0;
     private Vector2 moveDifference;
-    private List<Transform> objectsOnPlatform;
+    private Dictionary<Transform, Transform> objectsOnPlatform;
     public int moveDifferenceMultiplier;
     private bool blocked = false;
     private int count_collisions;
@@ -24,12 +24,22 @@ public class PlatformMover : Invokee
     private void Start()
     {
         transform.localPosition = m_waypoints[idx];
-        objectsOnPlatform = new List<Transform>();
+        objectsOnPlatform = new Dictionary<Transform, Transform>();
         moveDifference = transform.localPosition;
     }
 
     
     private void Update()
+    {
+        
+
+        //foreach(var objectOnPlatform in objectsOnPlatform)
+       // {
+            //moveDifference *= -1;
+            //objectOnPlatform.Translate(moveDifference);
+       // }
+    }
+    private void FixedUpdate()
     {
         if (!blocked)
         {
@@ -37,12 +47,6 @@ public class PlatformMover : Invokee
             moveDifference = transform.localPosition;
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
             moveDifference -= (Vector2)transform.localPosition;
-        }
-
-        foreach(var objectOnPlatform in objectsOnPlatform)
-        {
-            moveDifference *= -1;
-            objectOnPlatform.Translate(moveDifference);
         }
     }
 
@@ -86,17 +90,19 @@ public class PlatformMover : Invokee
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
-        if (objectOnPlatform != null)
+        if (objectOnPlatform != null && !objectOnPlatform.GetComponent<Chase>())
         {
-            objectsOnPlatform.Add(objectOnPlatform.transform);
+            objectsOnPlatform.Add(objectOnPlatform.transform, objectOnPlatform.transform.parent);
+            objectOnPlatform.transform.SetParent(transform);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
-        if (objectOnPlatform != null)
+        if (objectOnPlatform != null && objectsOnPlatform.ContainsKey(objectOnPlatform.transform))
         {
+            objectOnPlatform.transform.SetParent(objectsOnPlatform[objectOnPlatform.transform]);
             objectsOnPlatform.Remove(objectOnPlatform.transform);
         }
     }

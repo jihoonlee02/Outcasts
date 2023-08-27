@@ -11,14 +11,14 @@ public class TnACameraFollow : MonoBehaviour
     [SerializeField] private bool lockHorizontal = false;
 
     [Header("Bounds")]
-    [SerializeField] private float leftBound = 0;
-    [SerializeField] private bool boundTheLeft = false;
-    [SerializeField] private float rightBound;
-    [SerializeField] private bool boundTheRight = false;
-    [SerializeField] private float topBound;
-    [SerializeField] private bool boundTheTop = false;
-    [SerializeField] private float botBound;
-    [SerializeField] private bool boundTheBot = false;
+    [SerializeField] public float leftBound = 0;
+    [SerializeField] public bool boundTheLeft = false;
+    [SerializeField] public float rightBound;
+    [SerializeField] public bool boundTheRight = false;
+    [SerializeField] public float topBound;
+    [SerializeField] public bool boundTheTop = false;
+    [SerializeField] public float botBound;
+    [SerializeField] public bool boundTheBot = false;
     #region technical
     private Vector3 velocity;
     private void Start()

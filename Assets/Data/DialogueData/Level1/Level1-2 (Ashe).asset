@@ -17,7 +17,7 @@ MonoBehaviour:
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 3
-    delay: 1
+    delay: 2
     text: Hey Tinker, there's a button over here!
     onDialogue:
       m_PersistentCalls:
@@ -26,7 +26,7 @@ MonoBehaviour:
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 3
-    delay: 4
+    delay: 15
     text: I can boost you if you jump on my head
     onDialogue:
       m_PersistentCalls:

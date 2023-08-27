@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8318851248448799855}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,9 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb382398122ece45a9da6c23f297a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetColor: {fileID: 0}
   id: 0
+  delay: 0
+  ActivateOnly: 0
+  ActivateOnce: 0
+  activateOnStart: 0
+  deactivateOnStart: 0
   open: 0
   timeToOpen: 0.5
+  horizontal: 0
 --- !u!212 &8318851248448799852
 SpriteRenderer:
   m_ObjectHideFlags: 0

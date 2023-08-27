@@ -27,16 +27,18 @@ public class Chase : MonoBehaviour
             : m_pawnName == "Ashe" ? GameManager.Instance.Ashe.transform : target;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (isGrabbing) grabbedTarget.position = transform.position;
         moveDirection = (target.position - transform.position).normalized;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        m_rb.rotation = Mathf.Lerp(m_rb.rotation, angle + m_angleOffset, Time.deltaTime * m_speed);
+        m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, angle + m_angleOffset, Time.deltaTime * m_speed);
         if (isChasing) m_rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * m_speed;
         if (!isChasing) m_rb.velocity = Vector2.zero;
     }
-
+    private void Update()
+    {
+        if (isGrabbing) grabbedTarget.position = transform.position;
+    }
     public void StartChase()
     {
         isChasing = true;
@@ -60,6 +62,7 @@ public class Chase : MonoBehaviour
     }
     public void GrabTarget()
     {
+        if (target.tag == "Tinker") target.GetComponent<TinkerPawn>().IsHeld = false;
         grabbedTarget = target;
         isGrabbing = true;
     }

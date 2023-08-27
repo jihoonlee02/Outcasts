@@ -49,7 +49,8 @@ public class Gauntlet : Tool
         Debug.Log("Secondary Action gone through");
         if (((AshePawn)m_user).HeldObject != null) 
         {
-            UsePrimaryAction();
+            Debug.Log("Did I get called?");
+            UsePrimaryAction();  
             return;
         }
         if (inUse) { return; }

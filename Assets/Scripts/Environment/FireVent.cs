@@ -13,14 +13,21 @@ public class FireVent : Invokee
     private float activeDuration = 3f;
     [SerializeField, Tooltip("Used when Auto Flame active"), Range(0.5f, 10f)] 
     private float inactiveDuration = 3f;
-
+    [SerializeField] private float yFlameMax;
+    [SerializeField] private float yFlameMin = -4.246f;
+    [SerializeField] private float speed = 3f;
+    private Fire m_associatedFire;
     #region Technical
     private float durationSwitch = 0f;
+    private bool flameRise = false;
     #endregion
-
+    private void Start()
+    {
+        m_associatedFire = GetComponentInChildren<Fire>();
+    }
     private void Update()
     {
-        if (Time.time >= durationSwitch)
+        if (m_autoFlame && Time.time >= durationSwitch)
         {
             // Purposely Not Using built in Delay
             if (!m_flameCollider.enabled)
@@ -33,22 +40,22 @@ public class FireVent : Invokee
             }
         }
     }
+    private void FixedUpdate()
+    {
+        m_associatedFire.transform.localPosition = new Vector2(m_associatedFire.transform.localPosition.x, Mathf.Lerp(m_associatedFire.transform.localPosition.y, flameRise ? yFlameMax : yFlameMin, Time.deltaTime * speed));
+    }
 
     protected override void OnActivate()
     {
-        /* DEV TEMP*/
-        m_flameCollider.gameObject.SetActive(true);
-        /**/
         m_flameCollider.enabled = true;
         durationSwitch = Time.time + activeDuration;
+        flameRise = true;
     }
 
     protected override void OnDeactivate()
     {
-        /* DEV TEMP*/
-        m_flameCollider.gameObject.SetActive(false);
-        /**/
         m_flameCollider.enabled = false;
         durationSwitch = Time.time + inactiveDuration;
+        flameRise = false;
     }
 }
