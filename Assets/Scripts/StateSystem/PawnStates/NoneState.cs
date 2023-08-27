@@ -8,7 +8,6 @@ public class NoneState : State
     }
     public override void EnterState()
     {
-        Debug.Log("Enter None State");
         m_context.Animator.speed = 1;
     }
 

@@ -37,7 +37,6 @@ public class Gauntlet : Tool
     public override void UsePrimaryAction()
     {
         if (inUse) { return; }
-        Debug.Log("Punch");
         //m_punchCollider.enabled = true;
         inUse = true;
         currTime = Time.time + animationLength;
@@ -46,7 +45,6 @@ public class Gauntlet : Tool
 
     public override void UseSecondaryAction()
     {
-        Debug.Log("Secondary Action gone through");
         if (((AshePawn)m_user).HeldObject != null) 
         {
             Debug.Log("Did I get called?");

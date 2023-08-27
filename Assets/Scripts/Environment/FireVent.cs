@@ -26,21 +26,17 @@ public class FireVent : Invokee
     private void Start()
     {
         m_associatedFire = GetComponentInChildren<Fire>();
+        durationSwitch = Time.time + delay; 
     }
     private void Update()
     {
         if (m_autoFlame && Time.time >= durationSwitch)
         {
-            // Purposely Not Using built in Delay
-            if (!m_flameCollider.enabled)
-            {
-                OnActivate(); 
-            }
-            else
-            {
-                OnDeactivate();
-            }
+            flameRise = !flameRise;
+            durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
         }
+
+        m_flameCollider.enabled = flameRise;
     }
     private void FixedUpdate()
     {
@@ -49,15 +45,13 @@ public class FireVent : Invokee
 
     protected override void OnActivate()
     {
-        m_flameCollider.enabled = true;
-        durationSwitch = Time.time + activeDuration;
-        flameRise = true;
+        flameRise = !flameRise;
+        durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
     }
 
     protected override void OnDeactivate()
     {
-        m_flameCollider.enabled = false;
-        durationSwitch = Time.time + inactiveDuration;
-        flameRise = false;
+        flameRise = !flameRise;
+        durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
     }
 }
