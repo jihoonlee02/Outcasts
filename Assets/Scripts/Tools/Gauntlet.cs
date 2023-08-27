@@ -75,6 +75,7 @@ public class Gauntlet : Tool
                 currTime = Time.time + animationLength;
                 inUse = true;
                 ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).HeldObject.GetComponent<Grabbable>().Grab();
                 ((AshePawn)m_user).IsLifting = true;
                 return;
             }

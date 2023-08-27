@@ -9,6 +9,7 @@ public class FireVent : Invokee
     private Collider2D m_flameCollider;
     [SerializeField, Tooltip("Auto turns flames on an off")] 
     private bool m_autoFlame = true;
+    [SerializeField] private bool flameRise = false;
     [SerializeField, Tooltip("Used when Auto Flame active"), Range(0.5f, 10f)] 
     private float activeDuration = 3f;
     [SerializeField, Tooltip("Used when Auto Flame active"), Range(0.5f, 10f)] 
@@ -16,10 +17,11 @@ public class FireVent : Invokee
     [SerializeField] private float yFlameMax;
     [SerializeField] private float yFlameMin = -4.246f;
     [SerializeField] private float speed = 3f;
+    
     private Fire m_associatedFire;
     #region Technical
     private float durationSwitch = 0f;
-    private bool flameRise = false;
+    
     #endregion
     private void Start()
     {

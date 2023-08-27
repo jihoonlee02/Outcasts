@@ -40,7 +40,7 @@ public class TnACameraFollow : MonoBehaviour
                 lockVertical ? transform.position.y : centerPoint.y, transform.position.z);
 
             bool inBound = false;
-            Vector3 boundedPosition = transform.position;
+            Vector3 boundedPosition = newPosition;
             if (boundTheLeft && newPosition.x < leftBound)
             {
                 boundedPosition = new Vector3(leftBound, boundedPosition.y);
@@ -79,5 +79,9 @@ public class TnACameraFollow : MonoBehaviour
     public void Lock()
     {
         isLocked = true;
+    }
+    public void SetSmoothTime(float time)
+    {
+        smoothTime = time;
     }
 }

@@ -318,8 +318,7 @@ public class GameManager : MonoBehaviour
         DialogueManager.Instance.StopDialogue();
         if (m_currScene == "Hub")
         {
-            ClearSceneQueue();
-            AddSceneToQueue(initialScenesToEnqueue);
+            ChestTracker.Instance.ResetChestCount();
         }
 
         if (next.name == "MainMenu") {

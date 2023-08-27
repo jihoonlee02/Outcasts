@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
     public void SetAudioClip(AudioClip clip)
     {
         m_AudioSource.clip = clip;
+        Debug.Log(CurrentAudio);
     }
 
     public void PlayAudio() 
