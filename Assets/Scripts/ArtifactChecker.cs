@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArtifactChecker : MonoBehaviour
 {
+    [SerializeField] private GameObject makeActiveInstead;
     public void PathUnlockBasedOnArtifactCollection()
     {
         if (ChestTracker.Instance.IsAllChestsOpen)
@@ -12,7 +13,7 @@ public class ArtifactChecker : MonoBehaviour
         }
         else
         {
-
+            makeActiveInstead.SetActive(true);
         }
     }
 }

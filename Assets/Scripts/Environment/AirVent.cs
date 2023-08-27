@@ -83,9 +83,11 @@ public class AirVent : MonoBehaviour
     private IEnumerator ChangeHeight(float power) {
         float startScale = airPivot.localScale.y;
         float diffScale = power - startScale;
+        // ---Audio-----
         float newVolume = (power / AirVentManager.Instance.TotalAirVentPower[airVentGroup].airVentPower) * 0.8f;
         float initialVolume = ventSource.volume;
         float deltaVolume = (newVolume - initialVolume);
+        // ------
         float elapsedTime = 0;
         while (elapsedTime <= 1.0f) {
             float lerpFactor = Mathf.SmoothStep(0f, 1f, elapsedTime / 1.0f);
