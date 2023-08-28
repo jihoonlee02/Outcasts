@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gauntlet : Tool
 {
@@ -74,7 +75,8 @@ public class Gauntlet : Tool
                 inUse = true;
                 ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
                 ((AshePawn)m_user).HeldObject.GetComponent<Grabbable>().Grab();
-                ((AshePawn)m_user).IsLifting = true;
+                StartCoroutine(MoveToAshePaws());
+                //((AshePawn)m_user).IsLifting = true;
                 return;
             }
         }
@@ -84,7 +86,19 @@ public class Gauntlet : Tool
 
         //((AshePawn)m_user).IsPunching = true;  
     }
-
+    private IEnumerator MoveToAshePaws()
+    {
+        var yDist = ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_user.GetComponent<Collider2D>().bounds.extents.y;
+        Vector3 goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
+        while (((AshePawn)m_user).HeldObject.transform.position != goal)
+        {
+            var postion = ((AshePawn)m_user).HeldObject.transform.position;
+            ((AshePawn)m_user).HeldObject.transform.position = Vector2.MoveTowards(postion,goal,Time.deltaTime * 3);
+            yield return new WaitForSeconds(Time.deltaTime);
+            goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
+        }
+        ((AshePawn)m_user).IsLifting = true;
+    }
     public void FixedUpdate()
     {
         //Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);

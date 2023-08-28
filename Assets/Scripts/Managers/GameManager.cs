@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public CanvasGroup FadeTransition => m_fadeTransition;
 
     [Header("Level Management")]
+    [SerializeField] private Transform m_levelThings;
     [SerializeField] private RoomManager m_roomManager;
     [SerializeField] private LevelManager m_levelManager;
     
@@ -248,6 +249,8 @@ public class GameManager : MonoBehaviour
         m_currScene = scene;
         m_doorTransition.CloseDoors();
         StartCoroutine(LoadSceneWithDelay(1.2f));
+        m_tinker.transform.SetParent(m_levelThings, false);
+        m_ashe.transform.SetParent(m_levelThings, false);
     }
     public void TransitionToNextScene()
     {
@@ -327,7 +330,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Stuff Not to Destroy On Load
         DontDestroyOnLoad(m_tinker);
         DontDestroyOnLoad(m_ashe);
     }
@@ -336,6 +338,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadSceneAsync(m_currScene);
+        m_tinker.transform.SetParent(m_levelThings, true);
+        m_ashe.transform.SetParent(m_levelThings, true);
         //This doesn't do what you think it does
         //if (!SceneManager.GetSceneByName(m_currScene).IsValid())
         //{

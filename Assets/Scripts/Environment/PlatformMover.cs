@@ -24,21 +24,10 @@ public class PlatformMover : Invokee
 
     private void Start()
     {
+        base.Start();
         transform.localPosition = m_waypoints[idx];
         objectsOnPlatform = new Dictionary<Transform, Transform>();
         moveDifference = transform.localPosition;
-    }
-
-    
-    private void Update()
-    {
-        
-
-        //foreach(var objectOnPlatform in objectsOnPlatform)
-       // {
-            //moveDifference *= -1;
-            //objectOnPlatform.Translate(moveDifference);
-       // }
     }
     private void FixedUpdate()
     {
@@ -102,6 +91,7 @@ public class PlatformMover : Invokee
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "feet" && objectsOnPlatform.ContainsKey(collision.transform.parent))
         {
             collision.transform.parent.SetParent(objectsOnPlatform[collision.transform.parent]);
@@ -146,7 +136,6 @@ public class PlatformMover : Invokee
         {
             count_collisions--;
         }
-
 
         if (count_collisions <= 0)
         {
