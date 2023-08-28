@@ -53,7 +53,7 @@ public class ChestTracker : MonoBehaviour
     private IEnumerator UpdateChestTracker()
     {
         m_animator.Play("ShowChestTracker");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.3f);
         m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
         yield return new WaitForSeconds(1.5f);
         m_animator.Play("HideChestTracker");
