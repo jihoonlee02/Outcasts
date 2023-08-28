@@ -54,4 +54,11 @@ public class FireVent : Invokee
         flameRise = !flameRise;
         durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
     }
+
+    // Very Permeant Disabbling
+    public void DisableVent()
+    {
+        m_autoFlame = false;
+        flameRise = false;
+    }
 }
