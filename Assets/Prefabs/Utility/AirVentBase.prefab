@@ -190,7 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d64d56d1617e14c88e8342577d37c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
 --- !u!61 &6931623743688062152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,7 +214,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.578823}
+  m_Size: {x: 0.81, y: 0.578823}
   m_EdgeRadius: 0
 --- !u!1 &6931623744282149722
 GameObject:
