@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1105888437, guid: 801d4d3d45e28ce4292c79cb18b7b744, type: 3}
+  m_Sprite: {fileID: -1454550412, guid: 893957adeba2a6e459b8df4fe7052c89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06980008}
+  m_Offset: {x: 0, y: -0.46042404}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71428573, y: 0.85714287}
+    oldSize: {x: 1.1428572, y: 1.6428572}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.71428573, y: 0.71754265}
+  m_Size: {x: 0.71428573, y: 0.7208956}
   m_EdgeRadius: 0
 --- !u!114 &2807906669312158389
 MonoBehaviour:
@@ -146,4 +146,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestID: 0
-  openChestSprite: {fileID: 354538545, guid: 801d4d3d45e28ce4292c79cb18b7b744, type: 3}

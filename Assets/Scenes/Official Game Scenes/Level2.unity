@@ -24491,7 +24491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 1
   targetPosition: {x: 0, y: 0, z: 0}
-  follow_enabled: 0
+  m_followEnabled: 0
   m_cameraShaker: {fileID: 1226954542}
   m_cameraFollow: {fileID: 1226954543}
 --- !u!114 &1226954542
@@ -26393,7 +26393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2807906669312158385, guid: c94739c8af2b4e34fbee7e5c05c8616f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 2807906669312158385, guid: c94739c8af2b4e34fbee7e5c05c8616f, type: 3}
       propertyPath: m_LocalPosition.z

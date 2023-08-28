@@ -1,0 +1,1103 @@
+fileFormatVersion: 2
+guid: 893957adeba2a6e459b8df4fe7052c89
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 28
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6da7cd7750494945ab299d80f78d5a8
+      internalID: -1454550412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3fbbb875ad68bc47b64775718ad90d5
+      internalID: 2129146065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7636af16525efc04e966c36fd1c57b69
+      internalID: 1091273125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ced8afe44033747bb05727f52ad3a0
+      internalID: -226017478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172d11c93d6ff4545a1dcb5841a732ba
+      internalID: 1205578883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8554326dcee881f4d9496d143252a942
+      internalID: 1591431142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 276
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a76bd76dd07de644941bfd05b2cec88
+      internalID: -1564055790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1acbf96114a17214fa594a4df578ce77
+      internalID: -384887064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37cf64575c95a894f9bf3becb77dcdca
+      internalID: -2141897078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9233603367a83e144bf1b085007ac647
+      internalID: -2049135721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd30ef5cf64d76409bebda0cd8702a0
+      internalID: -1210567478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84885b0ceab1cf24eb5e918adc5f0749
+      internalID: -151682563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_12
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df7c46f8d739e6d4d8c2a438befe09c3
+      internalID: -2132510994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 230
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f5a918ec03f504f8a435a630e98ae2
+      internalID: -1786445620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3169336b568da764f8ae32b6448ef918
+      internalID: -2130006811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6ef70bf462c9445918259f41ee9312
+      internalID: 1827549506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca66ec0eb69b37439b038b099fc664f
+      internalID: -312279929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3da88fb67c436047a63d1e746b3cb7d
+      internalID: 1944705555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15882a54ac95f5d408416bf41986c384
+      internalID: -1527702658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9629cb32b951fe47a4269a29c0e4dca
+      internalID: -479772799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 184
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1d0a0bb7664f240bd7c5df7de9e70b
+      internalID: -1163552684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c65bb29cb273b74590c06afd7f7f4b2
+      internalID: -1693973603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b40072d0c92c414f8443c28ab2de0af
+      internalID: -1427208274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200949ea58591b14eb09d7a05fd1fbad
+      internalID: -736897988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_24
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0d83d33dc8867488c707f06cf3398d
+      internalID: 310761456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670e193a9489842488b30960f2def9e1
+      internalID: -2059852600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_26
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885de767b5ff94942a07d2d36c94a853
+      internalID: -1036450057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 138
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c80c6dbd01c81a4ba8171b8b7a93fe4
+      internalID: -1282871877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 833c8dba942d24245b6d92965a066171
+      internalID: -1257991443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_29
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d4e0af3271f5144bf19f90e28302fe
+      internalID: 894102290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_30
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99e5b1c3fd6b734ab9807bad566e2d3
+      internalID: -1092615918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_31
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 643d73f03e56ade4aaee98c4decc19af
+      internalID: 1344589098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4393c7e5c8544b43b8c2fd3223b5579
+      internalID: -11593878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_33
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8338a170e9785524496620cace148543
+      internalID: -884473410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_34
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 92
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6308cf597420a1d4785ee723e28b70cb
+      internalID: -1871538924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ab0cba3d8f90d46925250886ed9c71
+      internalID: -2069764787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96dc4585f4789744a8406a4f4d23669
+      internalID: -847045608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce3d5075792e7545bc7e3c1d3964c2b
+      internalID: -1315017358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8b07c38ea0f374691db399ee256696
+      internalID: -124679929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_39
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a6e64febfe4fb4580b3e93b1fba3d2
+      internalID: -823259569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_40
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0f747f96fe47e4195ced427dd5b14e
+      internalID: -1467678916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_41
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 46
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a56a631d611054cbcc4bc927b33e5a
+      internalID: 236273483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b02a72f3f91d214b87c84102e40b099
+      internalID: -560697515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Scroll_Animation_Sprites_43
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0aefbd1c302dc489259c740a855322
+      internalID: 1897043212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Chest_Scroll_Animation_Sprites_20: -1163552684
+      Chest_Scroll_Animation_Sprites_3: -226017478
+      Chest_Scroll_Animation_Sprites_5: 1591431142
+      Chest_Scroll_Animation_Sprites_0: -1454550412
+      Chest_Scroll_Animation_Sprites_4: 1205578883
+      Chest_Scroll_Animation_Sprites_23: -736897988
+      Chest_Scroll_Animation_Sprites_14: -2130006811
+      Chest_Scroll_Animation_Sprites_40: -1467678916
+      Chest_Scroll_Animation_Sprites_39: -823259569
+      Chest_Scroll_Animation_Sprites_29: 894102290
+      Chest_Scroll_Animation_Sprites_32: -11593878
+      Chest_Scroll_Animation_Sprites_27: -1282871877
+      Chest_Scroll_Animation_Sprites_34: -1871538924
+      Chest_Scroll_Animation_Sprites_10: -1210567478
+      Chest_Scroll_Animation_Sprites_37: -1315017358
+      Chest_Scroll_Animation_Sprites_19: -479772799
+      Chest_Scroll_Animation_Sprites_24: 310761456
+      Chest_Scroll_Animation_Sprites_6: -1564055790
+      Chest_Scroll_Animation_Sprites_15: 1827549506
+      Chest_Scroll_Animation_Sprites_31: 1344589098
+      Chest_Scroll_Animation_Sprites_30: -1092615918
+      Chest_Scroll_Animation_Sprites_35: -2069764787
+      Chest_Scroll_Animation_Sprites_42: -560697515
+      Chest_Scroll_Animation_Sprites_8: -2141897078
+      Chest_Scroll_Animation_Sprites_9: -2049135721
+      Chest_Scroll_Animation_Sprites_38: -124679929
+      Chest_Scroll_Animation_Sprites_25: -2059852600
+      Chest_Scroll_Animation_Sprites_11: -151682563
+      Chest_Scroll_Animation_Sprites_7: -384887064
+      Chest_Scroll_Animation_Sprites_41: 236273483
+      Chest_Scroll_Animation_Sprites_33: -884473410
+      Chest_Scroll_Animation_Sprites_12: -2132510994
+      Chest_Scroll_Animation_Sprites_43: 1897043212
+      Chest_Scroll_Animation_Sprites_1: 2129146065
+      Chest_Scroll_Animation_Sprites_18: -1527702658
+      Chest_Scroll_Animation_Sprites_22: -1427208274
+      Chest_Scroll_Animation_Sprites_13: -1786445620
+      Chest_Scroll_Animation_Sprites_21: -1693973603
+      Chest_Scroll_Animation_Sprites_26: -1036450057
+      Chest_Scroll_Animation_Sprites_2: 1091273125
+      Chest_Scroll_Animation_Sprites_28: -1257991443
+      Chest_Scroll_Animation_Sprites_16: -312279929
+      Chest_Scroll_Animation_Sprites_36: -847045608
+      Chest_Scroll_Animation_Sprites_17: 1944705555
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
