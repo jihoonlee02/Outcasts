@@ -20,17 +20,18 @@ public class ChestTracker : MonoBehaviour
     }
     #endregion
     [SerializeField] private int maxNumberOfChests;
+    [SerializeField] private int requiredChests;
     [SerializeField] private int currNumberOfChestOpened;
     [SerializeField] private TextMeshProUGUI m_trackerTextBox;
     private bool[] m_foundChests;
-    public bool IsAllChestsOpen => (currNumberOfChestOpened / maxNumberOfChests) == 1;
+    public bool IsAllChestsOpen => (currNumberOfChestOpened / requiredChests) >= 1;
 
     private Animator m_animator;
     private void Awake()
     {
         m_foundChests = new bool[maxNumberOfChests];
         m_animator = GetComponent<Animator>();
-        m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + maxNumberOfChests.ToString();
+        m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
     }
 
     public void FoundNewChest(int idx)
@@ -52,8 +53,8 @@ public class ChestTracker : MonoBehaviour
     private IEnumerator UpdateChestTracker()
     {
         m_animator.Play("ShowChestTracker");
-        yield return new WaitForSeconds(1.5f);
-        m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + maxNumberOfChests.ToString();
+        yield return new WaitForSeconds(2.3f);
+        m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
         yield return new WaitForSeconds(1.5f);
         m_animator.Play("HideChestTracker");
     }

@@ -14,7 +14,6 @@ public class AshePunchingState : State
 
     public override void EnterState()
     {
-        Debug.Log("Enter Punching State");
         m_context.CanJump = false;
         m_context.CanMove = false;
         ((AshePawn)m_context).LifitingRegion.enabled = false;

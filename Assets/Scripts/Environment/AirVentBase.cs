@@ -22,20 +22,27 @@ public class AirVentBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //foreach (Collider2D obj in objectsOn)
+        //{
+        //    if (obj.tag == "physical" && !baseCollider.bounds.Contains(obj.bounds.center))
+        //    {
+        //        OnTriggerExit2D(obj);
+        //        return;
+        //    }
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
         
-        if ((otherRB.mass > 2 || other.gameObject.tag == "Ashe")) {
+        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe" || other.gameObject.tag == "door") {
             CheckEnter(other);
             CheckExit(other);
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
-        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe") {
+        if (otherRB.mass > 2 || other.gameObject.tag == "Ashe" || other.gameObject.tag == "door") {
             if (!objectsOn.Contains(other)) {
                 return;
             }
@@ -50,10 +57,8 @@ public class AirVentBase : MonoBehaviour
         if (objectsOn.Contains(other)) {
             return;
         }
-        // if(Extent.x <= other.bounds.center.x){Debug.Log("Extent X");}
-        // if(Extent.y >= other.bounds.center.x){Debug.Log("Extent Y");}
-        // if(Center.y < other.bounds.center.y || Center.x < other.bounds.center.x){Debug.Log("Center or");}
-        if ((Extent.x <= other.bounds.center.x && Extent.y >= other.bounds.center.x && Center.y < other.bounds.center.y))
+        //if ((Extent.x <= other.bounds.center.x && Extent.y >= other.bounds.center.x && Center.y < other.bounds.center.y)
+        //    || (Extent.x <= other.bounds.center.y && Extent.y >= other.bounds.center.y && Center.y < other.bounds.center.x))
         {
             objectsOn.Add(other);
             if (objectsOn.Count == 1)
@@ -65,17 +70,18 @@ public class AirVentBase : MonoBehaviour
     }
 
     private void CheckExit(Collider2D other) {
-        if (!objectsOn.Contains(other)) {
-            return;
-        }
+        //if (!objectsOn.Contains(other)) {
+        //    return;
+        //}
         
-        if ((Extent.x > other.bounds.center.x || Extent.y < other.bounds.center.x || Center.y >= other.bounds.center.y))
-        {
-            objectsOn.Remove(other);
-            if (objectsOn.Count == 0)
-            {
-                airVent.Activate();
-            }
-        }
+        //if ((Extent.x > other.bounds.center.x || Extent.y < other.bounds.center.x || Center.y >= other.bounds.center.y)
+        //    && (Extent.x > other.bounds.center.y || Extent.y < other.bounds.center.y || Center.y >= other.bounds.center.x))
+        //{
+        //    objectsOn.Remove(other);
+        //    if (objectsOn.Count == 0)
+        //    {
+        //        airVent.Activate();
+        //    }
+        //}
     }
 }

@@ -25,7 +25,7 @@ MonoBehaviour:
   - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 4
+    speed: 6
     delay: 2
     text: Whew! Thanks for catching my fall.
     onDialogue:
@@ -34,7 +34,7 @@ MonoBehaviour:
   - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 4
+    speed: 6
     delay: 2
     text: Nothing new under the world.
     onDialogue:
@@ -67,12 +67,12 @@ MonoBehaviour:
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
+  - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
     delay: 1
-    text: You know what
+    text: You know what.
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
@@ -80,12 +80,12 @@ MonoBehaviour:
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
-    delay: 2
-    text: That doesn't even matter
+    delay: 1
+    text: That doesn't even matter.
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+  - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
     alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
@@ -94,39 +94,48 @@ MonoBehaviour:
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
     delay: 1
-    text: Wait Ashe!
+    text: Its fine!
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+  - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 4
-    delay: 2
-    text: Turn Around!
+    speed: 5
+    delay: 2.5
+    text: Let's just find our way out of this-
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+  - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 4
-    delay: 4
-    text: Guess the only thing to do is to press on.
+    speed: 1
+    delay: 3
+    text: dungeon thingy?
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
-    alignment: 0
+  - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+    alignment: 1
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
-    delay: 4
-    text: We don't want to get caught by the guards again.
+    delay: 3
+    text: As long as we are away from the guards.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 2
+    text: Fine by me.
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

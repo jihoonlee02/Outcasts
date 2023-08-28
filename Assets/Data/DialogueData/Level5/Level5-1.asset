@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627f7f95e7685b94886791dcf97a0164, type: 3}
+  m_Name: Level5-1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - profile: {fileID: 21300000, guid: 2bbcdd7718097384fa77f69fea9d2c82, type: 3}
+    alignment: 1
+    typeSound: {fileID: 0}
+    speed: 4
+    delay: 1
+    text: Tinker. I've been meaning to ask.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+    alignment: 0
+    typeSound: {fileID: 0}
+    speed: 4
+    delay: 1
+    text: What's up?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+    alignment: 1
+    typeSound: {fileID: 0}
+    speed: 4
+    delay: 3
+    text: Are you sure about fighting the Rat King?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 815f50e44db84904cb85dc49cbdd1757, type: 3}
+    alignment: 0
+    typeSound: {fileID: 0}
+    speed: 4
+    delay: 2
+    text: Ashe, I'm the only mouse under the entire earth.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+    alignment: 1
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 1
+    text: I know.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+    alignment: 0
+    typeSound: {fileID: 0}
+    speed: 4
+    delay: 2
+    text: The Rat King has something to do with that. I can just... tell.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+    alignment: 1
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 2
+    text: Okay. I'm with you.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 14fa20623e7ffa141b68f97951e09242, type: 3}
+    alignment: 0
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 2
+    text: Are you sure?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+    alignment: 1
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 3
+    text: Not about the Rat King. But about this journey. It's important, right?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+    alignment: 0
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 2
+    text: It is.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+    alignment: 1
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 2
+    text: Then I'm with you.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 815f50e44db84904cb85dc49cbdd1757, type: 3}
+    alignment: 0
+    typeSound: {fileID: 0}
+    speed: 3
+    delay: 2
+    text: Thanks, Ashe.
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

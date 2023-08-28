@@ -37,7 +37,6 @@ public class Gauntlet : Tool
     public override void UsePrimaryAction()
     {
         if (inUse) { return; }
-        Debug.Log("Punch");
         //m_punchCollider.enabled = true;
         inUse = true;
         currTime = Time.time + animationLength;
@@ -46,7 +45,6 @@ public class Gauntlet : Tool
 
     public override void UseSecondaryAction()
     {
-        Debug.Log("Secondary Action gone through");
         if (((AshePawn)m_user).HeldObject != null) 
         {
             Debug.Log("Did I get called?");
@@ -75,6 +73,7 @@ public class Gauntlet : Tool
                 currTime = Time.time + animationLength;
                 inUse = true;
                 ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).HeldObject.GetComponent<Grabbable>().Grab();
                 ((AshePawn)m_user).IsLifting = true;
                 return;
             }

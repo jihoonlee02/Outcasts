@@ -13,7 +13,7 @@ public class AsheDefaultState : State
 
     public override void EnterState()
     {
-        Debug.Log("Switched to AsheDefault");
+        
     }
     public override void ExitState() 
     { 

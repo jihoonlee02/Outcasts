@@ -7,8 +7,6 @@ public class MovingState : State
     }
     public override void EnterState()
     {
-        Debug.Log("Entered Moving State");
-
         m_context.AudioSource.clip = m_context.Data.Footstep;
         m_context.AudioSource.loop = true;
         m_context.Animator.Play(m_animationName + m_superState.AnimationName);

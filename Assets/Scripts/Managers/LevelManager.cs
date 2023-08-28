@@ -121,7 +121,7 @@ public class LevelManager : MonoBehaviour
     }
     public void ChangeMusic(AudioClip clip)
     {
-        AudioManager.Instance.SetAudioClip(m_music);
+        AudioManager.Instance.SetAudioClip(clip);
     }
     public void ChangeNextScene(string nextScene)
     {

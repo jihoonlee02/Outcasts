@@ -315,16 +315,14 @@ public class GameManager : MonoBehaviour
     private void OnSceneChange(Scene current, Scene next)
     {
         //Dev Bs only
+        Debug.Log("Scene Change is invoked");
         DialogueManager.Instance.StopDialogue();
-        if (m_currScene == "Hub")
+        if (m_currScene == "hub")
         {
-            ClearSceneQueue();
-            AddSceneToQueue(initialScenesToEnqueue);
+            ChestTracker.Instance.ResetChestCount();
         }
 
         if (next.name == "MainMenu") {
-            
-            
             Destroy(transform.parent.gameObject);
             return;
         }

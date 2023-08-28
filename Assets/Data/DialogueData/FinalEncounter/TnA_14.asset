@@ -13,20 +13,11 @@ MonoBehaviour:
   m_Name: TnA_14
   m_EditorClassIdentifier: 
   dialogue:
-  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
-    alignment: 0
-    typeSound: {fileID: 0}
-    speed: 6
-    delay: 1
-    text: ...
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
   - profile: {fileID: 21300000, guid: 2bbcdd7718097384fa77f69fea9d2c82, type: 3}
     alignment: 1
     typeSound: {fileID: 0}
     speed: 6
-    delay: 1
+    delay: 2
     text: ...
     onDialogue:
       m_PersistentCalls:

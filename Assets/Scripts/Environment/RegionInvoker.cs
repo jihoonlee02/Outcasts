@@ -32,7 +32,8 @@ public class RegionInvoker : Invoker
         TimeDuration = Time.time + stayTimeToTrigger;
         if (Time.time <= TimeDuration
             || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
-            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe"))
+            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
+            || collision.gameObject.tag == "feet")
         {
             return;
         }
@@ -43,12 +44,16 @@ public class RegionInvoker : Invoker
                 if (collision.gameObject.tag == "Tinker")
                 {
                     tinkerInRegion = true;
-                    if (!asheInRegion) return;     
+                    if (!asheInRegion) return;
                 }
                 else if (collision.gameObject.tag == "Ashe")
                 {
                     asheInRegion = true;
                     if (!tinkerInRegion) return;
+                }
+                else
+                {
+                    return;
                 }
             }
             if (useUniqueID)
@@ -85,7 +90,8 @@ public class RegionInvoker : Invoker
     {
         if (Time.time <= TimeDuration
             || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
-            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe"))
+            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
+            || collision.gameObject.tag == "feet")
         {
             return;
         }
@@ -102,6 +108,10 @@ public class RegionInvoker : Invoker
                 {
                     asheInRegion = true;
                     if (!tinkerInRegion) return;
+                }
+                else
+                {
+                    return;
                 }
             }
             if (useUniqueID)
@@ -137,9 +147,9 @@ public class RegionInvoker : Invoker
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (triggerOnce || Time.time <= TimeDuration
-            || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
-            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe"))
+        if ((triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
+            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
+            || collision.gameObject.tag == "feet")
         {
             return;
         } 
@@ -169,12 +179,12 @@ public class RegionInvoker : Invoker
             }
             else
             {
-                Deactivate();
+                if (!triggerOnce) Deactivate();
             }
         }
         else if (triggerType == TriggerType.SpecificObjects && tags.Contains(collision.tag))
         {
-            Deactivate();
+            if (!triggerOnce) Deactivate();
         }
     }
 

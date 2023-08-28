@@ -10,6 +10,7 @@ public class PlatformMover : Invokee
     [SerializeField] private Vector2[] m_waypoints;
     [SerializeField, Range(0f, 10f)] private float speed = 1f;
     [SerializeField] private bool autoMove;
+    private float activeCount;
 
     # if UNITY_EDITOR
     private bool isSelected => UnityEditor.Selection.transforms.Contains(transform);
@@ -57,11 +58,14 @@ public class PlatformMover : Invokee
     }
     protected override void OnActivate()
     {
+        activeCount++;
         MoveToWaypoint(1);
+        
     }
     protected override void OnDeactivate()
     {
-        MoveToWaypoint(0);
+        activeCount--;
+        if (activeCount <= 0) MoveToWaypoint(0);
     }
 
     public void ChangePlatformSpeed(float speed)
@@ -89,45 +93,65 @@ public class PlatformMover : Invokee
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
-        if (objectOnPlatform != null && !objectOnPlatform.GetComponent<Chase>())
+        if (collision.gameObject.tag == "feet")
         {
-            objectsOnPlatform.Add(objectOnPlatform.transform, objectOnPlatform.transform.parent);
-            objectOnPlatform.transform.SetParent(transform);
+            objectsOnPlatform.Add(collision.transform.parent, collision.transform.parent.parent);
+            collision.transform.parent.SetParent(transform);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        var objectOnPlatform = collision.GetComponent<Rigidbody2D>();
-        if (objectOnPlatform != null && objectsOnPlatform.ContainsKey(objectOnPlatform.transform))
+        if (collision.gameObject.tag == "feet" && objectsOnPlatform.ContainsKey(collision.transform.parent))
         {
-            objectOnPlatform.transform.SetParent(objectsOnPlatform[objectOnPlatform.transform]);
-            objectsOnPlatform.Remove(objectOnPlatform.transform);
+            collision.transform.parent.SetParent(objectsOnPlatform[collision.transform.parent]);
+            objectsOnPlatform.Remove(collision.transform.parent);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
+        //if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
+        //{
+        //    count_collisions++;
+        //    blocked = true;
+        //    Debug.Log("BLOCKED BY " + collision.gameObject.name);
+        //}
+        if (collision.gameObject.tag == "physical")
+        {
+            objectsOnPlatform.Add(collision.transform, collision.transform.parent);
+            collision.transform.SetParent(transform);
+        }
+        else if (collision.gameObject.layer != LayerMask.NameToLayer("Camera") && collision.gameObject.layer != LayerMask.NameToLayer("Players"))
         {
             count_collisions++;
             blocked = true;
-            Debug.Log("BLOCKED BY " + collision.gameObject.name);
+            //Debug.Log("BLOCKED BY " + collision.gameObject.name);
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
+        //if (collision.gameObject.layer != LayerMask.NameToLayer("Players") && collision.gameObject.tag != "physical")
+        //{
+        //    count_collisions--;
+        //}
+
+        if (collision.gameObject.tag == "physical")
+        {
+            collision.transform.SetParent(objectsOnPlatform[collision.transform]);
+            objectsOnPlatform.Remove(collision.transform);
+        }
+        else if (collision.gameObject.layer != LayerMask.NameToLayer("Camera") && collision.gameObject.layer != LayerMask.NameToLayer("Players"))
         {
             count_collisions--;
         }
 
+
         if (count_collisions <= 0)
         {
             blocked = false;
-            Debug.Log("UN-BLOCKED");
+            //Debug.Log("UN-BLOCKED");
         }
     }
 }

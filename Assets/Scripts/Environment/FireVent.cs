@@ -9,6 +9,7 @@ public class FireVent : Invokee
     private Collider2D m_flameCollider;
     [SerializeField, Tooltip("Auto turns flames on an off")] 
     private bool m_autoFlame = true;
+    [SerializeField] private bool flameRise = false;
     [SerializeField, Tooltip("Used when Auto Flame active"), Range(0.5f, 10f)] 
     private float activeDuration = 3f;
     [SerializeField, Tooltip("Used when Auto Flame active"), Range(0.5f, 10f)] 
@@ -16,29 +17,26 @@ public class FireVent : Invokee
     [SerializeField] private float yFlameMax;
     [SerializeField] private float yFlameMin = -4.246f;
     [SerializeField] private float speed = 3f;
+    
     private Fire m_associatedFire;
     #region Technical
     private float durationSwitch = 0f;
-    private bool flameRise = false;
+    
     #endregion
     private void Start()
     {
         m_associatedFire = GetComponentInChildren<Fire>();
+        durationSwitch = Time.time + delay; 
     }
     private void Update()
     {
         if (m_autoFlame && Time.time >= durationSwitch)
         {
-            // Purposely Not Using built in Delay
-            if (!m_flameCollider.enabled)
-            {
-                OnActivate(); 
-            }
-            else
-            {
-                OnDeactivate();
-            }
+            flameRise = !flameRise;
+            durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
         }
+
+        m_flameCollider.enabled = flameRise;
     }
     private void FixedUpdate()
     {
@@ -47,15 +45,13 @@ public class FireVent : Invokee
 
     protected override void OnActivate()
     {
-        m_flameCollider.enabled = true;
-        durationSwitch = Time.time + activeDuration;
-        flameRise = true;
+        flameRise = !flameRise;
+        durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
     }
 
     protected override void OnDeactivate()
     {
-        m_flameCollider.enabled = false;
-        durationSwitch = Time.time + inactiveDuration;
-        flameRise = false;
+        flameRise = !flameRise;
+        durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
     }
 }
