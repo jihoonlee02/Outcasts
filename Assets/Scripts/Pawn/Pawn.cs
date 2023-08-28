@@ -130,6 +130,7 @@ public class Pawn : MonoBehaviour
         // Calculates if the Pawn is grounded (better than constantly invoking a subroutine call)
         isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
             0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
+        //Debug.Log($"Grounded: {isGrounded}");
         isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
 
         //Make ending of jumps feel more fluid
@@ -192,15 +193,30 @@ public class Pawn : MonoBehaviour
         {
             Vector2 bottom = new Vector2(m_collider.bounds.center.x, m_collider.bounds.center.y - m_collider.bounds.extents.y);
             Vector2 dir = inputVector.x > 0 ? Vector2.right : Vector2.left;
-            RaycastHit2D rayHit = Physics2D.Raycast(bottom, dir, m_collider.bounds.extents.x * 1.1f, 1 << 8);
+            RaycastHit2D rayHit = Physics2D.Raycast(bottom, dir, m_collider.bounds.extents.x * 1.2f, 1 << 8);
             float angle = Vector2.Angle(Vector2.up, rayHit.normal);
-            Debug.Log($"RayHit: {rayHit}; Angle: {angle}");
+            
 
             float targetSpeed = inputVector.x * movementSpeed;
             float speedDif = targetSpeed - m_rb.velocity.x;
             float accelRate = (Mathf.Abs(targetSpeed) > 0.1f) ? acceleration : decceleration;
-            float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-            m_rb.AddRelativeForce(movement * Rotate(Vector2.right, angle));
+            float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower);
+
+            if (angle <= slopeAmount) {
+                Vector2 newVec = Rotate(dir, angle * Mathf.Sign(inputVector.x));
+                float newY = newVec.y;
+                newVec = new Vector2(newVec.x, newY);
+                Debug.Log($"X: {newVec.x}, Y: {newVec.y}, Movement: {movement}");
+                Debug.DrawRay(bottom, newVec);
+                if (isGrounded) {
+                    m_rb.AddRelativeForce(new Vector2(newVec.x * movement, (newVec.y * movement) + 30f));
+                }
+                else {
+                    m_rb.AddRelativeForce(newVec * movement);
+                }
+            } else {
+                m_rb.AddRelativeForce(movement * dir);
+            }
         }
 
         //Add Force to movement
