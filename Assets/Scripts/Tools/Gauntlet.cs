@@ -65,7 +65,8 @@ public class Gauntlet : Tool
                 inUse = true;
                 ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
                 ((AshePawn)m_user).HeldObject.GetComponent<TinkerPawn>().IsHeld = true;
-                ((AshePawn)m_user).IsLifting = true;
+                StartCoroutine(MoveToAshePaws());
+                //((AshePawn)m_user).IsLifting = true;
                 return;
             }
 
@@ -90,14 +91,18 @@ public class Gauntlet : Tool
     {
         var yDist = ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_user.GetComponent<Collider2D>().bounds.extents.y;
         Vector3 goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
+        ((AshePawn)m_user).HeldObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        ((AshePawn)m_user).DisableLiftingRegion();
         while (((AshePawn)m_user).HeldObject.transform.position != goal)
         {
-            var postion = ((AshePawn)m_user).HeldObject.transform.position;
-            ((AshePawn)m_user).HeldObject.transform.position = Vector2.MoveTowards(postion,goal,Time.deltaTime * 3);
-            yield return new WaitForSeconds(Time.deltaTime);
             goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
+            var postion = ((AshePawn)m_user).HeldObject.transform.position;
+            ((AshePawn)m_user).HeldObject.transform.position = Vector2.MoveTowards(postion,goal,Time.deltaTime * 30);
+            yield return new WaitForSeconds(Time.deltaTime);  
         }
         ((AshePawn)m_user).IsLifting = true;
+        ((AshePawn)m_user).HeldObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        ((AshePawn)m_user).EnableLiftingRegion();
     }
     public void FixedUpdate()
     {

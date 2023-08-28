@@ -38,4 +38,12 @@ public class AshePawn : Pawn
     {
         m_gauntletReference.UseSecondaryAction();
     }
+    public void DisableLiftingRegion()
+    {
+        m_liftingRegion.enabled = false;
+    }
+    public void EnableLiftingRegion()
+    {
+        m_liftingRegion.enabled = true;
+    }
 }

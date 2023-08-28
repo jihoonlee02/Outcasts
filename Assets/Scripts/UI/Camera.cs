@@ -45,6 +45,10 @@ public class Camera : MonoBehaviour
     {
         this.targetPosition = new Vector3(targetPosition.x, targetPosition.y, -10f);
     }
+    public void ShiftToX(float x)
+    {
+        targetPosition = new Vector3(x, targetPosition.y, -10f);
+    }
 
     private void Start()
     {

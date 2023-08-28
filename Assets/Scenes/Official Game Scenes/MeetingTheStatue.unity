@@ -891,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -899,7 +899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -912,7 +912,7 @@ PrefabInstance:
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1226954544}
+      objectReference: {fileID: 1226954541}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -935,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: UnLock
+      value: ShiftToX
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -947,11 +947,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: TnACameraFollow, Assembly-CSharp
+      value: Camera, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: Camera, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
+      propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
@@ -27711,7 +27715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -27719,10 +27723,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
+      propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
@@ -27732,11 +27740,11 @@ PrefabInstance:
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1226954543}
+      objectReference: {fileID: 1226954541}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1226954536}
+      objectReference: {fileID: 1226954541}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -27750,16 +27758,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
+      propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Lock
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_FollowTarget
+      value: ShiftToX
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: 
+      value: FollowEnable
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -27767,11 +27779,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CameraFollow, Assembly-CSharp
+      value: Camera, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: CameraFollow, Assembly-CSharp
+      value: Camera, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
+      propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: Camera, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -27782,8 +27798,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
+      propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
+      propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 17.97
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
@@ -27807,7 +27831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
@@ -93748,7 +93772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917f3c762dcad364fbd1954b932bf6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 15
+  m_moveSpeed: 20
   targetPosition: {x: 0, y: 0, z: -10}
   m_followEnabled: 0
   m_cameraShaker: {fileID: 1226954542}
@@ -99000,7 +99024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -99008,7 +99032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: Common you look cute!
+      value: Come on you look adorable!
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
