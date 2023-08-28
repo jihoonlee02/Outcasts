@@ -317,14 +317,12 @@ public class GameManager : MonoBehaviour
         //Dev Bs only
         Debug.Log("Scene Change is invoked");
         DialogueManager.Instance.StopDialogue();
-        if (m_currScene == "Hub")
+        if (m_currScene == "hub")
         {
             ChestTracker.Instance.ResetChestCount();
         }
 
         if (next.name == "MainMenu") {
-            
-            
             Destroy(transform.parent.gameObject);
             return;
         }
