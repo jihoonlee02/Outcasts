@@ -30,6 +30,9 @@ public class AirVentBase : MonoBehaviour
         //        return;
         //    }
         //}
+        Bounds bounds = baseCollider.bounds;
+        Vector2 rotatedExtent = transform.rotation * Extent;
+        //Debug.DrawLine(new Vector3(bounds.max.x, bounds.max.y, 0), new Vector3(bounds.max.x, bounds.min.y, 0));
     }
 
     private void OnTriggerStay2D(Collider2D other) {
@@ -37,19 +40,12 @@ public class AirVentBase : MonoBehaviour
         
         if (otherRB.mass > 2 || other.gameObject.tag == "Ashe" || other.gameObject.tag == "door") {
             CheckEnter(other);
-            CheckExit(other);
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         Rigidbody2D otherRB = other.attachedRigidbody;
         if (otherRB.mass > 2 || other.gameObject.tag == "Ashe" || other.gameObject.tag == "door") {
-            if (!objectsOn.Contains(other)) {
-                return;
-            }
-            objectsOn.Remove(other);
-            if (objectsOn.Count == 0) {
-                airVent.Activate();
-            }
+            CheckExit(other);
         }
     }
 
@@ -57,8 +53,9 @@ public class AirVentBase : MonoBehaviour
         if (objectsOn.Contains(other)) {
             return;
         }
-        //if ((Extent.x <= other.bounds.center.x && Extent.y >= other.bounds.center.x && Center.y < other.bounds.center.y)
-        //    || (Extent.x <= other.bounds.center.y && Extent.y >= other.bounds.center.y && Center.y < other.bounds.center.x))
+        Vector2 rotatedExtent = transform.rotation * Extent;
+        // if ((rotatedExtent.x <= other.bounds.center.x && rotatedExtent.y >= other.bounds.center.x && Center.y < other.bounds.center.y)
+        //    || (rotatedExtent.x <= other.bounds.center.y && rotatedExtent.y >= other.bounds.center.y && Center.y < other.bounds.center.x))
         {
             objectsOn.Add(other);
             if (objectsOn.Count == 1)
@@ -70,18 +67,18 @@ public class AirVentBase : MonoBehaviour
     }
 
     private void CheckExit(Collider2D other) {
-        //if (!objectsOn.Contains(other)) {
-        //    return;
-        //}
-        
-        //if ((Extent.x > other.bounds.center.x || Extent.y < other.bounds.center.x || Center.y >= other.bounds.center.y)
-        //    && (Extent.x > other.bounds.center.y || Extent.y < other.bounds.center.y || Center.y >= other.bounds.center.x))
-        //{
-        //    objectsOn.Remove(other);
-        //    if (objectsOn.Count == 0)
-        //    {
-        //        airVent.Activate();
-        //    }
-        //}
+        if (!objectsOn.Contains(other)) {
+           return;
+        }
+        Vector2 rotatedExtent = transform.rotation * Extent;
+        // if ((rotatedExtent.x > other.bounds.center.x || rotatedExtent.y < other.bounds.center.x || Center.y >= other.bounds.center.y)
+        //    && (rotatedExtent.x > other.bounds.center.y || rotatedExtent.y < other.bounds.center.y || Center.y >= other.bounds.center.x))
+        {
+           objectsOn.Remove(other);
+           if (objectsOn.Count == 0)
+           {
+               airVent.Activate();
+           }
+        }
     }
 }
