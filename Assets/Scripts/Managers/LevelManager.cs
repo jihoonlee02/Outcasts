@@ -119,6 +119,10 @@ public class LevelManager : MonoBehaviour
     {
         AudioManager.Instance.SetAudioClip(clip);
     }
+    public void ChangeMusicVolume(float volume)
+    {
+        AudioManager.Instance.SetVolume(volume);
+    }
     public void ChangeNextScene(string nextScene)
     {
         m_nextScene = nextScene;
