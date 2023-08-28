@@ -48,7 +48,6 @@ public class Gauntlet : Tool
     {
         if (((AshePawn)m_user).HeldObject != null) 
         {
-            Debug.Log("Did I get called?");
             UsePrimaryAction();  
             return;
         }
@@ -91,7 +90,7 @@ public class Gauntlet : Tool
     {
         var yDist = ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_user.GetComponent<Collider2D>().bounds.extents.y;
         Vector3 goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
-        ((AshePawn)m_user).HeldObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().isTrigger = true;
         ((AshePawn)m_user).DisableLiftingRegion();
         while (((AshePawn)m_user).HeldObject.transform.position != goal)
         {
@@ -101,7 +100,7 @@ public class Gauntlet : Tool
             yield return new WaitForSeconds(Time.deltaTime);  
         }
         ((AshePawn)m_user).IsLifting = true;
-        ((AshePawn)m_user).HeldObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().isTrigger = false;
         ((AshePawn)m_user).EnableLiftingRegion();
     }
     public void FixedUpdate()
