@@ -49,12 +49,22 @@ public class ChestTracker : MonoBehaviour
     {
         m_foundChests = new bool[maxNumberOfChests];
         currNumberOfChestOpened = 0;
+        m_trackerTextBox.color = Color.white;
     }
     private IEnumerator UpdateChestTracker()
     {
         m_animator.Play("ShowChestTracker");
         yield return new WaitForSeconds(2.3f);
-        m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
+        
+        if (IsAllChestsOpen)
+        {
+            m_trackerTextBox.color = Color.green;
+            m_trackerTextBox.text = currNumberOfChestOpened.ToString();
+        }
+        else
+        {
+            m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
+        }
         yield return new WaitForSeconds(1.5f);
         m_animator.Play("HideChestTracker");
     }
