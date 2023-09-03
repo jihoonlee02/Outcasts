@@ -9,6 +9,7 @@ public class Gauntlet : Tool
     [SerializeField] private Animator m_animator;
     [SerializeField] private BoxCollider2D m_punchCollider;
     [SerializeField] private BoxCollider2D m_grabCollider;
+    [SerializeField] private float m_offset = 0.001f;
 
     public float ForcePower => Mathf.Sign(m_user.Animator.GetFloat("MoveX")) * m_forcePower;
     private Collider2D userCollider;
@@ -92,7 +93,9 @@ public class Gauntlet : Tool
         Vector3 goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
         ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().isTrigger = true;
         ((AshePawn)m_user).DisableLiftingRegion();
-        while (((AshePawn)m_user).HeldObject.transform.position != goal)
+        while (((AshePawn)m_user).HeldObject.transform.position.x > goal.x + m_offset || ((AshePawn)m_user).HeldObject.transform.position.x < goal.x - m_offset
+            || ((AshePawn)m_user).HeldObject.transform.position.y > goal.y + m_offset || ((AshePawn)m_user).HeldObject.transform.position.y < goal.y - m_offset)
+        //while (((AshePawn)m_user).HeldObject.transform.position != goal)
         {
             goal = new Vector3(m_user.transform.position.x, m_user.transform.position.y + yDist, m_user.transform.position.z);
             var postion = ((AshePawn)m_user).HeldObject.transform.position;

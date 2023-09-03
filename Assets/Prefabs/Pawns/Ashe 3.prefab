@@ -129,6 +129,7 @@ MonoBehaviour:
   m_animator: {fileID: 6443063388588883332}
   m_punchCollider: {fileID: 6443063388588883335}
   m_grabCollider: {fileID: 8177433821788091460}
+  m_offset: 0.2
 --- !u!61 &6443063388588883335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -393,6 +394,7 @@ MonoBehaviour:
   decceleration: 20
   velPower: 0.7
   frictionAmount: 0
+  slopeAmount: 45
   jumpForce: 10
   jumpCutMultiplier: 0.625
   jumpCoyoteTime: 0
