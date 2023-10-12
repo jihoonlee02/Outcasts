@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TnACameraFollow : MonoBehaviour
 {
-    [SerializeField] private Vector3 offset;
+    //[SerializeField] private Vector3 offset;
     [SerializeField] private float smoothTime = .5f;
     [SerializeField] private bool isLocked = true;
     [SerializeField] private bool lockVertical = true;
@@ -43,30 +43,30 @@ public class TnACameraFollow : MonoBehaviour
             Vector3 boundedPosition = newPosition;
             if (boundTheLeft && newPosition.x < leftBound)
             {
-                boundedPosition = new Vector3(leftBound, boundedPosition.y);
+                boundedPosition = new Vector3(leftBound, boundedPosition.y, transform.position.z);
                 inBound = true;
             }
             else if (boundTheRight && newPosition.x > rightBound)
             {
-                boundedPosition = new Vector3(rightBound, boundedPosition.y);
+                boundedPosition = new Vector3(rightBound, boundedPosition.y, transform.position.z);
                 inBound = true;
             }
             if (boundTheBot && newPosition.y < botBound)
             {
-                boundedPosition = new Vector3(boundedPosition.x, botBound);
+                boundedPosition = new Vector3(boundedPosition.x, botBound, transform.position.z);
                 inBound = true;
             }
             else if (boundTheTop && newPosition.y > topBound)
             {
-                boundedPosition = new Vector3(boundedPosition.x, topBound);
+                boundedPosition = new Vector3(boundedPosition.x, topBound, transform.position.z);
                 inBound = true;
             }
 
-            transform.position = Vector3.SmoothDamp(transform.position, (inBound ? boundedPosition : newPosition) + offset, ref velocity, smoothTime);
+            transform.position = Vector3.SmoothDamp(transform.position, (inBound ? boundedPosition : newPosition), ref velocity, smoothTime);
         }
         
     }
-    Vector3 GetCenterPoint()
+    private Vector3 GetCenterPoint()
     {
         var bounds = new Bounds(GameManager.Instance.Tinker.transform.position, Vector2.zero);
         bounds.Encapsulate(GameManager.Instance.Ashe.transform.position);

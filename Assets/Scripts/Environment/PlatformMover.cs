@@ -85,6 +85,15 @@ public class PlatformMover : Invokee
         if (collision.gameObject.tag == "feet")
         {
             objectsOnPlatform.Add(collision.transform.parent, collision.transform.parent.parent);
+            //collision.transform.parent.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Pawn pawn = collision.transform.parent.GetComponent<Pawn>();
+        if (pawn != null && objectsOnPlatform.ContainsKey(collision.transform.parent) && pawn.IsGrounded)
+        {
             collision.transform.parent.SetParent(transform);
         }
     }
