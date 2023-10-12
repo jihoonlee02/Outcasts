@@ -10,6 +10,8 @@ public class NailGun : Tool
     private AudioSource m_audioSource;
     private int currAmmo;
 
+    public AudioSource AudioSource => m_audioSource;
+
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();

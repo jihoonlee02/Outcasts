@@ -13,12 +13,18 @@ public class TinkerPawn : Pawn
     #region Technical
     private float initialMass;
     #endregion
-    public bool IsShooting => m_isShooting;
+    public bool IsShooting 
+    {
+        get { return m_isShooting; }
+        set { m_isShooting = value;}
+    }
+
     public bool IsHeld
     {
         get { return m_isHeld; }
         set { m_isHeld = value; }
     }
+    public NailGun NailGunRef => m_nailGunReference;
     protected void Start()
     {
         base.Start();
@@ -37,7 +43,8 @@ public class TinkerPawn : Pawn
         {
             direction = context.action.actionMap["MoveTinker"].ReadValue<Vector2>();
         }
-        
+
+        m_isShooting = true;
         m_nailGunReference.UsePrimaryAction(direction);
     }
 

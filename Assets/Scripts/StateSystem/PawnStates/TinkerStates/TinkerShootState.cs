@@ -7,23 +7,12 @@ public class TinkerShootState : State
     public TinkerShootState(Pawn context, PawnStateFactory factory) : base(context, factory)
     {
         m_isRootState = true;
-        m_animationName = "";
+        m_animationName = "_gun";
         InitializeSubState();
-    }
-
-    public override void EnterState()
-    {
-        m_context.AudioSource.pitch = 1;
-        m_context.AudioSource.clip = m_context.Data.ScratchPadSounds[0];
-        m_context.AudioSource.Play();
     }
     public override void UpdateState()
     {
-
-    }
-    public override void ExitState()
-    {
-
+        if (!((TinkerPawn)m_context).NailGunRef.AudioSource.isPlaying) ((TinkerPawn)m_context).IsShooting = false;
     }
     public override void InitializeSubState()
     {
