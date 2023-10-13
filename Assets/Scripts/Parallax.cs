@@ -12,6 +12,8 @@ public class Parallax : MonoBehaviour
     {
         startpos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
+
+        if (m_camera == null) m_camera = transform.parent.parent.gameObject;
     }
 
     private void FixedUpdate()
