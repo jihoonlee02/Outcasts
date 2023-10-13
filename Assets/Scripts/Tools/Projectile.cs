@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         //Debug.Log("I was entered trigger!");
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Platforms") && collider.gameObject.name != "AsheHead")
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Platforms") && collider.tag != "head")
         {
             m_rb.velocity = Vector3.zero;
             //m_movingDirection = Vector3.zero;
@@ -73,7 +73,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("I was entered Collision!");
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms") && GetComponent<Collider>().tag != "head")
         {
             m_rb.velocity = Vector3.zero;
             //m_movingDirection = Vector3.zero;

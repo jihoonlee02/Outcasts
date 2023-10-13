@@ -172,7 +172,7 @@ public class Pawn : MonoBehaviour
          * should be reflected in the animation.
         */
 
-        if (Mathf.Abs(inputVector.x) > 0.001f)
+        if (canMove && Mathf.Abs(inputVector.x) > 0.001f)
         {
             isMoving = true;
         }
@@ -181,6 +181,7 @@ public class Pawn : MonoBehaviour
             isMoving = false;
         }
 
+
         m_animator.SetFloat("MoveY", inputVector.y);
         if (Mathf.Abs(inputVector.x) > 0.1f)
             m_animator.SetFloat("MoveX", inputVector.x);
@@ -188,7 +189,7 @@ public class Pawn : MonoBehaviour
         //Movement code emulated from Dawnsaur Aug 10, 2021
         //Physics Calculation of Pawn Movement
         //Relative force to adjust local position specifically when inside platforms
-        
+
         if (canMove && Mathf.Abs(inputVector.x) > 0)
         {
             //--------------- JADE ANGULAR STUFF------------------//
