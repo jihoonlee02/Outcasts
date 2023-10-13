@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class TinkerPawn : Pawn
 {
+    [Header("Tinker Specific")]
     [SerializeField] private NailGun m_nailGunReference;
     private bool m_isShooting;
     private bool m_isHeld;

@@ -194,7 +194,7 @@ public class Pawn : MonoBehaviour
             //--------------- JADE ANGULAR STUFF------------------//
             //Vector2 bottom = new Vector2(m_collider.bounds.center.x, m_collider.bounds.center.y - m_collider.bounds.extents.y);
             //Vector2 dir = inputVector.x > 0 ? Vector2.right : Vector2.left;
-            //RaycastHit2D rayHit = Physics2D.Raycast(bottom, dir, m_collider.bounds.extents.x * 1.2f, 1 << 8);
+            //RaycastHit2D rayHit = Physics2D.Raycast(bottom, dir, m_collider.bounds.extents.x * 1.2f, LayerMask.GetMask("Platforms"));
             //float angle = Vector2.Angle(Vector2.up, rayHit.normal);
 
 
@@ -203,19 +203,24 @@ public class Pawn : MonoBehaviour
             //float accelRate = (Mathf.Abs(targetSpeed) > 0.1f) ? acceleration : decceleration;
             //float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower);
 
-            //if (angle <= slopeAmount) {
+            //if (angle <= slopeAmount)
+            //{
             //    Vector2 newVec = Rotate(dir, angle * Mathf.Sign(inputVector.x));
             //    float newY = newVec.y;
             //    newVec = new Vector2(newVec.x, newY);
             //    Debug.Log($"X: {newVec.x}, Y: {newVec.y}, Movement: {movement}");
             //    Debug.DrawRay(bottom, newVec);
-            //    if (isGrounded) {
+            //    if (isGrounded)
+            //    {
             //        m_rb.AddRelativeForce(new Vector2(newVec.x * movement, (newVec.y * movement) + 30f));
             //    }
-            //    else {
+            //    else
+            //    {
             //        m_rb.AddRelativeForce(newVec * movement);
             //    }
-            //} else {
+            //}
+            //else
+            //{
             //    m_rb.AddRelativeForce(movement * dir);
             //}
 

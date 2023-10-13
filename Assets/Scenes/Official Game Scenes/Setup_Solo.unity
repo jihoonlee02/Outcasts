@@ -6761,7 +6761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level7
+      value: Level7_Refactor
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -26184,7 +26184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b38bb285a7f554290ca1fe31039059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.5
   isLocked: 0
   lockVertical: 1
