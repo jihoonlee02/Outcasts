@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour
     private bool isOpen = false;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
     private void Start()
     {
