@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27dfca10093fd1940a0f9d6207dfaace
+guid: ae80477bd2ef9304ba45c4440f9c00ca
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,9 +42,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 28
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,91 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Tinker-Animation-Idle_with_gun_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 0
-        width: 20
-        height: 27
-      alignment: 9
-      pivot: {x: 0.65, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06c55dd3198eb1d468cbb1e401427c51
-      internalID: 1810666735
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tinker-Animation-Idle_with_gun_1
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 0
-        width: 20
-        height: 27
-      alignment: 9
-      pivot: {x: 0.65, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 168eaad599bb2c844a237377b130035b
-      internalID: 741752283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tinker-Animation-Idle_with_gun_2
-      rect:
-        serializedVersion: 2
-        x: 92
-        y: 0
-        width: 20
-        height: 27
-      alignment: 9
-      pivot: {x: 0.65, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2aa533dc596314f48bb9102042bd7ad5
-      internalID: -411844677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tinker-Animation-Idle_with_gun_3
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 0
-        width: 20
-        height: 27
-      alignment: 9
-      pivot: {x: 0.65, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db0ef85e1f01e3a41b7e6203de58357a
-      internalID: -111293624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -210,11 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Tinker-Animation-Idle_with_gun_3: -111293624
-      Tinker-Animation-Idle_with_gun_2: -411844677
-      Tinker-Animation-Idle_with_gun_1: 741752283
-      Tinker-Animation-Idle_with_gun_0: 1810666735
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
