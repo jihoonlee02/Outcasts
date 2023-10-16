@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tourch : MonoBehaviour
 {
     [Header("Tourch Specs")]
+    [SerializeField] private float speed_reaction = 0f;
     private Animator m_animator;
     private float duration_swap;
     private float duration_wind;
@@ -35,7 +36,7 @@ public class Tourch : MonoBehaviour
             duration_wind = Random.Range(35f, 50f) + Time.time;
             duration_swap = Random.Range(5f, 12f) + Time.time;
         }
-        else if (collision.gameObject.tag == "Tinker" || collision.gameObject.tag == "Ashe")
+        else if ((collision.gameObject.tag == "Tinker" || collision.gameObject.tag == "Ashe") && collision.GetComponent<Rigidbody2D>().velocity.magnitude > speed_reaction)
         {
             bool movementLeft = collision.gameObject.transform.GetComponentInChildren<Animator>().GetFloat("MoveX") < 0;
             m_animator.Play(movementLeft ? "Touch_wind_RL" : "Touch_wind_LR");
