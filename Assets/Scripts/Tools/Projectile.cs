@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Vector2 m_movingDirection;
-
-    [SerializeField] private float m_speed = 1.5f;
-    private SpriteRenderer m_sr;
-    private Rigidbody2D m_rb;
-    private Collider2D m_cldr;
-    private Transform poolerParent;
+    [SerializeField] protected float m_speed = 1.5f;
+    protected SpriteRenderer m_sr;
+    protected Rigidbody2D m_rb;
+    protected Collider2D m_cldr;
+    protected Transform poolerParent;
+    protected bool impacted = false;
     public void Awake()
     {
-        m_movingDirection = Vector2.zero;
         m_sr = GetComponent<SpriteRenderer>();
         m_rb = GetComponent<Rigidbody2D>();
         m_cldr = GetComponent<Collider2D>();
@@ -22,9 +20,9 @@ public class Projectile : MonoBehaviour
 
     public void Fire(Vector2 spawnPos, Vector2 direction)
     {
+        impacted = false;
         transform.SetParent(poolerParent, true);
         transform.position = spawnPos;
-        m_movingDirection = direction;
         m_rb.velocity = direction * 10f;
         //enabled = true;
 
@@ -53,32 +51,25 @@ public class Projectile : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, direction == Vector2.up ? 90 : direction == Vector2.down ? -90 : 0);
     }
 
-    public void Update()
+    protected virtual void ImpactHandler(GameObject cogo)
     {
-        //transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + m_movingDirection, Time.deltaTime * m_speed);
+        if (!impacted && cogo.gameObject.layer == LayerMask.NameToLayer("Platforms") && cogo.tag != "head")
+        {
+            m_rb.velocity = Vector3.zero;
+            transform.SetParent(cogo.transform, true);
+            impacted = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         //Debug.Log("I was entered trigger!");
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Platforms") && collider.tag != "head")
-        {
-            m_rb.velocity = Vector3.zero;
-            //m_movingDirection = Vector3.zero;
-            //enabled = false;
-            transform.SetParent(collider.transform, true);
-        }
+        ImpactHandler(collider.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("I was entered Collision!");
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms") && GetComponent<Collider>().tag != "head")
-        {
-            m_rb.velocity = Vector3.zero;
-            //m_movingDirection = Vector3.zero;
-            //enabled = false;
-            transform.SetParent(collision.transform, true);
-        }
+        ImpactHandler(collision.gameObject);
     }
 }
