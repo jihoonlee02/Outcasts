@@ -271,6 +271,14 @@ public class Pawn : MonoBehaviour
         lastJumpTime = 0;
     }
 
+    public void Jump(float jumpForce)
+    {
+        float temp = this.jumpForce;
+        this.jumpForce = jumpForce;
+        Jump();
+        this.jumpForce = temp;
+    }
+
     //Old and Deprecated For Now
     public void ToggleGrabRope() {
         if (!ropeAttached) {

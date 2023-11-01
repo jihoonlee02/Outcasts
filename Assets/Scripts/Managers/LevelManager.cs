@@ -99,6 +99,14 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.Ashe.Animator.SetFloat("MoveX", -1);
     }
+    public void AsheJump(float force)
+    {
+        GameManager.Instance.Ashe.Jump(force);
+    }
+    public void TinkerJump(float force)
+    {
+        GameManager.Instance.Tinker.Jump(force);
+    }
     public void ReloadLevel()
     {
         GameManager.Instance.ReloadCurrentScene();
