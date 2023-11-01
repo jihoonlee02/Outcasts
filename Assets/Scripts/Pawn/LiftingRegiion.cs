@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class LiftingRegiion : MonoBehaviour
 {
     [SerializeField] private AshePawn ashe;
+    private Collider2D m_collider;
 
     //Technical
     private Transform oldParent;
@@ -15,6 +17,7 @@ public class LiftingRegiion : MonoBehaviour
     {
         delay = 0.4f; // 0.4f was better
         cooldownTime = Time.time;
+        m_collider = GetComponent<Collider2D>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -115,14 +118,10 @@ public class LiftingRegiion : MonoBehaviour
     //        }  
     //    }      
     //}
-
-    private void OnDisable()
+    private IEnumerator DisableCollisionTemp()
     {
-        
-    }
-
-    private void OnEnable()
-    {
-        
+        m_collider.enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        m_collider.enabled = true;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
+// Dependent on the existence of TnA since we will NOT have any other player pawns
 public class Chase : MonoBehaviour
 {
     [SerializeField] private string m_pawnName;
@@ -62,7 +63,11 @@ public class Chase : MonoBehaviour
     }
     public void GrabTarget()
     {
-        if (target.tag == "Tinker") target.GetComponent<TinkerPawn>().IsHeld = false;
+        if (target.tag == "Tinker")
+        {
+            target.GetComponent<TinkerPawn>().IsHeld = false;
+            GameManager.Instance.Ashe.IsLifting = false;
+        }
         grabbedTarget = target;
         isGrabbing = true;
     }

@@ -18,7 +18,9 @@ public class Paw : MonoBehaviour
     {
         if (collision.GetComponent<Projectile>()) ReactOnNail();
         else if (collision.GetComponent<Gauntlet>()) ReactOnPunch();
-        else if (collision.GetComponent<Paw>() == null && collision.tag == "physical" && collision.GetComponent<Rigidbody2D>().velocity.magnitude >= 2f) ReactOnPunch();
+        else if (collision.GetComponent<Paw>() == null && collision.tag == "physical" 
+            && collision.GetComponent<Rigidbody2D>().velocity.magnitude >= 2f) 
+                ReactOnPunch();
     }
     private void ReactOnNail()
     {

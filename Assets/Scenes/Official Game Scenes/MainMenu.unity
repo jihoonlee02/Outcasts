@@ -21555,6 +21555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 1
   targetPosition: {x: 0, y: 0, z: 0}
+  m_followEnabled: 0
   m_cameraShaker: {fileID: 1226954542}
   m_cameraFollow: {fileID: 1226954543}
 --- !u!114 &1226954542
@@ -22523,6 +22524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nailFab: {fileID: 6334426370693832413, guid: 9aefd794e2f779a44ab98732c4708ba8, type: 3}
+  pawTrolls: {fileID: 0}
 --- !u!1 &1455262747
 GameObject:
   m_ObjectHideFlags: 0

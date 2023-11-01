@@ -100,6 +100,18 @@ public class MainMenu : MonoBehaviour
     // Inefficent, yet does the job
     public void BackAPanel(InputAction.CallbackContext context)
     {
+        //Traversal Efficency Reasons
+        if (m_currNode.Parent == null)
+            return;
+
+        switch(m_currNode.Parent.Data)
+        {
+            case "MainMenu":
+                ViewMainMenu();
+                break;
+            default:
+                break;
+        }
         // Changing to mouse based system for ease
         //if (m_currNode.Data == "Options")
         //{
@@ -109,11 +121,6 @@ public class MainMenu : MonoBehaviour
         //{
         //    m_eventSystem.SetSelectedGameObject(m_startGameButton);
         //}
-        
-        if (m_currNode.Parent != null && m_currNode.Parent.Data == "MainMenu")
-        {
-            ViewMainMenu();
-        }
     }
 
     #endregion

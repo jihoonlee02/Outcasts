@@ -248,9 +248,9 @@ public class GameManager : MonoBehaviour
     {
         m_currScene = scene;
         m_doorTransition.CloseDoors();
-        StartCoroutine(LoadSceneWithDelay(1.2f));
         m_tinker.transform.SetParent(m_levelThings, false);
         m_ashe.transform.SetParent(m_levelThings, false);
+        StartCoroutine(LoadSceneWithDelay(1.2f));
     }
     public void TransitionToNextScene()
     {
