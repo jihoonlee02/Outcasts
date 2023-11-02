@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogue:
   - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
     alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
     speed: 6
     delay: 2
     text: ooof
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_Calls: []
   - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
     alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
     speed: 6
     delay: 2
     text: We got away from them
@@ -51,16 +51,16 @@ MonoBehaviour:
         m_Calls: []
   - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
     alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
     speed: 6
-    delay: 2
+    delay: 1.5
     text: Reckless?
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
   - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
     alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
     speed: 6
     delay: 2
     text: Come on ashe!
@@ -69,46 +69,10 @@ MonoBehaviour:
         m_Calls: []
   - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
     alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
     speed: 6
     delay: 2
     text: We've been in worst spots before!
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-  - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
-    alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 6
-    delay: 2
-    text: I know this cave on the back of my paw!
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
-    alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 6
-    delay: 2
-    text: I'll find us a way out!
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
-    alignment: 1
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 6
-    delay: 3
-    text: ...
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
-    alignment: 0
-    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 6
-    delay: 3
-    text: What's with that look?
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
@@ -121,12 +85,66 @@ MonoBehaviour:
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
+  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
+    speed: 6
+    delay: 2
+    text: Of course I do!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
+    speed: 6
+    delay: 2
+    text: I know this cave like the back of my paw!
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 1.5
+    text: Then where are we?
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
   - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
+    speed: 6
+    delay: 2
+    text: 
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
     alignment: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
     speed: 6
-    delay: 2
-    text: Uh...
+    delay: 1.5
+    text: Uh
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+    alignment: 0
+    typeSound: {fileID: 8300000, guid: 6c58f17f55b42aa488981c1200c56416, type: 3}
+    speed: 6
+    delay: 1.5
+    text: I don't know...
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
+  - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+    alignment: 1
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    speed: 6
+    delay: 3
+    text: Typical
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
