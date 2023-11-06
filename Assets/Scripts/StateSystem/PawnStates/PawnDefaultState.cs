@@ -20,13 +20,13 @@ public class PawnDefaultState : State
     }
     public override void InitializeSubState()
     {
-        if (m_context.IsJumping)
-        {
-            SetSubState(m_factory.Jumping());
-        }
-        else if (!m_context.IsGrounded)
+        if (!m_context.IsGrounded)
         {
             SetSubState(m_factory.Falling());
+        }
+        else if (m_context.IsJumping)
+        {
+            SetSubState(m_factory.Jumping());
         }
         else if (m_context.IsMoving)
         {
@@ -36,6 +36,5 @@ public class PawnDefaultState : State
         {
             SetSubState(m_factory.Grounded());
         }
-
     }
 }

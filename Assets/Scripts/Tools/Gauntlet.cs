@@ -106,6 +106,10 @@ public class Gauntlet : Tool
         ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().isTrigger = false;
         ((AshePawn)m_user).EnableLiftingRegion();
     }
+    private void MoveOutOfPaws()
+    {
+        //((AshePawn)m_user).HeldObject.transform.position = ;
+    }
     public void FixedUpdate()
     {
         //Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);

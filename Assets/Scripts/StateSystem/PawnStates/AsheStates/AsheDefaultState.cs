@@ -10,7 +10,6 @@ public class AsheDefaultState : State
         m_animationName = "";
         InitializeSubState();
     }
-
     public override void EnterState()
     {
         

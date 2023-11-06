@@ -12,6 +12,7 @@ public class NailActivator : Invoker
 
 
     private SpriteRenderer m_spriteRenderer;
+    private AudioSource m_audioSource;
 
     #region Technical
     private bool isActive = false;
@@ -22,16 +23,21 @@ public class NailActivator : Invoker
     {
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_spriteRenderer.sprite = inactive_sprite;
+        m_audioSource = GetComponent<AudioSource>();
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         count++;
-        if (!isActive && collision.GetComponent<Projectile>() != null)
+        if (collision.GetComponent<Projectile>() != null)
         {
-            isActive = true;
-            Activate();
-            m_spriteRenderer.sprite = active_sprite;
+            m_audioSource.Play();
+            if (!isActive)
+            {
+                isActive = true;
+                Activate();
+                m_spriteRenderer.sprite = active_sprite;
+            }     
         }  
     }
 
