@@ -51,6 +51,8 @@ public class AsheLiftingState : State
         // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
             = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
+        if (((AshePawn)m_context).HeldObject.GetComponent<Pawn>() != null)
+            ((AshePawn)m_context).HeldObject.GetComponent<Pawn>().RB.velocity = m_context.RB.velocity;
     }
     public override void ExitState() 
     {
