@@ -66205,6 +66205,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 280066166}
     m_Modifications:
+    - target: {fileID: 2506840427228290746, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5735791
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506840427228290746, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4548657
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506840427228290746, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.024016887
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506840427228290746, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.3780768
+      objectReference: {fileID: 0}
     - target: {fileID: 4968648384084282979, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
       propertyPath: id
       value: 20
@@ -66215,7 +66231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4968648384084282979, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
       propertyPath: triggerType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4968648384084282979, guid: fa7d42cd6deeb0645abd42b62ae503a3, type: 3}
       propertyPath: stayTimeToTrigger

@@ -147,6 +147,26 @@ public class Pawn : MonoBehaviour
         {
             lastGroundedTime = jumpCoyoteTime;
         }
+        // ----------------(RYAN) Movement Essentials repurposed over here--------------------
+        // Check if still moving
+        if (Mathf.Abs(m_rb.velocity.x) <= 0.001f)
+        {
+            isMoving = false;
+        }
+
+        //m_animator.SetFloat("MoveY", inputVector.y);
+        if (Mathf.Abs(m_rb.velocity.x) > 0.1f)
+            m_animator.SetFloat("MoveX", m_rb.velocity.x);
+
+        // Friction Move over here
+        if (lastGroundedTime > 0 && !IsMoving)
+        {
+            float amount = Mathf.Min(Mathf.Abs(m_rb.velocity.x), Mathf.Abs(frictionAmount));
+            amount *= Mathf.Sign(m_rb.velocity.x);
+            m_rb.AddRelativeForce(Vector2.right * -amount, ForceMode2D.Impulse);
+        }
+
+        // --------------------------------------------------------------------------------
 
         //Dev Reasons
         Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
@@ -176,15 +196,16 @@ public class Pawn : MonoBehaviour
         {
             isMoving = true;
         }
-        else if (Mathf.Abs(m_rb.velocity.x) <= 0.001f)
-        {
-            isMoving = false;
-        }
+        // (RYAN) Temp Commenting
+        //else if (Mathf.Abs(m_rb.velocity.x) <= 0.001f)
+        //{
+        //    isMoving = false;
+        //}
 
-
-        m_animator.SetFloat("MoveY", inputVector.y);
-        if (Mathf.Abs(inputVector.x) > 0.1f)
-            m_animator.SetFloat("MoveX", inputVector.x);
+        // (RYAN) Temp Commenting
+        //m_animator.SetFloat("MoveY", inputVector.y);
+        //if (Mathf.Abs(inputVector.x) > 0.1f)
+        //    m_animator.SetFloat("MoveX", inputVector.x);
 
         //Movement code emulated from Dawnsaur Aug 10, 2021
         //Physics Calculation of Pawn Movement
@@ -233,14 +254,15 @@ public class Pawn : MonoBehaviour
             m_rb.AddRelativeForce(movement * Vector2.right);
         }
 
+        // (RYAN) Temp Commenting
         //Add Force to movement
         //Friction code emulate from Dawnsaur Aug 10, 2021 
-        if (lastGroundedTime > 0 && Mathf.Abs(inputVector.x) < 0.01f)
-        {
-            float amount = Mathf.Min(Mathf.Abs(m_rb.velocity.x), Mathf.Abs(frictionAmount));
-            amount *= Mathf.Sign(m_rb.velocity.x);
-            m_rb.AddRelativeForce(Vector2.right * -amount, ForceMode2D.Impulse);
-        }
+        //if (lastGroundedTime > 0 && Mathf.Abs(inputVector.x) < 0.01f)
+        //{
+        //    float amount = Mathf.Min(Mathf.Abs(m_rb.velocity.x), Mathf.Abs(frictionAmount));
+        //    amount *= Mathf.Sign(m_rb.velocity.x);
+        //    m_rb.AddRelativeForce(Vector2.right * -amount, ForceMode2D.Impulse);
+        //}
     }
 
 
