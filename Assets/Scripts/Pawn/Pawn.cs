@@ -154,9 +154,9 @@ public class Pawn : MonoBehaviour
             isMoving = false;
         }
 
-        //m_animator.SetFloat("MoveY", inputVector.y);
-        if (Mathf.Abs(m_rb.velocity.x) > 0.1f)
-            m_animator.SetFloat("MoveX", m_rb.velocity.x);
+        ////m_animator.SetFloat("MoveY", inputVector.y);
+        //if (Mathf.Abs(m_rb.velocity.x) > 0.1f)
+        //    m_animator.SetFloat("MoveX", m_rb.velocity.x);
 
         // Friction Move over here
         if (lastGroundedTime > 0 && !IsMoving)
@@ -203,9 +203,9 @@ public class Pawn : MonoBehaviour
         //}
 
         // (RYAN) Temp Commenting
-        //m_animator.SetFloat("MoveY", inputVector.y);
-        //if (Mathf.Abs(inputVector.x) > 0.1f)
-        //    m_animator.SetFloat("MoveX", inputVector.x);
+        m_animator.SetFloat("MoveY", inputVector.y);
+        if (Mathf.Abs(inputVector.x) > 0.1f)
+            m_animator.SetFloat("MoveX", inputVector.x);
 
         //Movement code emulated from Dawnsaur Aug 10, 2021
         //Physics Calculation of Pawn Movement

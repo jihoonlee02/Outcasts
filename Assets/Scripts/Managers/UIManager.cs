@@ -142,5 +142,4 @@ public class UIManager : MonoBehaviour
     {
         m_pauseMenu.SetActive(false);
     }
-
 }

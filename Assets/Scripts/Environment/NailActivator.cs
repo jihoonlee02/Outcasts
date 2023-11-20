@@ -16,7 +16,7 @@ public class NailActivator : Invoker
 
     #region Technical
     private bool isActive = false;
-    private int count = 0;
+    //private int count = 0;
     #endregion
 
     private void Start()
@@ -28,7 +28,7 @@ public class NailActivator : Invoker
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        count++;
+        //count++;
         if (collision.GetComponent<Projectile>() != null)
         {
             m_audioSource.Play();
@@ -37,18 +37,20 @@ public class NailActivator : Invoker
                 isActive = true;
                 Activate();
                 m_spriteRenderer.sprite = active_sprite;
+                // Play Aniation of Squish State
             }     
         }  
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        count--;
-        if (count == 0 && collision.GetComponent<Projectile>() != null) 
-        {
-            isActive = false;
-            Deactivate();
-            m_spriteRenderer.sprite = inactive_sprite;
-        }
+        // Will Not Deactivate for the time being
+        //count--;
+        //if (count == 0 && collision.GetComponent<Projectile>() != null) 
+        //{
+        //    isActive = false;
+        //    Deactivate();
+        //    m_spriteRenderer.sprite = inactive_sprite;
+        //}
     }
 }

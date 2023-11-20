@@ -49,7 +49,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterSelection m_characterSelection2;
     [SerializeField] private DoorTransition m_doorTransition;
     [SerializeField] private CanvasGroup m_fadeTransition;
-    [SerializeField] private TextMeshProUGUI m_onScreenMessage; 
+    [SerializeField] private TextMeshProUGUI m_onScreenMessage;
+    [SerializeField] private Animator m_cinematicCover;
 
     public DoorTransition DoorTransition => m_doorTransition;
     public CanvasGroup FadeTransition => m_fadeTransition;
@@ -346,7 +347,15 @@ public class GameManager : MonoBehaviour
         //{
         //    SceneManager.LoadSceneAsync("Hub");
         //} 
-    } 
+    }
+    public void ActivateCinematic()
+    {
+        m_cinematicCover.Play("CinematicOpen");
+    }
 
+    public void DeactivateCinematic()
+    {
+        m_cinematicCover.Play("CinematicClose");
+    }
     #endregion
 }

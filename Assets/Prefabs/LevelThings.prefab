@@ -9275,6 +9275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8155315746334857059 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3509474982042165981, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+  m_PrefabInstance: {fileID: 4726994623011894718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8819943228152742313 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4323195274159076375, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
@@ -9742,6 +9747,10 @@ PrefabInstance:
       propertyPath: m_visualCanvas
       value: 
       objectReference: {fileID: 6275004687342316190}
+    - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
+      propertyPath: m_cinematicCover
+      value: 
+      objectReference: {fileID: 8155315746334857059}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_doorTransition
       value: 

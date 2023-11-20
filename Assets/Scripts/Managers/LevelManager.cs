@@ -73,15 +73,17 @@ public class LevelManager : MonoBehaviour
     }
     public void PausePawnControl()
     {
+        GameManager.Instance.ActivateCinematic();
         GameManager.Instance.AshePC?.DisablePawnControl();
         GameManager.Instance.TinkerPC?.DisablePawnControl();
         GameManager.Instance.SC?.DisablePawnControl();
     }
     public void ResumePawnControl()
     {
+        GameManager.Instance.DeactivateCinematic();
         GameManager.Instance.AshePC?.EnablePawnControl();
         GameManager.Instance.TinkerPC?.EnablePawnControl();
-        GameManager.Instance.SC?.EnablePawnControl();
+        GameManager.Instance.SC?.EnablePawnControl();    
     }
     public void FaceTinkerRight()
     {
