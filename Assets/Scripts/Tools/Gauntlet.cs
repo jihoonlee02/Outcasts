@@ -47,12 +47,15 @@ public class Gauntlet : Tool
 
     public override void UseSecondaryAction()
     {
-        if (((AshePawn)m_user).HeldObject != null) 
+        if (inUse) { return; }
+
+        if (((AshePawn)m_user).HeldObject != null)
         {
-            UsePrimaryAction();  
+            currTime = Time.time + animationLength;
+            inUse = true;
+            MoveOutOfPaws();
             return;
         }
-        if (inUse) { return; }
 
         // Raycast that looks in front of Ashe Gauntlets based on orientation
         RaycastHit2D[] hit2Ds = Physics2D.BoxCastAll(userCollider.bounds.center, userCollider.bounds.extents,
@@ -108,7 +111,11 @@ public class Gauntlet : Tool
     }
     private void MoveOutOfPaws()
     {
-        //((AshePawn)m_user).HeldObject.transform.position = ;
+        ((AshePawn)m_user).DisableLiftingRegion();
+        ((AshePawn)m_user).IsLifting = false;
+        var heldObj = ((AshePawn)m_user).HeldObject;
+        heldObj.transform.position = new Vector3(heldObj.GetComponent<Collider2D>().bounds.extents.x, heldObj.transform.position.y, heldObj.transform.position.z);
+        ((AshePawn)m_user).EnableLiftingRegion();
     }
     public void FixedUpdate()
     {

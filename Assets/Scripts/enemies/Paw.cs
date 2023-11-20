@@ -24,7 +24,7 @@ public class Paw : MonoBehaviour
     }
     private void ReactOnNail()
     {
-        StartCoroutine(ChaseDisableFor(0.1f));
+        StartCoroutine(ChaseDisableFor(0.3f));
     }
     private void ReactOnPunch()
     {
