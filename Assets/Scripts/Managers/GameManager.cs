@@ -248,8 +248,10 @@ public class GameManager : MonoBehaviour
     {
         m_currScene = scene;
         m_doorTransition.CloseDoors();
-        m_tinker.transform.SetParent(m_levelThings, false);
-        m_ashe.transform.SetParent(m_levelThings, false);
+        m_ashe.IsLifting = false;
+        m_tinker.IsHeld = false;
+        m_tinker.transform.SetParent(m_levelThings, true);
+        m_ashe.transform.SetParent(m_levelThings, true);
         StartCoroutine(LoadSceneWithDelay(1.2f));
     }
     public void TransitionToNextScene()
@@ -329,7 +331,6 @@ public class GameManager : MonoBehaviour
             Destroy(transform.parent.gameObject);
             return;
         }
-
         DontDestroyOnLoad(m_tinker);
         DontDestroyOnLoad(m_ashe);
     }

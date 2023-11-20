@@ -36,6 +36,7 @@ public class AsheLiftingState : State
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         // Ignore the Collision of the HeldObjectCollider and the current HeldObject Collider --> mouth full IK but trust it works
+        // This Guy lies, its wack as fuck don't trust it!
         //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, true);
 
         // Enable the Collision for the held object so that ashe cannot phase these objects through walls
