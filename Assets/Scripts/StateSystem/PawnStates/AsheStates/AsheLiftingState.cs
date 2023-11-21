@@ -114,6 +114,14 @@ public class AsheLiftingState : State
     {
         if (!((AshePawn)m_context).IsLifting)
         {
+            if (((AshePawn)m_context).IsDropping)
+            {
+                float dropDistance = ((AshePawn)m_context).Animator.GetFloat("MoveX")
+                * (((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.x + ((AshePawn)m_context).GetComponent<Collider2D>().bounds.size.x);
+                ((AshePawn)m_context).HeldObject.transform.position += new Vector3(dropDistance, 0, 0);
+                ((AshePawn)m_context).IsDropping = false;
+            }
+            
             SwitchState(m_factory.AsheDefaultState());
         }
         else if (((AshePawn)m_context).IsPunching)

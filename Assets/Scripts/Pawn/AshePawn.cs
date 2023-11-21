@@ -11,6 +11,7 @@ public class AshePawn : Pawn
     [SerializeField] private Collider2D m_heldObjectCollider;
     private bool m_isLifting = false;
     private bool m_isPunching = false;
+    private bool m_isDropping = false;
     public GameObject HeldObject;
     public bool IsLifting
     {
@@ -22,12 +23,19 @@ public class AshePawn : Pawn
         get { return m_isPunching;}
         set { m_isPunching = value;}
     }
+    public bool IsDropping
+    {
+        get { return m_isDropping; }
+        set { m_isDropping = value; }
+    }
     public Collider2D LifitingRegion => m_liftingRegion;
     public Collider2D HeldObjectCollider => m_heldObjectCollider;
     protected void Start()
     {
         base.Start();
         CurrentState = m_states.AsheDefaultState();
+        // So that Ashe can Jump and the held Object collider collides with external objects
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), HeldObjectCollider, true);
     }
     public override void PrimaryAction(InputAction.CallbackContext context)
     {

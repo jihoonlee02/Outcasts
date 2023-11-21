@@ -53,7 +53,8 @@ public class Gauntlet : Tool
         {
             currTime = Time.time + animationLength;
             inUse = true;
-            MoveOutOfPaws();
+            ((AshePawn)m_user).IsDropping = true;
+            ((AshePawn)m_user).IsLifting = false;
             return;
         }
 
@@ -111,14 +112,12 @@ public class Gauntlet : Tool
         ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().isTrigger = false;
         ((AshePawn)m_user).EnableLiftingRegion();
     }
-    private void MoveOutOfPaws()
-    {
-        ((AshePawn)m_user).DisableLiftingRegion();
-        ((AshePawn)m_user).IsLifting = false;
-        var heldObj = ((AshePawn)m_user).HeldObject;
-        heldObj.transform.position = new Vector3(heldObj.GetComponent<Collider2D>().bounds.extents.x, heldObj.transform.position.y, heldObj.transform.position.z);
-        ((AshePawn)m_user).EnableLiftingRegion();
-    }
+    //private void MoveOutOfPaws()
+    //{
+    //    ((AshePawn)m_user).IsLifting = false;
+    //    var heldObj = ((AshePawn)m_user).HeldObject;
+    //    heldObj.transform.position = new Vector3(heldObj.GetComponent<Collider2D>().bounds.extents.x, heldObj.transform.position.y, heldObj.transform.position.z);
+    //}
     public void FixedUpdate()
     {
         //Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);
