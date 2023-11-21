@@ -90,6 +90,8 @@ public class Gauntlet : Tool
 
         //((AshePawn)m_user).IsPunching = true;  
     }
+
+    // Add something here to cancel this action when a collision is about to be met
     private IEnumerator MoveToAshePaws()
     {
         var yDist = ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_user.GetComponent<Collider2D>().bounds.extents.y;

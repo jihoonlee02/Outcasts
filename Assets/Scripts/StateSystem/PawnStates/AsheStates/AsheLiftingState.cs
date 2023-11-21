@@ -37,15 +37,17 @@ public class AsheLiftingState : State
 
         // Ignore the Collision of the HeldObjectCollider and the current HeldObject Collider --> mouth full IK but trust it works
         // This Guy lies, its wack as fuck don't trust it!
-        //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, true);
+        Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, true);
+        
+        // Disable Held object's Collider
         //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = false;
 
         // Adjust HeldObject Collider to collision of held object
-        //((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
-        //((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
+        ((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
+        ((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
         
         // Enable that collider
-        //((AshePawn)m_context).HeldObjectCollider.enabled = true;
+        ((AshePawn)m_context).HeldObjectCollider.enabled = true;
 
     }
     public override void UpdateState()
@@ -73,8 +75,10 @@ public class AsheLiftingState : State
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
 
-        // Disable the HeldObjectCollider
-        //((AshePawn)m_context).HeldObjectCollider.enabled = false;
+        // Disable the Ashe's HeldObjectCollider
+        ((AshePawn)m_context).HeldObjectCollider.enabled = false;
+
+        // Enable Held Object's Collider
         //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = true;
 
         // Unignore the Collision of the HeldObjectCollider and the current HeldObject Collider
