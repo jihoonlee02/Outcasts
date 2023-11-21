@@ -27,7 +27,7 @@ public class AsheLiftingState : State
         m_followingY = ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_context.GetComponent<Collider2D>().bounds.extents.y /* + ((AshePawn)m_context).liftingregion.GetComponent<Collider2D>().bounds.size.y*/;
 
         // Set the held object to ashe as its parent
-        priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
+        //priorParent = ((AshePawn)m_context).HeldObject.transform.parent;
         //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, true);
 
         // Set the mass of the Held object to 0 and store the previous and stop all of its previous movement
@@ -38,12 +38,14 @@ public class AsheLiftingState : State
         // Ignore the Collision of the HeldObjectCollider and the current HeldObject Collider --> mouth full IK but trust it works
         // This Guy lies, its wack as fuck don't trust it!
         //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, true);
-        ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = false;
+        //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = false;
 
-        // Enable the Collision for the held object so that ashe cannot phase these objects through walls
-        ((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
-        ((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
-        ((AshePawn)m_context).HeldObjectCollider.enabled = true;
+        // Adjust HeldObject Collider to collision of held object
+        //((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
+        //((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
+        
+        // Enable that collider
+        //((AshePawn)m_context).HeldObjectCollider.enabled = true;
 
     }
     public override void UpdateState()
@@ -67,18 +69,19 @@ public class AsheLiftingState : State
             ((AshePawn)m_context).HeldObject.GetComponent<Grabbable>().UnGrab();
         }
         // (Ryan) Hi ryan from future, deal with this shit or you will fucking die :)
-        ((AshePawn)m_context).HeldObjectCollider.enabled = false;
-        ((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = true;
+        
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
 
-        // Disable the HeldObjectCollider and remove the heldobject so that another object can get on top of ashe
-        
-        ((AshePawn)m_context).HeldObject = null;
+        // Disable the HeldObjectCollider
+        //((AshePawn)m_context).HeldObjectCollider.enabled = false;
+        //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = true;
 
         // Unignore the Collision of the HeldObjectCollider and the current HeldObject Collider
-        
         //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, false);
+
+        // Remove Held Object
+        ((AshePawn)m_context).HeldObject = null;   
 
     }
     public override void InitializeSubState()
