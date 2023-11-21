@@ -73,7 +73,7 @@ public class AsheLiftingState : State
         // (Ryan) Hi ryan from future, deal with this shit or you will fucking die :)
         
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
-        //((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
+        // ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
 
         // Disable the Ashe's HeldObjectCollider
         ((AshePawn)m_context).HeldObjectCollider.enabled = false;
@@ -82,7 +82,7 @@ public class AsheLiftingState : State
         //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = true;
 
         // Unignore the Collision of the HeldObjectCollider and the current HeldObject Collider
-        //Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, false);
+        Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, false);
 
         // Remove Held Object
         ((AshePawn)m_context).HeldObject = null;   
