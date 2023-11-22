@@ -118,7 +118,7 @@ public class AsheLiftingState : State
             if (((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff)
             {
                 ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff = false;
-                ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0.001f), ForceMode2D.Impulse);
+                ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().Jump();
             }
             else if (((AshePawn)m_context).IsDropping)
             {

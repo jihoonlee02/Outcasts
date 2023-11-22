@@ -75,6 +75,8 @@ public class TinkerPawn : Pawn
 
             // So that Ashe of Lifting Exit will drop tinker
             m_isJumpingOff = true;
+            canJump = true;
+            isGrounded = true;
         }
         else if (isGrounded)
         {

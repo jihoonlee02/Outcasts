@@ -293,7 +293,7 @@ public class Pawn : MonoBehaviour
         lastJumpTime = 0;
     }
 
-    public void Jump(float jumpForce)
+    public virtual void Jump(float jumpForce)
     {
         float temp = this.jumpForce;
         this.jumpForce = jumpForce;
