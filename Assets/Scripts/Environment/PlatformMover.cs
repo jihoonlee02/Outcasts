@@ -18,6 +18,7 @@ public class PlatformMover : Invokee
     private int idx = 0;
     //private Dictionary<Transform, Transform> objectsOnPlatform;
     private bool blocked = false;
+    private bool haltAutoMove = false;
     private int count_collisions;
 
     private void Start()
@@ -30,7 +31,7 @@ public class PlatformMover : Invokee
     {
         if (!blocked)
         {
-            if (autoMove && (Vector2)transform.localPosition == m_waypoints[idx]) idx = (idx + 1) % m_waypoints.Length;
+            if (!haltAutoMove && autoMove && (Vector2)transform.localPosition == m_waypoints[idx]) idx = (idx + 1) % m_waypoints.Length;
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
         }
     }
@@ -43,13 +44,30 @@ public class PlatformMover : Invokee
     protected override void OnActivate()
     {
         activeCount++;
-        MoveToWaypoint(1);
-        
+        if (autoMove)
+        {
+            haltAutoMove = true;
+            MoveToWaypoint(0);
+        } 
+        else
+        {
+            MoveToWaypoint(1);
+        }    
     }
     protected override void OnDeactivate()
     {
         activeCount--;
-        if (activeCount <= 0) MoveToWaypoint(0);
+        if (activeCount <= 0)
+        {
+            if (autoMove)
+            {
+                haltAutoMove = false;
+            }
+            else
+            {
+                MoveToWaypoint(0);
+            }
+        }
     }
 
     public void ChangePlatformSpeed(float speed)

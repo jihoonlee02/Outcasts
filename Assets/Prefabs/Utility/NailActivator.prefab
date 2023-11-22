@@ -50,8 +50,9 @@ MonoBehaviour:
   targetColor: {fileID: 0}
   id: 0
   colorId: {r: 0, g: 0, b: 0, a: 0}
-  inactive_sprite: {fileID: -113923115, guid: 8ee54975aadd35b4f8097ec8035de4ae, type: 3}
-  active_sprite: {fileID: -234127053, guid: 8ee54975aadd35b4f8097ec8035de4ae, type: 3}
+  inactiveSprite: {fileID: -113923115, guid: 8ee54975aadd35b4f8097ec8035de4ae, type: 3}
+  activeSprite: {fileID: -234127053, guid: 8ee54975aadd35b4f8097ec8035de4ae, type: 3}
+  destroyProjectileWhenShot: 0
 --- !u!212 &5475139566639154561
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -7,8 +7,9 @@ using UnityEngine.Events;
 public class NailActivator : Invoker
 {
     [Header("NailActivator Specific")]
-    [SerializeField] private Sprite inactive_sprite;
-    [SerializeField] private Sprite active_sprite;
+    [SerializeField] private Sprite inactiveSprite;
+    [SerializeField] private Sprite activeSprite;
+    [SerializeField] private bool destroyProjectileWhenShot;
 
 
     private SpriteRenderer m_spriteRenderer;
@@ -22,7 +23,7 @@ public class NailActivator : Invoker
     private void Start()
     {
         m_spriteRenderer = GetComponent<SpriteRenderer>();
-        m_spriteRenderer.sprite = inactive_sprite;
+        m_spriteRenderer.sprite = inactiveSprite;
         m_audioSource = GetComponent<AudioSource>();
     }
     
@@ -36,9 +37,13 @@ public class NailActivator : Invoker
             {
                 isActive = true;
                 Activate();
-                m_spriteRenderer.sprite = active_sprite;
+                m_spriteRenderer.sprite = activeSprite;
                 // Play Aniation of Squish State
-            }     
+            } 
+            if (destroyProjectileWhenShot)
+            {
+                collision.gameObject.SetActive(false);
+            }
         }  
     }
 

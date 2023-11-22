@@ -115,7 +115,8 @@ public class AsheLiftingState : State
         if (!((AshePawn)m_context).IsLifting)
         {
             // Occurs before exit state !
-            if (((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff)
+            var TinkerPawn = ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>();
+            if (TinkerPawn != null && TinkerPawn.IsJumpingOff)
             {
                 ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff = false;
                 ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().Jump();
@@ -133,7 +134,7 @@ public class AsheLiftingState : State
         {
             // Occurs before exit state !
             ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>()
-                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.0007f, 0.0007f), ForceMode2D.Impulse);
+                .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.00075f, 0.00075f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());
         }
     }

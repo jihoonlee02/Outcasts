@@ -249,10 +249,8 @@ public class GameManager : MonoBehaviour
     {
         m_currScene = scene;
         m_doorTransition.CloseDoors();
-        m_ashe.IsLifting = false;
-        m_tinker.IsHeld = false;
-        m_tinker.transform.SetParent(m_levelThings, true);
-        m_ashe.transform.SetParent(m_levelThings, true);
+        //m_tinker.transform.SetParent(m_levelThings, true);
+        //m_ashe.transform.SetParent(m_levelThings, true);
         StartCoroutine(LoadSceneWithDelay(1.2f));
     }
     public void TransitionToNextScene()
@@ -328,7 +326,8 @@ public class GameManager : MonoBehaviour
             ChestTracker.Instance.ResetChestCount();
         }
 
-        if (next.name == "MainMenu") {
+        if (next.name == "MainMenu")
+        {
             Destroy(transform.parent.gameObject);
             return;
         }
@@ -340,6 +339,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadSceneAsync(m_currScene);
+        m_ashe.IsLifting = false;
+        m_tinker.IsHeld = false;
         m_tinker.transform.SetParent(m_levelThings, true);
         m_ashe.transform.SetParent(m_levelThings, true);
         //This doesn't do what you think it does

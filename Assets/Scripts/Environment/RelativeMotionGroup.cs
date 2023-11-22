@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class RelativeMotionGroup : MonoBehaviour
 {
     private Dictionary<Transform, Transform> objectsOnGroup;
