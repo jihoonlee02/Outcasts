@@ -10,6 +10,7 @@ public class TinkerPawn : Pawn
     [SerializeField] private NailGun m_nailGunReference;
     private bool m_isShooting;
     private bool m_isHeld;
+    private bool m_isJumpingOff;
 
     #region Technical
     private float initialMass;
@@ -24,6 +25,11 @@ public class TinkerPawn : Pawn
     {
         get { return m_isHeld; }
         set { m_isHeld = value; }
+    }
+    public bool IsJumpingOff
+    {
+        get { return m_isJumpingOff;}
+        set { m_isJumpingOff = value;}
     }
     public NailGun NailGunRef => m_nailGunReference;
     protected void Start()
@@ -62,8 +68,17 @@ public class TinkerPawn : Pawn
             ToggleGrabRope();
             isGrounded = true;
         }
-        if (isGrounded)
+        if (m_isHeld)
         {
+            // Trigger the exit state when player attempts to jump off of ashe's head
+            m_isHeld = false;
+
+            // So that Ashe of Lifting Exit will drop tinker
+            m_isJumpingOff = true;
+        }
+        else if (isGrounded)
+        {
+            // In response to lifting region swap
             m_rb.mass = initialMass;
             //if (CurrentState != m_states.TinkerHeldState()) 
             m_rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);

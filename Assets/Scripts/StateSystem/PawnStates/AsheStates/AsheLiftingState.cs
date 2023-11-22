@@ -71,6 +71,7 @@ public class AsheLiftingState : State
             ((AshePawn)m_context).HeldObject.GetComponent<Grabbable>().UnGrab();
         }
         // (Ryan) Hi ryan from future, deal with this shit or you will fucking die :)
+        // (Future Ryan) Eat nuts, I figured it out!
         
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
         // ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
@@ -85,8 +86,7 @@ public class AsheLiftingState : State
         Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, false);
 
         // Remove Held Object
-        ((AshePawn)m_context).HeldObject = null;   
-
+        ((AshePawn)m_context).HeldObject = null;
     }
     public override void InitializeSubState()
     {
@@ -114,18 +114,24 @@ public class AsheLiftingState : State
     {
         if (!((AshePawn)m_context).IsLifting)
         {
-            if (((AshePawn)m_context).IsDropping)
+            // Occurs before exit state !
+            if (((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff)
+            {
+                ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff = false;
+                ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0.001f), ForceMode2D.Impulse);
+            }
+            else if (((AshePawn)m_context).IsDropping)
             {
                 float dropDistance = ((AshePawn)m_context).Animator.GetFloat("MoveX")
                 * (((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.x + ((AshePawn)m_context).GetComponent<Collider2D>().bounds.size.x);
                 ((AshePawn)m_context).HeldObject.transform.position += new Vector3(dropDistance, 0, 0);
                 ((AshePawn)m_context).IsDropping = false;
             }
-            
             SwitchState(m_factory.AsheDefaultState());
         }
         else if (((AshePawn)m_context).IsPunching)
         {
+            // Occurs before exit state !
             ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>()
                 .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.0007f, 0.0007f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());

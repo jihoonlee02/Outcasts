@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// I will be honest, this state was a mess in the past, I just swept it all up
+/// Your welcome future reader :)
+/// </summary>
 public class TinkerHeldState : State
 {
     private Vector2 m_worldPosition;
@@ -31,25 +35,12 @@ public class TinkerHeldState : State
     public override void EnterState()
     {
         m_context.CanMove = false;   
-        //m_context.FixedJoint.enabled = true;
-        //m_context.RB.mass = 0f;
-        //Distance between tinker's center position and Ashe's center position THIS TRASH CAN GO AWAY!!!
-    }
-
-    public override void UpdateState()
-    {
-        //Couppled Line Right, however this can only really happen if Ashe exists -> This is the hope
-        //m_context.transform.position = new Vector3(GameManager.Instance.Ashe.transform.position.x, m_context.transform.position.y, m_context.transform.position.z);
-        //m_context.transform.position = new Vector3(GameManager.Instance.Ashe.transform.position.x, m_followingY + GameManager.Instance.Ashe.transform.position.y, m_context.transform.position.z);
-        //m_worldPosition = m_context.transform.position.x != 0 ? m_context.transform.position : m_worldPosition;
     }
 
     public override void ExitState()
     {
+        // Be able to move right before tinker lets tinker go
         m_context.CanMove = true;
         GameManager.Instance.Ashe.IsLifting = false;
-        //m_context.transform.position = m_worldPosition;
-        //m_context.FixedJoint.enabled = false;
-        //m_context.RB.mass = 1f;
     }
 }
