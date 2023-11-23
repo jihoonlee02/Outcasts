@@ -112,7 +112,7 @@ public class AirVent : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         GameObject gObject = other.gameObject;
         Rigidbody2D gRBody = other.attachedRigidbody;
-        if (gObject.tag == "Tinker" || (gObject.tag == "physical" && !gObject.GetComponent<Box>().IsHeavy)) {
+        if (gObject.tag == "Tinker" || (gObject.tag == "physical" && gObject.GetComponent<Box>() == null) || !gObject.GetComponent<Box>().IsHeavy) {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
             if (gObject.tag == "physical" && gObject.GetComponent<Box>() != null && !gObject.GetComponent<Box>().IsHeavy) {
