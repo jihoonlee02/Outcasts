@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PawnEventController : Invokee
 {
     [Header("Pawn Event Controller Specs")]
-    [SerializeField] private float moveDuration;
-    [SerializeField, Range(0.2f, 1f)] private float moveSpeed = 0.5f;
-    private float durationTime;
+    [SerializeField] private PawnEventData m_pawnEventData;
     private void Start()
     {
         base.Start();
@@ -15,23 +14,51 @@ public class PawnEventController : Invokee
         {
             Debug.LogError("Pawn Event Controller Requires presence of GameManager");
         }
-        durationTime = -1f;
     }
     protected override void OnActivate()
     {
-        durationTime = Time.time + moveDuration;
+        StartCoroutine(RunEvents());
     }
     protected override void OnDeactivate()
     {
-        Debug.Log("PawnEventController Deactivate");
+       StopAllCoroutines();
     }
-    // Temp BS before I fully implement Event Controller
-    private void Update()
+    // TODO: Include Dialogue Manager here
+    private IEnumerator RunEvents()
     {
-        if (Time.time < durationTime)
+        foreach (PawnEvent p in m_pawnEventData.PawnEvents)
         {
-            GameManager.Instance.Tinker.Move(Vector2.right * moveSpeed);
-            GameManager.Instance.Ashe.Move(Vector2.right * moveSpeed);
-        }        
+            // Could only be either ashe or tinke to be controlled for now
+            Pawn pawn = (p.PawnSelection == PawnSelection.Tinker) ? GameManager.Instance.Tinker : GameManager.Instance.Ashe;
+            switch (p.EventAction)
+            {
+                case EventAction.None:
+                    break;
+                case EventAction.Move:
+                    float durationTime = p.TimeDuration + Time.time;
+                    while (Time.time < durationTime)
+                    {
+                        pawn.Move(p.MoveSpeed * (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left));
+                        yield return new WaitForSeconds(Time.deltaTime);
+                    }
+                    break;
+                case EventAction.Jump:
+                    if (p.JumpForce <= 0) pawn.Jump();
+                    else pawn.Jump(p.JumpForce);
+                    break;
+                case EventAction.Punch:
+                    pawn.GetComponent<AshePawn>()?.PrimaryAction();
+                    break;
+                case EventAction.Grab:
+                    pawn.GetComponent<AshePawn>()?.SecondaryAction();
+                    break;
+                case EventAction.Shoot:
+                    pawn.GetComponent<TinkerPawn>()?.PrimaryAction();
+                    break;
+                default: break;
+            }
+            yield return new WaitForSeconds(p.Delay);
+
+        }
     }
 }

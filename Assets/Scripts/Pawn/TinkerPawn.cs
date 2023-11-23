@@ -38,7 +38,7 @@ public class TinkerPawn : Pawn
         CurrentState = m_states.TinkerDefaultState();
         initialMass = m_rb.mass;
     }
-    public override void PrimaryAction(InputAction.CallbackContext context)
+    public override void PrimaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         Vector2 direction;
 
@@ -55,7 +55,7 @@ public class TinkerPawn : Pawn
         m_nailGunReference.UsePrimaryAction(direction);
     }
 
-    public override void SecondaryAction(InputAction.CallbackContext context)
+    public override void SecondaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         if (context.performed) m_nailGunReference.UseSecondaryAction();
         if (context.canceled) m_nailGunReference.UseSecondaryAction();

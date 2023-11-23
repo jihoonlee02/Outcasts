@@ -37,12 +37,12 @@ public class AshePawn : Pawn
         // So that Ashe can Jump and the held Object collider collides with external objects
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), HeldObjectCollider, true);
     }
-    public override void PrimaryAction(InputAction.CallbackContext context)
+    public override void PrimaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         m_gauntletReference.UsePrimaryAction();
     }
 
-    public override void SecondaryAction(InputAction.CallbackContext context)
+    public override void SecondaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         m_gauntletReference.UseSecondaryAction();
     }

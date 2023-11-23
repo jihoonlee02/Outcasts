@@ -318,12 +318,12 @@ public class Pawn : MonoBehaviour
         }
     }
 
-     public virtual void PrimaryAction(InputAction.CallbackContext context)
+     public virtual void PrimaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
      {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Primary Action");
      }
 
-    public virtual void SecondaryAction(InputAction.CallbackContext context)
+    public virtual void SecondaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         Debug.LogError("Error: " + m_pawnData.Name + " Pawn does not define Secondary Action");
     }
