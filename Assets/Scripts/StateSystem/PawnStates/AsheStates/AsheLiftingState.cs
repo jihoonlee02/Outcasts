@@ -16,7 +16,7 @@ public class AsheLiftingState : State
     private float prevMass = 0f;
     public override void EnterState()
     {
-        Debug.Log("Switched to AsheLifting");
+        // No Object to hold so yeet
         if (((AshePawn)m_context).HeldObject == null)
         {
             ((AshePawn)m_context).IsLifting = false;
@@ -52,7 +52,12 @@ public class AsheLiftingState : State
     }
     public override void UpdateState()
     {
-        if (((AshePawn)m_context).HeldObject == null) return;
+        // If the object gets destroyed mid way
+        if (((AshePawn)m_context).HeldObject == null)
+        {
+            ((AshePawn)m_context).IsLifting = false;
+            return;
+        }
         // OG WOrking SHITT below here ---->> Old
         // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
@@ -62,6 +67,11 @@ public class AsheLiftingState : State
     }
     public override void ExitState() 
     {
+        if (((AshePawn)m_context).HeldObject == null)
+        {
+            // Either destroyed or already taken care of.
+            return;
+        }
         if (((AshePawn)m_context).HeldObject.tag == "Tinker")
         {
             ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsHeld = false;
@@ -115,25 +125,29 @@ public class AsheLiftingState : State
         if (!((AshePawn)m_context).IsLifting)
         {
             // Occurs before exit state !
-            var TinkerPawn = ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>();
-            if (TinkerPawn != null && TinkerPawn.IsJumpingOff)
+            if (((AshePawn)m_context).HeldObject != null) 
             {
-                ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff = false;
-                ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().Jump();
-            }
-            else if (((AshePawn)m_context).IsDropping)
-            {
-                float dropDistance = ((AshePawn)m_context).Animator.GetFloat("MoveX")
-                * (((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.x + ((AshePawn)m_context).GetComponent<Collider2D>().bounds.size.x);
-                ((AshePawn)m_context).HeldObject.transform.position += new Vector3(dropDistance, 0, 0);
-                ((AshePawn)m_context).IsDropping = false;
+                var TinkerPawn = ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>();
+                if (TinkerPawn != null && TinkerPawn.IsJumpingOff)
+                {
+                    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().IsJumpingOff = false;
+                    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().Jump();
+                }
+                else if (((AshePawn)m_context).IsDropping)
+                {
+                    float dropDistance = ((AshePawn)m_context).Animator.GetFloat("MoveX")
+                    * (((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.x 
+                    + ((AshePawn)m_context).GetComponent<Collider2D>().bounds.size.x);
+                    ((AshePawn)m_context).HeldObject.transform.position += new Vector3(dropDistance, 0, 0);
+                    ((AshePawn)m_context).IsDropping = false;
+                }
             }
             SwitchState(m_factory.AsheDefaultState());
         }
         else if (((AshePawn)m_context).IsPunching)
         {
             // Occurs before exit state !
-            ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>()
+            ((AshePawn)m_context).HeldObject?.GetComponent<Rigidbody2D>()
                 .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.00075f, 0.00075f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());
         }

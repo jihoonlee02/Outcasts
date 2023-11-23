@@ -338,11 +338,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadSceneWithDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        SceneManager.LoadSceneAsync(m_currScene);
         m_ashe.IsLifting = false;
         m_tinker.IsHeld = false;
         m_tinker.transform.SetParent(m_levelThings, true);
         m_ashe.transform.SetParent(m_levelThings, true);
+        SceneManager.LoadSceneAsync(m_currScene);  
         //This doesn't do what you think it does
         //if (!SceneManager.GetSceneByName(m_currScene).IsValid())
         //{

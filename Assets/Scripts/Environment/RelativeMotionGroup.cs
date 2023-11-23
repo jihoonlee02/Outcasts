@@ -22,7 +22,7 @@ public class RelativeMotionGroup : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Pawn pawn = collision.transform.parent.GetComponent<Pawn>();
+        Pawn pawn = collision.transform.parent?.GetComponent<Pawn>();
         if (pawn != null && objectsOnGroup.ContainsKey(collision.transform.parent) && pawn.IsGrounded)
         {
             collision.transform.parent.SetParent(transform);

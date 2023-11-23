@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawnEvents:
   - pawnSelection: 0
-    eventAction: 0
+    eventAction: 1
     timeDuration: 0.7
     moveDirection: 0
     moveSpeed: 0.5
     delay: 3
     jumpForce: 0
   - pawnSelection: 0
-    eventAction: 0
+    eventAction: 1
     timeDuration: 0.01
     moveDirection: 1
     moveSpeed: 0.2
     delay: 2
     jumpForce: 15
   - pawnSelection: 0
-    eventAction: 0
+    eventAction: 1
     timeDuration: 0.01
     moveDirection: 0
     moveSpeed: 0.2

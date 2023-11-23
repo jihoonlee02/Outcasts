@@ -28,7 +28,7 @@ public struct PawnEvent
     [SerializeField] private float delay;
     [Header("Jump Event")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private Dialogue dialogue;
+    //[SerializeField] private Dialogue dialogue;
     public PawnSelection PawnSelection => pawnSelection;
     public EventAction EventAction => eventAction;
     public float TimeDuration => timeDuration;
