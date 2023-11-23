@@ -49,6 +49,18 @@ public class DialogueManager : MonoBehaviour
     {
         
     }
+    public void DisplayDialogue(Dialogue[] a_dialogues)
+    {
+        if (inProduction)
+        {
+            StopAllCoroutines();
+            m_dialogueProducer_left.StopProduction();
+            m_dialogueProducer_right.StopProduction();
+        }
+        inProduction = true;
+        dialogueBox.GetComponent<Animator>().Play("Appear");
+        StartCoroutine(RunThroughDialogue(a_dialogues));
+    }
     public void DisplayDialogue(DialogueObject a_dialogueObject)
     {
         if (inProduction)
@@ -107,6 +119,43 @@ public class DialogueManager : MonoBehaviour
         }
 
         HideDialogue();
+        yield return null;
+    }
+
+    private IEnumerator RunThroughDialogue(Dialogue[] dialogues)
+    {
+        foreach (Dialogue dialogue in dialogues)
+        {
+            dialogue.OnDialogue.Invoke(); // Any Events that the Dialogue has
+            //AdjustProfileSegment(dialogue.Profile, dialogue.Alignment);
+            if (dialogue.Alignment == ProfileAlignment.Left)
+            {
+                // Tinker
+                profile_left.sprite = dialogue.Profile;
+                yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+
+                // Auto Clear after done
+                m_dialogueProducer_left.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
+            }
+            else
+            {
+                // Ashe
+                profile_right.sprite = dialogue.Profile;
+                yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+
+                // Auto Clear after done
+                m_dialogueProducer_right.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
+            }
+
+            //dialogueProducer.TypeSound = dialogue.TypeSound;
+            // dialogueProducer.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
+            //dialogue.OnDialogue.Invoke();
+
+
+        }
+
+        // Usuer Should mainly hide it
+        //HideDialogue();
         yield return null;
     }
     private void AdjustProfileSegment(Sprite a_profile, ProfileAlignment alignment)

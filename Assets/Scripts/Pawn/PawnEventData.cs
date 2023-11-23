@@ -19,6 +19,10 @@ public struct PawnEvent
 {
     // TODO: Be able to adjust both Tinker and Actions Actions in the Same Event
     // Include Dialogue to be ran in Dialogue Manager!
+    [Header("Level General")] // More Efficent in a new editor
+    [SerializeField] private bool pausePawnControl;
+    [SerializeField] private bool resumePawnControl;
+    [Header("Pawn Specific")]
     [SerializeField] private PawnSelection pawnSelection;
     [SerializeField] private EventAction eventAction;
     [Header("Movement Event")]
@@ -28,14 +32,21 @@ public struct PawnEvent
     [SerializeField] private float delay;
     [Header("Jump Event")]
     [SerializeField] private float jumpForce;
-    //[SerializeField] private Dialogue dialogue;
+
+    [Header("Dialogue")]
+    [SerializeField] private bool activeDialogueAtTime;
+    [SerializeField] private Dialogue[] dialogues; // Cleaner than using a DialogueObject seperatly
+    public bool PausePawnControl => pausePawnControl;
+    public bool ResumePawnControl => resumePawnControl;
     public PawnSelection PawnSelection => pawnSelection;
     public EventAction EventAction => eventAction;
     public float TimeDuration => timeDuration;
     public Direction MoveDirection => moveDirection;
     public float MoveSpeed => moveSpeed;
     public float Delay => delay;
-    public float JumpForce => jumpForce;    
+    public float JumpForce => jumpForce;  
+    public bool ActiveDialogueAtTime => activeDialogueAtTime;
+    public Dialogue[] Dialogues => dialogues;
 }
 
 public enum PawnSelection

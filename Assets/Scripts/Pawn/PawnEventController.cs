@@ -28,6 +28,14 @@ public class PawnEventController : Invokee
     {
         foreach (PawnEvent p in m_pawnEventData.PawnEvents)
         {
+            if (p.PausePawnControl)
+            {
+                GameManager.Instance.LevelManager.PausePawnControl();
+            }
+            if (p.ResumePawnControl)
+            {
+                GameManager.Instance.LevelManager.ResumePawnControl();
+            }
             // Could only be either ashe or tinke to be controlled for now
             Pawn pawn = (p.PawnSelection == PawnSelection.Tinker) ? GameManager.Instance.Tinker : GameManager.Instance.Ashe;
             switch (p.EventAction)
@@ -35,12 +43,7 @@ public class PawnEventController : Invokee
                 case EventAction.None:
                     break;
                 case EventAction.Move:
-                    float durationTime = p.TimeDuration + Time.time;
-                    while (Time.time < durationTime)
-                    {
-                        pawn.Move(p.MoveSpeed * (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left));
-                        yield return new WaitForSeconds(Time.deltaTime);
-                    }
+                    StartCoroutine(StartMoving(pawn, p.TimeDuration + Time.time, p.MoveSpeed, (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left)));
                     break;
                 case EventAction.Jump:
                     if (p.JumpForce <= 0) pawn.Jump();
@@ -57,8 +60,25 @@ public class PawnEventController : Invokee
                     break;
                 default: break;
             }
+            if (p.ActiveDialogueAtTime && p.Dialogues.Length > 0)
+            {
+                DialogueManager.Instance.DisplayDialogue(p.Dialogues);
+            }
+            else if (!p.ActiveDialogueAtTime)
+            {
+                DialogueManager.Instance.HideDialogue();
+            }
             yield return new WaitForSeconds(p.Delay);
 
+        }
+    }
+
+    private IEnumerator StartMoving(Pawn pawn, float durationTime, float moveSpeed, Vector2 moveDirection)
+    {
+        while (Time.time < durationTime)
+        {
+            pawn.Move(moveSpeed * moveDirection);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 }
