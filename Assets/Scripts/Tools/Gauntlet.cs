@@ -114,12 +114,27 @@ public class Gauntlet : Tool
         ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().isTrigger = false;
         ((AshePawn)m_user).EnableLiftingRegion();
     }
-    //private void MoveOutOfPaws()
-    //{
-    //    ((AshePawn)m_user).IsLifting = false;
-    //    var heldObj = ((AshePawn)m_user).HeldObject;
-    //    heldObj.transform.position = new Vector3(heldObj.GetComponent<Collider2D>().bounds.extents.x, heldObj.transform.position.y, heldObj.transform.position.z);
-    //}
+    private IEnumerator MoveOutOfAshePaws()
+    {
+        var heldObject = ((AshePawn)m_user).HeldObject;
+        float dropDistance = ((AshePawn)m_user).Animator.GetFloat("MoveX")
+                    * heldObject.GetComponent<Collider2D>().bounds.extents.x
+                    + ((AshePawn)m_user).GetComponent<Collider2D>().bounds.size.x;
+        Vector3 goal = heldObject.transform.position + new Vector3(dropDistance, 0, 0);
+        while (Mathf.Abs(heldObject.transform.position.x - goal.x) > 0.05f)
+        {
+            heldObject.transform.position
+                = Vector2.MoveTowards(heldObject.transform.position, goal, Time.fixedDeltaTime * 30);
+            yield return null;
+        }
+
+        heldObject.transform.position = goal;
+        ((AshePawn)m_user).IsDropping = false;
+    }
+    public void DropHeldObject()
+    {
+        StartCoroutine(MoveOutOfAshePaws());
+    }
     public void FixedUpdate()
     {
         //Debug.DrawRay((userCollider.bounds.center + userCollider.bounds.extents) * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), Vector2.down);

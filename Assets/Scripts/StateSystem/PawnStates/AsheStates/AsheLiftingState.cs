@@ -138,7 +138,7 @@ public class AsheLiftingState : State
                 else if (((AshePawn)m_context).IsDropping)
                 {
                     float dropDistance = ((AshePawn)m_context).Animator.GetFloat("MoveX")
-                    * (((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.x 
+                    * (((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().bounds.extents.x
                     + ((AshePawn)m_context).GetComponent<Collider2D>().bounds.size.x);
                     ((AshePawn)m_context).HeldObject.transform.position += new Vector3(dropDistance, 0, 0);
                     ((AshePawn)m_context).IsDropping = false;
@@ -156,16 +156,5 @@ public class AsheLiftingState : State
     }
 
     // Move this to Ashe Gauntlet instead!! Can't run coroutines in non monohebaviour classes
-    private IEnumerator Dropping(Vector3 dropPosition)
-    {
-        Vector3 goal = ((AshePawn)m_context).HeldObject.transform.position + dropPosition;
-        while (Mathf.Abs(((AshePawn)m_context).HeldObject.transform.position.x - goal.x) > 0.05f)
-        {
-            ((AshePawn)m_context).HeldObject.transform.position 
-                = Vector2.MoveTowards(((AshePawn)m_context).HeldObject.transform.position, goal,Time.fixedDeltaTime);
-            yield return new WaitForFixedUpdate();
-        }
-
-        ((AshePawn)m_context).HeldObject.transform.position = goal;
-    }
+    
 }

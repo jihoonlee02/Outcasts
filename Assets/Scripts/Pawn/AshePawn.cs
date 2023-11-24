@@ -54,4 +54,8 @@ public class AshePawn : Pawn
     {
         m_liftingRegion.enabled = true;
     }
+    public void DropHeldObject()
+    {
+        ((Gauntlet)m_gauntletReference).DropHeldObject();
+    }
 }

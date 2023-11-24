@@ -50,8 +50,9 @@ public class TinkerDefaultState : State
         if (((TinkerPawn)m_context).IsHeld)
         {
             SwitchState(m_factory.TinkerHeldState());
-        } 
-        else if (((TinkerPawn)m_context).IsShooting)
+        }
+        else
+        if (((TinkerPawn)m_context).IsShooting)
         {
             SwitchState(m_factory.TinkerShootState());
         }

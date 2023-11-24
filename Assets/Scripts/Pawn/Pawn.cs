@@ -78,9 +78,18 @@ public class Pawn : MonoBehaviour
     protected bool isMoving;
     protected bool isJumping;
     protected bool isGrounded;
+    protected bool isHeld;
     public bool IsMoving => isMoving;
     public bool IsJumping => isJumping;
     public bool IsGrounded => isGrounded;
+    public bool IsHeld 
+    {
+        get => isHeld;
+        set
+        {
+            isHeld = value;
+        }
+    }
 
     private State m_currentState;
     public State CurrentState 

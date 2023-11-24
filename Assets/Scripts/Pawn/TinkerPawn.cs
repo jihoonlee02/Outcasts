@@ -9,7 +9,6 @@ public class TinkerPawn : Pawn
     [Header("Tinker Specific")]
     [SerializeField] private NailGun m_nailGunReference;
     private bool m_isShooting;
-    private bool m_isHeld;
     private bool m_isJumpingOff;
 
     #region Technical
@@ -19,12 +18,6 @@ public class TinkerPawn : Pawn
     {
         get { return m_isShooting; }
         set { m_isShooting = value;}
-    }
-
-    public bool IsHeld
-    {
-        get { return m_isHeld; }
-        set { m_isHeld = value; }
     }
     public bool IsJumpingOff
     {
@@ -68,10 +61,10 @@ public class TinkerPawn : Pawn
             ToggleGrabRope();
             isGrounded = true;
         }
-        if (m_isHeld)
+        if (isHeld)
         {
             // Trigger the exit state when player attempts to jump off of ashe's head
-            m_isHeld = false;
+            isHeld = false;
 
             // So that Ashe of Lifting Exit will drop tinker
             m_isJumpingOff = true;

@@ -41,6 +41,10 @@ public class PawnStateFactory
     { 
         return new FallingState(m_context, this);
     }
+    public State Held()
+    {
+        return new HeldState(m_context, this);
+    }
     public State PawnDefaultState()
     {
         return new PawnDefaultState(m_context, this);
