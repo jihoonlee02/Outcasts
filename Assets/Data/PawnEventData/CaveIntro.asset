@@ -20,7 +20,7 @@ MonoBehaviour:
     timeDuration: 2
     moveDirection: 0
     moveSpeed: 0.4
-    delay: 2
+    delay: 0
     jumpForce: 0
     activeDialogueAtTime: 0
     dialogues: []
@@ -107,6 +107,26 @@ MonoBehaviour:
     delay: 2
     jumpForce: 0
     activeDialogueAtTime: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 2
+      delay: 1
+      text: yeep!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 1
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 0
+    moveSpeed: 0.2
+    delay: 0.1
+    jumpForce: 0
+    activeDialogueAtTime: 1
     dialogues: []
   - pausePawnControl: 0
     resumePawnControl: 0
@@ -115,7 +135,72 @@ MonoBehaviour:
     timeDuration: 2
     moveDirection: 0
     moveSpeed: 0.4
-    delay: 2
+    delay: 11
     jumpForce: 0
     activeDialogueAtTime: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 3
+      delay: 0.2
+      text: Hey!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 3
+      delay: 1
+      text: Ouch!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 815f50e44db84904cb85dc49cbdd1757, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 3
+      delay: 2
+      text: What was that for!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 3
+      delay: 1
+      text: I'm sorry!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 3
+      delay: 0.5
+      text: but
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 3
+      delay: 2
+      text: why did you jump on my head like that?
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+  - pausePawnControl: 0
+    resumePawnControl: 1
+    pawnSelection: 1
+    eventAction: 3
+    timeDuration: 2
+    moveDirection: 0
+    moveSpeed: 0.4
+    delay: 2
+    jumpForce: 0
+    activeDialogueAtTime: 0
     dialogues: []

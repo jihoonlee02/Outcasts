@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: DialogueInvokee
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: c8ad6398e01af64429a18d58273dad55, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6ee1b0b2bd5d240b0ab04ea2793244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetColor: {fileID: 0}
   id: 0
+  delay: 0
+  ActivateOnly: 0
+  ActivateOnce: 0
+  activateOnStart: 0
+  deactivateOnStart: 0
   m_dialogueObject: {fileID: 0}
-  m_playOnAwake: 0
