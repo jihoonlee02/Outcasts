@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Profiling;
-using static UnityEditor.Searcher.SearcherWindow;
 
 /// <summary>
 /// Dialogue Manager 1.0 -> Maybe Let's refactor and change this guy up to be uncoupled from monobehaviour

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using System;
 
 public class AsheLiftingState : State
 {
@@ -70,6 +71,7 @@ public class AsheLiftingState : State
         if (((AshePawn)m_context).HeldObject == null)
         {
             // Either destroyed or already taken care of.
+            ((AshePawn)m_context).HeldObjectCollider.enabled = false;
             return;
         }
         if (((AshePawn)m_context).HeldObject.tag == "Tinker")
@@ -151,5 +153,19 @@ public class AsheLiftingState : State
                 .AddForce(new Vector2(Mathf.Sign(m_context.Animator.GetFloat("MoveX")) * 0.00075f, 0.00075f), ForceMode2D.Impulse);
             SwitchState(m_factory.AshePunchingState());
         }
+    }
+
+    // Move this to Ashe Gauntlet instead!! Can't run coroutines in non monohebaviour classes
+    private IEnumerator Dropping(Vector3 dropPosition)
+    {
+        Vector3 goal = ((AshePawn)m_context).HeldObject.transform.position + dropPosition;
+        while (Mathf.Abs(((AshePawn)m_context).HeldObject.transform.position.x - goal.x) > 0.05f)
+        {
+            ((AshePawn)m_context).HeldObject.transform.position 
+                = Vector2.MoveTowards(((AshePawn)m_context).HeldObject.transform.position, goal,Time.fixedDeltaTime);
+            yield return new WaitForFixedUpdate();
+        }
+
+        ((AshePawn)m_context).HeldObject.transform.position = goal;
     }
 }

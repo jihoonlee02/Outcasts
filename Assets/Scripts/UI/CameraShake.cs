@@ -18,14 +18,12 @@ public class CameraShake : MonoBehaviour
     private float coolDown;
     #endregion
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (isShaking && Time.time >= coolDown)
+        if (isShaking)
         {
-            if (Mathf.Abs(dist) >= m_radius) power *= -1;
-            dist += power;
-            transform.Translate(power, 0f, 0f);
-            coolDown = (1 / (m_speed * 1000f)) + Time.time;
+            Vector3 offset = new Vector3(Mathf.Sin(Random.value * 10), Mathf.Sin(Random.value * 10), 0) * m_strength;
+            transform.position = savedPosition + offset;
         }    
     }
     public void StartShaking()
@@ -36,7 +34,7 @@ public class CameraShake : MonoBehaviour
         power = m_strength * (1 / 100f);
     }
 
-    public void StartShaking(float strength = 0.25f, float radius = 0.125f, float speed = 1f)
+    public void StartShaking(float strength = 0.1f, float radius = 0.125f, float speed = 1f)
     {
         m_strength = strength;
         m_radius = radius;

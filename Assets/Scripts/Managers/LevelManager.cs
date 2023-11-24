@@ -141,6 +141,22 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.DisplayOnScreenMessage(text);
     }
+    public void AlertTinker(int alertType)
+    {
+        GameManager.Instance.Tinker.EnableAlert((AlertType)alertType);
+    }
+    public void DisableAlertTinker(int alertType)
+    {
+        GameManager.Instance.Tinker.DisableAlert((AlertType)alertType);
+    }
+    public void AlertAshe(int alertType)
+    {
+        GameManager.Instance.Ashe.EnableAlert((AlertType)alertType);
+    }
+    public void DisableAlertAshe(int alertType)
+    {
+        GameManager.Instance.Ashe.DisableAlert((AlertType)alertType);
+    }
 }
 
 // Temp Level Struct

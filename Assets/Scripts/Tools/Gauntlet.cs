@@ -93,6 +93,8 @@ public class Gauntlet : Tool
     }
 
     // Add something here to cancel this action when a collision is about to be met
+    // UNEXPECTED BEHAVIOUR!!
+    // You can't use Time.deltaTime on waitforseconds when using physics related things
     private IEnumerator MoveToAshePaws()
     {
         var yDist = ((AshePawn)m_user).HeldObject.GetComponent<Collider2D>().bounds.extents.y + m_user.GetComponent<Collider2D>().bounds.extents.y;

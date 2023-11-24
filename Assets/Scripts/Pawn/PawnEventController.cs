@@ -43,7 +43,7 @@ public class PawnEventController : Invokee
                 case EventAction.None:
                     break;
                 case EventAction.Move:
-                    StartCoroutine(StartMoving(pawn, p.TimeDuration + Time.time, p.MoveSpeed, (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left)));
+                    StartCoroutine(StartMoving(pawn, p.TimeDuration, p.MoveSpeed, (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left)));
                     break;
                 case EventAction.Jump:
                     if (p.JumpForce <= 0) pawn.Jump();
@@ -75,10 +75,12 @@ public class PawnEventController : Invokee
 
     private IEnumerator StartMoving(Pawn pawn, float durationTime, float moveSpeed, Vector2 moveDirection)
     {
-        while (Time.time < durationTime)
+        float startTime = Time.time;
+        while (Time.time - startTime < durationTime)
         {
             pawn.Move(moveSpeed * moveDirection);
-            yield return new WaitForSeconds(Time.deltaTime);
+            
+            yield return new WaitForFixedUpdate();
         }
     }
 }

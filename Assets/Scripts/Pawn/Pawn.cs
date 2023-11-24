@@ -332,6 +332,14 @@ public class Pawn : MonoBehaviour
 
     #region Pawn UI
 
+    public void EnableAlert(AlertType alertType)
+    {
+        m_pawnCanvas.Find(alertType.ToString()).gameObject.SetActive(true);
+    }
+    public void DisableAlert(AlertType alertType)
+    {
+        m_pawnCanvas.Find(alertType.ToString()).gameObject.SetActive(false);
+    }
     public void Alert(float timeLength)
     { 
         StartCoroutine(alertEnum(timeLength));
@@ -388,4 +396,12 @@ public class Pawn : MonoBehaviour
     }
 
     #endregion
+}
+
+[System.Serializable]
+public enum AlertType
+{
+    Alert,
+    xbutton,
+    downKey,
 }
