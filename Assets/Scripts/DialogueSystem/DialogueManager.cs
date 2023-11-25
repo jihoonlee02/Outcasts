@@ -109,7 +109,12 @@ public class DialogueManager : MonoBehaviour
                 {
                     yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
                     m_inputRequiredSprite.SetActive(true);
-                    yield return new WaitUntil(() => (Gamepad.current.buttonSouth.wasPressedThisFrame || Keyboard.current.anyKey.wasPressedThisFrame));
+                    yield return new WaitUntil(() =>
+                    {
+                        if (Gamepad.current != null) return Gamepad.current.buttonSouth.wasPressedThisFrame;
+                        if (Keyboard.current != null) return Keyboard.current.anyKey.wasPressedThisFrame;
+                        return false;
+                    });
                     m_inputRequiredSprite.SetActive(false);
                 }
                 else
@@ -129,7 +134,12 @@ public class DialogueManager : MonoBehaviour
                 {
                     yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
                     m_inputRequiredSprite.SetActive(true);
-                    yield return new WaitUntil(() => (Gamepad.current.buttonSouth.wasPressedThisFrame || Keyboard.current.anyKey.wasPressedThisFrame));
+                    yield return new WaitUntil(() =>
+                    {
+                        if (Gamepad.current != null) return Gamepad.current.buttonSouth.wasPressedThisFrame;
+                        if (Keyboard.current != null) return Keyboard.current.anyKey.wasPressedThisFrame;
+                        return false;
+                    });
                     m_inputRequiredSprite.SetActive(false);
                 }
                 else

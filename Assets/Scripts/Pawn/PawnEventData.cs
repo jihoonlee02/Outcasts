@@ -91,6 +91,7 @@ public class PawnEventDataEditor : Editor
     SerializedProperty pawnEventArray;
     int currPawnEventIdx;
     private bool areYouSure = false;
+    private Vector2 eventScroll;
     private void OnEnable()
     {
         pawnEventArray = serializedObject.FindProperty("pawnEvents");
@@ -151,6 +152,7 @@ public class PawnEventDataEditor : Editor
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
+        // Interfacing TOP
         EditorGUILayout.BeginHorizontal();
 
         GUILayout.FlexibleSpace();
@@ -189,7 +191,31 @@ public class PawnEventDataEditor : Editor
             EditorGUILayout.LabelField("Currently no Pawn Events, Add a new Pawn Event to Begin!", EditorStyles.boldLabel);
             EditorGUILayout.EndHorizontal();
         }
-        
+        GUILayout.Space(20f);
+        // Interfacing Bot
+        EditorGUILayout.BeginHorizontal();
+
+        GUILayout.FlexibleSpace();
+        EditorGUI.BeginDisabledGroup(currPawnEventIdx <= 0);
+        if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f))) currPawnEventIdx--;
+        EditorGUI.EndDisabledGroup();
+        GUILayout.Space(20);
+
+        EditorGUILayout.IntField(currPawnEventIdx, GUILayout.MaxWidth(50f));
+
+        GUILayout.Space(20);
+
+        EditorGUI.BeginDisabledGroup(currPawnEventIdx >= pawnEventArray.arraySize - 1);
+        if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx++;
+        EditorGUI.EndDisabledGroup();
+        // Bound the index
+        currPawnEventIdx = pawnEventArray.arraySize > 0
+            ? (currPawnEventIdx % pawnEventArray.arraySize + pawnEventArray.arraySize) % pawnEventArray.arraySize : 0;
+
+        GUILayout.FlexibleSpace();
+
+        EditorGUILayout.EndHorizontal();
+
         serializedObject.ApplyModifiedProperties();
     }
 

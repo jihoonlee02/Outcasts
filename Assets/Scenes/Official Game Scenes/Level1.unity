@@ -11999,7 +11999,7 @@ Transform:
   - {fileID: 367400133}
   - {fileID: 1345048331}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &476462590
 PrefabInstance:
@@ -25130,7 +25130,7 @@ Transform:
   - {fileID: 830770025}
   - {fileID: 746565373}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &987319173
 PrefabInstance:
@@ -25921,7 +25921,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26440,7 +26440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936495, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936495, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26511,52 +26511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ceabfb5f6cdcd4fb210fd36f06e282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1425598443
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1425598444}
-  - component: {fileID: 1425598445}
-  m_Layer: 0
-  m_Name: Pooler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1425598444
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425598443}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.124497026, y: -0.44630393, z: -0.020031901}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1425598445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425598443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf29a374912b364fa8352edbf677ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nailFab: {fileID: 6334426370693832413, guid: 9aefd794e2f779a44ab98732c4708ba8, type: 3}
-  pawTrolls: {fileID: 0}
 --- !u!1001 &1458447483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28110,7 +28064,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2027153464
 AudioSource:
