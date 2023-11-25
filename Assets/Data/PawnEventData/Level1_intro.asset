@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Level1_intro
   m_EditorClassIdentifier: 
   pawnEvents:
-  - pausePawnControl: 1
+  - pawnEventTitle: Setup 1
+    pausePawnControl: 1
     resumePawnControl: 0
     pawnSelection: 1
     eventAction: 1
@@ -68,7 +69,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: Setup 2
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 0
     eventAction: 0
@@ -83,7 +85,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: Tinker Jumps In
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 0
     eventAction: 2
@@ -118,7 +121,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: Ashe Jumps in
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 1
     eventAction: 2
@@ -163,7 +167,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: 
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 0
     eventAction: 1
@@ -208,7 +213,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: gafas
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 0
     eventAction: 1
@@ -273,7 +279,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: 
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 0
     eventAction: 1
@@ -298,7 +305,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: 
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 0
     eventAction: 1
@@ -343,7 +351,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: 
+    pausePawnControl: 0
     resumePawnControl: 0
     pawnSelection: 1
     eventAction: 1
@@ -368,7 +377,8 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
-  - pausePawnControl: 0
+  - pawnEventTitle: Start Level
+    pausePawnControl: 0
     resumePawnControl: 1
     pawnSelection: 0
     eventAction: 1
