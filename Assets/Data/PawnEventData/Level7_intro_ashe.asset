@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Level7_intro_ashe
   m_EditorClassIdentifier: 
   pawnEvents:
-  - pawnSelection: 1
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 1
     eventAction: 1
-    timeDuration: 0.7
+    timeDuration: 0.8
     moveDirection: 0
-    moveSpeed: 0.5
+    moveSpeed: 1
     delay: 1.2
     jumpForce: 0
+    activeDialogueAtTime: 0
+    dialogues: []

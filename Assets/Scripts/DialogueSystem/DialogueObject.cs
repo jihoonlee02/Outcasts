@@ -34,6 +34,7 @@ public struct Dialogue
     [SerializeField] private ProfileAlignment alignment;
     [SerializeField] private AudioClip typeSound;
     [SerializeField] private float speed;
+    [SerializeField] private bool waitOnInput;
     [SerializeField] private float delay;
     [SerializeField] [TextArea] private string text;
     [SerializeField] private UnityEvent onDialogue;
@@ -42,6 +43,7 @@ public struct Dialogue
     public AudioClip TypeSound => typeSound;
     public string Text => text;
     public float Speed => speed;
+    public bool WaitOnInput => waitOnInput;
     public float Delay => delay;
     public ProfileAlignment Alignment => alignment;
     public UnityEvent OnDialogue => onDialogue;

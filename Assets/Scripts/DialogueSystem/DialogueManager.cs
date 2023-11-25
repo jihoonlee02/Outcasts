@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using Yarn;
 
 /// <summary>
 /// Dialogue Manager 1.0 -> Maybe Let's refactor and change this guy up to be uncoupled from monobehaviour
@@ -32,6 +35,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private PawnData tinkerData;
     [SerializeField] private PawnData asheData;
+    [SerializeField] private GameObject m_inputRequiredSprite;
     private bool inProduction;
 
     private void Start()
@@ -42,12 +46,13 @@ public class DialogueManager : MonoBehaviour
         m_dialogueProducer_right.TypeSound = asheData.Voice;
         m_dialogueProducer_left.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
         m_dialogueProducer_right.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
+        m_inputRequiredSprite.SetActive(false);
     }
     private void Update()
     {
         
     }
-    public void DisplayDialogue(Dialogue[] a_dialogues)
+    public Coroutine DisplayDialogue(Dialogue[] a_dialogues)
     {
         if (inProduction)
         {
@@ -57,9 +62,9 @@ public class DialogueManager : MonoBehaviour
         }
         inProduction = true;
         dialogueBox.GetComponent<Animator>().Play("Appear");
-        StartCoroutine(RunThroughDialogue(a_dialogues));
+        return StartCoroutine(RunThroughDialogue(a_dialogues));
     }
-    public void DisplayDialogue(DialogueObject a_dialogueObject)
+    public Coroutine DisplayDialogue(DialogueObject a_dialogueObject)
     {
         if (inProduction)
         {
@@ -69,7 +74,7 @@ public class DialogueManager : MonoBehaviour
         }
         inProduction = true;
         dialogueBox.GetComponent<Animator>().Play("Appear");
-        StartCoroutine(RunThroughDialogue(a_dialogueObject));
+        return StartCoroutine(RunThroughDialogue(a_dialogueObject));
     }
     public void HideDialogue()
     {
@@ -86,38 +91,8 @@ public class DialogueManager : MonoBehaviour
     }
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
     {
-        foreach (Dialogue dialogue in a_dialogueObject.Dialogue)
-        {
-            dialogue.OnDialogue.Invoke(); // Any Events that the Dialogue has
-            //AdjustProfileSegment(dialogue.Profile, dialogue.Alignment);
-            if (dialogue.Alignment == ProfileAlignment.Left)
-            {
-                // Tinker
-                profile_left.sprite = dialogue.Profile;
-                yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
-
-                // Auto Clear after done
-                m_dialogueProducer_left.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
-            }
-            else
-            {
-                // Ashe
-                profile_right.sprite = dialogue.Profile;
-                yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
-
-                // Auto Clear after done
-                m_dialogueProducer_right.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
-            }
-
-            //dialogueProducer.TypeSound = dialogue.TypeSound;
-            // dialogueProducer.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
-            //dialogue.OnDialogue.Invoke();
-            
-
-        }
-
+        yield return RunThroughDialogue(a_dialogueObject.Dialogue);
         HideDialogue();
-        yield return null;
     }
 
     private IEnumerator RunThroughDialogue(Dialogue[] dialogues)
@@ -130,16 +105,37 @@ public class DialogueManager : MonoBehaviour
             {
                 // Tinker
                 profile_left.sprite = dialogue.Profile;
-                yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+                if (dialogue.WaitOnInput)
+                {
+                    yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
+                    m_inputRequiredSprite.SetActive(true);
+                    yield return new WaitUntil(() => (Gamepad.current.buttonSouth.wasPressedThisFrame || Keyboard.current.anyKey.wasPressedThisFrame));
+                    m_inputRequiredSprite.SetActive(false);
+                }
+                else
+                {
+                    yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+                }
+                   
 
                 // Auto Clear after done
                 m_dialogueProducer_left.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
             }
             else
             {
-                // Ashe
                 profile_right.sprite = dialogue.Profile;
-                yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+                // Ashe
+                if (dialogue.WaitOnInput)
+                {
+                    yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
+                    m_inputRequiredSprite.SetActive(true);
+                    yield return new WaitUntil(() => (Gamepad.current.buttonSouth.wasPressedThisFrame || Keyboard.current.anyKey.wasPressedThisFrame));
+                    m_inputRequiredSprite.SetActive(false);
+                }
+                else
+                {
+                    yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+                }
 
                 // Auto Clear after done
                 m_dialogueProducer_right.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);

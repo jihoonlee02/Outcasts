@@ -35,7 +35,13 @@ public struct PawnEvent
 
     [Header("Dialogue")]
     [SerializeField] private bool activeDialogueAtTime;
+    [SerializeField] private bool waitOnDialogue;
     [SerializeField] private Dialogue[] dialogues; // Cleaner than using a DialogueObject seperatly
+
+    [Header("Invoke Event")]
+    [SerializeField] private bool invoke;
+    [SerializeField] private bool activate;
+    [SerializeField] private int id;
     public bool PausePawnControl => pausePawnControl;
     public bool ResumePawnControl => resumePawnControl;
     public PawnSelection PawnSelection => pawnSelection;
@@ -46,7 +52,11 @@ public struct PawnEvent
     public float Delay => delay;
     public float JumpForce => jumpForce;  
     public bool ActiveDialogueAtTime => activeDialogueAtTime;
+    public bool WaitOnDialogue => waitOnDialogue;
     public Dialogue[] Dialogues => dialogues;
+    public bool Invoke => invoke;
+    public bool Activate => activate;
+    public int Id => id;    
 }
 
 public enum PawnSelection

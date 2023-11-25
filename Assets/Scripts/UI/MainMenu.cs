@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         m_doorTransition.CloseDoors();
-        StartCoroutine(DelaySceneLoad(2f, "Setup"));
+        StartCoroutine(DelaySceneLoad(2f, "Setup_Multi"));
     }
 
     public void StartGameSolo()

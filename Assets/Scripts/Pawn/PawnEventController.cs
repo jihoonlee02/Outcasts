@@ -28,6 +28,7 @@ public class PawnEventController : Invokee
     {
         foreach (PawnEvent p in m_pawnEventData.PawnEvents)
         {
+            // TNA Controls
             if (p.PausePawnControl)
             {
                 GameManager.Instance.LevelManager.PausePawnControl();
@@ -36,7 +37,8 @@ public class PawnEventController : Invokee
             {
                 GameManager.Instance.LevelManager.ResumePawnControl();
             }
-            // Could only be either ashe or tinke to be controlled for now
+            
+            // TNA Custom Actions
             Pawn pawn = (p.PawnSelection == PawnSelection.Tinker) ? GameManager.Instance.Tinker : GameManager.Instance.Ashe;
             switch (p.EventAction)
             {
@@ -60,16 +62,34 @@ public class PawnEventController : Invokee
                     break;
                 default: break;
             }
+
+            // Event Manager Invoking
+            if (p.Invoke && p.Id != this.id)
+            {
+                if (p.Activate)
+                {
+                    EventManager.GetEventManager.Activated.Invoke(p.Id);
+                } 
+                else
+                {
+                    EventManager.GetEventManager.Deactivated.Invoke(p.Id);
+                }
+            }
+
+            // Dialogue Related --> Last because of potential yielding (Could change this in the future!)
             if (p.ActiveDialogueAtTime && p.Dialogues.Length > 0)
             {
-                DialogueManager.Instance.DisplayDialogue(p.Dialogues);
+                var display = DialogueManager.Instance.DisplayDialogue(p.Dialogues);
+
+                if (p.WaitOnDialogue) yield return display;
             }
             else if (!p.ActiveDialogueAtTime)
             {
                 DialogueManager.Instance.HideDialogue();
             }
-            yield return new WaitForSeconds(p.Delay);
 
+            // Only if we didn't wait for dialogue already
+            if (p.Dialogues.Length <= 0 || !p.WaitOnDialogue) yield return new WaitForSeconds(p.Delay); 
         }
     }
 

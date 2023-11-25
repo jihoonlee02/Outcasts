@@ -5,7 +5,6 @@ using UnityEngine;
 public class DialogueProducer : TextProducer
 {
     private bool running;
-    private float m_speed;
     protected override IEnumerator TypeWriterEffect(string a_text, float a_speed, float a_delay)
     {
         running = true;
@@ -28,10 +27,6 @@ public class DialogueProducer : TextProducer
 
         m_textLabel.text = a_text;
         running = false;
-    }
-    public void SetSpeed(float a_speed)
-    {
-        m_speed = a_speed;
     }
     public void WriteDialogue(string text)
     {

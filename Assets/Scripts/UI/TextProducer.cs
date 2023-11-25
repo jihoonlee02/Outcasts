@@ -13,7 +13,8 @@ public class TextProducer : MonoBehaviour
 {
     [Header("Use Settings")]
     [SerializeField] private bool m_startOnEnable = false;
-    [SerializeField, Range(0f, 1f)] private float speed = 0.8f;
+    [SerializeField, Range(0f, 10f)] protected float m_speed = 0.8f;
+    [SerializeField] protected float m_delay = -1;
     [SerializeField] private ProduceEffect m_startEffect = ProduceEffect.None;
 
     [Header("Punctuation Adjustments")]
@@ -50,7 +51,7 @@ public class TextProducer : MonoBehaviour
     {
         if (m_startOnEnable)
         {
-            ReplaceTextWith(initialText, m_startEffect, 5f * speed);
+            ReplaceTextWith(initialText, m_startEffect, 5f * m_speed);
         }
     }
 
@@ -72,6 +73,8 @@ public class TextProducer : MonoBehaviour
         {
             case ProduceEffect.Typewriter:
                 return StartCoroutine(TypeWriterEffect(a_text, a_amplifier, a_delay));
+            case ProduceEffect.Fade:
+                return StartCoroutine(FadeEffect(a_text, a_delay));
             default:
                 return StartCoroutine(NoneEffect(a_text));
         }    
@@ -94,7 +97,32 @@ public class TextProducer : MonoBehaviour
         m_textLabel.text += a_text;
         yield return null;
     }
-    
+    protected virtual IEnumerator FadeEffect(string a_text, float a_delay)
+    {
+        m_textLabel.alpha = 0;
+        m_textLabel.text += a_text;
+        while (m_textLabel.alpha < 1)
+        {
+            m_textLabel.alpha += Time.fixedDeltaTime;
+            yield return new WaitForSeconds((1 / (m_speed * 10f)));
+        }
+        m_textLabel.alpha = 1;
+
+        // If a_delay was given a real value thus a fadeout is requested
+        if (a_delay >= 0)
+        {
+
+            yield return new WaitForSeconds(a_delay);
+            while (m_textLabel.alpha > 0)
+            {
+                m_textLabel.alpha -= Time.fixedDeltaTime;
+                yield return new WaitForSeconds((1 / (m_speed * 10f)));
+            }
+            m_textLabel.alpha = 0;
+            m_textLabel.text = string.Empty;
+            m_textLabel.alpha = 1;
+        }
+    }
     protected virtual IEnumerator TypeWriterEffect(string a_text, float a_speed, float a_delay)
     {
         char c;
@@ -128,12 +156,27 @@ public class TextProducer : MonoBehaviour
 
         return 0f;
     }
+
+    // Calls for Inspector Devs
+    public void FadeText(string a_text)
+    {
+        ReplaceTextWith(a_text, ProduceEffect.Fade, 0, m_delay);
+    }
+    public void SetSpeed(float a_speed)
+    {
+        m_speed = a_speed;
+    }
+    public void SetDelay(float a_delay)
+    {
+        m_delay = a_delay;
+    }
 }
 
 public enum ProduceEffect
 {
     None,
-    Typewriter
+    Typewriter,
+    Fade,
 }
 
 public readonly struct Punctuation

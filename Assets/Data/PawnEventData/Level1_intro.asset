@@ -1,0 +1,385 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848375227257def40bf6deb2b80bdc8b, type: 3}
+  m_Name: Level1_intro
+  m_EditorClassIdentifier: 
+  pawnEvents:
+  - pausePawnControl: 1
+    resumePawnControl: 0
+    pawnSelection: 1
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 1
+    moveSpeed: 0.2
+    delay: 0
+    jumpForce: 13
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues:
+    - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: you know
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: 'I have no clue '
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: of course not
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: Let's just find a way out
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 0
+    eventAction: 0
+    timeDuration: 0.01
+    moveDirection: 0
+    moveSpeed: 0.2
+    delay: 1
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 0
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0
+    delay: 0
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 0
+      delay: 2
+      text: Ooof!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: We should be far away now!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 1
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0
+    delay: 0
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: Not far enough!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: We were almost caught!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: Can you be any reckless?
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 1
+    moveSpeed: 0.2
+    delay: 0
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 0
+      delay: 1
+      text: Reckless?
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 0
+      delay: 1
+      text: Come on Ashe!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 1
+      text: We've been through worse!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 0
+    moveSpeed: 0.2
+    delay: 0
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 1
+      text: Do you even know where we are?
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 1
+      text: We are now in the middle of earth knows what!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 0
+      delay: 1
+      text: psshh
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 1
+      text: I know this cave like the back of my paw!
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 1
+      text: Then where are we?
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 1
+    moveSpeed: 0.2
+    delay: 1
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 0
+      delay: 2
+      text: uhhhh
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 0
+    moveSpeed: 0.2
+    delay: 1
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 0
+      delay: 1.5
+      text: you know
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: 'I have no clue '
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: of course not
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 0
+    pawnSelection: 1
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 0
+    moveSpeed: 0.2
+    delay: 1
+    jumpForce: 13
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      typeSound: {fileID: 0}
+      speed: 6
+      waitOnInput: 1
+      delay: 2
+      text: Let's just find a way out
+      onDialogue:
+        m_PersistentCalls:
+          m_Calls: []
+    invoke: 0
+    activate: 0
+    id: 0
+  - pausePawnControl: 0
+    resumePawnControl: 1
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.01
+    moveDirection: 1
+    moveSpeed: 0.2
+    delay: 1
+    jumpForce: 13
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 1
+    activate: 1
+    id: 100
