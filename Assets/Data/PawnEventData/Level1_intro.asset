@@ -16,12 +16,12 @@ MonoBehaviour:
   - pawnEventTitle: Setup 1
     pausePawnControl: 1
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 1
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 1
     moveSpeed: 0.2
-    delay: 0
     jumpForce: 13
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -72,12 +72,12 @@ MonoBehaviour:
   - pawnEventTitle: Setup 2
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 1
     pawnSelection: 0
     eventAction: 0
     timeDuration: 0.01
     moveDirection: 0
     moveSpeed: 0.2
-    delay: 1
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -88,12 +88,12 @@ MonoBehaviour:
   - pawnEventTitle: Tinker Jumps In
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 0
     eventAction: 2
     timeDuration: 0
     moveDirection: 0
     moveSpeed: 0
-    delay: 0
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -124,12 +124,12 @@ MonoBehaviour:
   - pawnEventTitle: Ashe Jumps in
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 1
     eventAction: 2
     timeDuration: 0
     moveDirection: 0
     moveSpeed: 0
-    delay: 0
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -170,12 +170,12 @@ MonoBehaviour:
   - pawnEventTitle: 
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 0
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 1
     moveSpeed: 0.2
-    delay: 0
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -216,12 +216,12 @@ MonoBehaviour:
   - pawnEventTitle: gafas
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 0
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 0
     moveSpeed: 0.2
-    delay: 0
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -282,12 +282,12 @@ MonoBehaviour:
   - pawnEventTitle: 
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 0
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 1
     moveSpeed: 0.2
-    delay: 1
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -308,12 +308,12 @@ MonoBehaviour:
   - pawnEventTitle: 
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 0
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 0
     moveSpeed: 0.2
-    delay: 1
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -354,12 +354,12 @@ MonoBehaviour:
   - pawnEventTitle: 
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0
     pawnSelection: 1
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 0
     moveSpeed: 0.2
-    delay: 1
     jumpForce: 13
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -380,12 +380,12 @@ MonoBehaviour:
   - pawnEventTitle: Start Level
     pausePawnControl: 0
     resumePawnControl: 1
+    transitionTime: 0
     pawnSelection: 0
     eventAction: 1
     timeDuration: 0.01
     moveDirection: 1
     moveSpeed: 0.2
-    delay: 1
     jumpForce: 13
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -393,3 +393,19 @@ MonoBehaviour:
     invoke: 1
     activate: 1
     id: 100
+  - pawnEventTitle: New Event 11
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 0
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1

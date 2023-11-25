@@ -23,6 +23,7 @@ public struct PawnEvent
     [SerializeField] private string pawnEventTitle;
     [SerializeField] private bool pausePawnControl;
     [SerializeField] private bool resumePawnControl;
+    [SerializeField] private float transitionTime;
     [Header("Pawn Specific")]
     [SerializeField] private PawnSelection pawnSelection;
     [SerializeField] private EventAction eventAction;
@@ -30,19 +31,20 @@ public struct PawnEvent
     [SerializeField] private float timeDuration;
     [SerializeField] private Direction moveDirection;
     [SerializeField, Range(0.2f, 1f)] private float moveSpeed;
-    [SerializeField] private float delay;
+
     [Header("Jump Event")]
     [SerializeField] private float jumpForce;
 
     [Header("Dialogue")]
     [SerializeField] private bool activeDialogueAtTime;
-    [SerializeField] private bool waitOnDialogue;
+    [SerializeField, Tooltip("Transitions till dialogue finished as apposed to Transition Time")] private bool waitOnDialogue;
     [SerializeField] private Dialogue[] dialogues; // Cleaner than using a DialogueObject seperatly
 
     [Header("Invoke Event")]
     [SerializeField] private bool invoke;
     [SerializeField] private bool activate;
     [SerializeField] private int id;
+    public string Title => pawnEventTitle;
     public bool PausePawnControl => pausePawnControl;
     public bool ResumePawnControl => resumePawnControl;
     public PawnSelection PawnSelection => pawnSelection;
@@ -50,7 +52,7 @@ public struct PawnEvent
     public float TimeDuration => timeDuration;
     public Direction MoveDirection => moveDirection;
     public float MoveSpeed => moveSpeed;
-    public float Delay => delay;
+    public float Delay => transitionTime;
     public float JumpForce => jumpForce;  
     public bool ActiveDialogueAtTime => activeDialogueAtTime;
     public bool WaitOnDialogue => waitOnDialogue;
@@ -101,6 +103,13 @@ public class PawnEventDataEditor : Editor
         EditorGUILayout.LabelField("Pawn Event Data");
         GUILayout.FlexibleSpace();
         EditorGUILayout.LabelField("Events: " + pawnEventArray.arraySize, EditorStyles.boldLabel);
+        // Interface Each PawnEvent by Title
+        //EditorGUILayout.BeginHorizontal();
+        //for (int i = 0;  i < pawnEventArray.arraySize; i++)
+        //{
+        //    EditorGUILayout.SelectableLabel(pawnEventArray.GetArrayElementAtIndex(i).FindPropertyRelative("pawnEventTitle").stringValue);
+        //}
+        //EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
@@ -120,7 +129,9 @@ public class PawnEventDataEditor : Editor
         GUILayout.FlexibleSpace();
         if (!areYouSure)
         {
+            EditorGUI.BeginDisabledGroup(pawnEventArray.arraySize <= 0);
             areYouSure = GUILayout.Button("- Delete Pawn Event " + currPawnEventIdx, GUILayout.MaxHeight(20f));
+            EditorGUI.EndDisabledGroup();
         }
         else 
         {
@@ -144,16 +155,18 @@ public class PawnEventDataEditor : Editor
 
         GUILayout.FlexibleSpace();
 
-        if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f)) && currPawnEventIdx > 0) currPawnEventIdx--;
-
+        EditorGUI.BeginDisabledGroup(currPawnEventIdx <= 0);
+        if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f))) currPawnEventIdx--;
+        EditorGUI.EndDisabledGroup();
         GUILayout.Space(20);
 
         EditorGUILayout.IntField(currPawnEventIdx, GUILayout.MaxWidth(50f));
 
         GUILayout.Space(20);
 
-        if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f)) && currPawnEventIdx < pawnEventArray.arraySize - 1) currPawnEventIdx++;
-
+        EditorGUI.BeginDisabledGroup(currPawnEventIdx >= pawnEventArray.arraySize - 1);
+        if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx++;
+        EditorGUI.EndDisabledGroup();
         // Bound the index
         currPawnEventIdx = pawnEventArray.arraySize > 0 
             ? (currPawnEventIdx % pawnEventArray.arraySize + pawnEventArray.arraySize) % pawnEventArray.arraySize : 0;
@@ -164,10 +177,19 @@ public class PawnEventDataEditor : Editor
         EditorGUILayout.Space();
 
         // (Ryan) From here is where you will add your custom implementation of Pawn Events
-        SerializedProperty selectedElement = pawnEventArray.GetArrayElementAtIndex(currPawnEventIdx);
-        selectedElement.isExpanded = true;
-        EditorGUILayout.PropertyField(selectedElement, true);
-
+        if (pawnEventArray.arraySize > 0)
+        {
+            SerializedProperty selectedElement = pawnEventArray.GetArrayElementAtIndex(currPawnEventIdx);
+            selectedElement.isExpanded = true;
+            EditorGUILayout.PropertyField(selectedElement, true);
+        }
+        else
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Currently no Pawn Events, Add a new Pawn Event to Begin!", EditorStyles.boldLabel);
+            EditorGUILayout.EndHorizontal();
+        }
+        
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -185,7 +207,7 @@ public class PawnEventDataEditor : Editor
         pawnEventProperty.FindPropertyRelative("timeDuration").floatValue = 0;
         pawnEventProperty.FindPropertyRelative("moveDirection").enumValueIndex = 0;
         pawnEventProperty.FindPropertyRelative("moveSpeed").floatValue = 0.2f;
-        pawnEventProperty.FindPropertyRelative("delay").floatValue = 0;
+        pawnEventProperty.FindPropertyRelative("transitionTime").floatValue = 0;
         // Jump Event
         pawnEventProperty.FindPropertyRelative("jumpForce").floatValue = 0;
         // Dialogue
