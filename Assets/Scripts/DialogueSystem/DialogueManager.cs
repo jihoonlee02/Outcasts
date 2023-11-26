@@ -37,16 +37,20 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private PawnData asheData;
     [SerializeField] private GameObject m_inputRequiredSprite;
     private bool inProduction;
+    private Animator tinkerAnimator;
+    private Animator asheAnimator;
 
     private void Start()
     {
-        HideDialogue();
         // Coupling
         m_dialogueProducer_left.TypeSound = tinkerData.Voice;
         m_dialogueProducer_right.TypeSound = asheData.Voice;
         m_dialogueProducer_left.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
         m_dialogueProducer_right.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
         m_inputRequiredSprite.SetActive(false);
+        tinkerAnimator = profile_left.GetComponent<Animator>();
+        asheAnimator = profile_right.GetComponent<Animator>();
+        HideDialogue();
     }
     private void Update()
     {
@@ -61,7 +65,9 @@ public class DialogueManager : MonoBehaviour
             m_dialogueProducer_right.StopProduction();
         }
         inProduction = true;
-        dialogueBox.GetComponent<Animator>().Play("Appear");
+        //dialogueBox.GetComponent<Animator>().Play("Appear");
+        //ShowTinkerProfile();
+        //ShowAsheProfile();
         return StartCoroutine(RunThroughDialogue(a_dialogues));
     }
     public Coroutine DisplayDialogue(DialogueObject a_dialogueObject)
@@ -73,13 +79,33 @@ public class DialogueManager : MonoBehaviour
             m_dialogueProducer_right.StopProduction();
         }
         inProduction = true;
-        dialogueBox.GetComponent<Animator>().Play("Appear");
+        //dialogueBox.GetComponent<Animator>().Play("Appear");
+        //ShowTinkerProfile();
+        //ShowAsheProfile();
         return StartCoroutine(RunThroughDialogue(a_dialogueObject));
     }
     public void HideDialogue()
     {
-         dialogueBox.GetComponent<Animator>().Play("Disappear");
-         inProduction = false;
+        //dialogueBox.GetComponent<Animator>().Play("Disappear");
+        HideAsheProfile();
+        HideTinkerProfile();
+        inProduction = false;
+    }
+    public void HideAsheProfile()
+    {
+        asheAnimator?.Play("HideAshe");
+    }
+    public void HideTinkerProfile()
+    {
+        tinkerAnimator?.Play("HideTinker");
+    }
+    public void ShowAsheProfile()
+    {
+        asheAnimator?.Play("ShowAshe");
+    }
+    public void ShowTinkerProfile()
+    {
+        tinkerAnimator?.Play("ShowTinker");
     }
     public void StopDialogue()
     {
@@ -101,61 +127,54 @@ public class DialogueManager : MonoBehaviour
         {
             dialogue.OnDialogue.Invoke(); // Any Events that the Dialogue has
             //AdjustProfileSegment(dialogue.Profile, dialogue.Alignment);
+            TextProducer dialogueProducer;
+            Image profile;
             if (dialogue.Alignment == ProfileAlignment.Left)
             {
-                // Tinker
-                profile_left.sprite = dialogue.Profile;
-                if (dialogue.WaitOnInput)
-                {
-                    yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
-                    m_inputRequiredSprite.SetActive(true);
-                    yield return new WaitUntil(() =>
-                    {
-                        if (Gamepad.current != null) return Gamepad.current.buttonSouth.wasPressedThisFrame;
-                        if (Keyboard.current != null) return Keyboard.current.anyKey.wasPressedThisFrame;
-                        return false;
-                    });
-                    m_inputRequiredSprite.SetActive(false);
-                }
-                else
-                {
-                    yield return m_dialogueProducer_left.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
-                }
-                   
-
-                // Auto Clear after done
-                m_dialogueProducer_left.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
+                dialogueProducer = m_dialogueProducer_left;
+                profile = profile_left;
+                ShowTinkerProfile();
+            }
+            else if (dialogue.Alignment == ProfileAlignment.Right)
+            {
+                dialogueProducer = m_dialogueProducer_right;
+                profile = profile_right;
+                ShowAsheProfile();
+            }
+            else if (dialogue.Alignment == ProfileAlignment.External)
+            {
+                dialogueProducer = GameManager.Instance.LevelManager.ExternalDialogues[dialogue.ExternalID];
+                profile = null;
             }
             else
             {
-                profile_right.sprite = dialogue.Profile;
-                // Ashe
-                if (dialogue.WaitOnInput)
-                {
-                    yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
-                    m_inputRequiredSprite.SetActive(true);
-                    yield return new WaitUntil(() =>
-                    {
-                        if (Gamepad.current != null) return Gamepad.current.buttonSouth.wasPressedThisFrame;
-                        if (Keyboard.current != null) return Keyboard.current.anyKey.wasPressedThisFrame;
-                        return false;
-                    });
-                    m_inputRequiredSprite.SetActive(false);
-                }
-                else
-                {
-                    yield return m_dialogueProducer_right.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
-                }
-
-                // Auto Clear after done
-                m_dialogueProducer_right.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
+                break;
             }
+
+            if (profile != null)  profile.sprite = dialogue.Profile;
+            if (dialogue.WaitOnInput)
+            {
+                yield return dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
+                m_inputRequiredSprite.SetActive(true);
+                yield return new WaitUntil(() =>
+                {
+                    if (Gamepad.current != null) return Gamepad.current.buttonSouth.wasPressedThisFrame;
+                    if (Keyboard.current != null) return Keyboard.current.anyKey.wasPressedThisFrame;
+                    return false;
+                });
+                m_inputRequiredSprite.SetActive(false);
+            }
+            else
+            {
+                yield return dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
+            }
+
+            // Auto Clear after done
+            dialogueProducer.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
 
             //dialogueProducer.TypeSound = dialogue.TypeSound;
             // dialogueProducer.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
             //dialogue.OnDialogue.Invoke();
-
-
         }
 
         // Usuer Should mainly hide it

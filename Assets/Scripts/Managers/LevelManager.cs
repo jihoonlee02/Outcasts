@@ -16,6 +16,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool useSetupDefault = false;
     [SerializeField] private string m_nextScene;
 
+    [Header("Level Dialogue Special")]
+    [SerializeField] private DialogueProducer[] m_externalDialogues;
+    public DialogueProducer[] ExternalDialogues => m_externalDialogues;
+
     [Header("Dev Details")]
     [SerializeField] private bool isSetupScene = false;
     [SerializeField] private UnityEvent invokeAtStart;

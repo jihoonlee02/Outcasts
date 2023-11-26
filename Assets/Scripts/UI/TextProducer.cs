@@ -88,6 +88,7 @@ public class TextProducer : MonoBehaviour
     public void StopProduction()
     {
         StopAllCoroutines();
+        m_textLabel.text = string.Empty;
     }
 
     #region All Text Effects

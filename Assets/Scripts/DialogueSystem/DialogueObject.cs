@@ -32,6 +32,7 @@ public struct Dialogue
 { 
     [SerializeField] private Sprite profile;
     [SerializeField] private ProfileAlignment alignment;
+    [SerializeField] private int externalID;
     [SerializeField] private AudioClip typeSound;
     [SerializeField] private float speed;
     [SerializeField] private bool waitOnInput;
@@ -46,13 +47,15 @@ public struct Dialogue
     public bool WaitOnInput => waitOnInput;
     public float Delay => delay;
     public ProfileAlignment Alignment => alignment;
+    public int ExternalID => externalID;
     public UnityEvent OnDialogue => onDialogue;
 }
 
 public enum ProfileAlignment
 {
     Left,
-    Right
+    Right,
+    External
 }
 
 //#if UNITY_EDITOR
