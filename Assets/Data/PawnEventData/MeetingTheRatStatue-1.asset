@@ -26,10 +26,11 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
       alignment: 1
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: 
       speed: 0
       delay: 0
@@ -37,10 +38,11 @@ MonoBehaviour:
       noWaiting: 1
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
       alignment: 0
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: What's going on?
       speed: 4
       delay: 0
@@ -48,10 +50,11 @@ MonoBehaviour:
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+    - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
       alignment: 0
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Where are we this time?
       speed: 4
       delay: 1
@@ -59,13 +62,30 @@ MonoBehaviour:
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Statue Speaks
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 0
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
     - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
       alignment: 2
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Hello.
       speed: 4
-      delay: 0
+      delay: 1
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
@@ -73,7 +93,8 @@ MonoBehaviour:
     - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
       alignment: 0
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Agh!
       speed: 6
       delay: 0
@@ -84,7 +105,8 @@ MonoBehaviour:
     - profile: {fileID: 21300000, guid: ad34ede8eccf73a4cb319ffc17e51fba, type: 3}
       alignment: 1
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Huh?!
       speed: 6
       delay: 1.4
@@ -95,7 +117,8 @@ MonoBehaviour:
     - profile: {fileID: 21300000, guid: ad34ede8eccf73a4cb319ffc17e51fba, type: 3}
       alignment: 1
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Did that statue just talk?
       speed: 4
       delay: 0
@@ -106,7 +129,8 @@ MonoBehaviour:
     - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
       alignment: 2
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Yes, I did.
       speed: 4
       delay: 0
@@ -114,9 +138,9 @@ MonoBehaviour:
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    invoke: 0
-    activate: 0
-    id: -1
+    invoke: 1
+    activate: 1
+    id: 5
   - pawnEventTitle: Music Starts
     pausePawnControl: 0
     resumePawnControl: 0
@@ -133,8 +157,37 @@ MonoBehaviour:
     - profile: {fileID: 0}
       alignment: 2
       externalID: 0
-      typeSound: {fileID: 0}
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Welcome to my home.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    invoke: 1
+    activate: 1
+    id: 10
+  - pawnEventTitle: Tinker talking to herself
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.001
+    moveDirection: 1
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Okay, talking statue.
       speed: 4
       delay: 0
       waitOnInput: 1
@@ -144,20 +197,146 @@ MonoBehaviour:
     - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
       alignment: 0
       externalID: 0
-      typeSound: {fileID: 0}
-      text: Okay, talking statue.
-      speed: 3
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I can handle that.
+      speed: 4
       delay: 0
       waitOnInput: 1
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Main Event
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.001
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
       alignment: 0
       externalID: 0
-      typeSound: {fileID: 0}
-      text: I can handle that.
-      speed: 3
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: You said this is your home?
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 0}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: It is.
+      speed: 4
+      delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Is your home this room or?
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 0}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: This whole laboratory is my home.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 0}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I was created here, but I'm a bit tied up, as you can see.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I'm sorry, this is a laboratory?
+      speed: 4
+      delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 1
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Seems more like a dungeon...
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I suppose the owners never were very good with decor.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Or hospitality.
+      speed: 4
+      delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Or anything but science, really.
+      speed: 4
       delay: 0
       waitOnInput: 1
       noWaiting: 0
@@ -166,14 +345,88 @@ MonoBehaviour:
     - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
       alignment: 0
       externalID: 0
-      typeSound: {fileID: 0}
-      text: You said this is your home?
-      speed: 3
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Were the owners of this place also the ones who created you?
+      speed: 4
       delay: 0
       waitOnInput: 1
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    invoke: 1
-    activate: 1
-    id: 10
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: From the start, they did.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Why?
+      speed: 4
+      delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: A lot of reasons.
+      speed: 4
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Arrogance, probably.
+      speed: 4
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Desperation, certainly.
+      speed: 4
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: de266e20e79625e45a516dd176a894ce, type: 3}
+      alignment: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I was a failure anyway, so I never really got to understand the full
+        extent of what I was designed for.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    invoke: 0
+    activate: 0
+    id: -1
