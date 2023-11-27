@@ -114,14 +114,14 @@ public class PawnEventDataEditor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        if (GUILayout.Button("+ New Pawn Event To End", GUILayout.MaxHeight(20f)))
+        if (GUILayout.Button("+ New Pawn Event To End", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
         {
             currPawnEventIdx = pawnEventArray.arraySize++;
             SerializedProperty newElementProperty = pawnEventArray.GetArrayElementAtIndex(pawnEventArray.arraySize - 1);
             InitializePawnEvent(newElementProperty);
         }
         GUILayout.FlexibleSpace();
-        if (GUILayout.Button("+ New Pawn Event at " + currPawnEventIdx, GUILayout.MaxHeight(20f)))
+        if (GUILayout.Button("+ New Pawn Event at " + currPawnEventIdx, GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
         {
             pawnEventArray.InsertArrayElementAtIndex(currPawnEventIdx);
             SerializedProperty newElementProperty = pawnEventArray.GetArrayElementAtIndex(currPawnEventIdx);
@@ -131,12 +131,12 @@ public class PawnEventDataEditor : Editor
         if (!areYouSure)
         {
             EditorGUI.BeginDisabledGroup(pawnEventArray.arraySize <= 0);
-            areYouSure = GUILayout.Button("- Delete Pawn Event " + currPawnEventIdx, GUILayout.MaxHeight(20f));
+            areYouSure = GUILayout.Button("- Delete Pawn Event " + currPawnEventIdx, GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true));
             EditorGUI.EndDisabledGroup();
         }
         else 
         {
-            EditorGUILayout.LabelField("Are you sure? ", GUILayout.MaxWidth(80f));
+            EditorGUILayout.LabelField("Are you sure? ", GUILayout.MaxWidth(80f), GUILayout.ExpandWidth(true));
             if (GUILayout.Button("Yes", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
             {
                 pawnEventArray.DeleteArrayElementAtIndex(currPawnEventIdx);

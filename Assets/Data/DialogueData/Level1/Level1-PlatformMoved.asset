@@ -13,21 +13,36 @@ MonoBehaviour:
   m_Name: Level1-PlatformMoved
   m_EditorClassIdentifier: 
   dialogue:
+  - profile: {fileID: 0}
+    alignment: 1
+    externalID: 0
+    typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    text: 
+    speed: 0
+    delay: 0
+    waitOnInput: 0
+    noWaiting: 1
+    hideProfileAfterDialogue: 1
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
     alignment: 0
+    externalID: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
+    text: Hey that Platform is moving up.
     speed: 6
     delay: 2
-    text: Hey that Platform is moving up.
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
     alignment: 0
+    externalID: 0
     typeSound: {fileID: 8300000, guid: 9cd919fee9b2973498e76715d1c4382e, type: 3}
-    speed: 6
-    delay: 3
     text: Maybe you can find a button that can open this door here.
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    speed: 6
+    delay: 5
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 1
+    keepTextAfterDialogue: 0

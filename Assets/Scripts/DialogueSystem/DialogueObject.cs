@@ -29,32 +29,51 @@ public class DialogueObject : ScriptableObject
 
 [System.Serializable]
 public struct Dialogue
-{ 
+{
+    [Header("Dialogue")]
     [SerializeField] private Sprite profile;
     [SerializeField] private ProfileAlignment alignment;
     [SerializeField] private int externalID;
-    [SerializeField] private AudioClip typeSound;
-    [SerializeField] private float speed;
-    [SerializeField] private bool waitOnInput;
-    [SerializeField] private float delay;
-    [SerializeField] [TextArea] private string text;
-    [SerializeField] private UnityEvent onDialogue;
+    [SerializeField, Tooltip("None uses default PawnData Sound, otherwise plays this once")] 
+    private AudioClip typeSound;
+    [SerializeField][TextArea] private string text;
 
+    [Header("Transition Details")]
+    [SerializeField] private float speed;
+    [SerializeField, Tooltip("Waits delay time after dialogue runs. Waiting on input delays after it")]
+    private float delay;
+    [SerializeField] private bool waitOnInput;
+    [SerializeField, Tooltip("Skips Delay and Wait On Input. Works best if next transition is different producer")] 
+    private bool noWaiting;
+    [SerializeField] private bool hideProfileAfterDialogue;
+    [SerializeField] private bool keepTextAfterDialogue;
+
+    // Unecessary, handled by PawnEventData now
+    //[SerializeField] private UnityEvent onDialogue; 
+    
+    // Dialogue related //
     public Sprite Profile => profile;
+    public ProfileAlignment Alignment => alignment;
+    public int ExternalID => externalID;
     public AudioClip TypeSound => typeSound;
     public string Text => text;
+
+    // Transition Related //
     public float Speed => speed;
     public bool WaitOnInput => waitOnInput;
     public float Delay => delay;
-    public ProfileAlignment Alignment => alignment;
-    public int ExternalID => externalID;
-    public UnityEvent OnDialogue => onDialogue;
+    public bool NoWaiting => noWaiting;
+    public bool HideProfileAfterDialogue => hideProfileAfterDialogue;
+    public bool KeepTextAfterDialogue => keepTextAfterDialogue;
+
+    // Unecessary, handled by PawnEventData now
+    //public UnityEvent OnDialogue => onDialogue;
 }
 
 public enum ProfileAlignment
 {
-    Left,
-    Right,
+    Tinker,
+    Ashe,
     External
 }
 

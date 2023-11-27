@@ -15,13 +15,23 @@ MonoBehaviour:
   dialogue:
   - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
     alignment: 1
+    externalID: 0
     typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
-    speed: 3
-    delay: 2
     text: Stop goofing off already!
+    speed: 6
+    delay: 2
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
     alignment: 1
+    externalID: 0
     typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
-    speed: 3
-    delay: 1.8
     text: Just let me up
+    speed: 6
+    delay: 1.8
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 1
+    keepTextAfterDialogue: 0

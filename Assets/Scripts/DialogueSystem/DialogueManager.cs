@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     private bool inProduction;
     private Animator tinkerAnimator;
     private Animator asheAnimator;
+    private Sprite noneSprite;
 
     private void Start()
     {
@@ -118,24 +119,24 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
     {
         yield return RunThroughDialogue(a_dialogueObject.Dialogue);
-        HideDialogue();
+        //HideDialogue();
     }
 
     private IEnumerator RunThroughDialogue(Dialogue[] dialogues)
     {
         foreach (Dialogue dialogue in dialogues)
         {
-            dialogue.OnDialogue.Invoke(); // Any Events that the Dialogue has
+            //dialogue.OnDialogue.Invoke(); // Any Events that the Dialogue has
             //AdjustProfileSegment(dialogue.Profile, dialogue.Alignment);
             TextProducer dialogueProducer;
             Image profile;
-            if (dialogue.Alignment == ProfileAlignment.Left)
+            if (dialogue.Alignment == ProfileAlignment.Tinker)
             {
                 dialogueProducer = m_dialogueProducer_left;
                 profile = profile_left;
                 ShowTinkerProfile();
             }
-            else if (dialogue.Alignment == ProfileAlignment.Right)
+            else if (dialogue.Alignment == ProfileAlignment.Ashe)
             {
                 dialogueProducer = m_dialogueProducer_right;
                 profile = profile_right;
@@ -151,13 +152,20 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
 
-            if (profile != null)  profile.sprite = dialogue.Profile;
-            if (dialogue.WaitOnInput)
+            if (profile != null && profile.sprite != noneSprite)  profile.sprite = dialogue.Profile;
+            if (dialogue.NoWaiting)
+            {
+                // Will just run without waiting on dialogue to finish
+                // Intended for Async Dialogue!
+                dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
+            }
+            else if (dialogue.WaitOnInput)
             {
                 yield return dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, 0);
                 m_inputRequiredSprite.SetActive(true);
                 yield return new WaitUntil(() =>
                 {
+                    // Scuffed -> could be more modular!
                     if (Gamepad.current != null) return Gamepad.current.buttonSouth.wasPressedThisFrame;
                     if (Keyboard.current != null) return Keyboard.current.anyKey.wasPressedThisFrame;
                     return false;
@@ -169,8 +177,23 @@ public class DialogueManager : MonoBehaviour
                 yield return dialogueProducer.ReplaceTextWith(dialogue.Text, ProduceEffect.Typewriter, dialogue.Speed, dialogue.Delay);
             }
 
-            // Auto Clear after done
-            dialogueProducer.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
+            if (dialogue.HideProfileAfterDialogue)
+            {
+                if (dialogue.Alignment == ProfileAlignment.Ashe)
+                    HideAsheProfile();
+                if (dialogue.Alignment == ProfileAlignment.Tinker)
+                    HideTinkerProfile();
+            }
+            
+
+            if (!dialogue.KeepTextAfterDialogue) 
+                dialogueProducer.ReplaceTextWith("", ProduceEffect.None, 1f, 0f);
+
+            // Ordered so that text can clear then we wait
+            if (dialogue.WaitOnInput && !dialogue.NoWaiting)
+            {
+                yield return new WaitForSeconds(dialogue.Delay);
+            }
 
             //dialogueProducer.TypeSound = dialogue.TypeSound;
             // dialogueProducer.TMP_access.margin = new Vector4(25f, 0, 25f, 0);
