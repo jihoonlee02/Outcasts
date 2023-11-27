@@ -105,78 +105,14 @@ public class PawnEventDataEditor : Editor
         GUILayout.FlexibleSpace();
         EditorGUILayout.LabelField("Events: " + pawnEventArray.arraySize, EditorStyles.boldLabel);
         // Interface Each PawnEvent by Title
-        //EditorGUILayout.BeginHorizontal();
-        //for (int i = 0;  i < pawnEventArray.arraySize; i++)
-        //{
-        //    EditorGUILayout.SelectableLabel(pawnEventArray.GetArrayElementAtIndex(i).FindPropertyRelative("pawnEventTitle").stringValue);
-        //}
-        //EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("+ New Pawn Event To End", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
-        {
-            currPawnEventIdx = pawnEventArray.arraySize++;
-            SerializedProperty newElementProperty = pawnEventArray.GetArrayElementAtIndex(pawnEventArray.arraySize - 1);
-            InitializePawnEvent(newElementProperty);
-        }
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("+ New Pawn Event at " + currPawnEventIdx, GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
-        {
-            pawnEventArray.InsertArrayElementAtIndex(currPawnEventIdx);
-            SerializedProperty newElementProperty = pawnEventArray.GetArrayElementAtIndex(currPawnEventIdx);
-            InitializePawnEvent(newElementProperty);
-        }
-        GUILayout.FlexibleSpace();
-        if (!areYouSure)
-        {
-            EditorGUI.BeginDisabledGroup(pawnEventArray.arraySize <= 0);
-            areYouSure = GUILayout.Button("- Delete Pawn Event " + currPawnEventIdx, GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true));
-            EditorGUI.EndDisabledGroup();
-        }
-        else 
-        {
-            EditorGUILayout.LabelField("Are you sure? ", GUILayout.MaxWidth(80f), GUILayout.ExpandWidth(true));
-            if (GUILayout.Button("Yes", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
-            {
-                pawnEventArray.DeleteArrayElementAtIndex(currPawnEventIdx);
-                currPawnEventIdx--;
-                areYouSure = false;
-            }
-            else if (GUILayout.Button("No", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
-            {
-                areYouSure = false;
-            }
-        }
-        
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
+        EventTitleInterfacer();
+        EditorGUILayout.Space();
+        PawnEventAdjustment();
         EditorGUILayout.Space();
         // Interfacing TOP
-        EditorGUILayout.BeginHorizontal();
-
-        GUILayout.FlexibleSpace();
-
-        EditorGUI.BeginDisabledGroup(currPawnEventIdx <= 0);
-        if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f))) currPawnEventIdx--;
-        EditorGUI.EndDisabledGroup();
-        GUILayout.Space(20);
-
-        EditorGUILayout.IntField(currPawnEventIdx, GUILayout.MaxWidth(50f));
-
-        GUILayout.Space(20);
-
-        EditorGUI.BeginDisabledGroup(currPawnEventIdx >= pawnEventArray.arraySize - 1);
-        if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx++;
-        EditorGUI.EndDisabledGroup();
-        // Bound the index
-        currPawnEventIdx = pawnEventArray.arraySize > 0 
-            ? (currPawnEventIdx % pawnEventArray.arraySize + pawnEventArray.arraySize) % pawnEventArray.arraySize : 0;
-
-        GUILayout.FlexibleSpace();
-
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.Space();
+        HorizontalPagingInterfacer();
+        EditorGUILayout.Separator();
 
         // (Ryan) From here is where you will add your custom implementation of Pawn Events
         if (pawnEventArray.arraySize > 0)
@@ -191,30 +127,12 @@ public class PawnEventDataEditor : Editor
             EditorGUILayout.LabelField("Currently no Pawn Events, Add a new Pawn Event to Begin!", EditorStyles.boldLabel);
             EditorGUILayout.EndHorizontal();
         }
-        GUILayout.Space(20f);
+        EditorGUILayout.Separator();
         // Interfacing Bot
-        EditorGUILayout.BeginHorizontal();
-
-        GUILayout.FlexibleSpace();
-        EditorGUI.BeginDisabledGroup(currPawnEventIdx <= 0);
-        if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f))) currPawnEventIdx--;
-        EditorGUI.EndDisabledGroup();
-        GUILayout.Space(20);
-
-        EditorGUILayout.IntField(currPawnEventIdx, GUILayout.MaxWidth(50f));
-
-        GUILayout.Space(20);
-
-        EditorGUI.BeginDisabledGroup(currPawnEventIdx >= pawnEventArray.arraySize - 1);
-        if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx++;
-        EditorGUI.EndDisabledGroup();
-        // Bound the index
-        currPawnEventIdx = pawnEventArray.arraySize > 0
-            ? (currPawnEventIdx % pawnEventArray.arraySize + pawnEventArray.arraySize) % pawnEventArray.arraySize : 0;
-
-        GUILayout.FlexibleSpace();
-
-        EditorGUILayout.EndHorizontal();
+        HorizontalPagingInterfacer();
+        EditorGUILayout.Space();
+        PawnEventAdjustment();
+        EditorGUILayout.Space();
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -244,6 +162,86 @@ public class PawnEventDataEditor : Editor
         pawnEventProperty.FindPropertyRelative("invoke").boolValue = false;
         pawnEventProperty.FindPropertyRelative("activate").boolValue = false;
         pawnEventProperty.FindPropertyRelative("id").intValue = -1;
+    }
+
+    private void PawnEventAdjustment()
+    {
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("+ New Pawn Event To End", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
+        {
+            currPawnEventIdx = pawnEventArray.arraySize++;
+            SerializedProperty newElementProperty = pawnEventArray.GetArrayElementAtIndex(pawnEventArray.arraySize - 1);
+            InitializePawnEvent(newElementProperty);
+        }
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("+ New Pawn Event at " + currPawnEventIdx, GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
+        {
+            pawnEventArray.InsertArrayElementAtIndex(currPawnEventIdx);
+            SerializedProperty newElementProperty = pawnEventArray.GetArrayElementAtIndex(currPawnEventIdx);
+            InitializePawnEvent(newElementProperty);
+        }
+        GUILayout.FlexibleSpace();
+        if (!areYouSure)
+        {
+            EditorGUI.BeginDisabledGroup(pawnEventArray.arraySize <= 0);
+            areYouSure = GUILayout.Button("- Delete Pawn Event " + currPawnEventIdx, GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true));
+            EditorGUI.EndDisabledGroup();
+        }
+        else
+        {
+            EditorGUILayout.LabelField("Are you sure? ", GUILayout.MaxWidth(80f), GUILayout.ExpandWidth(true));
+            if (GUILayout.Button("Yes", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
+            {
+                pawnEventArray.DeleteArrayElementAtIndex(currPawnEventIdx);
+                currPawnEventIdx--;
+                areYouSure = false;
+            }
+            else if (GUILayout.Button("No", GUILayout.MaxHeight(20f), GUILayout.ExpandWidth(true)))
+            {
+                areYouSure = false;
+            }
+        }
+
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+    }
+
+    private void HorizontalPagingInterfacer()
+    {
+        EditorGUILayout.BeginHorizontal();
+
+        GUILayout.FlexibleSpace();
+        EditorGUI.BeginDisabledGroup(currPawnEventIdx <= 0);
+        if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f))) currPawnEventIdx--;
+        EditorGUI.EndDisabledGroup();
+        GUILayout.Space(20);
+
+        EditorGUILayout.IntField(currPawnEventIdx, GUILayout.MaxWidth(50f));
+
+        GUILayout.Space(20);
+
+        EditorGUI.BeginDisabledGroup(currPawnEventIdx >= pawnEventArray.arraySize - 1);
+        if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx++;
+        EditorGUI.EndDisabledGroup();
+        // Bound the index
+        currPawnEventIdx = pawnEventArray.arraySize > 0
+            ? (currPawnEventIdx % pawnEventArray.arraySize + pawnEventArray.arraySize) % pawnEventArray.arraySize : 0;
+
+        GUILayout.FlexibleSpace();
+
+        EditorGUILayout.EndHorizontal();
+    }
+
+    private void EventTitleInterfacer()
+    {
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Title Interfacer Coming Soon");
+        //for (int i = 0; i < pawnEventArray.arraySize; i++)
+        //{
+        //    EditorGUILayout.SelectableLabel(pawnEventArray.GetArrayElementAtIndex(i).FindPropertyRelative("pawnEventTitle").stringValue);
+        //}
+        EditorGUILayout.EndHorizontal();
     }
 }
 #endif

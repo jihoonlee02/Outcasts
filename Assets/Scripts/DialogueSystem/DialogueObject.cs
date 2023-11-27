@@ -34,8 +34,10 @@ public struct Dialogue
     [SerializeField] private Sprite profile;
     [SerializeField] private ProfileAlignment alignment;
     [SerializeField] private int externalID;
-    [SerializeField, Tooltip("None uses default PawnData Sound, otherwise plays this once")] 
-    private AudioClip typeSound;
+    [SerializeField, Tooltip("Make sound at each character typed, defaults to Pawn voices")] 
+    private AudioClip charSound;
+    [SerializeField, Tooltip("Make sound at start of dialogue, defaults to nothing")]
+    private AudioClip initialSound;
     [SerializeField][TextArea] private string text;
 
     [Header("Transition Details")]
@@ -55,7 +57,8 @@ public struct Dialogue
     public Sprite Profile => profile;
     public ProfileAlignment Alignment => alignment;
     public int ExternalID => externalID;
-    public AudioClip TypeSound => typeSound;
+    public AudioClip InitialSound => initialSound;
+    public AudioClip CharSound => charSound;
     public string Text => text;
 
     // Transition Related //
