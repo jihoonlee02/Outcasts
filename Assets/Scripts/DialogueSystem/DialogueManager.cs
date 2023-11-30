@@ -39,7 +39,6 @@ public class DialogueManager : MonoBehaviour
     private bool inProduction;
     private Animator tinkerAnimator;
     private Animator asheAnimator;
-    private Sprite noneSprite;
 
     private void Start()
     {
@@ -145,6 +144,7 @@ public class DialogueManager : MonoBehaviour
             else if (dialogue.Alignment == ProfileAlignment.External)
             {
                 dialogueProducer = GameManager.Instance.LevelManager.ExternalDialogues[dialogue.ExternalID];
+                if (dialogue.CharSound != null) dialogueProducer.TypeSound = dialogue.CharSound;
                 profile = null;
             }
             else
@@ -152,7 +152,7 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
 
-            if (profile != null && profile.sprite != noneSprite)  profile.sprite = dialogue.Profile;
+            if (profile != null && Object.ReferenceEquals(dialogue.Profile, null))  profile.sprite = dialogue.Profile;
             if (dialogue.NoWaiting)
             {
                 // Will just run without waiting on dialogue to finish

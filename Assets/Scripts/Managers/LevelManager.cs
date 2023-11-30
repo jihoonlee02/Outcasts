@@ -15,6 +15,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioClip m_music;
     [SerializeField] private bool useSetupDefault = false;
     [SerializeField] private string m_nextScene;
+    // TODO: Implement these as enums to handle which one you want
+    // Fade IN/OUT and Door Open/Close
+    [SerializeField] private string m_transitionEntry;
+    [SerializeField] private string m_transitionExit;
 
     [Header("Level Dialogue Special")]
     [SerializeField] private DialogueProducer[] m_externalDialogues;

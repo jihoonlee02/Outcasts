@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 //Can be destroyed by GameObjects that invoke break on collision
 [RequireComponent(typeof(Collider2D), typeof(Renderer), typeof(AudioSource))]
@@ -39,8 +40,6 @@ public class Breakable : MonoBehaviour
         //renderer.enabled = false;
         // Replaced with this in order to destroy floating nails
         Destroy(renderer.gameObject);
-
-        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
         foreach (Transform child in transform)
         {
             if (child.GetComponent<Projectile>())
@@ -49,6 +48,8 @@ public class Breakable : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
         }
+        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+
         Destroy(gameObject);
     }
 
@@ -59,6 +60,11 @@ public class Breakable : MonoBehaviour
         else if (!broken && (m_requiresAshe && collision.gameObject.tag == "Gauntlet"))
         {
             m_AudioSource.Play();
+            var pad = Gamepad.current;
+            if (pad != null)
+            {
+                pad.SetMotorSpeeds(10f, 24f);
+            }
             StartCoroutine(Break());
             broken = true;
         }
@@ -79,6 +85,11 @@ public class Breakable : MonoBehaviour
             StartCoroutine(Break());
             broken = true;
         }
+    }
+
+    private IEnumerator StopRumble(float duration, Gamepad pad)
+    {
+        yield return null;
     }
     // && (collider.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f
     //        || collider.gameObject.GetComponent<Rigidbody2D>().velocity.x >= 2f))

@@ -60,24 +60,28 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 0
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Ooof!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 1.3
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: We should be far away now!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
@@ -96,34 +100,40 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Not far enough!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: We were almost caught!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Can you be any reckless?
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
@@ -142,34 +152,40 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 0
-      delay: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Reckless?
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
-    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
-      alignment: 0
-      typeSound: {fileID: 0}
       speed: 6
+      delay: 1
       waitOnInput: 0
-      delay: 1
-      text: Come on Ashe!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Come on Ashe!
       speed: 6
-      waitOnInput: 1
       delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: We've been through worse!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
@@ -188,54 +204,64 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Do you even know where we are?
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: We are now in the middle of earth knows what!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 0
-      delay: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: psshh
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: I know this cave like the back of my paw!
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Then where are we?
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
@@ -254,14 +280,16 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 0
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: uhhhh
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
@@ -280,34 +308,40 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 0
-      delay: 1.5
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: you know
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 1.5
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
       alignment: 0
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: 'I have no clue '
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: of course not
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
@@ -326,14 +360,16 @@ MonoBehaviour:
     dialogues:
     - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
       alignment: 1
-      typeSound: {fileID: 0}
-      speed: 6
-      waitOnInput: 1
-      delay: 2
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
       text: Let's just find a way out
-      onDialogue:
-        m_PersistentCalls:
-          m_Calls: []
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
