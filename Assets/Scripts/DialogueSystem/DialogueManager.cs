@@ -152,7 +152,7 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
 
-            if (profile != null && Object.ReferenceEquals(dialogue.Profile, null))  profile.sprite = dialogue.Profile;
+            profile.sprite = dialogue.Profile;
             if (dialogue.NoWaiting)
             {
                 // Will just run without waiting on dialogue to finish
