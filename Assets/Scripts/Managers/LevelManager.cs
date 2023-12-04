@@ -25,10 +25,10 @@ public class LevelManager : MonoBehaviour
     public DialogueProducer[] ExternalDialogues => m_externalDialogues;
 
     [Header("Dev Details")]
-    [SerializeField] private bool isSetupScene = false;
+    //[SerializeField] private bool isSetupScene = false;
     [SerializeField] private UnityEvent invokeAtStart;
     [SerializeField] private UnityEvent OnExit;
-    [SerializeField] private GameObject levelThings;
+    //[SerializeField] private GameObject levelThings;
 
     private bool exited = false;
     private void Start() {
@@ -53,10 +53,6 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.TranisitionEntry = m_transitionEntry;
         GameManager.Instance.TranisitionExit = m_transitionExit;
         GameManager.Instance.TransitionEnter();
-        if (isSetupScene)
-        {
-            return;
-        }
         AudioManager.Instance.PlayAudio();
         invokeAtStart.Invoke();
     }

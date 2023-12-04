@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string[] initialScenesToEnqueue;
     
     private bool isPaused = false;
-    private bool tranistionExited = false; // Only needed one
+    private bool tranistionExited = false;
+    private bool tranistionEntered = false;
     private void Awake()
     {
         // Just in case the gameManager finds itself in the same scene
@@ -371,8 +372,9 @@ public class GameManager : MonoBehaviour
     }
     public void TransitionEnter()
     {
-        if (!tranistionExited) return; // If already entered, do not replay
+        if (tranistionEntered) return; // If already entered, do not replay
         tranistionExited = false;
+        tranistionEntered = true;
         switch (m_transitionEntry)
         {
             case TransitionType.None:
@@ -390,6 +392,7 @@ public class GameManager : MonoBehaviour
     {
         if (tranistionExited) return; // If already exited, do not replay
         tranistionExited = true;
+        tranistionEntered = false;
         switch (m_transitionExit)
         {
             case TransitionType.None:
