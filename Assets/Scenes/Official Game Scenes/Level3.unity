@@ -10222,6 +10222,14 @@ PrefabInstance:
       propertyPath: m_tinkerTemp
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_transitionExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_transitionEntry
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 997537019407936489, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -17176,6 +17184,7 @@ MonoBehaviour:
   m_moveSpeed: 1
   targetPosition: {x: 0, y: 0, z: 0}
   m_followEnabled: 0
+  m_smooth: 0
   m_cameraShaker: {fileID: 1226954542}
   m_cameraFollow: {fileID: 1226954543}
 --- !u!114 &1226954542
@@ -18620,7 +18629,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -19020,7 +19029,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 17
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -19340,7 +19349,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 16
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -19591,16 +19600,16 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -797024120, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -727939946, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -657805661, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1733695381, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -657805661, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1198694509, guid: 79606d08b10fd994fbc3e4ef41f2f873, type: 3}
   - m_RefCount: 1

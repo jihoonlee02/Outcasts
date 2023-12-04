@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string m_nextScene;
     // TODO: Implement these as enums to handle which one you want
     // Fade IN/OUT and Door Open/Close
-    [SerializeField] private string m_transitionEntry;
-    [SerializeField] private string m_transitionExit;
+    [SerializeField] private TransitionType m_transitionEntry = TransitionType.Fade;
+    [SerializeField] private TransitionType m_transitionExit = TransitionType.Fade;
 
     [Header("Level Dialogue Special")]
     [SerializeField] private DialogueProducer[] m_externalDialogues;
@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
     [Header("Dev Details")]
     [SerializeField] private bool isSetupScene = false;
     [SerializeField] private UnityEvent invokeAtStart;
+    [SerializeField] private UnityEvent OnExit;
     [SerializeField] private GameObject levelThings;
 
     private bool exited = false;
@@ -36,6 +37,7 @@ public class LevelManager : MonoBehaviour
         //{
         //    Instantiate(levelThings);
         //}
+        // Could be handled by GameManager itself
         GameManager.Instance.LevelManager = this;
         GameManager.Instance.Tinker.transform.position = m_tinkerSpawn.position;
         GameManager.Instance.Ashe.transform.position = m_asheSpawn.position;
@@ -48,7 +50,9 @@ public class LevelManager : MonoBehaviour
         m_tinkerSpawn.gameObject.SetActive(false);
         m_asheSpawn.gameObject.SetActive(false);
 
-        GameManager.Instance.DoorTransition.OpenDoors();
+        GameManager.Instance.TranisitionEntry = m_transitionEntry;
+        GameManager.Instance.TranisitionExit = m_transitionExit;
+        GameManager.Instance.TransitionEnter();
         if (isSetupScene)
         {
             return;
@@ -67,6 +71,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnLevelExit()
     {
+        OnExit.Invoke();
         // So that Tinker n' Ashe don't start invoking this a billion times
         GameManager.Instance.Tinker.gameObject.SetActive(false);
         GameManager.Instance.Ashe.gameObject.SetActive(false);
@@ -93,6 +98,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.TinkerPC?.EnablePawnControl();
         GameManager.Instance.SC?.EnablePawnControl();    
     }
+    // ------------REMOVE THIS TRASH!!!!!-----------
     public void FaceTinkerRight()
     {
         GameManager.Instance.Tinker.Animator.SetFloat("MoveX", 1);
@@ -117,6 +123,7 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.Tinker.Jump(force);
     }
+    //--------------------------------------------
     public void ReloadLevel()
     {
         GameManager.Instance.ReloadCurrentScene();

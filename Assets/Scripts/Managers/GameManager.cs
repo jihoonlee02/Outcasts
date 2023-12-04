@@ -47,8 +47,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject m_visualCanvas;
     [SerializeField] private CharacterSelection m_characterSelection;
     [SerializeField] private CharacterSelection m_characterSelection2;
+    // --------These Two are no apart of Scene Management-----
     [SerializeField] private DoorTransition m_doorTransition;
     [SerializeField] private CanvasGroup m_fadeTransition;
+    //--------------------------------------------------------
     [SerializeField] private TextMeshProUGUI m_onScreenMessage;
     [SerializeField] private Animator m_cinematicCover;
 
@@ -59,12 +61,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform m_levelThings;
     [SerializeField] private RoomManager m_roomManager;
     [SerializeField] private LevelManager m_levelManager;
-    
+    [SerializeField] private Animator m_transitionAnimator;
+    private TransitionType m_transitionEntry = TransitionType.Fade;
+    private TransitionType m_transitionExit = TransitionType.Fade;
     public RoomManager CurrRoomManager => m_roomManager;
     public LevelManager LevelManager
     {
         get { return m_levelManager; }
         set { m_levelManager = value; }
+    }
+    public TransitionType TranisitionEntry
+    {
+        get => m_transitionEntry; set { m_transitionEntry = value;}
+    }
+    public TransitionType TranisitionExit
+    {
+        get => m_transitionExit; set { m_transitionExit = value; }
     }
     private Queue<string> m_scenes;
     [SerializeField] private string m_currScene;
@@ -73,8 +85,8 @@ public class GameManager : MonoBehaviour
     [Header("Dev Settings")]
     [SerializeField] private string[] initialScenesToEnqueue;
     
-
     private bool isPaused = false;
+    private bool tranistionExited = false; // Only needed one
     private void Awake()
     {
         // Just in case the gameManager finds itself in the same scene
@@ -248,9 +260,8 @@ public class GameManager : MonoBehaviour
     public void LoadToScene(string scene)
     {
         m_currScene = scene;
-        m_doorTransition.CloseDoors();
-        //m_tinker.transform.SetParent(m_levelThings, true);
-        //m_ashe.transform.SetParent(m_levelThings, true);
+
+        TransitionExit();
         StartCoroutine(LoadSceneWithDelay(1.2f));
     }
     public void TransitionToNextScene()
@@ -358,5 +369,46 @@ public class GameManager : MonoBehaviour
     {
         m_cinematicCover.Play("CinematicClose");
     }
+    public void TransitionEnter()
+    {
+        if (!tranistionExited) return; // If already entered, do not replay
+        tranistionExited = false;
+        switch (m_transitionEntry)
+        {
+            case TransitionType.None:
+                // Just Do Nothing
+                break;
+            case TransitionType.Fade:
+                m_transitionAnimator.Play("UnFade");
+                break;
+            case TransitionType.Doors:
+                m_transitionAnimator.Play("OpenDoor");
+                break;
+        }
+    }
+    public void TransitionExit()
+    {
+        if (tranistionExited) return; // If already exited, do not replay
+        tranistionExited = true;
+        switch (m_transitionExit)
+        {
+            case TransitionType.None:
+                // Just Do Nothing
+                break;
+            case TransitionType.Fade:
+                m_transitionAnimator.Play("Fade");
+                break;
+            case TransitionType.Doors:
+                m_transitionAnimator.Play("CloseDoor");
+                break;
+        }
+    }
     #endregion
+}
+
+public enum TransitionType
+{
+    None,
+    Fade,
+    Doors,
 }

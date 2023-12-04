@@ -18284,6 +18284,7 @@ MonoBehaviour:
   m_moveSpeed: 1
   targetPosition: {x: 0, y: 0, z: 0}
   m_followEnabled: 0
+  m_smooth: 0
   m_cameraShaker: {fileID: 1226954542}
   m_cameraFollow: {fileID: 1226954543}
 --- !u!114 &1226954542
@@ -19864,6 +19865,14 @@ PrefabInstance:
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_nextScene
       value: Level6
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_transitionExit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_transitionEntry
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936489, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_Name

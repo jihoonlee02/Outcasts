@@ -9223,6 +9223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b5b12077b3aa94a98f1a9e26b4e1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &3324051680256084460 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8050412984553077842, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+  m_PrefabInstance: {fileID: 4726994623011894718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3485070277416293547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8197919540578197781, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
@@ -9333,11 +9338,6 @@ RectTransform:
 --- !u!1 &6275004688015379568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1624923244620380622, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
-  m_PrefabInstance: {fileID: 4726994623011894718}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &6909449677954839278 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 2196317698082817872, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
   m_PrefabInstance: {fileID: 4726994623011894718}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7452084601193586477 stripped
@@ -9850,7 +9850,7 @@ PrefabInstance:
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_fadeTransition
       value: 
-      objectReference: {fileID: 6909449677954839278}
+      objectReference: {fileID: 0}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_onScreenMessage
       value: 
@@ -9859,6 +9859,10 @@ PrefabInstance:
       propertyPath: m_characterSelection
       value: 
       objectReference: {fileID: 5133138435997716654}
+    - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
+      propertyPath: m_transitionAnimator
+      value: 
+      objectReference: {fileID: 3324051680256084460}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_characterSelection2
       value: 

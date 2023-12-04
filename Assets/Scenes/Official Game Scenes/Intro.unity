@@ -176,7 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 1
 --- !u!82 &376870176
 AudioSource:
@@ -425,7 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 1
 --- !u!82 &802238938
 AudioSource:
@@ -753,6 +755,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_nextScene
+      value: cave_beginning
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_transitionExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: m_transitionEntry
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 997537019407936489, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -957,7 +971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 1
 --- !u!82 &1443904705
 AudioSource:
@@ -1205,7 +1220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 1
 --- !u!82 &1448481572
 AudioSource:
@@ -1453,7 +1469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 1
 --- !u!82 &1649904264
 AudioSource:
@@ -1701,7 +1718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 1
 --- !u!82 &1941382702
 AudioSource:
@@ -1950,7 +1968,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startOnEnable: 1
-  speed: 0.8
+  m_speed: 0.8
+  m_delay: -1
   m_startEffect: 0
 --- !u!82 &2034009433
 AudioSource:
