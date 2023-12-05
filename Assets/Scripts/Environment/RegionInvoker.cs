@@ -29,7 +29,8 @@ public class RegionInvoker : Invoker
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TimeDuration = Time.time + stayTimeToTrigger;
+        // This is why level 6 takes forever because objects just keep entering!
+        // TODO: Resolve this dependency!
         if (Time.time <= TimeDuration
             || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
             || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
@@ -37,6 +38,7 @@ public class RegionInvoker : Invoker
         {
             return;
         }
+        TimeDuration = Time.time + stayTimeToTrigger;
         if (triggerType != TriggerType.SpecificObjects && collision.gameObject.layer == LayerMask.NameToLayer("Players"))
         {
             if (triggerType == TriggerType.BothPlayersRequired)
@@ -88,7 +90,7 @@ public class RegionInvoker : Invoker
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Time.time <= TimeDuration
+        if (stayTimeToTrigger < 0 || Time.time <= TimeDuration
             || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
             || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
             || collision.gameObject.tag == "feet")
