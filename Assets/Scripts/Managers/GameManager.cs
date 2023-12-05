@@ -132,11 +132,13 @@ public class GameManager : MonoBehaviour
             else if (m_ashePC == null)
             {
                 m_ashePC = pc;
+                m_ashePC.PlayerInput.actions["Join"].Disable();
                 GivePawn(m_ashePC, m_ashe);
             }
             else if (m_tinkerPC == null)
             {
                 m_tinkerPC = pc;
+                m_tinkerPC.PlayerInput.actions["Join"].Disable();
                 GivePawn(m_tinkerPC, m_tinker);
             }
             return;
@@ -147,8 +149,9 @@ public class GameManager : MonoBehaviour
 
         if (sc != null)
         {
-            sc.ControlTnAPawns((TinkerPawn)m_tinker, (AshePawn)m_ashe);
+            sc.ControlTnAPawns(m_tinker, m_ashe);
             m_SC = sc;   
+            m_SC.PlayerInput.actions["Join"].Disable();
         }
     }
 

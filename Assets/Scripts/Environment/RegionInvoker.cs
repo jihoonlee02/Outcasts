@@ -21,6 +21,7 @@ public class RegionInvoker : Invoker
     [SerializeField] private string[] tags;
 
     private float TimeDuration;
+    private int objectsInRegion;
 
     #region Technical
     private bool asheInRegion = false;
@@ -29,68 +30,85 @@ public class RegionInvoker : Invoker
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // This is why level 6 takes forever because objects just keep entering!
-        // TODO: Resolve this dependency!
-        if (Time.time <= TimeDuration
-            || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
-            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
-            || collision.gameObject.tag == "feet")
+        // If Objects aren't already in region then
+        if (objectsInRegion == 0 && Time.time > TimeDuration && stayTimeToTrigger > 0)
         {
-            return;
+            
         }
-        TimeDuration = Time.time + stayTimeToTrigger;
-        if (triggerType != TriggerType.SpecificObjects && collision.gameObject.layer == LayerMask.NameToLayer("Players"))
+        // All the Checks
+        // Make Sure that Duration isn't already set -> You might have to reset this on Pawn Leave
+        // Tinker Only -> Only Tinker Sets duration
+        // Ashe Only -> Only Ashe Sets duration
+        // Any Player -> Only Player Pawns Set duration
+        // Else -> Anything Can set Duration
+        if (Time.time > TimeDuration
+            && ((triggerType == TriggerType.TinkerOnly && collision.gameObject.tag == "Tinker")
+            || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag == "Ashe")
+            || (triggerType == TriggerType.AnyPlayer && collision.GetComponent<Pawn>())))
         {
-            if (triggerType == TriggerType.BothPlayersRequired)
-            {
-                if (collision.gameObject.tag == "Tinker")
-                {
-                    tinkerInRegion = true;
-                    if (!asheInRegion) return;
-                }
-                else if (collision.gameObject.tag == "Ashe")
-                {
-                    asheInRegion = true;
-                    if (!tinkerInRegion) return;
-                }
-                else
-                {
-                    return;
-                }
-            }
-            if (useUniqueID)
-            {
-                if (collision.gameObject.tag == "Tinker")
-                {
-                    Activate(tinkerSpecificID);
-                }
-                else if (collision.gameObject.tag == "Ashe")
-                {
-                    Activate(asheSpecificID);
-                }
-            }
-            else
-            {
-                Activate();
-            }
+            TimeDuration = Time.time + stayTimeToTrigger;
+        }
+        objectsInRegion++;
+        // We May not have needed this following
+        //if (Time.time <= TimeDuration
+        //    || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
+        //    || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
+        //    || collision.gameObject.tag == "feet")
+        //{
+        //    return;
+        //}
+        //if (triggerType != TriggerType.SpecificObjects && collision.gameObject.layer == LayerMask.NameToLayer("Players"))
+        //{
+        //    if (triggerType == TriggerType.BothPlayersRequired)
+        //    {
+        //        if (collision.gameObject.tag == "Tinker")
+        //        {
+        //            tinkerInRegion = true;
+        //            if (!asheInRegion) return;
+        //        }
+        //        else if (collision.gameObject.tag == "Ashe")
+        //        {
+        //            asheInRegion = true;
+        //            if (!tinkerInRegion) return;
+        //        }
+        //        else
+        //        {
+        //            return;
+        //        }
+        //    }
+        //    if (useUniqueID)
+        //    {
+        //        if (collision.gameObject.tag == "Tinker")
+        //        {
+        //            Activate(tinkerSpecificID);
+        //        }
+        //        else if (collision.gameObject.tag == "Ashe")
+        //        {
+        //            Activate(asheSpecificID);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Activate();
+        //    }
 
-            if (triggerOnce)
-            {
-                Destroy(this);
-            }
-        }
-        else if (triggerType == TriggerType.SpecificObjects)
-        {
-            if (triggerOnce)
-            {
-                Destroy(this);
-            }
-        }
+        //    if (triggerOnce)
+        //    {
+        //        Destroy(this);
+        //    }
+        //}
+        //else if (triggerType == TriggerType.SpecificObjects)
+        //{
+        //    if (triggerOnce)
+        //    {
+        //        Destroy(this);
+        //    }
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (stayTimeToTrigger < 0 || Time.time <= TimeDuration
+        if (Time.time <= TimeDuration
             || (triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
             || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
             || collision.gameObject.tag == "feet")
@@ -149,6 +167,7 @@ public class RegionInvoker : Invoker
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        objectsInRegion--;
         if ((triggerType == TriggerType.TinkerOnly && collision.gameObject.tag != "Tinker")
             || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag != "Ashe")
             || collision.gameObject.tag == "feet")

@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private PawnData asheData;
     [SerializeField] private GameObject m_inputRequiredSprite;
     private bool inProduction;
+    private Dialogue lastDialogue;
     private Animator tinkerAnimator;
     private Animator asheAnimator;
 
@@ -58,12 +59,7 @@ public class DialogueManager : MonoBehaviour
     }
     public Coroutine DisplayDialogue(Dialogue[] a_dialogues)
     {
-        if (inProduction)
-        {
-            StopAllCoroutines();
-            m_dialogueProducer_left.StopProduction();
-            m_dialogueProducer_right.StopProduction();
-        }
+        StopDialogue();
         inProduction = true;
         //dialogueBox.GetComponent<Animator>().Play("Appear");
         //ShowTinkerProfile();
@@ -72,12 +68,7 @@ public class DialogueManager : MonoBehaviour
     }
     public Coroutine DisplayDialogue(DialogueObject a_dialogueObject)
     {
-        if (inProduction)
-        {
-            StopAllCoroutines();
-            m_dialogueProducer_left.StopProduction();
-            m_dialogueProducer_right.StopProduction();
-        }
+        StopDialogue();
         inProduction = true;
         //dialogueBox.GetComponent<Animator>().Play("Appear");
         //ShowTinkerProfile();
@@ -112,7 +103,9 @@ public class DialogueManager : MonoBehaviour
         if (inProduction)
         {
             StopAllCoroutines();
-            HideDialogue();
+            m_dialogueProducer_left.StopProduction();
+            m_dialogueProducer_right.StopProduction();
+            HideDialogue(); // Hiding all by default
         }        
     }
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
@@ -123,6 +116,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator RunThroughDialogue(Dialogue[] dialogues)
     {
+        lastDialogue = dialogues[dialogues.Length - 1];
         foreach (Dialogue dialogue in dialogues)
         {
             //dialogue.OnDialogue.Invoke(); // Any Events that the Dialogue has
@@ -201,7 +195,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Usuer Should mainly hide it
-        //HideDialogue();
+        inProduction = false;
         yield return null;
     }
     private void AdjustProfileSegment(Sprite a_profile, ProfileAlignment alignment)
