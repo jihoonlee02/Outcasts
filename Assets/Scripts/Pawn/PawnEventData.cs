@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -92,9 +93,11 @@ public class PawnEventDataEditor : Editor
     int currPawnEventIdx;
     private bool areYouSure = false;
     private Vector2 eventScroll;
+    //private List<string> m_eventNames;
     private void OnEnable()
     {
         pawnEventArray = serializedObject.FindProperty("pawnEvents");
+        //m_eventNames = new List<string>();
     }
 
     public override void OnInspectorGUI()
@@ -213,16 +216,19 @@ public class PawnEventDataEditor : Editor
 
         GUILayout.FlexibleSpace();
         EditorGUI.BeginDisabledGroup(currPawnEventIdx <= 0);
+        if (GUILayout.Button("<<<=", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx = 0;
         if (GUILayout.Button("<<", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(50f))) currPawnEventIdx--;
         EditorGUI.EndDisabledGroup();
         GUILayout.Space(20);
 
+        //EditorGUILayout.IntPopup(currPawnEventIdx, pawnEventArray.);
         EditorGUILayout.IntField(currPawnEventIdx, GUILayout.MaxWidth(50f));
 
         GUILayout.Space(20);
 
         EditorGUI.BeginDisabledGroup(currPawnEventIdx >= pawnEventArray.arraySize - 1);
         if (GUILayout.Button(">>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx++;
+        if (GUILayout.Button("=>>>", EditorStyles.miniButtonRight, GUILayout.MaxWidth(50f))) currPawnEventIdx = pawnEventArray.arraySize - 1;
         EditorGUI.EndDisabledGroup();
         // Bound the index
         currPawnEventIdx = pawnEventArray.arraySize > 0

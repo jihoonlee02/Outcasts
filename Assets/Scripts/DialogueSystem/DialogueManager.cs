@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             m_dialogueProducer_left.StopProduction();
             m_dialogueProducer_right.StopProduction();
-            HideDialogue(); // Hiding all by default
+            //HideDialogue(); // Hiding all by default
         }        
     }
     private IEnumerator RunThroughDialogue(DialogueObject a_dialogueObject)
@@ -146,7 +146,7 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
 
-            profile.sprite = dialogue.Profile != null ? dialogue.Profile : profile.sprite;
+            if (profile != null && dialogue.Profile != null) profile.sprite = dialogue.Profile;
             if (dialogue.NoWaiting)
             {
                 // Will just run without waiting on dialogue to finish
