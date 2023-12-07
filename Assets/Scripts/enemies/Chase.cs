@@ -26,6 +26,7 @@ public class Chase : MonoBehaviour
 
     private void Start()
     {
+        arrSize = targets.Length;
         if (m_chaseTNA)
         {
             ChangeTargetsToTna();
