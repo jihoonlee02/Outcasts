@@ -76,4 +76,8 @@ public class Camera : MonoBehaviour
     {
         m_smooth = smooth;
     }
+    public void ChangeMoveSpeed(float speed)
+    {
+        m_moveSpeed = speed;
+    }
 }
