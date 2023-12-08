@@ -43,15 +43,12 @@ public class Pooler : MonoBehaviour
         switch (type)
         {
             case ProjectileType.Nail:
-                try
-                {
-                    nails[nailCount].gameObject.SetActive(true);                       
-                }
-                catch(MissingReferenceException e)
+                if (nails[nailCount] == null)
                 {
                     nails[nailCount] = Instantiate(nailFab);
                     nails[nailCount].transform.SetParent(transform, false);
                 }
+                nails[nailCount].gameObject.SetActive(true);
                 nails[nailCount].Fire(spawnPos, direction);
                 nailCount = (nailCount + 1) % (int)ProjectileType.Nail;
                 break;
