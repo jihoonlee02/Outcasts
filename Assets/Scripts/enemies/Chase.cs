@@ -8,11 +8,12 @@ using UnityEngine.EventSystems;
 // Dependent on the existence of TnA since we will NOT have any other player pawns
 public class Chase : MonoBehaviour
 {
-    [SerializeField] private bool m_chaseTNA;
     [SerializeField] private float m_speed = 2f;
     [SerializeField] private float m_angleOffset = -90f;
     [SerializeField] private Transform[] targets;
     [SerializeField] private bool isChasing = false;
+    [SerializeField] private bool prioritizeFirstTarget;
+    [SerializeField, Tooltip("Targets that are not 0 are now likely to be hit in this range")] private float m_anyTargetRadius = 3f;
     private Rigidbody2D m_rb;
     private Vector3 moveDirection;
     private bool isGrabbing = false;
@@ -27,10 +28,6 @@ public class Chase : MonoBehaviour
     private void Start()
     {
         arrSize = targets.Length;
-        if (m_chaseTNA)
-        {
-            ChangeTargetsToTna();
-        }
     }
 
     private void FixedUpdate()
@@ -43,13 +40,14 @@ public class Chase : MonoBehaviour
     }
     private void ChaseTargets()
     {
-        // Figure out whos the closest
+        // Figure out whos the closest and priority
         if (arrSize == 0) return;
         Transform closestTarget = targets[0];
         float closestDistance = Mathf.Infinity;
         for (int i = 0; i < arrSize; i++)
         {
-            if (targets[i].position.magnitude < closestDistance)
+            var mag = (targets[i].position - transform.position).magnitude;
+            if (mag < closestDistance && (!prioritizeFirstTarget || (i == 0 || mag <= m_anyTargetRadius)))
             {
                 closestDistance = targets[i].position.magnitude;
                 closestTarget = targets[i];
@@ -73,10 +71,21 @@ public class Chase : MonoBehaviour
     }
     // When using the ChangeTargets Methods, all original targets get replaced
     // Would be fine, but they should prioritize one or the other really.
-    public void ChangeTargetsToTna()
+    public void ChangeTargetsToTna(bool prioritizeAshe)
     {
-        targets = new Transform[] { GameManager.Instance.Tinker.transform, GameManager.Instance.Ashe.transform };
+        targets = prioritizeAshe ? new Transform[] { GameManager.Instance.Ashe.transform, GameManager.Instance.Tinker.transform } 
+        : new Transform[] { GameManager.Instance.Tinker.transform, GameManager.Instance.Ashe.transform };
         arrSize = 2;
+    }
+    public void ChangeTargetToTinker()
+    {
+        targets = new Transform[] { GameManager.Instance.Tinker.transform };
+        arrSize = 1;
+    }
+    public void ChangeTargetToAshe()
+    {
+        targets = new Transform[] { GameManager.Instance.Ashe.transform };
+        arrSize = 1;
     }
     public void ChangeTargets(Transform transform)
     {
