@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 870884cf663a23d4f9095be73b2f6bc9
+guid: a0f465c6b133273489c24945c07077db
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,85 +117,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tinker-Animation-Move_0
+      name: Ashe-Animation-Jumping_punch_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 2
         y: 0
-        width: 17
-        height: 26
+        width: 28
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c42cd2d59ad30a04ca4e1cf1a2fcce0a
-      internalID: -1903461741
+      spriteID: 1874af7a59ea7c542b53e18967af7985
+      internalID: -1807186188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tinker-Animation-Move_3
+      name: Ashe-Animation-Jumping_punch_1
       rect:
         serializedVersion: 2
-        x: 75
+        x: 35
         y: 0
-        width: 17
-        height: 26
+        width: 24
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fa5de29ccf5e5a42a43cc7912387504
-      internalID: 339302313
+      spriteID: 17941ea00ebd9724fbe15c65ae1cde96
+      internalID: 1492088228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tinker-Animation-Move_1
+      name: Ashe-Animation-Jumping_punch_2
       rect:
         serializedVersion: 2
-        x: 29
+        x: 65
         y: 0
-        width: 17
-        height: 26
+        width: 23
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7827f83cf47d5b34d83f4bf591b9473f
-      internalID: 1451206508
+      spriteID: d79ca9d509b027845b2f17c9a6046c7d
+      internalID: -561291542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tinker-Animation-Move_2
+      name: Ashe-Animation-Jumping_punch_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 96
         y: 0
-        width: 17
-        height: 26
+        width: 26
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 137a95053a2b1dd428e982760abeae41
-      internalID: -486820908
+      spriteID: e20dc7baec88c154187c5f845774ef37
+      internalID: -1032898032
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tinker-Animation-Move_2: -486820908
-      Tinker-Animation-Move_3: 339302313
-      Tinker-Animation-Move_1: 1451206508
-      Tinker-Animation-Move_0: -1903461741
+      Ashe-Animation-Jumping_punch_3: -1032898032
+      Ashe-Animation-Jumping_punch_0: -1807186188
+      Ashe-Animation-Jumping_punch_1: 1492088228
+      Ashe-Animation-Jumping_punch_2: -561291542
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

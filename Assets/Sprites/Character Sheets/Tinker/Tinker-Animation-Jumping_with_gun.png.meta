@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 870884cf663a23d4f9095be73b2f6bc9
+guid: 03c4278029566cd418050b3ac7ad7470
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,85 +117,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tinker-Animation-Move_0
+      name: Tinker-Animation-Jumping_with_gun_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 17
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 23
+        height: 27
+      alignment: 9
+      pivot: {x: 0.615, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c42cd2d59ad30a04ca4e1cf1a2fcce0a
-      internalID: -1903461741
+      spriteID: c909665cbe8582448b252e86f4b9ee17
+      internalID: -2003007032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tinker-Animation-Move_3
+      name: Tinker-Animation-Jumping_with_gun_1
       rect:
         serializedVersion: 2
-        x: 75
+        x: 23
         y: 0
-        width: 17
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 23
+        height: 27
+      alignment: 9
+      pivot: {x: 0.61, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fa5de29ccf5e5a42a43cc7912387504
-      internalID: 339302313
+      spriteID: b807c9351df2ed342920a0df7a69091c
+      internalID: -300812317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tinker-Animation-Move_1
+      name: Tinker-Animation-Jumping_with_gun_2
       rect:
         serializedVersion: 2
-        x: 29
+        x: 46
         y: 0
-        width: 17
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 23
+        height: 27
+      alignment: 9
+      pivot: {x: 0.61, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7827f83cf47d5b34d83f4bf591b9473f
-      internalID: 1451206508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tinker-Animation-Move_2
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 17
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 137a95053a2b1dd428e982760abeae41
-      internalID: -486820908
+      spriteID: 1ff2cc6c89f5acf4c957cfda37e9b2cf
+      internalID: -1132631254
       vertices: []
       indices: 
       edges: []
@@ -211,10 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tinker-Animation-Move_2: -486820908
-      Tinker-Animation-Move_3: 339302313
-      Tinker-Animation-Move_1: 1451206508
-      Tinker-Animation-Move_0: -1903461741
+      Tinker-Animation-Jumping_with_gun_0: -2003007032
+      Tinker-Animation-Jumping_with_gun_1: -300812317
+      Tinker-Animation-Jumping_with_gun_2: -1132631254
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -63,8 +63,10 @@ public class AsheLiftingState : State
         // AND HERE specifically the ash context chagning
         ((AshePawn)m_context).HeldObject.transform.position 
             = new Vector3(m_context.transform.position.x, m_followingY + m_context.transform.position.y, ((AshePawn)m_context).HeldObject.transform.position.z);
-        if (((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>() != null)
-            ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().Animator.SetFloat("MoveX", ((AshePawn)m_context).Animator.GetFloat("MoveX"));
+        // Let Tinker Face Ashe's Moving Direction when held
+        // Disabled to give advantage in paw chase
+        //if (((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>() != null)
+        //    ((AshePawn)m_context).HeldObject.GetComponent<TinkerPawn>().Animator.SetFloat("MoveX", ((AshePawn)m_context).Animator.GetFloat("MoveX"));
     }
     public override void ExitState() 
     {

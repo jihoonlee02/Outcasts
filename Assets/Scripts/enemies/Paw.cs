@@ -40,4 +40,10 @@ public class Paw : MonoBehaviour
         m_boxCollider.enabled = true;
         m_particleSystem?.Stop();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        m_chaser.GrabTarget(other.transform);
+        m_chaser.StopChase();
+    }
 }
