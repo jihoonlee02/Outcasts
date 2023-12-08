@@ -81,12 +81,12 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: What under the--
       speed: 6
-      delay: 2
+      delay: 1
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
+      keepTextAfterDialogue: 1
+    - profile: {fileID: 21300000, guid: 14fa20623e7ffa141b68f97951e09242, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
@@ -98,9 +98,9 @@ MonoBehaviour:
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    invoke: 0
-    activate: 0
-    id: -1
+    invoke: 1
+    activate: 1
+    id: 4
   - pawnEventTitle: RUN!
     pausePawnControl: 0
     resumePawnControl: 1
@@ -121,10 +121,22 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: RUUNN!!
       speed: 8
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 1
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: 
+      speed: 8
       delay: 0
       waitOnInput: 0
       noWaiting: 0
-      hideProfileAfterDialogue: 0
+      hideProfileAfterDialogue: 1
       keepTextAfterDialogue: 0
     invoke: 1
     activate: 1

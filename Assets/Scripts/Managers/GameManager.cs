@@ -389,6 +389,9 @@ public class GameManager : MonoBehaviour
             case TransitionType.Doors:
                 m_transitionAnimator.Play("OpenDoor");
                 break;
+            case TransitionType.BigDoor:
+                m_transitionAnimator.Play("OpenSingleDoor");
+                break;
         }
     }
     public void TransitionExit()
@@ -407,6 +410,9 @@ public class GameManager : MonoBehaviour
             case TransitionType.Doors:
                 m_transitionAnimator.Play("CloseDoor");
                 break;
+            case TransitionType.BigDoor:
+                m_transitionAnimator.Play("CloseSingleDoor");
+                break;
         }
     }
     #endregion
@@ -417,4 +423,5 @@ public enum TransitionType
     None,
     Fade,
     Doors,
+    BigDoor,
 }

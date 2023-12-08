@@ -94,6 +94,14 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.TinkerPC?.EnablePawnControl();
         GameManager.Instance.SC?.EnablePawnControl();    
     }
+    public void ActivateEvent(int id)
+    {
+        EventManager.GetEventManager.Activated.Invoke(id);
+    }
+    public void DeactivateEvent(int id)
+    {
+        EventManager.GetEventManager.Deactivated.Invoke(id);
+    }
     // ------------REMOVE THIS TRASH!!!!!-----------
     public void FaceTinkerRight()
     {

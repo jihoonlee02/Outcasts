@@ -84,4 +84,36 @@ public class TnACameraFollow : MonoBehaviour
     {
         smoothTime = time;
     }
+    public void BoundLeft(bool bound)
+    {
+        boundTheLeft = bound;
+    }
+    public void BoundRight(bool bound)
+    {
+        boundTheRight = bound;
+    }
+    public void BoundTop(bool bound)
+    {
+        boundTheTop = bound;
+    }
+    public void BoundBot(bool bound)
+    {
+        boundTheBot = bound;
+    }
+    public void SetBotBound(float bound)
+    {
+        botBound = bound;
+    }
+    public void SetTopBound(float bound)
+    {
+        topBound = bound;
+    }
+    public void SetRightBound(float bound)
+    {
+        rightBound = bound;
+    }
+    public void SetLeftBound(float bound)
+    {
+        leftBound = bound;
+    }
 }

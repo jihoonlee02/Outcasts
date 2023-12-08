@@ -35429,6 +35429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2308683752198847184, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.225952
+      objectReference: {fileID: 0}
     - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -41938,7 +41942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 30
-  targetPosition: {x: 0, y: -1.44, z: 0}
+  targetPosition: {x: 0, y: -1.3, z: 0}
   m_followEnabled: 1
   m_smooth: 1
   m_cameraShaker: {fileID: 1226954542}

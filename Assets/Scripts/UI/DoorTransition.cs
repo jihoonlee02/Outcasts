@@ -15,7 +15,7 @@ public class DoorTransition : MonoBehaviour
     public void CloseDoors()
     {
         if (!gameObject.activeSelf || doorClosed) return;
-        m_animator.Play("CloseDoor");
+        m_animator.Play("CloseSingleDoor");
         doorClosed = true;
         //StartCoroutine(rumble());
     }
@@ -23,7 +23,7 @@ public class DoorTransition : MonoBehaviour
     public void OpenDoors()
     {
         if (!gameObject.activeSelf || !doorClosed) return;
-        m_animator.Play("OpenDoor");
+        m_animator.Play("OpenSingleDoor");
         doorClosed = false;
     }
 
