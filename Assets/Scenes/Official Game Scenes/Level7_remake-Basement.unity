@@ -55945,6 +55945,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paw_left
       objectReference: {fileID: 0}
+    - target: {fileID: 5438953214683616692, guid: 40b4bec499b019e4db9999353f0d6296, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 131738742, guid: af2fbb56fd2c1a94092c4687293ba0e2, type: 3}
     - target: {fileID: 5438953214683616695, guid: 40b4bec499b019e4db9999353f0d6296, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -57722,11 +57726,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.41
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.06
+      value: -12.64
       objectReference: {fileID: 0}
     - target: {fileID: 997537018556823743, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_LocalPosition.x

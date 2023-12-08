@@ -4891,7 +4891,7 @@ SpriteRenderer:
   m_SortingLayerID: -228331019
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1895686761, guid: ee3a90508a9f92148aed3100443ebdad, type: 3}
+  m_Sprite: {fileID: 131738742, guid: af2fbb56fd2c1a94092c4687293ba0e2, type: 3}
   m_Color: {r: 0.8168832, g: 0.81926566, b: 0.8207547, a: 1}
   m_FlipX: 1
   m_FlipY: 1
@@ -4961,11 +4961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4283b02093177ea4eb83843a4ecd83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_chaseTNA: 0
   m_speed: 2
   m_angleOffset: 0
   targets: []
   isChasing: 0
+  prioritizeFirstTarget: 0
+  m_anyTargetRadius: 3
 --- !u!114 &5243384820544915387
 MonoBehaviour:
   m_ObjectHideFlags: 0
