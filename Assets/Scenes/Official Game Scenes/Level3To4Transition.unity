@@ -59752,6 +59752,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8863727621715869338, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 8863727621715929408, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -64224,7 +64228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2807906669312158389, guid: c94739c8af2b4e34fbee7e5c05c8616f, type: 3}
       propertyPath: chestID
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c94739c8af2b4e34fbee7e5c05c8616f, type: 3}

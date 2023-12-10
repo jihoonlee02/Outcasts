@@ -197,11 +197,11 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: Hey!
       speed: 6
-      delay: 0.4
+      delay: 0
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
+      keepTextAfterDialogue: 1
     - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
       alignment: 0
       externalID: 0
@@ -242,13 +242,37 @@ MonoBehaviour:
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
       alignment: 1
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: I know that didn't
-      speed: 3
+      text: This is not the time to goof off!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: That rubble won't hold them for long!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Those boys don't even know !
+      speed: 6
       delay: 0
       waitOnInput: 1
       noWaiting: 0
