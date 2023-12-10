@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1713408768315621136}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &36186622261584578
 SpriteRenderer:
@@ -157,7 +157,7 @@ RectTransform:
   - {fileID: 5504586156948336660}
   - {fileID: 1954884893448026684}
   m_Father: {fileID: 8860901101698846981}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -255,6 +255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7555233902669774412}
   - {fileID: 36186622261584576}
   - {fileID: 4786329426744662139}
   - {fileID: 5331871878298974565}
@@ -302,9 +303,9 @@ SpriteRenderer:
   m_SortingLayerID: -228331019
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -506278291, guid: dae3bcc240674504ca7d2b5b978b0d1b, type: 3}
+  m_Sprite: {fileID: 1810666735, guid: 27dfca10093fd1940a0f9d6207dfaace, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -363,7 +364,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8860901101698846981}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &2961418654976477516
 CircleCollider2D:
@@ -411,7 +412,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8860901101698846981}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &5331871877691545412
 AudioSource:
@@ -539,7 +540,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1713408768315621136}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5331871878298974567
 SpriteRenderer:
@@ -607,7 +608,7 @@ GameObject:
   m_Layer: 9
   m_Name: NailGun
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -618,13 +619,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5976431864933553678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3327, y: 0.0136, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8860901101698846981}
-  m_RootOrder: 1
+  m_Father: {fileID: 1713408768315621136}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1910975803770333381
 MonoBehaviour:
@@ -1043,7 +1044,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1713408768315621136}
-  - {fileID: 7555233902669774412}
   - {fileID: 5331871877691545413}
   - {fileID: 7948393225752404414}
   - {fileID: 1781641185731388962}
@@ -1403,7 +1403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 833984484977224556, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 833984484977224556, guid: 02c6e1019cdc6c9488db011f5a67c095, type: 3}
       propertyPath: m_LocalPosition.x

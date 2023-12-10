@@ -12,7 +12,10 @@ public class TinkerShootState : State
     }
     public override void UpdateState()
     {
-        if (!((TinkerPawn)m_context).NailGunRef.AudioSource.isPlaying) ((TinkerPawn)m_context).IsShooting = false;
+        if (!((TinkerPawn)m_context).NailGunRef.AudioSource.isPlaying)
+        {
+            ((TinkerPawn)m_context).IsShooting = false;
+        }
     }
     public override void InitializeSubState()
     {
@@ -33,7 +36,7 @@ public class TinkerShootState : State
             SetSubState(m_factory.Grounded());
         }
 
-        m_subState.EnterState();
+        m_subState.EnterState();     
     }
 
     public override void CheckSwitchState()

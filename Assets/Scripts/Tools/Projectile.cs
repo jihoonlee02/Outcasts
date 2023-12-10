@@ -28,27 +28,29 @@ public class Projectile : MonoBehaviour
 
         m_sr.flipX = direction == Vector2.left;
         m_cldr.offset = new Vector2(Mathf.Sign(direction.x) * Mathf.Abs(m_cldr.offset.x), m_cldr.offset.y);
-        if (direction == new Vector2(0.5f, 0.5f))
-        {
-            transform.eulerAngles = new Vector3(0f, 0f, 45);
-            return;
-        }
-        if (direction == new Vector2(0.5f, -0.5f))
-        {
-            transform.eulerAngles = new Vector3(0f, 0f, -45);
-            return;
-        }
-        if (direction == new Vector2(-0.5f, 0.5f))
-        {
-            transform.eulerAngles = new Vector3(0f, 0f, 135);
-            return;
-        }
-        if (direction == new Vector2(-0.5f, -0.5f))
-        {
-            transform.eulerAngles = new Vector3(0f, 0f, -135);
-            return;
-        }
-        transform.eulerAngles = new Vector3(0, 0, direction == Vector2.up ? 90 : direction == Vector2.down ? -90 : 0);
+
+        // Old and farting
+        //if (direction == new Vector2(0.5f, 0.5f))
+        //{
+        //    transform.eulerAngles = new Vector3(0f, 0f, 45);
+        //    return;
+        //}
+        //if (direction == new Vector2(0.5f, -0.5f))
+        //{
+        //    transform.eulerAngles = new Vector3(0f, 0f, -45);
+        //    return;
+        //}
+        //if (direction == new Vector2(-0.5f, 0.5f))
+        //{
+        //    transform.eulerAngles = new Vector3(0f, 0f, 135);
+        //    return;
+        //}
+        //if (direction == new Vector2(-0.5f, -0.5f))
+        //{
+        //    transform.eulerAngles = new Vector3(0f, 0f, -135);
+        //    return;
+        //}
+        //transform.eulerAngles = new Vector3(0, 0, direction == Vector2.up ? 90 : direction == Vector2.down ? -90 : 0);
     }
 
     protected virtual void ImpactHandler(GameObject cogo)

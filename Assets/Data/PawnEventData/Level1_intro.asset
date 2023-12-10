@@ -70,12 +70,12 @@ MonoBehaviour:
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: We should be far away now!
+      text: That was really long!
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -103,7 +103,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Not far enough!
+      text: No kidding!
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: We were almost caught!
+      text: That was over 100 flights!
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Can you be any reckless?
+      text: I'm not even sure this even leads us anywhere
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -150,36 +150,48 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Reckless?
+      text: No, this is the right place!
       speed: 6
-      delay: 1
-      waitOnInput: 0
+      delay: 0
+      waitOnInput: 1
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Come on Ashe!
+      text: We just need to keep moving up and we'll be there.
       speed: 6
-      delay: 1
-      waitOnInput: 0
+      delay: 0
+      waitOnInput: 1
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
-      alignment: 0
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: We've been through worse!
+      text: We just got here!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: How can you know where we are?
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -202,36 +214,24 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Do you even know where we are?
-      speed: 6
-      delay: 0
-      waitOnInput: 1
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: We are now in the middle of earth knows what!
-      speed: 6
-      delay: 0
-      waitOnInput: 1
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: psshh
+      text: Psshh
+      speed: 4
+      delay: 1
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: you know me ashe!
       speed: 6
       delay: 1
       waitOnInput: 0
@@ -255,10 +255,34 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Then where are we?
+      text: We just keep going up and then what?
       speed: 6
       delay: 0
       waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: The surface? Just like that?
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Yeah!
+      speed: 6
+      delay: 2
+      waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
@@ -283,7 +307,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: uhhhh
+      text: I think?
       speed: 6
       delay: 2
       waitOnInput: 0
@@ -306,24 +330,12 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: f1cc8eda911de06468b2e53c60e228e8, type: 3}
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: you know
-      speed: 6
-      delay: 1.5
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
-      alignment: 0
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: 'I have no clue '
+      text: We'll find out on the way!
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -335,8 +347,44 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: of course not
+      text: Back of your paw huh.
       speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Come one! Don't worry!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: You know I've always been good at maze games!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: At this point it is my job to worry.
+      speed: 4
       delay: 0
       waitOnInput: 1
       noWaiting: 0
@@ -363,7 +411,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Let's just find a way out
+      text: Let's just find out where"here" is.
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -373,12 +421,40 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: 0
+  - pawnEventTitle: New Event 11
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.001
+    moveDirection: 1
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I'll show you before you know it!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    invoke: 0
+    activate: 0
+    id: -1
   - pawnEventTitle: Start Level
     pausePawnControl: 0
     resumePawnControl: 1
     transitionTime: 0
     pawnSelection: 0
-    eventAction: 1
+    eventAction: 0
     timeDuration: 0.01
     moveDirection: 1
     moveSpeed: 0.2

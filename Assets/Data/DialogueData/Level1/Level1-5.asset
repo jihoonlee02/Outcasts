@@ -16,8 +16,21 @@ MonoBehaviour:
   - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
     alignment: 1
     externalID: 0
-    typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
     text: Stop goofing off already!
+    speed: 6
+    delay: 2
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
+  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    alignment: 0
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: But your so cute when your mad!!
     speed: 6
     delay: 2
     waitOnInput: 0
@@ -27,10 +40,23 @@ MonoBehaviour:
   - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
     alignment: 1
     externalID: 0
-    typeSound: {fileID: 8300000, guid: 37df49a84551817439fae7d867a37885, type: 3}
-    text: Just let me up
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: Just let me up please.
     speed: 6
-    delay: 1.8
+    delay: 3
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 1
+  - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    alignment: 0
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: 
+    speed: 6
+    delay: 0
     waitOnInput: 0
     noWaiting: 0
     hideProfileAfterDialogue: 1

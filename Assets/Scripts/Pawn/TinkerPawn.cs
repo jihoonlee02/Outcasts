@@ -33,19 +33,19 @@ public class TinkerPawn : Pawn
     }
     public override void PrimaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
-        Vector2 direction;
-
-        try
-        {
-            direction = context.action.actionMap["Movement"].ReadValue<Vector2>();
-        }
-        catch (Exception e)
-        {
-            direction = context.action.actionMap["MoveTinker"].ReadValue<Vector2>();
-        }
-
         m_isShooting = true;
-        m_nailGunReference.UsePrimaryAction(direction);
+        m_nailGunReference.UsePrimaryAction(Vector2.zero);
+        // Doesn't even take input lmao
+        //Vector2 direction;
+
+        //try
+        //{
+        //    direction = context.action.actionMap["Movement"].ReadValue<Vector2>();
+        //}
+        //catch (Exception e)
+        //{
+        //    direction = context.action.actionMap["MoveTinker"].ReadValue<Vector2>();
+        //}
     }
 
     public override void SecondaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())

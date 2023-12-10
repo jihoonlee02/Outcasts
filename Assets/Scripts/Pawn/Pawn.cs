@@ -137,9 +137,8 @@ public class Pawn : MonoBehaviour
     protected void FixedUpdate()
     {
         // Calculates if the Pawn is grounded (better than constantly invoking a subroutine call)
-        isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.size,
-            0f, Vector2.down, .1f, LayerMask.GetMask("Platforms"));
-        //Debug.Log($"Grounded: {isGrounded}");
+        isGrounded = Physics2D.BoxCast(m_collider.bounds.center, m_collider.bounds.extents,
+            0f, Vector2.down, 0.5f, LayerMask.GetMask("Platforms"));
         isJumping = isJumping ? m_rb.velocity.y >= 0.01f : false;
 
         //Make ending of jumps feel more fluid

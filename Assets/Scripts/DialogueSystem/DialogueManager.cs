@@ -51,7 +51,7 @@ public class DialogueManager : MonoBehaviour
         m_inputRequiredSprite.SetActive(false);
         tinkerAnimator = profile_left.GetComponent<Animator>();
         asheAnimator = profile_right.GetComponent<Animator>();
-        HideDialogue();
+        //HideDialogue();
     }
     private void Update()
     {

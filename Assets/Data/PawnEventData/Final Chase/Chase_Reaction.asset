@@ -23,7 +23,7 @@ MonoBehaviour:
     moveDirection: 0
     moveSpeed: 0.2
     jumpForce: 0
-    activeDialogueAtTime: 0
+    activeDialogueAtTime: 1
     waitOnDialogue: 0
     dialogues: []
     invoke: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     moveDirection: 1
     moveSpeed: 0.2
     jumpForce: 0
-    activeDialogueAtTime: 0
+    activeDialogueAtTime: 1
     waitOnDialogue: 0
     dialogues: []
     invoke: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     moveDirection: 1
     moveSpeed: 0.2
     jumpForce: 0
-    activeDialogueAtTime: 0
+    activeDialogueAtTime: 1
     waitOnDialogue: 0
     dialogues: []
     invoke: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: What under the--
+      text: What under the-
       speed: 6
       delay: 1
       waitOnInput: 0
@@ -91,13 +91,13 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: earth??
+      text: earth!
       speed: 6
       delay: 2
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
+      keepTextAfterDialogue: 1
     invoke: 1
     activate: 1
     id: 4
