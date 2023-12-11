@@ -35,11 +35,16 @@ public class AshePunchingState : State
     }
     public override void InitializeSubState()
     {
+
         if (!((AshePawn)m_context).IsGrounded)
         {
             SetSubState(m_factory.Falling());
         }
-        else 
+        else if (((AshePawn)m_context).IsMoving)
+        {
+            SetSubState(m_factory.None());
+        }
+        else
         {
             SetSubState(m_factory.Grounded());
         }

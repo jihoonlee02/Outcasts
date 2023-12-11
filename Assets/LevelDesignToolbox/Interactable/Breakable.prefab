@@ -485,7 +485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_requiresAshe: 1
+  m_requiresHands: 0
   m_requiresTinker: 0
+  restrictPhysicalBreaking: 0
   velocityImpact: 3
 --- !u!212 &6504745310413052669
 SpriteRenderer:
@@ -5461,7 +5463,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.85
       inSlope: 0
       outSlope: 0
       tangentMode: 0

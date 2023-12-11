@@ -13,7 +13,7 @@ public abstract class State
     protected State m_subState;
 
     //Animation Buisness
-    protected string m_animationName;
+    protected string m_animationName = "";
     public string AnimationName => m_animationName;
     public State(Pawn context, PawnStateFactory factory) 
     { 

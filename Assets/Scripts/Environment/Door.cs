@@ -132,10 +132,10 @@ public class Door : Invokee
     }
     protected override void OnActivate()
     {
-        open = !open;
+        open = !initOpen;
     }
     protected override void OnDeactivate()
     {
-        open = !open;
+        open = initOpen;
     }
 }
