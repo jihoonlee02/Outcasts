@@ -15,55 +15,73 @@ MonoBehaviour:
   dialogue:
   - profile: {fileID: 21300000, guid: 754c440d253ba7246a5ab8e458c18fb8, type: 3}
     alignment: 0
-    typeSound: {fileID: 0}
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: Say, what's up with all the weird doors and platforms?
     speed: 3
     delay: 4
-    text: Say, what's up with all the weird doors and platforms?
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
     alignment: 1
-    typeSound: {fileID: 0}
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: Someone did a lot of work around here.
     speed: 3
     delay: 2
-    text: Someone did a lot of work around here.
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
     alignment: 0
-    typeSound: {fileID: 0}
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: This all feels like some kind of security system.
     speed: 3
     delay: 3
-    text: This all feels like some kind of security system.
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: 8e62560163cb52944981b63ef84235c2, type: 3}
     alignment: 1
-    typeSound: {fileID: 0}
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: But we're able to get through.
     speed: 3
     delay: 2
-    text: But we're able to get through.
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 0
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
     alignment: 0
-    typeSound: {fileID: 0}
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: Well, duh! The point of security is to make access hard, not impossible!
     speed: 4
     delay: 4
-    text: Well, duh! The point of security is to make access hard, not impossible!
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 1
+    keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
     alignment: 1
-    typeSound: {fileID: 0}
+    externalID: 0
+    charSound: {fileID: 0}
+    initialSound: {fileID: 0}
+    text: Access to what, though?
     speed: 2
     delay: 4
-    text: Access to what, though?
-    onDialogue:
-      m_PersistentCalls:
-        m_Calls: []
+    waitOnInput: 0
+    noWaiting: 0
+    hideProfileAfterDialogue: 1
+    keepTextAfterDialogue: 0

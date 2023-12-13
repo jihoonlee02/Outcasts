@@ -29718,6 +29718,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8863727621715869338, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 8863727621715929408, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -101114,11 +101118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4283b02093177ea4eb83843a4ecd83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pawnName: 
   m_speed: 6
   m_angleOffset: 0
-  target: {fileID: 1616619871}
+  targets: []
   isChasing: 0
+  prioritizeFirstTarget: 0
+  m_anyTargetRadius: 3
 --- !u!61 &691037204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -105479,6 +105484,7 @@ MonoBehaviour:
   m_moveSpeed: 20
   targetPosition: {x: 0, y: 0, z: -10}
   m_followEnabled: 0
+  m_smooth: 0
   m_cameraShaker: {fileID: 1226954542}
   m_cameraFollow: {fileID: 1226954543}
 --- !u!114 &1226954542
@@ -118618,11 +118624,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4283b02093177ea4eb83843a4ecd83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pawnName: 
   m_speed: 6
   m_angleOffset: 0
-  target: {fileID: 888459163}
+  targets: []
   isChasing: 0
+  prioritizeFirstTarget: 0
+  m_anyTargetRadius: 3
 --- !u!61 &1751545280
 BoxCollider2D:
   m_ObjectHideFlags: 0
