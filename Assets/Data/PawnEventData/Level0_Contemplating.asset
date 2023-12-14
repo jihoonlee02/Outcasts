@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848375227257def40bf6deb2b80bdc8b, type: 3}
+  m_Name: Level0_Contemplating
+  m_EditorClassIdentifier: 
+  pawnEvents:
+  - pawnEventTitle: TnA Sees
+    notCinematic: 0
+    pausePawnControl: 1
+    resumePawnControl: 0
+    transitionTime: 3
+    pawnSelection: 0
+    eventAction: 0
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 1
+    activate: 1
+    id: 7777
+  - pawnEventTitle: Back To Them
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 1
+    pawnSelection: 0
+    eventAction: 0
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 1
+    activate: 0
+    id: 7777
+  - pawnEventTitle: Tinker Speaks
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 0
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Well Look at that!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: A way out!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    invoke: 0
+    activate: 0
+    id: -1

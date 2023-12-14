@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
     protected Collider2D m_cldr;
     protected Transform poolerParent;
     protected bool impacted = false;
+    protected float direction = 1;
+    [SerializeField] protected float forcePower;
+    public float ForcePower => direction * forcePower;
     public void Awake()
     {
         m_sr = GetComponent<SpriteRenderer>();
@@ -24,10 +27,13 @@ public class Projectile : MonoBehaviour
         transform.SetParent(poolerParent, true);
         transform.position = spawnPos;
         m_rb.velocity = direction * 10f;
+        this.direction = direction.x;
         //enabled = true;
 
         m_sr.flipX = direction == Vector2.left;
+        m_cldr.enabled = true;
         m_cldr.offset = new Vector2(Mathf.Sign(direction.x) * Mathf.Abs(m_cldr.offset.x), m_cldr.offset.y);
+        transform.eulerAngles = new Vector3(0, 0, 0);
 
         // Old and farting
         //if (direction == new Vector2(0.5f, 0.5f))
@@ -58,6 +64,7 @@ public class Projectile : MonoBehaviour
         if (!impacted && cogo.gameObject.layer == LayerMask.NameToLayer("Platforms") && cogo.tag != "head")
         {
             m_rb.velocity = Vector3.zero;
+            m_cldr.enabled = false;
             transform.SetParent(cogo.transform, true);
             impacted = true;
         }

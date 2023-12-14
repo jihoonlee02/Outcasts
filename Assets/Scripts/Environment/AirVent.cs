@@ -65,11 +65,13 @@ public class AirVent : MonoBehaviour
     }
 
     public void Activate() {
+        if (activated) return;
         activated = true;
         AirVentManager.ActivateVent(this);
     }
 
     public void Deactivate() {
+        if (!activated) return;
         activated = false;
         AirVentManager.DeactivateVent(this);
     }

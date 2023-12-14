@@ -70,6 +70,7 @@ public class AirVentManager : MonoBehaviour
             }
             foreach (AirVent airVent in tempAL[1]) {
                 airVent.AirVentGroupStruct = airVentGroup;
+                airVent.ChangePower(0);
             }
         }
     }
