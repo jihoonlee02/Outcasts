@@ -9,6 +9,7 @@ public class NoneState : State
     public override void EnterState()
     {
         m_context.Animator.speed = 1;
+        m_context.Animator.Play(m_animationName + m_superState.AnimationName);
     }
 
     public override void UpdateState()

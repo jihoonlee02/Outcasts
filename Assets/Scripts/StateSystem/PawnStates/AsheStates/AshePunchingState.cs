@@ -22,10 +22,6 @@ public class AshePunchingState : State
         m_context.AudioSource.pitch = 1;
         m_context.AudioSource.clip = m_context.Data.ScratchPadSounds[0];
         m_context.AudioSource.Play();
-        if (!((AshePawn)m_context).IsGrounded)
-        {
-            haltPunchOnGround = true;
-        }
     }
     public override void ExitState() 
     {
@@ -36,28 +32,24 @@ public class AshePunchingState : State
     public override void InitializeSubState()
     {
 
-        if (!((AshePawn)m_context).IsGrounded)
+        if (!m_context.IsGrounded)
         {
+            haltPunchOnGround = true;
             SetSubState(m_factory.Falling());
-        }
-        else if (((AshePawn)m_context).IsMoving)
-        {
-            SetSubState(m_factory.None());
         }
         else
         {
-            SetSubState(m_factory.Grounded());
+            SetSubState(m_factory.None());
         }
-
-        
         m_subState.EnterState();
     }
 
     public override void CheckSwitchState()
     {
-        if ((haltPunchOnGround && ((AshePawn)m_context).IsGrounded))
+        if (haltPunchOnGround && m_context.IsGrounded)
         {
             ((AshePawn)m_context).IsPunching = false;
+            haltPunchOnGround = false;
         } 
         if (((AshePawn)m_context).IsLifting || !((AshePawn)m_context).IsPunching)
         {

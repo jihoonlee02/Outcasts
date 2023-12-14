@@ -31,7 +31,7 @@ public class PawnEventController : Invokee
             // TNA Controls
             if (p.PausePawnControl)
             {
-                GameManager.Instance.LevelManager.PausePawnControl();
+                GameManager.Instance.LevelManager.PausePawnControl(!p.NotCinematic);
             }
             if (p.ResumePawnControl)
             {
@@ -48,8 +48,7 @@ public class PawnEventController : Invokee
                     StartCoroutine(StartMoving(pawn, p.TimeDuration, p.MoveSpeed, (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left)));
                     break;
                 case EventAction.Jump:
-                    if (p.JumpForce <= 0) pawn.Jump();
-                    else pawn.Jump(p.JumpForce);
+                    StartCoroutine(StartJumping(pawn, p.TimeDuration, p.JumpForce));
                     break;
                 case EventAction.Punch:
                     pawn.GetComponent<AshePawn>()?.PrimaryAction();
@@ -92,7 +91,28 @@ public class PawnEventController : Invokee
             if (p.Dialogues.Length <= 0 || !p.WaitOnDialogue) yield return new WaitForSeconds(p.Delay); 
         }
     }
-
+    private IEnumerator StartJumping(Pawn pawn, float durationTime, float jumpForce)
+    {
+        if (durationTime <= 0)
+        {
+            if (jumpForce <= 0) pawn.Jump();
+            else pawn.Jump(jumpForce);
+        } 
+        else
+        {
+            float startTime = Time.time;
+            while (Time.time - startTime < durationTime)
+            {
+                if (pawn.IsGrounded)
+                {
+                    if (jumpForce <= 0) pawn.Jump();
+                    else pawn.Jump(jumpForce);
+                }
+               
+                yield return new WaitForFixedUpdate();
+            }
+        }      
+    }
     private IEnumerator StartMoving(Pawn pawn, float durationTime, float moveSpeed, Vector2 moveDirection)
     {
         float startTime = Time.time;

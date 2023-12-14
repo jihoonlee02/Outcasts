@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawnEvents:
   - pawnEventTitle: Start
+    notCinematic: 0
     pausePawnControl: 1
     resumePawnControl: 0
     transitionTime: 0
@@ -30,6 +31,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: Ashe Punch
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
@@ -46,6 +48,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: Ashe Move
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 1.5
@@ -62,6 +65,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: 
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 1.5
@@ -78,6 +82,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: New Event 12
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
@@ -167,6 +172,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Ashes Clearing Front
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
@@ -195,6 +201,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: Tinker Starts Moving
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 1.3
@@ -211,12 +218,13 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: Tinker Jumps
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 2
-    timeDuration: 2
+    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.4
     jumpForce: 0
@@ -239,6 +247,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: Ashe Change Direction
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0.1
@@ -255,12 +264,13 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: 
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 1
     eventAction: 3
-    timeDuration: 2
+    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.4
     jumpForce: 0
@@ -295,6 +305,7 @@ MonoBehaviour:
     activate: 0
     id: 0
   - pawnEventTitle: Tinker Hurt
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
@@ -359,6 +370,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: 
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 1
     transitionTime: 0

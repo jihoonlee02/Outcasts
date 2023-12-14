@@ -63,25 +63,24 @@ public class Gauntlet : Tool
             0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 0.2f);
         foreach (RaycastHit2D hit2D in hit2Ds)
         {
-            if (hit2D.collider.GetComponent<TinkerPawn>())
+            var go = hit2D.collider.gameObject;
+            if (go.GetComponent<TinkerPawn>())
             {
                 currTime = Time.time + animationLength;
                 inUse = true;
-                ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).HeldObject = go;
                 ((AshePawn)m_user).HeldObject.GetComponent<TinkerPawn>().IsHeld = true;
                 StartCoroutine(MoveToAshePaws());
-                //((AshePawn)m_user).IsLifting = true;
                 return;
             }
 
-            if (hit2D.collider.GetComponent<Grabbable>())
+            if (go.GetComponent<Grabbable>())
             {
                 currTime = Time.time + animationLength;
                 inUse = true;
-                ((AshePawn)m_user).HeldObject = hit2D.collider.gameObject;
+                ((AshePawn)m_user).HeldObject = go;
                 ((AshePawn)m_user).HeldObject.GetComponent<Grabbable>().Grab();
                 StartCoroutine(MoveToAshePaws());
-                //((AshePawn)m_user).IsLifting = true;
                 return;
             }
         }

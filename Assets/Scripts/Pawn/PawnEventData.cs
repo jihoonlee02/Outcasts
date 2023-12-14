@@ -22,14 +22,15 @@ public struct PawnEvent
     // Include Dialogue to be ran in Dialogue Manager!
     [Header("Level General")] // More Efficent in a new editor
     [SerializeField] private string pawnEventTitle;
+    [SerializeField] private bool notCinematic;
     [SerializeField] private bool pausePawnControl;
     [SerializeField] private bool resumePawnControl;
     [SerializeField] private float transitionTime;
     [Header("Pawn Specific")]
     [SerializeField] private PawnSelection pawnSelection;
     [SerializeField] private EventAction eventAction;
-    [Header("Movement Event")]
     [SerializeField] private float timeDuration;
+    [Header("Movement Event")]
     [SerializeField] private Direction moveDirection;
     [SerializeField, Range(0.2f, 1f)] private float moveSpeed;
 
@@ -46,6 +47,7 @@ public struct PawnEvent
     [SerializeField] private bool activate;
     [SerializeField] private int id;
     public string Title => pawnEventTitle;
+    public bool NotCinematic => notCinematic;
     public bool PausePawnControl => pausePawnControl;
     public bool ResumePawnControl => resumePawnControl;
     public PawnSelection PawnSelection => pawnSelection;

@@ -80,12 +80,16 @@ public class LevelManager : MonoBehaviour
         exited = true;
 
     }
-    public void PausePawnControl()
+    public void PausePawnControl(bool useCinematic)
     {
-        GameManager.Instance.ActivateCinematic();
+        if (useCinematic) GameManager.Instance.ActivateCinematic();
         GameManager.Instance.AshePC?.DisablePawnControl();
         GameManager.Instance.TinkerPC?.DisablePawnControl();
         GameManager.Instance.SC?.DisablePawnControl();
+    }
+    public void PausePawnControl()
+    {
+        PausePawnControl(true);
     }
     public void ResumePawnControl()
     {

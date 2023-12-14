@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     private bool tranistionExited = false;
     private bool tranistionEntered = false;
+    private bool cinematicActive = false;
     private void Awake()
     {
         // Just in case the gameManager finds itself in the same scene
@@ -366,11 +367,15 @@ public class GameManager : MonoBehaviour
     }
     public void ActivateCinematic()
     {
+        if (cinematicActive) return;
+        cinematicActive = true;
         m_cinematicCover.Play("CinematicOpen");
     }
 
     public void DeactivateCinematic()
     {
+        if (!cinematicActive) return;
+        cinematicActive = false;
         m_cinematicCover.Play("CinematicClose");
     }
     public void TransitionEnter()
