@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawnEvents:
   - pawnEventTitle: Tinker Walk In
+    notCinematic: 0
     pausePawnControl: 1
     resumePawnControl: 0
     transitionTime: 0
@@ -30,6 +31,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Ashe Walk In
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 1.3
@@ -46,6 +48,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Tinker Jump
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0.3
@@ -62,6 +65,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Ashe Jump
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 2
@@ -78,6 +82,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Tinke Turn and Speak
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
@@ -118,6 +123,7 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Paw Chase
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0

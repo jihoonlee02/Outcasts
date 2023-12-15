@@ -5,9 +5,12 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     [Header("Modifiers")]
-    [SerializeField, Range(0f,1f)] private float m_strength = 0.1f;
-    [SerializeField, Range(0f, 1f)] private float m_radius = 0.125f;
-    [SerializeField, Range(0.1f, 5f)] private float m_speed = 1f;
+    [SerializeField] public bool m_horizontal = true;
+    [SerializeField] public bool m_vertical = true;
+    [SerializeField, Range(0f,1f)] public float m_strength = 0.1f;
+    [SerializeField, Range(0f, 1f)] public float m_radius = 0.125f;
+    [SerializeField, Range(0.1f, 5f)] public float m_speed = 1f;
+    [SerializeField] private AudioSource m_audioSource;
     
     #region Technical
     private Vector3 savedPosition;
@@ -22,16 +25,21 @@ public class CameraShake : MonoBehaviour
     {
         if (isShaking)
         {
-            Vector3 offset = new Vector3(Mathf.Sin(Random.value * 10), Mathf.Sin(Random.value * 10), 0) * m_strength;
+            Vector3 offset = new Vector3(m_horizontal ? Mathf.Sin(Random.value * 10) : 0, m_vertical ? Mathf.Sin(Random.value * 10) : 0, 0) * m_strength;
             transform.position = savedPosition + offset;
         }    
     }
     public void StartShaking()
     {
+        if (isShaking)
+        {
+            StopAllCoroutines();
+        }
         isShaking = true;
         savedPosition = transform.position;
         dist = 0f;
         power = m_strength * (1 / 100f);
+        m_audioSource?.Play();
     }
 
     public void StartShaking(float strength = 0.1f, float radius = 0.125f, float speed = 1f)
@@ -81,5 +89,6 @@ public class CameraShake : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         StopShaking();
+        m_audioSource?.Stop();
     }
 }

@@ -37334,9 +37334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c84afe894fe304d815884d02235ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_horizontal: 1
+  m_vertical: 1
   m_strength: 0.1
   m_radius: 0.125
   m_speed: 1
+  m_audioSource: {fileID: 0}
 --- !u!1001 &1290690138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37800,6 +37803,10 @@ PrefabInstance:
     - target: {fileID: 256562450016785141, guid: 9f955390152d34b44b58e3d6f49918ba, type: 3}
       propertyPath: m_Name
       value: DialogueInvokee
+      objectReference: {fileID: 0}
+    - target: {fileID: 256562450016785141, guid: 9f955390152d34b44b58e3d6f49918ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6312567656344859557, guid: 9f955390152d34b44b58e3d6f49918ba, type: 3}
       propertyPath: m_RootOrder

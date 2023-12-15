@@ -31,10 +31,9 @@ public class AshePunchingState : State
     }
     public override void InitializeSubState()
     {
-
-        if (!m_context.IsGrounded)
+        if (!m_context.IsGrounded || m_context.IsJumping)
         {
-            haltPunchOnGround = true;
+            //haltPunchOnGround = true;
             SetSubState(m_factory.Falling());
         }
         else
