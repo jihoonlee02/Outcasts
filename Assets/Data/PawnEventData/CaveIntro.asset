@@ -95,60 +95,12 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Great.... more cave!
-      speed: 5
-      delay: 2
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
       alignment: 1
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
       text: Just our luck.
-      speed: 6
-      delay: 0
-      waitOnInput: 1
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: First, breaking into the Rat King's Castle, then getting caught.
-      speed: 6
-      delay: 0
-      waitOnInput: 1
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Now getting burrowed in here!
-      speed: 6
-      delay: 0
-      waitOnInput: 1
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: What mess have you put us in Tinker.
       speed: 4
       delay: 0
       waitOnInput: 1
@@ -160,9 +112,56 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Some times I wonder why you continue to be so stubborn. [Put For later
-        stage]
-      speed: 8
+      text: First, we barely cross the bridge to the king's castle.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Get spotted in under a minute.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Then, get chased for rat knows how long.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: And then, get burrowed all the way down here.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 2bbcdd7718097384fa77f69fea9d2c82, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: How do I keep putting up with her.
+      speed: 4
       delay: 0
       waitOnInput: 1
       noWaiting: 0
@@ -177,7 +176,7 @@ MonoBehaviour:
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 1
-    eventAction: 1
+    eventAction: 3
     timeDuration: 0.001
     moveDirection: 1
     moveSpeed: 0.2
@@ -185,21 +184,120 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+    - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
       alignment: 1
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Tinker come one! Its safe now.
+      text: Agh!
       speed: 4
       delay: 1
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 1
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: 'There is no time! '
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Keep your head up ashe!
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c681f2583894d9941a3de3ed5b2e94db, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Let's just find a way outta here.
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: 0
+  - pawnEventTitle: New Event 15
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 1
+    timeDuration: 0.001
+    moveDirection: 1
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: New Event 14
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Ashe Calls Over tinker
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 3
+    timeDuration: 0
+    moveDirection: 1
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Come on Tinker! Its safe!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    invoke: 0
+    activate: 0
+    id: -1
   - pawnEventTitle: Tinker Starts Moving
     notCinematic: 0
     pausePawnControl: 0
@@ -283,7 +381,7 @@ MonoBehaviour:
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
       text: Hey!
-      speed: 6
+      speed: 10
       delay: 0
       waitOnInput: 0
       noWaiting: 0
@@ -347,7 +445,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: That rubble won't hold them for long!
+      text: That rubble won't hold those guards for long!
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -359,7 +457,205 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Those boys don't even know !
+      text: Haha, you really think I'm worried about them?
+      speed: 4
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Those boys don't even know the difference between their own spears!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 2ca8846a3715ea7489b74d020ca3e36f, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Those "boys," were the sames ones who caught us trying to invade the
+        castle.
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: True.
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: But we got away unscathed.
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: bcfc067426c881948bf11b6af1af93a4, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Can you not take this so lightly?
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: We are trapped down here!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: It's alright Ashe!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: We hadn't reached a dead end have we?
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: New Event 16
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 1
+    timeDuration: 0.001
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: How about we see what's up ahead and then lose our minds later?
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I feel you have already lost that the day you claimed you were a mouse.
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: And I am!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: That's besides the point!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Let's stay postive and find a way out!
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: d64955f235e20b54daeafd315cfb52eb, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Lead the way as you always do.
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: You betcha Ashe!
       speed: 6
       delay: 0
       waitOnInput: 1

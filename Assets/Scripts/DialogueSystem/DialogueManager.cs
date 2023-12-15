@@ -40,6 +40,8 @@ public class DialogueManager : MonoBehaviour
     private Dialogue lastDialogue;
     private Animator tinkerAnimator;
     private Animator asheAnimator;
+    private bool asheHidden = true;
+    private bool tinkerHidden = true;
 
     private void Start()
     {
@@ -84,18 +86,26 @@ public class DialogueManager : MonoBehaviour
     }
     public void HideAsheProfile()
     {
+        if (asheHidden) return;
+        asheHidden = true;
         asheAnimator?.Play("HideAshe");
     }
     public void HideTinkerProfile()
     {
+        if (tinkerHidden) return;
+        tinkerHidden = true;
         tinkerAnimator?.Play("HideTinker");
     }
     public void ShowAsheProfile()
     {
+        if (!asheHidden) return;
+        asheHidden = false;
         asheAnimator?.Play("ShowAshe");
     }
     public void ShowTinkerProfile()
     {
+        if (!tinkerHidden) return;
+        tinkerHidden = false;
         tinkerAnimator?.Play("ShowTinker");
     }
     public void StopDialogue()

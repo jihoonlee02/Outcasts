@@ -18,11 +18,13 @@ MonoBehaviour:
     externalID: 0
     charSound: {fileID: 0}
     initialSound: {fileID: 0}
-    text: 
-    speed: 0
+    text: '
+
+'
+    speed: 6
     delay: 0
     waitOnInput: 0
-    noWaiting: 1
+    noWaiting: 0
     hideProfileAfterDialogue: 1
     keepTextAfterDialogue: 0
   - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}

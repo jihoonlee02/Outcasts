@@ -39,6 +39,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2682638716283226737, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: m_Name
+      value: punchOrShoot
+      objectReference: {fileID: 0}
     - target: {fileID: 3806318643212420735, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -414,6 +418,18 @@ PrefabInstance:
     - target: {fileID: 7734134220026967301, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788963913253394242, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: m_Name
+      value: punchOrShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788963913253394242, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8203417444579063060, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: m_Name
+      value: xButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2a11b01df352045acb9786d228d851, type: 3}

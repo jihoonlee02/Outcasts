@@ -410,6 +410,7 @@ public class Pawn : MonoBehaviour
 public enum AlertType
 {
     Alert,
-    xbutton,
-    downKey,
+    punchOrShoot,
+    jump,
+    grab
 }
