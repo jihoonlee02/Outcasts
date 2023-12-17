@@ -635,6 +635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4390724550975800429, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4390724551265991545, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: m_Size.x
       value: 32
@@ -24618,9 +24622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c84afe894fe304d815884d02235ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_horizontal: 1
+  m_vertical: 1
   m_strength: 0.1
   m_radius: 0.125
   m_speed: 1
+  m_audioSource: {fileID: 0}
 --- !u!114 &1226954543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26164,6 +26171,10 @@ PrefabInstance:
     - target: {fileID: 4390724550975800429, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390724550975800429, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4390724551265991545, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: m_Size.x

@@ -1237,11 +1237,6 @@ MonoBehaviour:
   - {x: 120.51, y: 8.92}
   speed: 1
   autoMove: 0
---- !u!4 &18640433 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 997537018556823743, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
-  m_PrefabInstance: {fileID: 392282554}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &35186269
 GameObject:
   m_ObjectHideFlags: 0
@@ -77732,11 +77727,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &269304890 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 997537018379257555, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
-  m_PrefabInstance: {fileID: 392282554}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &329601670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79803,7 +79793,7 @@ PrefabInstance:
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_asheSpawn
       value: 
-      objectReference: {fileID: 269304890}
+      objectReference: {fileID: 1700085419}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_nextScene
       value: Level1
@@ -79819,7 +79809,7 @@ PrefabInstance:
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_tinkerSpawn
       value: 
-      objectReference: {fileID: 18640433}
+      objectReference: {fileID: 234722596}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_transitionExit
       value: 1
@@ -110408,7 +110398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8168326445940716626, guid: bdef7e8ba6349ec45ab0934461ecfb76, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdef7e8ba6349ec45ab0934461ecfb76, type: 3}
@@ -119860,7 +119850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5894873018757677855, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8654875393880184968, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_AnchorMax.y
