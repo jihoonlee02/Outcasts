@@ -347,6 +347,10 @@ public class GameManager : MonoBehaviour
             Destroy(transform.parent.gameObject);
             return;
         }
+        m_ashe.IsLifting = false;
+        m_tinker.IsHeld = false;
+        m_tinker.transform.SetParent(m_levelThings, true);
+        m_ashe.transform.SetParent(m_levelThings, true);
         DontDestroyOnLoad(m_tinker);
         DontDestroyOnLoad(m_ashe);
     }

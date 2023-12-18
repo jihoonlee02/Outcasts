@@ -411,6 +411,5 @@ public enum AlertType
 {
     Alert,
     punchOrShoot,
-    jump,
-    grab
+    pawnName,
 }
