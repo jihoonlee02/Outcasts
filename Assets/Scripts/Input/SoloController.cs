@@ -10,6 +10,8 @@ public class SoloController : MonoBehaviour
     [SerializeField] private TinkerPawn m_tinkerPawn;
     [SerializeField] private AshePawn m_ashePawn;
     public PlayerInput PlayerInput => m_playerInput;
+    public bool PawnControlDisabled => pawnControlDisabled;
+    private bool pawnControlDisabled;
 
     private void Awake()
     {
@@ -118,11 +120,13 @@ public class SoloController : MonoBehaviour
     }
     public void EnablePawnControl()
     {
+        pawnControlDisabled = false;
         m_playerInput.actions.actionMaps[0].Enable();
         m_playerInput.actions["Join"].Disable();
     }
     public void DisablePawnControl()
     {
+        pawnControlDisabled = true;
         m_playerInput.actions.actionMaps[0].Disable();
     }
 }

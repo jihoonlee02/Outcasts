@@ -38,17 +38,31 @@ public class AsheLiftingState : State
 
         // Ignore the Collision of the HeldObjectCollider and the current HeldObject Collider --> mouth full IK but trust it works
         // This Guy lies, its wack as fuck don't trust it!
-        Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, true);
+        
         
         // Disable Held object's Collider
         //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = false;
 
         // Adjust HeldObject Collider to collision of held object
-        ((AshePawn)m_context).HeldObjectCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCollider.offset.x, m_followingY);
-        ((BoxCollider2D)((AshePawn)m_context).HeldObjectCollider).size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
         
+        if (((AshePawn)m_context).HeldObject.GetComponent<CircleCollider2D>() != null)
+        {
+            Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCircleCollider, true);
+            ((AshePawn)m_context).HeldObjectCircleCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectCircleCollider.offset.x, m_followingY);
+            ((AshePawn)m_context).HeldObjectCircleCollider.radius = ((AshePawn)m_context).HeldObject.GetComponent<CircleCollider2D>().radius;
+            ((AshePawn)m_context).HeldObjectCircleCollider.enabled = true;
+        }  
+        else
+        {
+            Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectBoxCollider, true);
+            ((AshePawn)m_context).HeldObjectBoxCollider.offset = new Vector2(((AshePawn)m_context).HeldObjectBoxCollider.offset.x, m_followingY);
+            ((AshePawn)m_context).HeldObjectBoxCollider.size = Vector2.Scale(((AshePawn)m_context).HeldObject.GetComponent<BoxCollider2D>().size, ((AshePawn)m_context).HeldObject.transform.localScale);
+            ((AshePawn)m_context).HeldObjectBoxCollider.enabled = true;
+        }
+            
+
         // Enable that collider
-        ((AshePawn)m_context).HeldObjectCollider.enabled = true;
+        
 
     }
     public override void UpdateState()
@@ -73,7 +87,8 @@ public class AsheLiftingState : State
         if (((AshePawn)m_context).HeldObject == null)
         {
             // Either destroyed or already taken care of.
-            ((AshePawn)m_context).HeldObjectCollider.enabled = false;
+            ((AshePawn)m_context).HeldObjectBoxCollider.enabled = false;
+            ((AshePawn)m_context).HeldObjectCircleCollider.enabled = false;
             return;
         }
         if (((AshePawn)m_context).HeldObject.tag == "Tinker")
@@ -91,13 +106,15 @@ public class AsheLiftingState : State
         // ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
 
         // Disable the Ashe's HeldObjectCollider
-        ((AshePawn)m_context).HeldObjectCollider.enabled = false;
+        ((AshePawn)m_context).HeldObjectCircleCollider.enabled = false;
+        ((AshePawn)m_context).HeldObjectBoxCollider.enabled = false;
 
         // Enable Held Object's Collider
         //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = true;
 
         // Unignore the Collision of the HeldObjectCollider and the current HeldObject Collider
-        Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCollider, false);
+        Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCircleCollider, false);
+        Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectBoxCollider, false);
 
         // Remove Held Object
         ((AshePawn)m_context).HeldObject = null;

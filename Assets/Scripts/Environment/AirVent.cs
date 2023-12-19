@@ -102,10 +102,12 @@ public class AirVent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         GameObject gObject = other.gameObject;
         Rigidbody2D gRBody = other.attachedRigidbody;
+        if (gObject == null || gRBody == null) return;
+        var box = gObject.GetComponent<Box>();
         if (gRBody.velocity.y < 0) {
             if (gObject.tag == "Tinker") {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y/5.0f);
-            } else if (gObject.tag == "physical" && gObject.GetComponent<Box>() != null && !gObject.GetComponent<Box>().IsHeavy) {
+            } else if (gObject.tag == "physical" && box != null && !box.IsHeavy) {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
             }
         }
@@ -114,10 +116,15 @@ public class AirVent : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         GameObject gObject = other.gameObject;
         Rigidbody2D gRBody = other.attachedRigidbody;
-        if (gObject.tag == "Tinker" || (gObject.tag == "physical" && gObject.GetComponent<Box>() == null) || !gObject.GetComponent<Box>().IsHeavy) {
+        if (gObject == null || gRBody == null) return;
+        var box = gObject.GetComponent<Box>();
+
+        if (gObject.tag == "Tinker" 
+            || (box == null && gObject.tag == "physical") 
+            || (box != null && !box.IsHeavy)) {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
-            if (gObject.tag == "physical" && gObject.GetComponent<Box>() != null && !gObject.GetComponent<Box>().IsHeavy) {
+            if (gObject.tag == "physical" && box != null && !box.IsHeavy) {
                 if (gRBody.velocity.y < 0) {
                     gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
                 }

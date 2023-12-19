@@ -7,7 +7,7 @@ public class PawnEventController : Invokee
 {
     [Header("Pawn Event Controller Specs")]
     [SerializeField] private PawnEventData m_pawnEventData;
-    private void Start()
+    private new void Start()
     {
         base.Start();
         if (GameManager.Instance == null)

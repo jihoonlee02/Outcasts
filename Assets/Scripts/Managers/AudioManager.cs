@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         m_AudioSource = GetComponent<AudioSource>();
     }
 

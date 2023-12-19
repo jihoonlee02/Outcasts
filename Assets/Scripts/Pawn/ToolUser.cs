@@ -31,7 +31,7 @@ public class ToolUser : Pawn
     //Used to initizlize tools in inspector
     [SerializeField] private Tool[] m_tools;
 
-    protected void Start()
+    protected new void Start()
     {
         base.Start();
         head = null;

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_controllerPanel;
     public Pawn ControlledPawn => controlledPawn;
     public PlayerInput PlayerInput => m_playerInput;
+    public bool PawnControlDisabled => pawnControlDisabled;
     public bool JumpActive
     {
         set 
@@ -72,6 +73,9 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #region Technical
+    private bool pawnControlDisabled;
+    #endregion
 
     private void Awake()
     {
@@ -103,13 +107,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //Old -- Using a new InputActions()
-        //controlledPawn.Move(m_inputActions.Player.Movement.ReadValue<Vector2>());
-
-        //Using PlayerInput itself
-        // Hardcoded threshold disgusting
-        // CURRENTLY HANDLES PAWN PHYSICS! -> When its not called, the physics and animation stops working correctly
-        // Pawn should be handling its own physics while this should delgate the force, thats it!
+        // Movement handle
         Vector2 inputVector = m_playerInput.actions["Movement"].ReadValue<Vector2>();
         inputVector.x = (Mathf.Abs(inputVector.x) > 0.6f) ? Mathf.Sign(inputVector.x) : 0;
         controlledPawn?.Move(inputVector);
@@ -120,27 +118,27 @@ public class PlayerController : MonoBehaviour
         //This certainly could be coupled :p
         if (context.performed)
         {
-            controlledPawn.Jump();
+            controlledPawn?.Jump();
         }
         if (context.canceled)
         {
-            controlledPawn.JumpCut();
+            controlledPawn?.JumpCut();
         }
     }
     private void UseToolPrimaryAction(InputAction.CallbackContext context)
     {
-        controlledPawn.PrimaryAction(context);
+        controlledPawn?.PrimaryAction(context);
     }
     private void UseToolSecondaryAction(InputAction.CallbackContext context)
     {
-        controlledPawn.SecondaryAction(context);
+        controlledPawn?.SecondaryAction(context);
     }
-    //VERY COUPPLED DO NOT PUSH FOR FINAL GAME
+    // Interact Action is Unused
     private void InteractAction(InputAction.CallbackContext context)
     {
         //GameManager.Instance.CurrLevelManager.OnLevelExit();
         //SlideManager.Instance.CurrSlide.RemoveInfo();
-        controlledPawn.ToggleGrabRope();
+        controlledPawn?.ToggleGrabRope();
     }
     private void PauseAction(InputAction.CallbackContext context)
     {
@@ -173,13 +171,16 @@ public class PlayerController : MonoBehaviour
     }
     public void EnablePawnControl()
     {
+        pawnControlDisabled = false;
         m_playerInput.actions.actionMaps[0].Enable();
         m_playerInput.actions["Join"].Disable();
     }
     public void DisablePawnControl()
     {
+        pawnControlDisabled = true;
         m_playerInput.actions.actionMaps[0].Disable();
-        m_playerInput.actions["Pause"].Enable();
+        //m_playerInput.actions["Pause"].Enable(); --> (Ryan) There are no instances where this is beneficial so far
+        // Plus this is too jank for my liking ;-;
     }
     private IEnumerator ShowControlSchemeUsed()
     {

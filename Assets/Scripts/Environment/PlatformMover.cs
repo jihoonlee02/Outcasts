@@ -6,10 +6,11 @@ using UnityEditor;
 
 public class PlatformMover : Invokee
 {
-    [Header("Options")]
+    [Header(" Platform Options")]
     [SerializeField] private Vector2[] m_waypoints;
     [SerializeField, Range(0f, 10f)] private float speed = 1f;
     [SerializeField] private bool autoMove;
+    [SerializeField] private bool noHaltOnCollisions;
     private float activeCount;
 
     # if UNITY_EDITOR
@@ -21,7 +22,7 @@ public class PlatformMover : Invokee
     private bool haltAutoMove = false;
     private int count_collisions;
 
-    private void Start()
+    private new void Start()
     {
         base.Start();
         transform.localPosition = m_waypoints[idx];
@@ -134,6 +135,7 @@ public class PlatformMover : Invokee
         //    collision.transform.SetParent(transform);
         //}
         //else
+        if (noHaltOnCollisions) return;
         if (collision.gameObject.tag != "physical"
             && collision.gameObject.layer != LayerMask.NameToLayer("Camera") 
             && collision.gameObject.layer != LayerMask.NameToLayer("Players"))
@@ -157,6 +159,7 @@ public class PlatformMover : Invokee
         //    objectsOnPlatform.Remove(collision.transform);
         //}
         //else 
+        if (noHaltOnCollisions) return;
         if (collision.gameObject.tag != "physical"
             && collision.gameObject.layer != LayerMask.NameToLayer("Camera") 
             && collision.gameObject.layer != LayerMask.NameToLayer("Players"))

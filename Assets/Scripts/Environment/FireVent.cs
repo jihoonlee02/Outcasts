@@ -23,8 +23,9 @@ public class FireVent : Invokee
     private float durationSwitch = 0f;
     
     #endregion
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         m_associatedFire = GetComponentInChildren<Fire>();
         durationSwitch = Time.time + delay; 
     }

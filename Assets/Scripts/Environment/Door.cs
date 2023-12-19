@@ -21,9 +21,10 @@ public class Door : Invokee
     private float doorDist;
     private float perOpen = 1.0f;
     private bool initOpen;
+    private int activeCount;
 
     // Start is called before the first frame update
-    protected void Start()
+    protected new void Start()
     {
         base.Start();
         initOpen = open;
@@ -132,10 +133,13 @@ public class Door : Invokee
     }
     protected override void OnActivate()
     {
-        open = !initOpen;
+        if (activeCount < 1) open = !initOpen;
+        activeCount++;
     }
     protected override void OnDeactivate()
     {
-        open = initOpen;
+        if (activeCount == 1) open = initOpen;
+
+        if (activeCount > 0) activeCount--;
     }
 }

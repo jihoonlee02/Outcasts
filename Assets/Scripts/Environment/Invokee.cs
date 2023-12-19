@@ -21,9 +21,6 @@ public abstract class Invokee : MonoBehaviour
     [SerializeField, Tooltip("Runs Deactivate during scene load")] 
     private bool deactivateOnStart = false;
 
-    #region Technical
-    private float currentDelayTime = 0f;
-    #endregion
 
     protected void Awake()
     {

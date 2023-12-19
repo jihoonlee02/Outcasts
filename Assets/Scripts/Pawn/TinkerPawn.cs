@@ -25,7 +25,7 @@ public class TinkerPawn : Pawn
         set { m_isJumpingOff = value;}
     }
     public NailGun NailGunRef => m_nailGunReference;
-    protected void Start()
+    protected new void Start()
     {
         base.Start();
         CurrentState = m_states.TinkerDefaultState();

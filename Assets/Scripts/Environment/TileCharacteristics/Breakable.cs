@@ -8,23 +8,25 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D), typeof(Renderer), typeof(AudioSource))]
 public class Breakable : MonoBehaviour
 {
-    private ParticleSystem particle;
-    private BoxCollider2D collider;
-    private TilemapRenderer renderer;
-    private AudioSource m_AudioSource;
+    
     [SerializeField] private bool m_requiresAshe = true;
-    [SerializeField] private bool m_requiresHands = false;
     [SerializeField, Tooltip("No Implementation with this one yet")]
     private bool m_requiresTinker = false;
     [SerializeField] private bool restrictPhysicalBreaking = false;
     private bool broken = false;
     [SerializeField] private float velocityImpact = 3f;
 
+    // References
+    private ParticleSystem m_particle;
+    private BoxCollider2D m_collider;
+    private TilemapRenderer m_renderer;
+    private AudioSource m_AudioSource;
+
     private void Start() 
     {
-        particle = gameObject.GetComponent<ParticleSystem>();
-        collider = gameObject.GetComponent<BoxCollider2D>();
-        renderer = gameObject.GetComponentInChildren<TilemapRenderer>();
+        m_particle = gameObject.GetComponent<ParticleSystem>();
+        m_collider = gameObject.GetComponent<BoxCollider2D>();
+        m_renderer = gameObject.GetComponentInChildren<TilemapRenderer>();
         m_AudioSource = gameObject.GetComponent<AudioSource>();
     }
     public void ActivateBreak()
@@ -35,11 +37,11 @@ public class Breakable : MonoBehaviour
     }
     public IEnumerator Break()
     {
-        particle.Play();
-        collider.enabled = false;
+        m_particle.Play();
+        m_collider.enabled = false;
         //renderer.enabled = false;
         // Replaced with this in order to destroy floating nails
-        Destroy(renderer.gameObject);
+        Destroy(m_renderer.gameObject);
         foreach (Transform child in transform)
         {
             if (child.GetComponent<Projectile>())
@@ -48,7 +50,7 @@ public class Breakable : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
         }
-        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+        yield return new WaitForSeconds(m_particle.main.startLifetime.constantMax);
 
         Destroy(gameObject);
     }

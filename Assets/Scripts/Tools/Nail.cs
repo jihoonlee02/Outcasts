@@ -8,7 +8,7 @@ public class Nail : Projectile
     [SerializeField] private AudioClip m_impactClip;
     private AudioSource m_audioSource;
 
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
         m_audioSource = GetComponent<AudioSource>();

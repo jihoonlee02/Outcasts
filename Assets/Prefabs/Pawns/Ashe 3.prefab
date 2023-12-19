@@ -405,7 +405,7 @@ MonoBehaviour:
   m_maxPitch: 1.7
   m_gauntletReference: {fileID: 8473621029046522648}
   m_liftingRegion: {fileID: 6018755371134081558}
-  m_heldObjectCollider: {fileID: 1741709230608177317}
+  m_heldObjectCollider: {fileID: 3591032743673165923}
   HeldObject: {fileID: 0}
 --- !u!50 &5788782832889509122
 Rigidbody2D:
@@ -506,6 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6190693858230538305}
   - component: {fileID: 1741709230608177317}
+  - component: {fileID: 3069217880834020694}
   m_Layer: 9
   m_Name: HeldObjectCollider
   m_TagString: Untagged
@@ -554,6 +555,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &3069217880834020694
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591032743673165923}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3808633479617949239
 GameObject:
   m_ObjectHideFlags: 0

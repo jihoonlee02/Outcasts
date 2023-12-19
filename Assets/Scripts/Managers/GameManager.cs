@@ -112,9 +112,9 @@ public class GameManager : MonoBehaviour
         if (m_visualCanvas == null) { Debug.LogError("Error: VisualCanvas is Missing as an instance in GameManger!"); }
 
         // Initial Unaffected Dont Destroys
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(m_visualCanvas);
-        DontDestroyOnLoad(transform.parent);
+        //DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(m_visualCanvas);
+        //DontDestroyOnLoad(transform.parent);
     }
 
     public void HandlePlayerControllerEnter(PlayerInput pi)
@@ -142,6 +142,10 @@ public class GameManager : MonoBehaviour
                 m_tinkerPC.PlayerInput.actions["Join"].Disable();
                 GivePawn(m_tinkerPC, m_tinker);
             }
+            if (m_pim.playerCount >= m_pim.maxPlayerCount)
+            {
+                m_pim.DisableJoining();
+            }
             return;
         } 
         
@@ -153,6 +157,7 @@ public class GameManager : MonoBehaviour
             sc.ControlTnAPawns(m_tinker, m_ashe);
             m_SC = sc;   
             m_SC.PlayerInput.actions["Join"].Disable();
+            m_pim.DisableJoining();
         }
     }
 
@@ -182,6 +187,10 @@ public class GameManager : MonoBehaviour
 
             pc.ControlPawn(null);
             Destroy(pc.gameObject);
+            if (m_pim.playerCount < m_pim.maxPlayerCount)
+            {
+                m_pim.EnableJoining();
+            }
             return;
         }
 
@@ -246,7 +255,7 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         m_tinkerPC?.DisablePawnControl();
         m_ashePC?.DisablePawnControl();
-        //m_SC?.DisablePawnControl();
+        m_SC?.DisablePawnControl();
         UIManager.Instance.OpenPauseMenu(pc);
     }
 
@@ -255,7 +264,7 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         m_tinkerPC?.EnablePawnControl();
         m_ashePC?.EnablePawnControl();
-        //m_SC?.EnablePawnControl();
+        m_SC?.EnablePawnControl();
         UIManager.Instance.ClosePauseMenu();
     }
 
@@ -351,8 +360,9 @@ public class GameManager : MonoBehaviour
         m_tinker.IsHeld = false;
         m_tinker.transform.SetParent(m_levelThings, true);
         m_ashe.transform.SetParent(m_levelThings, true);
-        DontDestroyOnLoad(m_tinker);
-        DontDestroyOnLoad(m_ashe);
+
+        //DontDestroyOnLoad(m_tinker);
+        //DontDestroyOnLoad(m_ashe);
     }
 
     private IEnumerator LoadSceneWithDelay(float seconds)

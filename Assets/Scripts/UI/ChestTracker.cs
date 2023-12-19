@@ -43,6 +43,7 @@ public class ChestTracker : MonoBehaviour
     }
     public bool IsChestFound(int idx)
     {
+        if (idx >= m_foundChests.Length) return false;
         return m_foundChests[idx];
     }
     public void ResetChestCount()
