@@ -136,12 +136,14 @@ public class RegionInvoker : Invoker
             }
             if (useUniqueID)
             {
-                if (collision.gameObject.tag == "Tinker")
+                if (!asheInRegion && collision.gameObject.tag == "Tinker")
                 {
+                    tinkerInRegion = true;
                     Activate(tinkerSpecificID);
                 }
-                else if (collision.gameObject.tag == "Ashe")
+                else if (!tinkerInRegion && collision.gameObject.tag == "Ashe")
                 {
+                    asheInRegion = true;
                     Activate(asheSpecificID);
                 }
             }

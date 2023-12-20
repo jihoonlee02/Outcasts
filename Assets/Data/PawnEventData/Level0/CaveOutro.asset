@@ -21,7 +21,7 @@ MonoBehaviour:
     pawnSelection: 0
     eventAction: 1
     timeDuration: 0.001
-    moveDirection: 1
+    moveDirection: 0
     moveSpeed: 0.2
     jumpForce: 0
     activeDialogueAtTime: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     pawnSelection: 1
     eventAction: 1
     timeDuration: 0.001
-    moveDirection: 0
+    moveDirection: 1
     moveSpeed: 0.2
     jumpForce: 0
     activeDialogueAtTime: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 1
-    eventAction: 1
+    eventAction: 0
     timeDuration: 1.1
     moveDirection: 0
     moveSpeed: 0.8
@@ -70,7 +70,7 @@ MonoBehaviour:
     resumePawnControl: 0
     transitionTime: 1.4
     pawnSelection: 0
-    eventAction: 1
+    eventAction: 0
     timeDuration: 1.8
     moveDirection: 1
     moveSpeed: 0.8
@@ -238,7 +238,75 @@ MonoBehaviour:
     notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
+    transitionTime: 0.5
+    pawnSelection: 0
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Ashe Jumps
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
     transitionTime: 0
+    pawnSelection: 1
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 1
+    moveSpeed: 0.8
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Tinker Jumps
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0.5
+    pawnSelection: 0
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Ashe Jumps
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 2
+    timeDuration: 0
+    moveDirection: 1
+    moveSpeed: 0.8
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Tinker Jumps
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0.5
     pawnSelection: 0
     eventAction: 2
     timeDuration: 0

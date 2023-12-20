@@ -7,14 +7,14 @@ public class RelativeMotionGroup : MonoBehaviour
 {
     private Dictionary<Transform, Transform> objectsOnGroup;
 
-    private void Start()
+    private void Awake()
     {
         objectsOnGroup = new Dictionary<Transform, Transform>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "feet")
+        if (collision.gameObject.tag == "feet" && !objectsOnGroup.ContainsKey(collision.transform.parent))
         {
             objectsOnGroup.Add(collision.transform.parent, collision.transform.parent.parent);
         }

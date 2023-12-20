@@ -42,7 +42,7 @@ public class AirVent : MonoBehaviour
     private void Awake()
     {
         ventSource = gameObject.GetComponent<AudioSource>();
-        ventSource.Play();
+        ventSource?.Play();
     }
     // Start is called before the first frame update
     void Start()

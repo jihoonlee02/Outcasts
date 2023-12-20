@@ -27,7 +27,6 @@ public class LiftingRegiion : MonoBehaviour
         }
         if (Time.time > cooldownTime && !ashe.IsLifting)
         {
-            Debug.Log("Lifting");
             var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
             if (tinkerPawn != null)
             {
@@ -54,7 +53,6 @@ public class LiftingRegiion : MonoBehaviour
         {
             if (ashe.HeldObject?.GetComponent<TinkerPawn>() != null)
             {
-                Debug.Log("Stopped lifting");
                 var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
                 if (tinkerPawn != null) //This is the sus one
                 {
@@ -71,7 +69,6 @@ public class LiftingRegiion : MonoBehaviour
     {
         if (Time.time > cooldownTime && !ashe.IsLifting)
         {
-            Debug.Log("Lifting");
             var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
             if (tinkerPawn != null)
             {
