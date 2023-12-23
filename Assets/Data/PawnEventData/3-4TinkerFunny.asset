@@ -20,7 +20,7 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 1
-    timeDuration: 0.8
+    timeDuration: 1
     moveDirection: 0
     moveSpeed: 0.8
     jumpForce: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
       delay: 2
       waitOnInput: 0
       noWaiting: 0
-      hideProfileAfterDialogue: 0
+      hideProfileAfterDialogue: 1
       keepTextAfterDialogue: 0
     invoke: 0
     activate: 0

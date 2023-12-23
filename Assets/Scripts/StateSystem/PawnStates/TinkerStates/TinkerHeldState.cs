@@ -11,7 +11,7 @@ public class TinkerHeldState : State
     public TinkerHeldState(Pawn context, PawnStateFactory factory) : base(context, factory)
     {
         m_isRootState = true;
-        m_animationName = "";
+        m_animationName = "_gun";
         InitializeSubState();
     }
 
@@ -21,7 +21,7 @@ public class TinkerHeldState : State
         {
             SwitchState(m_factory.TinkerDefaultState());
         }
-        if (m_context.IsJumping) 
+        if (m_context.IsJumping)
         {
             SwitchState(m_factory.TinkerDefaultState());
         }

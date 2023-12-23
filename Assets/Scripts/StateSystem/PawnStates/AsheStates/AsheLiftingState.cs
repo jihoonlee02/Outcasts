@@ -15,6 +15,7 @@ public class AsheLiftingState : State
         InitializeSubState();
     }
     private float prevMass = 0f;
+    private bool prevRot = false;
     public override void EnterState()
     {
         // No Object to hold so yeet
@@ -32,19 +33,26 @@ public class AsheLiftingState : State
         //((AshePawn)m_context).HeldObject.transform.SetParent(m_context.transform, true);
 
         // Set the mass of the Held object to 0 and store the previous and stop all of its previous movement
-        prevMass = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass;
-        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = 0f;
-        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        var rb = ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            prevMass = rb.mass;
+            rb.mass = 0f;
+            rb.velocity = Vector2.zero;
+            prevRot = rb.freezeRotation;
+            rb.freezeRotation = true;
+        }
+        
 
         // Ignore the Collision of the HeldObjectCollider and the current HeldObject Collider --> mouth full IK but trust it works
         // This Guy lies, its wack as fuck don't trust it!
-        
-        
+
+
         // Disable Held object's Collider
         //((AshePawn)m_context).HeldObject.GetComponent<Collider2D>().enabled = false;
 
         // Adjust HeldObject Collider to collision of held object
-        
+
         if (((AshePawn)m_context).HeldObject.GetComponent<CircleCollider2D>() != null)
         {
             Physics2D.IgnoreCollision(((AshePawn)m_context).HeldObject.GetComponent<Collider2D>(), ((AshePawn)m_context).HeldObjectCircleCollider, true);
@@ -103,6 +111,7 @@ public class AsheLiftingState : State
         // (Future Ryan) Eat nuts, I figured it out!
         
         ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().mass = prevMass;
+        ((AshePawn)m_context).HeldObject.GetComponent<Rigidbody2D>().freezeRotation = prevRot;
         // ((AshePawn)m_context).HeldObject.transform.SetParent(priorParent, true);
 
         // Disable the Ashe's HeldObjectCollider

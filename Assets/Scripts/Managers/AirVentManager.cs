@@ -29,14 +29,6 @@ public class AirVentManager : MonoBehaviour
         InitializeAirVents();
     }
 
-    private void Update() {
-        
-    }
-
-    private void OnDestroy() {
-        
-    }
-
     private void InitializeAirVents() {
         //totalAirVentPower = new Tuple<int, float>[numberOfAirVentGroups];
         
@@ -76,6 +68,7 @@ public class AirVentManager : MonoBehaviour
     }
 
     public static void ActivateVent(AirVent airVent) {
+        if (airVent == null) return;
         List<AirVent>[] airVentAL = (List<AirVent>[])(airVentsHashtable[airVent.AirVentGroup]);
         airVentAL[1].Remove(airVent);
         airVentAL[0].Add(airVent);
@@ -87,6 +80,7 @@ public class AirVentManager : MonoBehaviour
     }
 
     public static void DeactivateVent(AirVent airVent) {
+        if (airVent == null) return;
         List<AirVent>[] airVentAL = (List<AirVent>[])(airVentsHashtable[airVent.AirVentGroup]);
         airVentAL[0].Remove(airVent);
         airVentAL[1].Add(airVent);
