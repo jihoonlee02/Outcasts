@@ -11,6 +11,7 @@ public class Chase : MonoBehaviour
     [SerializeField] private float m_speed = 2f;
     [SerializeField] private float m_angleOffset = -90f;
     [SerializeField] private Transform[] targets;
+    public Transform[] Targets => targets;
     [SerializeField] private bool isChasing = false;
     [SerializeField] private bool prioritizeFirstTarget;
     [SerializeField, Tooltip("Targets that are not 0 are now likely to be hit in this range")] private float m_anyTargetRadius = 3f;
@@ -32,7 +33,8 @@ public class Chase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChaseTargets(); // Slower as method, but easier to read and clearer if we had more components
+        if (isChasing) ChaseTargets(); // Slower as method, but easier to read and clearer if we had more components
+        else m_rb.velocity = Vector2.zero;
     }
     private void Update()
     {
@@ -42,10 +44,11 @@ public class Chase : MonoBehaviour
     {
         // Figure out whos the closest and priority
         if (arrSize == 0) return;
-        Transform closestTarget = targets[0];
+        Transform closestTarget = null;
         float closestDistance = Mathf.Infinity;
         for (int i = 0; i < arrSize; i++)
         {
+            if (targets[i].GetComponent<Grabbed>()) continue;
             var mag = (targets[i].position - transform.position).magnitude;
             if (mag < closestDistance && (!prioritizeFirstTarget || (i == 0 || mag <= m_anyTargetRadius)))
             {
@@ -54,12 +57,14 @@ public class Chase : MonoBehaviour
             }
         }
 
+        // No Targets found then return
+        if (closestTarget == null) return;
+
         // Calculate that movement
         moveDirection = (closestTarget.position - transform.position).normalized;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, angle + m_angleOffset, Time.deltaTime * m_speed);
-        if (isChasing) m_rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * m_speed;
-        if (!isChasing) m_rb.velocity = Vector2.zero;
+        m_rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * m_speed;
     }
     public void StartChase()
     {
@@ -116,7 +121,7 @@ public class Chase : MonoBehaviour
     }
     public void GrabTarget(Transform target)
     {
-        if (!targets.Contains(target)) return;
+        if (target == null || target.GetComponent<Grabbed>()) return;
         if (target.tag == "Tinker")
         {
             target.GetComponent<TinkerPawn>().IsHeld = false;
@@ -124,5 +129,16 @@ public class Chase : MonoBehaviour
         }
         grabbedTarget = target;
         isGrabbing = true;
+        target.gameObject.AddComponent<Grabbed>();
+        isChasing = false;
+    }
+
+    public void UnGrabTarget()
+    {
+        if (grabbedTarget == null) return;
+        isGrabbing = false;
+        Destroy(grabbedTarget.GetComponent<Grabbed>());
+        isChasing = true;
+        grabbedTarget = null;
     }
 }

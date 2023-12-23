@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Paw : MonoBehaviour
@@ -21,6 +22,12 @@ public class Paw : MonoBehaviour
         else if (collision.GetComponent<Paw>() == null && collision.tag == "physical" 
             && collision.GetComponent<Rigidbody2D>().velocity.magnitude >= 2f) 
                 ReactOnPunch();
+
+        if (m_chaser.Targets.Contains(collision.transform))
+        {
+            m_chaser.GrabTarget(collision.transform);
+        }
+        
     }
     private void ReactOnNail()
     {
@@ -29,6 +36,7 @@ public class Paw : MonoBehaviour
     private void ReactOnPunch()
     {
         m_particleSystem?.Play();
+        m_chaser.UnGrabTarget();
         StartCoroutine(ChaseDisableFor(2f));
     }
     private IEnumerator ChaseDisableFor(float seconds)
@@ -39,11 +47,5 @@ public class Paw : MonoBehaviour
         m_chaser.StartChase();
         m_boxCollider.enabled = true;
         m_particleSystem?.Stop();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        m_chaser.GrabTarget(other.transform);
-        m_chaser.StopChase();
     }
 }
