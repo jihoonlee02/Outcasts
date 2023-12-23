@@ -130,7 +130,6 @@ public class Chase : MonoBehaviour
         grabbedTarget = target;
         isGrabbing = true;
         target.gameObject.AddComponent<Grabbed>();
-        isChasing = false;
     }
 
     public void UnGrabTarget()
@@ -138,7 +137,6 @@ public class Chase : MonoBehaviour
         if (grabbedTarget == null) return;
         isGrabbing = false;
         Destroy(grabbedTarget.GetComponent<Grabbed>());
-        isChasing = true;
         grabbedTarget = null;
     }
 }

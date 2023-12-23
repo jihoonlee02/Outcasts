@@ -23,14 +23,16 @@ public class Paw : MonoBehaviour
             && collision.GetComponent<Rigidbody2D>().velocity.magnitude >= 2f) 
                 ReactOnPunch();
 
-        if (m_chaser.Targets.Contains(collision.transform))
+        if (m_chaser.Targets.Contains(collision.transform) && !collision.GetComponent<Grabbed>())
         {
             m_chaser.GrabTarget(collision.transform);
+            m_chaser.StopChase();
         }
         
     }
     private void ReactOnNail()
     {
+        m_chaser.UnGrabTarget();
         StartCoroutine(ChaseDisableFor(0.3f));
     }
     private void ReactOnPunch()

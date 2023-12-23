@@ -64,6 +64,8 @@ public class Gauntlet : Tool
         foreach (RaycastHit2D hit2D in hit2Ds)
         {
             var go = hit2D.collider.gameObject;
+            // So that ashe doesn't pick up an object that is being grabbed by the Paws
+            if (go.GetComponent<Grabbed>()) continue;
             if (go.GetComponent<TinkerPawn>())
             {
                 currTime = Time.time + animationLength;

@@ -21,6 +21,7 @@ public class LiftingRegiion : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.GetComponent<Grabbed>()) return;
         if (collision.gameObject.layer == LayerMask.GetMask("Platforms"))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
@@ -67,6 +68,7 @@ public class LiftingRegiion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.GetComponent<Grabbed>()) return;
         if (Time.time > cooldownTime && !ashe.IsLifting)
         {
             var tinkerPawn = collision.gameObject.GetComponent<TinkerPawn>();
