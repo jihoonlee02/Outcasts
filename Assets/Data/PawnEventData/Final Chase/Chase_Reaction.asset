@@ -60,7 +60,19 @@ MonoBehaviour:
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 0
-    dialogues: []
+    dialogues:
+    - profile: {fileID: 21300000, guid: 14fa20623e7ffa141b68f97951e09242, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: 
+      speed: 0
+      delay: 0
+      waitOnInput: 0
+      noWaiting: 1
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: -1

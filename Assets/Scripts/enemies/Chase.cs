@@ -18,6 +18,7 @@ public class Chase : MonoBehaviour
     private Rigidbody2D m_rb;
     private Vector3 moveDirection;
     private bool isGrabbing = false;
+    public bool IsGrabbing => isGrabbing;
     private Transform grabbedTarget = null;
     private int arrSize;
     

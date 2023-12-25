@@ -20,7 +20,8 @@ public class Nail : Projectile
         if (!impacted &&  cogo.gameObject.layer == LayerMask.NameToLayer("Platforms") && cogo.tag != "head")
         {
             m_rb.velocity = Vector3.zero;
-            //m_audioSource.Play();
+            m_cldr.enabled = false;
+            //m_audioSource.Play(); // <-- Only difference
             transform.SetParent(cogo.transform, true);
             impacted = true;
         }

@@ -6,12 +6,10 @@ using UnityEngine;
 public class Paw : MonoBehaviour
 {
     [SerializeField] private ParticleSystem m_particleSystem;
-    private Rigidbody2D m_rb;
     private Chase m_chaser;
     private BoxCollider2D m_boxCollider;
     private void Start()
     {
-        m_rb = GetComponent<Rigidbody2D>();
         m_chaser = GetComponent<Chase>();
         m_boxCollider = GetComponent<BoxCollider2D>();
     }
@@ -23,7 +21,7 @@ public class Paw : MonoBehaviour
             && collision.GetComponent<Rigidbody2D>().velocity.magnitude >= 2f) 
                 ReactOnPunch();
 
-        if (m_chaser.Targets.Contains(collision.transform) && !collision.GetComponent<Grabbed>())
+        if (!m_chaser.IsGrabbing && m_chaser.Targets.Contains(collision.transform) && !collision.GetComponent<Grabbed>())
         {
             m_chaser.GrabTarget(collision.transform);
             m_chaser.StopChase();

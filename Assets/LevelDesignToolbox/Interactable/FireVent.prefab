@@ -61,8 +61,8 @@ MonoBehaviour:
   activeDuration: 3
   inactiveDuration: 3
   yFlameMax: 0.53
-  yFlameMin: -4.246
-  speed: 3
+  yFlameMin: -5.36
+  speed: 5
 --- !u!1 &2205369339362880397
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +88,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2205369339362880397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0085, y: -5.3671, z: 0}
-  m_LocalScale: {x: 2.7182064, y: 10.288464, z: 1}
+  m_LocalPosition: {x: -0.0011, y: -5.3671, z: 0}
+  m_LocalScale: {x: 2.8224568, y: 10.288464, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2205369339103461284}
@@ -411,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5139345300082786722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -2.24, z: 0}
+  m_LocalPosition: {x: -0.01, y: -3.14, z: 0}
   m_LocalScale: {x: 1.6828429, y: 1.3951582, z: 0.9754615}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -483,7 +483,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019327492, y: -0.30054379}
+  m_Offset: {x: -0.019327492, y: -0.259516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -494,7 +494,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7252839, y: 6.6283226}
+  m_Size: {x: 0.7252839, y: 6.710378}
   m_EdgeRadius: 0
 --- !u!114 &1864732579548310932
 MonoBehaviour:
