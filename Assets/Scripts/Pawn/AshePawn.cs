@@ -9,6 +9,10 @@ public class AshePawn : Pawn
     [SerializeField] private Tool m_gauntletReference;
     [SerializeField] private Collider2D m_liftingRegion;
     [SerializeField] private GameObject m_heldObjectCollider;
+    [SerializeField] private bool canPunch;
+    [SerializeField] private bool canGrab;
+
+    // Ashe States
     private bool m_isLifting = false;
     private bool m_isPunching = false;
     private bool m_isDropping = false;
@@ -38,15 +42,19 @@ public class AshePawn : Pawn
         // So that Ashe can Jump and the held Object collider collides with external objects
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), HeldObjectBoxCollider, true);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), HeldObjectCircleCollider, true);
+
+        //Technical
+        canPunch = true;
+        canGrab = true;
     }
     public override void PrimaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
-        m_gauntletReference.UsePrimaryAction();
+        if (canPunch) m_gauntletReference.UsePrimaryAction();
     }
 
     public override void SecondaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
-        m_gauntletReference.UseSecondaryAction();
+        if (canGrab) m_gauntletReference.UseSecondaryAction();
     }
     public void DisableLiftingRegion()
     {
@@ -59,5 +67,23 @@ public class AshePawn : Pawn
     public void DropHeldObject()
     {
         ((Gauntlet)m_gauntletReference).DropHeldObject();
+    }
+    public void DisablePunch()
+    {
+        canPunch = false;
+    }
+    public void EnablePunch()
+    {
+        canPunch = true;
+    }
+    public void DisableGrab()
+    {
+        canGrab = false;
+        m_liftingRegion.enabled = false;
+    }
+    public void EnableGrab()
+    {
+        canGrab = true;
+        m_liftingRegion.enabled = true;
     }
 }

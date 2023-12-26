@@ -8,6 +8,7 @@ public class TinkerPawn : Pawn
 {
     [Header("Tinker Specific")]
     [SerializeField] private NailGun m_nailGunReference;
+    [SerializeField] private bool canShoot;
     private bool m_isShooting;
     private bool m_isJumpingOff;
 
@@ -30,28 +31,23 @@ public class TinkerPawn : Pawn
         base.Start();
         CurrentState = m_states.TinkerDefaultState();
         initialMass = m_rb.mass;
+
+        //Technical
+        canShoot = true;
     }
     public override void PrimaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
+        if (!canShoot) return;
         m_isShooting = true;
-        m_nailGunReference.UsePrimaryAction(Vector2.zero);
-        // Doesn't even take input lmao
-        //Vector2 direction;
-
-        //try
-        //{
-        //    direction = context.action.actionMap["Movement"].ReadValue<Vector2>();
-        //}
-        //catch (Exception e)
-        //{
-        //    direction = context.action.actionMap["MoveTinker"].ReadValue<Vector2>();
-        //}
+        m_nailGunReference.UsePrimaryAction(Vector2.zero); // Nail Gun just looks at animator for direction lmao
     }
 
     public override void SecondaryAction(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
-        if (context.performed) m_nailGunReference.UseSecondaryAction();
-        if (context.canceled) m_nailGunReference.UseSecondaryAction();
+        // Hot useless garbage, we need no reloading mate
+        // Commented out to optimize performance if players try calling this
+        //if (context.performed) m_nailGunReference.UseSecondaryAction();
+        //if (context.canceled) m_nailGunReference.UseSecondaryAction();
     }
     public override void Jump()
     {
@@ -81,5 +77,13 @@ public class TinkerPawn : Pawn
             isJumping = true;
             lastJumpTime = jumpBufferTime;
         }
+    }
+    public void DisableShoot()
+    {
+        canShoot = false;
+    }
+    public void EnableShoot()
+    {
+        canShoot = true;
     }
 }

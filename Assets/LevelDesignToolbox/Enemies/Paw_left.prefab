@@ -149,11 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4283b02093177ea4eb83843a4ecd83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_chaseTNA: 0
   m_speed: 2
   m_angleOffset: 0
   targets: []
   isChasing: 0
+  prioritizeFirstTarget: 0
+  m_anyTargetRadius: 3
 --- !u!114 &5438953214683616682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_particleSystem: {fileID: 5438953215245898006}
+  m_nailDuration: 1
 --- !u!1 &5438953215245898001
 GameObject:
   m_ObjectHideFlags: 0

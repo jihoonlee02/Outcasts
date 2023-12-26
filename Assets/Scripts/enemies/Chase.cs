@@ -50,7 +50,7 @@ public class Chase : MonoBehaviour
         for (int i = 0; i < arrSize; i++)
         {
             if (targets[i].GetComponent<Grabbed>()) continue;
-            var mag = (targets[i].position - transform.position).magnitude;
+            var mag = Vector2.Distance(targets[i].position, transform.position);
             if (mag < closestDistance && (!prioritizeFirstTarget || (i == 0 || mag <= m_anyTargetRadius)))
             {
                 closestDistance = targets[i].position.magnitude;
@@ -95,13 +95,13 @@ public class Chase : MonoBehaviour
     }
     public void ChangeTargets(Transform transform)
     {
-        targets = new Transform[5];
+        targets = new Transform[1];
         targets[0] = transform;
         arrSize = 1;
     }
     public void ChangeTargets(Transform[] transform)
     {
-        targets = new Transform[transform.Length + 5];
+        targets = new Transform[transform.Length];
         transform.CopyTo(targets, 0);
         arrSize = transform.Length;
     }
@@ -125,8 +125,20 @@ public class Chase : MonoBehaviour
         if (target == null || target.GetComponent<Grabbed>()) return;
         if (target.tag == "Tinker")
         {
-            target.GetComponent<TinkerPawn>().IsHeld = false;
+            GameManager.Instance.Tinker.IsHeld = false;
             GameManager.Instance.Ashe.IsLifting = false;
+            GameManager.Instance.Tinker.DisableShoot();
+        }
+        else if (target.tag == "Ashe")
+        {
+            if (GameManager.Instance.Ashe.IsLifting)
+            {
+                GameManager.Instance.Tinker.Jump();
+                GameManager.Instance.Ashe.IsLifting = false;
+            }
+            
+            GameManager.Instance.Ashe.DisablePunch();
+            GameManager.Instance.Ashe.DisableGrab();
         }
         grabbedTarget = target;
         isGrabbing = true;
@@ -136,6 +148,17 @@ public class Chase : MonoBehaviour
     public void UnGrabTarget()
     {
         if (grabbedTarget == null) return;
+        if (grabbedTarget.tag == "Tinker")
+        {
+            GameManager.Instance.Tinker.EnableShoot();
+            GameManager.Instance.Tinker.RB.velocity = Vector2.zero;
+        }
+        else if (grabbedTarget.tag == "Ashe")
+        {
+            GameManager.Instance.Ashe.EnablePunch();
+            GameManager.Instance.Ashe.EnableGrab();
+            GameManager.Instance.Ashe.RB.velocity = Vector2.zero;
+        }
         isGrabbing = false;
         Destroy(grabbedTarget.GetComponent<Grabbed>());
         grabbedTarget = null;

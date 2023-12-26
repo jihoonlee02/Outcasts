@@ -6,8 +6,13 @@ using UnityEngine;
 public class Paw : MonoBehaviour
 {
     [SerializeField] private ParticleSystem m_particleSystem;
+    [SerializeField] private float m_nailDuration;
     private Chase m_chaser;
+    public Chase Chaser => m_chaser;
     private BoxCollider2D m_boxCollider;
+    private int nailHit;
+    private float cooldown;
+ 
     private void Start()
     {
         m_chaser = GetComponent<Chase>();
@@ -30,7 +35,15 @@ public class Paw : MonoBehaviour
     }
     private void ReactOnNail()
     {
-        m_chaser.UnGrabTarget();
+        if (nailHit >= 4)
+        {
+            nailHit = 0;
+            ReactOnPunch();
+            return;
+        }
+        if (Time.time > cooldown) nailHit = 0;
+        cooldown = Time.time + m_nailDuration;
+        nailHit++;
         StartCoroutine(ChaseDisableFor(0.3f));
     }
     private void ReactOnPunch()
@@ -44,7 +57,7 @@ public class Paw : MonoBehaviour
         m_chaser.StopChase();
         m_boxCollider.enabled = false;
         yield return new WaitForSeconds(seconds);
-        m_chaser.StartChase();
+        if (!m_chaser.IsGrabbing) m_chaser.StartChase();
         m_boxCollider.enabled = true;
         m_particleSystem?.Stop();
     }

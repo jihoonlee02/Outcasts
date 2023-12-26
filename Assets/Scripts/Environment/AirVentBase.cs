@@ -60,7 +60,6 @@ public class AirVentBase : MonoBehaviour
             objectsOn.Add(other);
             if (objectsOn.Count == 1)
             {
-                Debug.Log("Did you do Deactivate?");
                 airVent.Deactivate();
             }
         }
