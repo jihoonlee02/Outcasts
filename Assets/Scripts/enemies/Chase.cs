@@ -43,7 +43,7 @@ public class Chase : MonoBehaviour
     }
     private void ChaseTargets()
     {
-        // Figure out whos the closest and priority
+        // Figure out whos the closest and not grabbed yet
         if (arrSize == 0) return;
         Transform closestTarget = null;
         float closestDistance = Mathf.Infinity;
@@ -51,11 +51,16 @@ public class Chase : MonoBehaviour
         {
             if (targets[i].GetComponent<Grabbed>()) continue;
             var mag = Vector2.Distance(targets[i].position, transform.position);
-            if (mag < closestDistance && (!prioritizeFirstTarget || (i == 0 || mag <= m_anyTargetRadius)))
+            if (mag < closestDistance)
             {
                 closestDistance = targets[i].position.magnitude;
                 closestTarget = targets[i];
             }
+        }
+
+        if (prioritizeFirstTarget && closestDistance > m_anyTargetRadius && !targets[0].GetComponent<Grabbed>())
+        {
+            closestTarget = targets[0];
         }
 
         // No Targets found then return

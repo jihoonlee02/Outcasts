@@ -35,7 +35,7 @@ public class Paw : MonoBehaviour
     }
     private void ReactOnNail()
     {
-        if (nailHit >= 4)
+        if (nailHit >= 3)
         {
             nailHit = 0;
             ReactOnPunch();

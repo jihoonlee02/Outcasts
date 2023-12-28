@@ -62,4 +62,14 @@ public class FireVent : Invokee
         m_autoFlame = false;
         flameRise = false;
     }
+    public void RaiseFlame()
+    {
+        flameRise = true;
+        durationSwitch = Time.time + activeDuration;
+    }
+    public void DropFlame()
+    {
+        flameRise = false;
+        durationSwitch = Time.time + inactiveDuration;
+    }
 }

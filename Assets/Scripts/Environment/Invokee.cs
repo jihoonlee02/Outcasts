@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class Invokee : MonoBehaviour
@@ -66,5 +67,10 @@ public abstract class Invokee : MonoBehaviour
         yield return new WaitForSeconds(delay);
         OnActivate();
         if (ActivateOnce) EventManager.GetEventManager.Activated -= ReactOnActivate;
+    }
+
+    protected void OnDrawGizmos()
+    {
+        Handles.Label(transform.position, "Invokee ID: " + id);
     }
 }

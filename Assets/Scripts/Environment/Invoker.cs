@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class Invoker : MonoBehaviour
@@ -31,5 +32,11 @@ public abstract class Invoker : MonoBehaviour
     protected void Deactivate(int id)
     {
         EventManager.GetEventManager.Deactivated.Invoke(id);
+    }
+
+    protected void OnDrawGizmos()
+    {
+        if (id < 0) return;
+        Handles.Label(Vector3.zero, "Invoker ID: " + id);
     }
 }
