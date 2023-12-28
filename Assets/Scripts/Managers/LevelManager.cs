@@ -32,12 +32,6 @@ public class LevelManager : MonoBehaviour
 
     private bool exited = false;
     private void Start() {
-        //if (GameObject.Find("LevelThings") == null
-        //    && GameObject.Find("LevelThings SoloController Variant") == null && !isSetupScene)
-        //{
-        //    Instantiate(levelThings);
-        //}
-        // Could be handled by GameManager itself
         GameManager.Instance.LevelManager = this;
         GameManager.Instance.Tinker.transform.position = m_tinkerSpawn.position;
         GameManager.Instance.Ashe.transform.position = m_asheSpawn.position;

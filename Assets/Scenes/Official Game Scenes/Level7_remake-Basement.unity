@@ -13039,7 +13039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &114795298
 Transform:
   m_ObjectHideFlags: 0
@@ -34884,7 +34884,7 @@ MonoBehaviour:
   colorId: {r: 0, g: 0, b: 0, a: 0}
   triggerOnce: 1
   stayTimeToTrigger: 0
-  triggerType: 0
+  triggerType: 3
   useUniqueID: 0
   tinkerSpecificID: 0
   asheSpecificID: 0
@@ -34902,7 +34902,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.1564546, y: 1.1363721}
+  m_Offset: {x: 3.9986115, y: 0.7707534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -34913,7 +34913,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.7442293, y: 5.628437}
+  m_Size: {x: 9.428543, y: 4.8971987}
   m_EdgeRadius: 0
 --- !u!1 &274303377
 GameObject:
@@ -78383,11 +78383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205369339103461283, guid: 46284631806f6df43b2bec5c7d4d3432, type: 3}
       propertyPath: activeDuration
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2205369339103461283, guid: 46284631806f6df43b2bec5c7d4d3432, type: 3}
       propertyPath: inactiveDuration
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2205369339103461284, guid: 46284631806f6df43b2bec5c7d4d3432, type: 3}
       propertyPath: m_RootOrder
@@ -78998,7 +78998,89 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1312044372}
+    m_ColliderPaths:
+    - - X: 133214280
+        Y: -25000000
+      - X: 133214280
+        Y: -20000000
+      - X: 135000000
+        Y: -18214286
+      - X: 138214288
+        Y: -15000000
+      - X: 138214288
+        Y: -10000000
+      - X: 140000000
+        Y: -8214285
+      - X: 143214288
+        Y: -5000000
+      - X: 145000000
+        Y: -3214286
+      - X: 148214288
+        Y: 0
+      - X: 148214288
+        Y: 10000000
+      - X: 145000000
+        Y: 13214285
+      - X: 120000000
+        Y: 13214285
+      - X: 118214280
+        Y: 15000000
+      - X: 118214280
+        Y: 65000000
+      - X: 115000000
+        Y: 68214288
+      - X: 110000000
+        Y: 68214288
+      - X: 106785720
+        Y: 65000000
+      - X: 106785720
+        Y: -25000000
+      - X: 110000000
+        Y: -28214286
+      - X: 130000000
+        Y: -28214286
+    - - X: 8214286
+        Y: -35000000
+      - X: 8214286
+        Y: 35000000
+      - X: 5000000
+        Y: 38214284
+      - X: -35000000
+        Y: 38214284
+      - X: -38214288
+        Y: 35000000
+      - X: -38214288
+        Y: -35000000
+      - X: -35000000
+        Y: -38214288
+      - X: -31785714
+        Y: -35000000
+      - X: -25000000
+        Y: -28214286
+      - X: -5000000
+        Y: -28214286
+      - X: 1785714
+        Y: -35000000
+      - X: 5000000
+        Y: -38214288
+    - - X: 118214280
+        Y: -65000000
+      - X: 118214280
+        Y: -50000000
+      - X: 115000000
+        Y: -46785712
+      - X: -115000000
+        Y: -46785712
+      - X: -118214280
+        Y: -50000000
+      - X: -118214280
+        Y: -65000000
+      - X: -115000000
+        Y: -68214288
+      - X: 115000000
+        Y: -68214288
   m_CompositePaths:
     m_Paths:
     - - {x: 12.999989, y: -2.8214285}
@@ -84466,7 +84548,9 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1398141064}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -86142,7 +86226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4390724551265991544, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4390724551265991544, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -88045,6 +88129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8318851248448799859, guid: 45c6b99a6490e7e4eb627f59e85815c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c6b99a6490e7e4eb627f59e85815c5, type: 3}
 --- !u!4 &1833293551 stripped
@@ -88372,11 +88460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283701092896145937, guid: 18bbcb5d6f2de4d45893694b8b430759, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6296113407046416960, guid: 18bbcb5d6f2de4d45893694b8b430759, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8056382547924114623, guid: 18bbcb5d6f2de4d45893694b8b430759, type: 3}
       propertyPath: m_Color.b

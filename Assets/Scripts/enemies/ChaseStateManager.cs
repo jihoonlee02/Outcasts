@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,8 +23,10 @@ public class ChaseStateManager : MonoBehaviour
 
     private IEnumerator ChaseEndChecker()
     {
-        while (!leftPaw.IsGrabbing || !rightPaw.IsGrabbing)
+        float timeDelay = Time.time + 0.2f;
+        while (Time.time < timeDelay || !leftPaw.IsGrabbing || !rightPaw.IsGrabbing)
         {
+            if (!leftPaw.IsGrabbing || !rightPaw.IsGrabbing) timeDelay = Time.time + 0.2f;
             yield return new WaitForFixedUpdate();
         }
         leftPaw.ChangeSpeed(13f);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class RelativeMotionGroup : MonoBehaviour
@@ -10,6 +11,7 @@ public class RelativeMotionGroup : MonoBehaviour
     private void Awake()
     {
         objectsOnGroup = new Dictionary<Transform, Transform>();
+        SceneManager.sceneUnloaded += OnSceneUnload;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,5 +63,22 @@ public class RelativeMotionGroup : MonoBehaviour
             collision.transform.SetParent(objectsOnGroup[collision.transform]);
             objectsOnGroup.Remove(collision.transform);
         }
+    }
+
+    public void OnSceneUnload(Scene next)
+    {
+        // Disable All Colliders On Platform
+        foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+        {
+            collider.enabled = false;
+        }
+        // Remove all transform in group
+        foreach (Transform obj in objectsOnGroup.Keys)
+        {
+            obj.SetParent(objectsOnGroup[obj]);
+            objectsOnGroup.Remove(obj);
+        }
+        DontDestroyOnLoad(GameManager.Instance.Tinker);
+        DontDestroyOnLoad(GameManager.Instance.Ashe);
     }
 }
