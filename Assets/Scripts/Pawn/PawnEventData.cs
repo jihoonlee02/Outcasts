@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using Newtonsoft.Json.Bson;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,7 +14,9 @@ using UnityEditorInternal;
 public class PawnEventData : ScriptableObject
 {
     [SerializeField] private PawnEvent[] pawnEvents;
+    [SerializeField] private bool hideDialogueAfterEvent;
     public PawnEvent[] PawnEvents => pawnEvents;
+    public bool HideDialogueAfterEvent => hideDialogueAfterEvent;
 }
 
 [System.Serializable]
@@ -26,13 +30,14 @@ public struct PawnEvent
     [SerializeField] private bool pausePawnControl;
     [SerializeField] private bool resumePawnControl;
     [SerializeField] private float transitionTime;
+
     [Header("Pawn Specific")]
     [SerializeField] private PawnSelection pawnSelection;
     [SerializeField] private EventAction eventAction;
-    [SerializeField] private float timeDuration;
     [Header("Movement Event")]
     [SerializeField] private Direction moveDirection;
     [SerializeField, Range(0.2f, 1f)] private float moveSpeed;
+    [SerializeField] private float timeDuration;
 
     [Header("Jump Event")]
     [SerializeField] private float jumpForce;
@@ -46,6 +51,8 @@ public struct PawnEvent
     [SerializeField] private bool invoke;
     [SerializeField] private bool activate;
     [SerializeField] private int id;
+
+    // Properties
     public string Title => pawnEventTitle;
     public bool NotCinematic => notCinematic;
     public bool PausePawnControl => pausePawnControl;
@@ -78,7 +85,8 @@ public enum EventAction
     Jump,
     Punch,
     Shoot,
-    Grab
+    Grab,
+    MoveTo
 }
 
 public enum Direction
@@ -115,6 +123,7 @@ public class PawnEventDataEditor : Editor
         EditorGUILayout.Space();
         PawnEventAdjustment();
         EditorGUILayout.Space();
+
         // Interfacing TOP
         HorizontalPagingInterfacer();
         EditorGUILayout.Separator();
@@ -123,8 +132,15 @@ public class PawnEventDataEditor : Editor
         if (pawnEventArray.arraySize > 0)
         {
             SerializedProperty selectedElement = pawnEventArray.GetArrayElementAtIndex(currPawnEventIdx);
-            selectedElement.isExpanded = true;
-            EditorGUILayout.PropertyField(selectedElement, true);
+            //selectedElement.isExpanded = true;
+            //EditorGUILayout.PropertyField(selectedElement, true);
+            LevelGeneralSpace(selectedElement);
+            EditorGUILayout.Space(20f);
+            PawnControlSpace(selectedElement);
+            EditorGUILayout.Space(20f);
+            DialogueSpace(selectedElement);
+            EditorGUILayout.Space(20f);
+            InvokeGameEventSpace(selectedElement);
         }
         else
         {
@@ -132,10 +148,12 @@ public class PawnEventDataEditor : Editor
             EditorGUILayout.LabelField("Currently no Pawn Events, Add a new Pawn Event to Begin!", EditorStyles.boldLabel);
             EditorGUILayout.EndHorizontal();
         }
-        EditorGUILayout.Separator();
         // Interfacing Bot
+        EditorGUILayout.Separator();
         HorizontalPagingInterfacer();
+
         EditorGUILayout.Space();
+
         PawnEventAdjustment();
         EditorGUILayout.Space();
 
@@ -251,5 +269,112 @@ public class PawnEventDataEditor : Editor
         //}
         EditorGUILayout.EndHorizontal();
     }
+
+    // Details of the Pawn Event Data
+    private void LevelGeneralSpace(SerializedProperty pawnEvent)
+    {
+        EditorGUILayout.LabelField("Level General", EditorStyles.boldLabel);
+        var PawnEventTitle = pawnEvent.FindPropertyRelative("pawnEventTitle");
+        var TransitionTime = pawnEvent.FindPropertyRelative("transitionTime");
+        PawnEventTitle.stringValue = EditorGUILayout.TextField("Pawn Event Title", PawnEventTitle.stringValue);
+        TransitionTime.floatValue = EditorGUILayout.FloatField("Transition Time", TransitionTime.floatValue);
+        var PausePC = pawnEvent.FindPropertyRelative("pausePawnControl");
+        var ResumePC = pawnEvent.FindPropertyRelative("resumePawnControl");
+        var NotCinem = pawnEvent.FindPropertyRelative("notCinematic");
+
+        EditorGUI.BeginChangeCheck();
+        bool pause = EditorGUILayout.Toggle("Pause Pawn Control", PausePC.boolValue);
+        bool resume = EditorGUILayout.Toggle("Resume Pawn Control", ResumePC.boolValue);
+        if (EditorGUI.EndChangeCheck())
+        {
+            if (pause && !PausePC.boolValue)
+            {
+                PausePC.boolValue = true;
+                ResumePC.boolValue = false;
+            }
+            else if (resume && !ResumePC.boolValue)
+            {
+                ResumePC.boolValue = true;
+                PausePC.boolValue = false;
+            }
+            else
+            {
+                ResumePC.boolValue = false;
+                PausePC.boolValue = false;
+            }
+        }
+        if (PausePC.boolValue)
+        {
+            NotCinem.boolValue = EditorGUILayout.Toggle("Not Cinematic", NotCinem.boolValue);
+        }
+    }
+
+    private void PawnControlSpace(SerializedProperty pawnEvent)
+    {
+        EditorGUILayout.LabelField("Pawn Control", EditorStyles.boldLabel);
+        // Display a dropdown for an enum Pawn
+        var pawnSelection = pawnEvent.FindPropertyRelative("pawnSelection");
+        var EventAction = pawnEvent.FindPropertyRelative("eventAction");
+        pawnSelection.enumValueIndex = EditorGUILayout.Popup("Pawn", pawnSelection.enumValueIndex, pawnSelection.enumDisplayNames);
+        EventAction.enumValueIndex = EditorGUILayout.Popup("Action", EventAction.enumValueIndex, EventAction.enumDisplayNames);
+
+        // Select The Action to display
+        EditorGUI.indentLevel++;
+        switch ((EventAction)EventAction.enumValueIndex) 
+        {
+            case global::EventAction.Move:
+                MovementActionSpace(pawnEvent);
+                break;
+            case global::EventAction.Jump:
+                JumpActionSpace(pawnEvent);
+                break;
+            default: 
+                break;
+        }
+        EditorGUI.indentLevel--;
+    }
+    private void DialogueSpace(SerializedProperty pawnEvent)
+    {
+        EditorGUILayout.LabelField("Dialogue", EditorStyles.boldLabel);
+        var DialougeActive = pawnEvent.FindPropertyRelative("activeDialogueAtTime");   
+        DialougeActive.boolValue = EditorGUILayout.Toggle("Dialogue Active", DialougeActive.boolValue);
+
+        if (DialougeActive.boolValue)
+        {
+            var WaitOnDialogue = pawnEvent.FindPropertyRelative("waitOnDialogue");
+            WaitOnDialogue.boolValue = EditorGUILayout.Toggle("Wait On Dialogue", WaitOnDialogue.boolValue);
+            EditorGUILayout.PropertyField(pawnEvent.FindPropertyRelative("dialogues"), true);
+        }
+    }
+
+    private void InvokeGameEventSpace(SerializedProperty pawnEvent)
+    {
+        EditorGUILayout.LabelField("Invoke Game Event", EditorStyles.boldLabel);
+        if (EditorGUILayout.IntField("ID", pawnEvent.FindPropertyRelative("id").intValue) >= 0)
+        {
+            var Invoke = pawnEvent.FindPropertyRelative("invoke");
+            var Activate = pawnEvent.FindPropertyRelative("activate");
+            Invoke.boolValue = EditorGUILayout.Toggle("Invoke", Invoke.boolValue);
+            Activate.boolValue = EditorGUILayout.Toggle("Activate", Activate.boolValue);
+        }
+        
+    }
+
+    #region Pawn Actions
+    private void MovementActionSpace(SerializedProperty pawnEvent)
+    {
+        //EditorGUILayout.LabelField("Movement Action", EditorStyles.boldLabel);
+        var Direction = pawnEvent.FindPropertyRelative("moveDirection");
+        Direction.enumValueIndex = EditorGUILayout.Popup("Direction", Direction.enumValueIndex, Direction.enumDisplayNames);
+        var Speed = pawnEvent.FindPropertyRelative("moveSpeed");
+        Speed.floatValue = EditorGUILayout.Slider("Speed", Speed.floatValue, 0.2f, 1f);
+    }
+    private void JumpActionSpace(SerializedProperty pawnEvent)
+    {
+        //EditorGUILayout.LabelField("Jump Action", EditorStyles.boldLabel);
+        var JumpForce = pawnEvent.FindPropertyRelative("jumpForce");
+        JumpForce.floatValue = EditorGUILayout.FloatField("Jump Force", JumpForce.floatValue);
+    }
+    #endregion
 }
 #endif

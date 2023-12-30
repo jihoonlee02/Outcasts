@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ public class RelativeMotionGroup : MonoBehaviour
     private void Awake()
     {
         objectsOnGroup = new Dictionary<Transform, Transform>();
-        SceneManager.sceneUnloaded += OnSceneUnload;
+        //SceneManager.activeSceneChanged += OnSceneUnload;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,21 +65,35 @@ public class RelativeMotionGroup : MonoBehaviour
             objectsOnGroup.Remove(collision.transform);
         }
     }
-
-    public void OnSceneUnload(Scene next)
+    public void StopMotionGroup()
     {
-        // Disable All Colliders On Platform
+        //Disable All Colliders On Platform
         foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
         {
             collider.enabled = false;
         }
-        // Remove all transform in group
+        //Remove all transform in group
         foreach (Transform obj in objectsOnGroup.Keys)
         {
             obj.SetParent(objectsOnGroup[obj]);
             objectsOnGroup.Remove(obj);
         }
-        DontDestroyOnLoad(GameManager.Instance.Tinker);
-        DontDestroyOnLoad(GameManager.Instance.Ashe);
     }
+    //private void OnSceneUnload(Scene curr, Scene next)
+    //{
+    //    Debug.Log("Scene Unloaded");
+    //    // Disable All Colliders On Platform
+    //    foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+    //    {
+    //        collider.enabled = false;
+    //    }
+    //    // Remove all transform in group
+    //    foreach (Transform obj in objectsOnGroup.Keys)
+    //    {
+    //        obj.SetParent(objectsOnGroup[obj]);
+    //        objectsOnGroup.Remove(obj);
+    //    }
+    //    DontDestroyOnLoad(GameManager.Instance.Tinker);
+    //    DontDestroyOnLoad(GameManager.Instance.Ashe);
+    //}
 }

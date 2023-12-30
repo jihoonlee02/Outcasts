@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8312284884508774519}
   - component: {fileID: 4162491058944011031}
   - component: {fileID: 4442723471509491133}
+  - component: {fileID: 903481897530487172}
   m_Layer: 8
   m_Name: RockBlock
   m_TagString: physical
@@ -186,3 +187,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isHeavy: 1
+--- !u!61 &903481897530487172
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312284884508774525}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0036192536, y: 0.35375398}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71428573, y: 0.71428573}
+    newSize: {x: 0.71428573, y: 0.71428573}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7179048, y: 0.04297018}
+  m_EdgeRadius: 0

@@ -12,4 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848375227257def40bf6deb2b80bdc8b, type: 3}
   m_Name: Testing
   m_EditorClassIdentifier: 
-  pawnEvents: []
+  pawnEvents:
+  - pawnEventTitle: FIghting
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 4
+    moveDirection: 1
+    moveSpeed: 0.2
+    timeDuration: 0
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: New Event 2
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    timeDuration: 0
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  hideDialogueAfterEvent: 0

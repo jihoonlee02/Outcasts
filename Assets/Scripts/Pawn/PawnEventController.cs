@@ -23,7 +23,6 @@ public class PawnEventController : Invokee
     {
        StopAllCoroutines();
     }
-    // TODO: Include Dialogue Manager here
     private IEnumerator RunEvents()
     {
         foreach (PawnEvent p in m_pawnEventData.PawnEvents)
@@ -48,7 +47,11 @@ public class PawnEventController : Invokee
                     StartCoroutine(StartMoving(pawn, p.TimeDuration, p.MoveSpeed, (p.MoveDirection == Direction.Right ? Vector2.right : Vector2.left)));
                     break;
                 case EventAction.Jump:
-                    StartCoroutine(StartJumping(pawn, p.TimeDuration, p.JumpForce));
+                    if (p.JumpForce <= 0) pawn.Jump();
+                    else pawn.Jump(p.JumpForce);
+
+                    // Not very good yet tbh
+                    //StartCoroutine(StartJumping(pawn, p.TimeDuration, p.JumpForce));
                     break;
                 case EventAction.Punch:
                     pawn.GetComponent<AshePawn>()?.PrimaryAction();
@@ -91,6 +94,7 @@ public class PawnEventController : Invokee
             if (p.Dialogues.Length <= 0 || !p.WaitOnDialogue) yield return new WaitForSeconds(p.Delay); 
         }
     }
+    // Not Very Functional, but sure :/
     private IEnumerator StartJumping(Pawn pawn, float durationTime, float jumpForce)
     {
         if (durationTime <= 0)

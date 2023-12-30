@@ -54,6 +54,7 @@ public class Pawn : MonoBehaviour
     protected bool canMove;
     protected bool canJump;
     protected bool ropeAttached;
+    protected RelativeMotionGroup currGroup;
     public GameObject RopeSegment {
         get => ropeSegment;
         set {
@@ -69,7 +70,15 @@ public class Pawn : MonoBehaviour
     {
         set { canJump = value; }
     }
-
+    // ADD TO MOTION GROUP ON JOIN AND THEN REMOVE IT IN GAMEMANAGER
+    // Recall for this to work, we just subscribe a pawn to the motion group on enter
+    // But on scene Change, we kick any pawns from this motion group and then spawn them
+    // Look at GameManager and Pawn --> Then observe relative motion group
+    public RelativeMotionGroup CurrentGroup 
+    {
+        get { return currGroup; }
+        set {  currGroup = value; } 
+    }
     #endregion
 
     #region State Info
