@@ -369,6 +369,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         m_ashe.IsLifting = false;
         m_tinker.IsHeld = false;
+        m_ashe.CurrentGroup?.StopMotionGroup();
+        m_tinker.CurrentGroup?.StopMotionGroup();
         m_tinker.transform.SetParent(m_levelThings, true);
         m_ashe.transform.SetParent(m_levelThings, true);
         SceneManager.LoadSceneAsync(m_currScene);  

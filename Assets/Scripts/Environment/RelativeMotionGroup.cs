@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,7 @@ public class RelativeMotionGroup : MonoBehaviour
         if (collision.gameObject.tag == "feet" && !objectsOnGroup.ContainsKey(collision.transform.parent))
         {
             objectsOnGroup.Add(collision.transform.parent, collision.transform.parent.parent);
+            collision.transform.parent.GetComponent<Pawn>().CurrentGroup = this;
         }
     }
 
@@ -37,6 +39,7 @@ public class RelativeMotionGroup : MonoBehaviour
 
         if (collision.gameObject.tag == "feet" && objectsOnGroup.ContainsKey(collision.transform.parent))
         {
+            collision.transform.parent.GetComponent<Pawn>().CurrentGroup = null;
             collision.transform.parent.SetParent(objectsOnGroup[collision.transform.parent]);
             objectsOnGroup.Remove(collision.transform.parent);
         }
@@ -68,16 +71,18 @@ public class RelativeMotionGroup : MonoBehaviour
     public void StopMotionGroup()
     {
         //Disable All Colliders On Platform
-        foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+        foreach (Collider2D collider in GetComponents<Collider2D>())
         {
             collider.enabled = false;
         }
+
         //Remove all transform in group
         foreach (Transform obj in objectsOnGroup.Keys)
         {
             obj.SetParent(objectsOnGroup[obj]);
             objectsOnGroup.Remove(obj);
         }
+
     }
     //private void OnSceneUnload(Scene curr, Scene next)
     //{
