@@ -33,10 +33,11 @@ public abstract class Invoker : MonoBehaviour
     {
         EventManager.GetEventManager.Deactivated.Invoke(id);
     }
-
+    #if UNITY_EDITOR
     protected void OnDrawGizmos()
     {
         if (id < 0) return;
-        Handles.Label(Vector3.zero, "Invoker ID: " + id);
+        Handles.Label(transform.position, "Invoker ID: " + id);
     }
+    #endif
 }

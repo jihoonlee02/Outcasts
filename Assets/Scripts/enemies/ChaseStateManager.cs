@@ -49,4 +49,12 @@ public class ChaseStateManager : MonoBehaviour
         leftPaw.UnGrabTarget();
         rightPaw.UnGrabTarget();
     }
+    public void SetLeftPoint(Transform point)
+    {
+        leftPoint = point;
+    }
+    public void SetRightPoint(Transform point)
+    {
+        rightPoint = point;
+    }
 }

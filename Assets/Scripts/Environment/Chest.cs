@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -28,4 +29,10 @@ public class Chest : MonoBehaviour
             isOpen = true;
         }
     }
+    #if UNITY_EDITOR
+    protected void OnDrawGizmos()
+    {
+        Handles.Label(transform.position, "CHEST " + chestID, EditorStyles.boldLabel);
+    }
+    #endif
 }

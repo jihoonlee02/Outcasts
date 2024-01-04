@@ -69,8 +69,11 @@ public abstract class Invokee : MonoBehaviour
         if (ActivateOnce) EventManager.GetEventManager.Activated -= ReactOnActivate;
     }
 
+    #if UNITY_EDITOR
     protected void OnDrawGizmos()
     {
+        if (id < 0) return;
         Handles.Label(transform.position, "Invokee ID: " + id);
     }
+    #endif
 }
