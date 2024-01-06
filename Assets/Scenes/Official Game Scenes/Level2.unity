@@ -35791,7 +35791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
@@ -41937,8 +41937,6 @@ MonoBehaviour:
   m_horizontal: 1
   m_vertical: 1
   m_strength: 0.1
-  m_radius: 0.125
-  m_speed: 1
   m_audioSource: {fileID: 0}
 --- !u!1001 &1354172832
 PrefabInstance:

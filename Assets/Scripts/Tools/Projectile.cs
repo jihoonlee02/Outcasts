@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] protected float m_speed = 1.5f;
+    [SerializeField] protected float m_speed = 10f;
     protected SpriteRenderer m_sr;
     protected Rigidbody2D m_rb;
     protected Collider2D m_cldr;
@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
         impacted = false;
         transform.SetParent(poolerParent, true);
         transform.position = spawnPos;
-        m_rb.velocity = direction * 10f;
+        m_rb.velocity = direction * m_speed;
         this.direction = direction.x;
         //enabled = true;
 

@@ -29,6 +29,7 @@ public class Pooler : MonoBehaviour
 
     private void Awake()
     {
+        if (nailFab == null) Destroy(gameObject);
         nails = new Projectile[(int)ProjectileType.Nail];
         for (int i = 0; i < (int)ProjectileType.Nail; i++) 
         {
