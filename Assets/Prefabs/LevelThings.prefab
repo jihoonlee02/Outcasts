@@ -8783,6 +8783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: button_Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 3640404793720942784, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 3789189360944671494, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9323,6 +9327,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7831787968939226591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3254327065650053217, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
+  m_PrefabInstance: {fileID: 4726994623011894718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51026a7c7e34a8b4b91340971d47029f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &8155315746334857059 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3509474982042165981, guid: e4d2cf4b7982c9d4e843a3dc843d5796, type: 3}
@@ -9521,6 +9536,10 @@ PrefabInstance:
       propertyPath: m_visualCanvas
       value: 
       objectReference: {fileID: 6275004687342316190}
+    - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
+      propertyPath: m_skipIndicator
+      value: 
+      objectReference: {fileID: 7831787968939226591}
     - target: {fileID: 1749331677707141446, guid: bc610330a7f446c488c3a28df7500c27, type: 3}
       propertyPath: m_cinematicCover
       value: 

@@ -25,6 +25,7 @@ public class PawnEventController : Invokee
     }
     private IEnumerator RunEvents()
     {
+        if (m_pawnEventData.Skippable) StartCoroutine(CheckForSkipping());
         foreach (PawnEvent p in m_pawnEventData.PawnEvents)
         {
             // TNA Controls
@@ -93,6 +94,7 @@ public class PawnEventController : Invokee
             // Only if we didn't wait for dialogue already
             if (p.Dialogues.Length <= 0 || !p.WaitOnDialogue) yield return new WaitForSeconds(p.Delay); 
         }
+        StopCoroutine("CheckForSkipping");
     }
     // Not Very Functional, but sure :/
     private IEnumerator StartJumping(Pawn pawn, float durationTime, float jumpForce)
@@ -126,5 +128,81 @@ public class PawnEventController : Invokee
             
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    private IEnumerator CheckForSkipping()
+    {
+        float tinkerHeld = 0f;
+        float asheHeld = 0f;
+        if (GameManager.Instance.AshePC != null && GameManager.Instance.TinkerPC != null)
+        {
+            yield return new WaitUntil(() => 
+            {
+                if (GameManager.Instance.TinkerPC.PlayerInput.actions["UseToolPrimary"].inProgress)
+                {
+                    tinkerHeld += Time.deltaTime;
+                }
+                else
+                {
+                    tinkerHeld -= Time.deltaTime;
+                }
+                if (GameManager.Instance.AshePC.PlayerInput.actions["UseToolPrimary"].inProgress)
+                {
+                    asheHeld += Time.deltaTime;
+                }
+                else
+                {
+                    asheHeld -= Time.deltaTime;
+                }
+
+                // Clamp Value
+                tinkerHeld = Mathf.Clamp(tinkerHeld, 0f, 0.5f);
+                asheHeld = Mathf.Clamp(asheHeld, 0f, 0.5f);
+
+                // Notify UI
+                GameManager.Instance.SkipIndicator.TinkerHalf = tinkerHeld;
+                GameManager.Instance.SkipIndicator.AsheHalf = asheHeld;
+
+                return tinkerHeld == 0.5f && asheHeld == 0.5f;
+            });
+            // Do Skipping Related Stuff Here
+            StopAllCoroutines();
+        }
+        else if (GameManager.Instance.SC != null)
+        {
+            yield return new WaitUntil(() =>
+            {
+                if (GameManager.Instance.SC.PlayerInput.actions["PrimaryTinker"].inProgress)
+                {
+                    tinkerHeld += Time.deltaTime;
+                }
+                else
+                {
+                    tinkerHeld -= Time.deltaTime;
+                }
+                if (GameManager.Instance.SC.PlayerInput.actions["PrimaryAshe"].inProgress)
+                {
+                    asheHeld += Time.deltaTime;
+                }
+                else
+                {
+                    asheHeld -= Time.deltaTime;
+                }
+
+                // Clamp Value
+                tinkerHeld = Mathf.Clamp(tinkerHeld, 0f, 0.5f);
+                asheHeld = Mathf.Clamp(asheHeld, 0f, 0.5f);
+
+                // Notify UI
+                GameManager.Instance.SkipIndicator.TinkerHalf = tinkerHeld;
+                GameManager.Instance.SkipIndicator.AsheHalf = asheHeld;
+
+                return tinkerHeld == 0.5f && asheHeld == 0.5f;
+            });
+            // Do Skipping Related Stuff Here
+            StopAllCoroutines();
+        }
+        Debug.LogError("No Pawn Controllers Available To Skip Pawn Event");
+        yield return null;
     }
 }

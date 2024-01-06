@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------
     [SerializeField] private TextMeshProUGUI m_onScreenMessage;
     [SerializeField] private Animator m_cinematicCover;
+    [SerializeField] private SkipIndicator m_skipIndicator;
+    public SkipIndicator SkipIndicator => m_skipIndicator;
 
     public DoorTransition DoorTransition => m_doorTransition;
     public CanvasGroup FadeTransition => m_fadeTransition;

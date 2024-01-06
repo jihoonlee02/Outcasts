@@ -120,13 +120,22 @@ public class SoloController : MonoBehaviour
     }
     public void EnablePawnControl()
     {
+        if (!pawnControlDisabled) return;
         pawnControlDisabled = false;
+        m_playerInput.actions["PrimaryTinker"].performed += TinkerPrimaryToolAction;
+        m_playerInput.actions["PrimaryAshe"].performed += AshePrimaryToolAction;
         m_playerInput.actions.actionMaps[0].Enable();
         m_playerInput.actions["Join"].Disable();
     }
     public void DisablePawnControl()
     {
+        if (pawnControlDisabled) return;
         pawnControlDisabled = true;
         m_playerInput.actions.actionMaps[0].Disable();
+        // For Skipping (Ryan) HIGHLY INEFFICENT, But works
+        m_playerInput.actions["PrimaryTinker"].performed -= TinkerPrimaryToolAction;
+        m_playerInput.actions["PrimaryAshe"].performed -= AshePrimaryToolAction;
+        m_playerInput.actions["PrimaryTinker"].Enable();
+        m_playerInput.actions["PrimaryAshe"].Enable();
     }
 }

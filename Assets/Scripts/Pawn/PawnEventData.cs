@@ -15,8 +15,10 @@ public class PawnEventData : ScriptableObject
 {
     [SerializeField] private PawnEvent[] pawnEvents;
     [SerializeField] private bool hideDialogueAfterEvent;
+    [SerializeField] private bool skippable;
     public PawnEvent[] PawnEvents => pawnEvents;
     public bool HideDialogueAfterEvent => hideDialogueAfterEvent;
+    public bool Skippable => skippable;
 }
 
 [System.Serializable]
@@ -117,6 +119,9 @@ public class PawnEventDataEditor : Editor
         EditorGUILayout.LabelField("Pawn Event Data");
         GUILayout.FlexibleSpace();
         EditorGUILayout.LabelField("Events: " + pawnEventArray.arraySize, EditorStyles.boldLabel);
+        GUILayout.FlexibleSpace();
+        var skippableButton = serializedObject.FindProperty("skippable");
+        skippableButton.boolValue = EditorGUILayout.Toggle("Skippable", skippableButton.boolValue);
         // Interface Each PawnEvent by Title
         EditorGUILayout.Space();
         EventTitleInterfacer();
