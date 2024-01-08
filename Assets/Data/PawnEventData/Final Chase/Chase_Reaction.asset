@@ -20,9 +20,9 @@ MonoBehaviour:
     transitionTime: 1.4
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 0
@@ -37,9 +37,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 1
     eventAction: 1
-    timeDuration: 0.001
     moveDirection: 1
     moveSpeed: 0.2
+    timeDuration: 0.001
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 0
@@ -54,9 +54,9 @@ MonoBehaviour:
     transitionTime: 0.2
     pawnSelection: 0
     eventAction: 1
-    timeDuration: 0.001
     moveDirection: 1
     moveSpeed: 0.2
+    timeDuration: 0.001
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 0
@@ -83,14 +83,14 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+    - profile: {fileID: 21300000, guid: ad34ede8eccf73a4cb319ffc17e51fba, type: 3}
       alignment: 1
       externalID: 0
       charSound: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 1
+      keepTextAfterDialogue: 0
     invoke: 1
     activate: 1
     id: 4
@@ -124,9 +124,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 0
@@ -138,7 +138,55 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: RUUNN!!
       speed: 8
+      delay: 3
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Where do we even go?!
+      speed: 8
       delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: The way they came from!
+      speed: 8
+      delay: 3
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Are you CRAZY?
+      speed: 8
+      delay: 3
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Having lived with you, yeah!
+      speed: 8
+      delay: 3
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 1
@@ -148,13 +196,16 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: 
+      text: '
+
+'
       speed: 8
       delay: 0
       waitOnInput: 0
-      noWaiting: 0
+      noWaiting: 1
       hideProfileAfterDialogue: 1
       keepTextAfterDialogue: 0
     invoke: 1
     activate: 1
     id: 2
+  hideDialogueAfterEvent: 0
