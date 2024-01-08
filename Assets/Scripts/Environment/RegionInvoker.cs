@@ -44,7 +44,11 @@ public class RegionInvoker : Invoker
         if (Time.time > TimeDuration
             && ((triggerType == TriggerType.TinkerOnly && collision.gameObject.tag == "Tinker")
             || (triggerType == TriggerType.AsheOnly && collision.gameObject.tag == "Ashe")
-            || (triggerType == TriggerType.AnyPlayer && collision.GetComponent<Pawn>())))
+            || (triggerType == TriggerType.AnyPlayer && collision.GetComponent<Pawn>()))
+            || (triggerType == TriggerType.BothPlayersRequired 
+                && (collision.gameObject.tag == "Tinker" || collision.gameObject.tag == "Ashe")
+               )
+           )
         {
             TimeDuration = Time.time + stayTimeToTrigger;
         }
