@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class FireVent : Invokee
@@ -55,7 +56,11 @@ public class FireVent : Invokee
         flameRise = !flameRise;
         durationSwitch = Time.time + (flameRise ? activeDuration : inactiveDuration);
     }
-
+    public void EnableVent()
+    {
+        m_autoFlame = true;
+        RaiseFlame();
+    }
     // Very Permeant Disabbling
     public void DisableVent()
     {
