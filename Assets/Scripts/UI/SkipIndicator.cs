@@ -36,7 +36,12 @@ public class SkipIndicator : MonoBehaviour
 
     private void Update()
     {
-        if (m_tinkerHalf.fillAmount > 0f || m_asheHalf.fillAmount > 0f)
+        if (m_tinkerHalf.fillAmount >= 0.5f && m_asheHalf.fillAmount >= 0.5f && !isFading)
+        {
+            m_animator.Play("Fade");
+            isFading = true;
+        }
+        else if (m_tinkerHalf.fillAmount > 0f || m_asheHalf.fillAmount > 0f)
         {
             m_animator.Play("Visible");
             isFading = false;
@@ -46,5 +51,7 @@ public class SkipIndicator : MonoBehaviour
             m_animator.Play("Fade");
             isFading = true;
         }
+
+        
     }
 }

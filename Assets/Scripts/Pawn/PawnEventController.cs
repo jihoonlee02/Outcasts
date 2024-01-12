@@ -136,7 +136,7 @@ public class PawnEventController : Invokee
         float asheHeld = 0f;
         if (GameManager.Instance.AshePC != null && GameManager.Instance.TinkerPC != null)
         {
-            yield return new WaitUntil(() => 
+            yield return new WaitUntil(() =>
             {
                 if (GameManager.Instance.TinkerPC.PlayerInput.actions["UseToolPrimary"].inProgress)
                 {
@@ -165,8 +165,6 @@ public class PawnEventController : Invokee
 
                 return tinkerHeld == 0.5f && asheHeld == 0.5f;
             });
-            // Do Skipping Related Stuff Here
-            StopAllCoroutines();
         }
         else if (GameManager.Instance.SC != null)
         {
@@ -198,11 +196,55 @@ public class PawnEventController : Invokee
                 GameManager.Instance.SkipIndicator.AsheHalf = asheHeld;
 
                 return tinkerHeld == 0.5f && asheHeld == 0.5f;
-            });
-            // Do Skipping Related Stuff Here
-            StopAllCoroutines();
+            });        
         }
-        Debug.LogError("No Pawn Controllers Available To Skip Pawn Event");
-        yield return null;
+        else
+        {
+            Debug.LogError("No Pawn Controllers Available To Skip Pawn Event");
+            yield return null;
+        }
+
+        StopAllCoroutines();
+        if (m_pawnEventData.SkipEvent.ChangeMusic)
+        {
+            GameManager.Instance.LevelManager.ChangeMusic(m_pawnEventData.SkipEvent.MusicSelection);
+            GameManager.Instance.LevelManager.PlayMusic();
+        }
+        if (m_pawnEventData.SkipEvent.ChangeCameraPosition)
+        {
+            Camera.Instance.ShiftTo(m_pawnEventData.SkipEvent.CameraNewLocation);
+        }
+        if (m_pawnEventData.SkipEvent.HideDialogue)
+        {
+            DialogueManager.Instance.HideDialogue();
+        }
+        if (m_pawnEventData.SkipEvent.PausePawnControl)
+        {
+            GameManager.Instance.LevelManager.PausePawnControl(!m_pawnEventData.SkipEvent.NotCinematic);
+        }
+        if (m_pawnEventData.SkipEvent.ResumePawnControl)
+        {
+            GameManager.Instance.LevelManager.ResumePawnControl();
+        }
+        if (m_pawnEventData.SkipEvent.ChangeTinkerLocation)
+        {
+            GameManager.Instance.Tinker.transform.position = m_pawnEventData.SkipEvent.TinkerNewLocation;
+        }
+        if (m_pawnEventData.SkipEvent.ChangeAsheLocation)
+        {
+            GameManager.Instance.Ashe.transform.position = m_pawnEventData.SkipEvent.AsheNewLocation;
+        }
+        if (m_pawnEventData.SkipEvent.Invoke && m_pawnEventData.SkipEvent.Id >= 0)
+        {
+            if (m_pawnEventData.SkipEvent.Activate)
+            {
+                EventManager.GetEventManager.Activated.Invoke(m_pawnEventData.SkipEvent.Id);
+            }
+            else
+            {
+                EventManager.GetEventManager.Deactivated.Invoke(m_pawnEventData.SkipEvent.Id);
+            }
+        }
+
     }
 }

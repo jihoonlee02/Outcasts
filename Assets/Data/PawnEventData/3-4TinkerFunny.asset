@@ -20,9 +20,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 1
-    timeDuration: 0.75
     moveDirection: 0
     moveSpeed: 0.8
+    timeDuration: 0.75
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -73,9 +73,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -83,3 +83,21 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: -1
+  skipEvent:
+    changeMusic: 0
+    changeCameraPosition: 0
+    hideDialogue: 0
+    musicSelection: {fileID: 0}
+    cameraNewLocation: {x: 0, y: 0, z: 0}
+    pausePawnControl: 0
+    notCinematic: 0
+    resumePawnControl: 0
+    changeTinkerLocation: 0
+    changeAsheLocation: 0
+    tinkerNewLocation: {x: 0, y: 0, z: 0}
+    asheNewLocation: {x: 0, y: 0, z: 0}
+    invoke: 0
+    activate: 0
+    id: 0
+  hideDialogueAfterEvent: 0
+  skippable: 0
