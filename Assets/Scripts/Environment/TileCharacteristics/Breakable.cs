@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 //Can be destroyed by GameObjects that invoke break on collision
 [RequireComponent(typeof(Collider2D), typeof(Renderer), typeof(AudioSource))]
-public class Breakable : MonoBehaviour
+public class Breakable : Invoker
 {
-    
+    [Header("Breakable")]
     [SerializeField] private bool m_requiresAshe = true;
     [SerializeField, Tooltip("No Implementation with this one yet")]
     private bool m_requiresTinker = false;
@@ -39,6 +39,7 @@ public class Breakable : MonoBehaviour
     {
         m_particle.Play();
         m_collider.enabled = false;
+        Activate();
         //renderer.enabled = false;
         // Replaced with this in order to destroy floating nails
         Destroy(m_renderer.gameObject);

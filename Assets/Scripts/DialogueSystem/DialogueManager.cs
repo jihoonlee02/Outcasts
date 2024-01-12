@@ -115,6 +115,7 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             m_dialogueProducer_left.StopProduction();
             m_dialogueProducer_right.StopProduction();
+            m_inputRequiredSprite.SetActive(false);
             //HideDialogue(); // Hiding all by default
         }        
     }

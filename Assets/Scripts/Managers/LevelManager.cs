@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
     {
         EventManager.GetEventManager.Deactivated.Invoke(id);
     }
-    // ------------REMOVE THIS TRASH!!!!!-----------
+    // ------------Legacy, still used-----------
     public void FaceTinkerRight()
     {
         GameManager.Instance.Tinker.Animator.SetFloat("MoveX", 1);

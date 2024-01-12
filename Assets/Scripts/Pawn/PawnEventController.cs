@@ -203,8 +203,10 @@ public class PawnEventController : Invokee
             Debug.LogError("No Pawn Controllers Available To Skip Pawn Event");
             yield return null;
         }
-
+        GameManager.Instance.TransitionAnimator.Play("Fade");
+        yield return new WaitForSeconds(1f);
         StopAllCoroutines();
+        DialogueManager.Instance.StopDialogue();
         if (m_pawnEventData.SkipEvent.ChangeMusic)
         {
             GameManager.Instance.LevelManager.ChangeMusic(m_pawnEventData.SkipEvent.MusicSelection);
@@ -245,6 +247,6 @@ public class PawnEventController : Invokee
                 EventManager.GetEventManager.Deactivated.Invoke(m_pawnEventData.SkipEvent.Id);
             }
         }
-
+        GameManager.Instance.TransitionAnimator.Play("UnFade");
     }
 }

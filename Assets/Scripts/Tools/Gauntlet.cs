@@ -60,7 +60,7 @@ public class Gauntlet : Tool
 
         // Raycast that looks in front of Ashe Gauntlets based on orientation
         RaycastHit2D[] hit2Ds = Physics2D.BoxCastAll(userCollider.bounds.center, userCollider.bounds.extents,
-            0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 0.2f);
+            0f, Vector2.right * Mathf.Sign(m_user.Animator.GetFloat("MoveX")), 0.5f);
         foreach (RaycastHit2D hit2D in hit2Ds)
         {
             var go = hit2D.collider.gameObject;

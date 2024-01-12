@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator m_transitionAnimator;
     private TransitionType m_transitionEntry = TransitionType.Fade;
     private TransitionType m_transitionExit = TransitionType.Fade;
+    public Animator TransitionAnimator => m_transitionAnimator;
     public RoomManager CurrRoomManager => m_roomManager;
     public LevelManager LevelManager
     {
@@ -248,7 +249,6 @@ public class GameManager : MonoBehaviour
 
     public void TogglePause(PlayerController pc = null)
     {
-        Debug.Log(isPaused);
         if (isPaused) UnPauseGame();
         else PauseGame(pc);
     }
