@@ -37,6 +37,8 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Ashe.transform.position = m_asheSpawn.position;
         GameManager.Instance.Tinker.gameObject.SetActive(true);
         GameManager.Instance.Ashe.gameObject.SetActive(true);
+        Destroy(GameManager.Instance.Tinker.GetComponent<Grabbed>());
+        Destroy(GameManager.Instance.Ashe.GetComponent<Grabbed>());
 
         if (AudioManager.Instance.CurrentAudio != m_music)
             AudioManager.Instance.SetAudioClip(m_music);
@@ -80,6 +82,10 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.AshePC?.DisablePawnControl();
         GameManager.Instance.TinkerPC?.DisablePawnControl();
         GameManager.Instance.SC?.DisablePawnControl();
+
+        // For Skipping Reasons
+        GameManager.Instance.Ashe.DisablePunch();
+        GameManager.Instance.Tinker.DisableShoot();
     }
     public void PausePawnControl()
     {
@@ -90,7 +96,12 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.DeactivateCinematic();
         GameManager.Instance.AshePC?.EnablePawnControl();
         GameManager.Instance.TinkerPC?.EnablePawnControl();
-        GameManager.Instance.SC?.EnablePawnControl();    
+        GameManager.Instance.SC?.EnablePawnControl();
+
+        // For Skipping & Paw Grabbing Reasons
+        GameManager.Instance.Ashe.EnablePunch();
+        GameManager.Instance.Ashe.EnableGrab();
+        GameManager.Instance.Tinker.EnableShoot();
     }
     public void ActivateEvent(int id)
     {

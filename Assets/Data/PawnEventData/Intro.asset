@@ -194,5 +194,21 @@ MonoBehaviour:
     invoke: 1
     activate: 1
     id: 1
+  skipEvent:
+    changeMusic: 0
+    changeCameraPosition: 0
+    hideDialogue: 0
+    musicSelection: {fileID: 0}
+    cameraNewLocation: {x: 0, y: 0, z: 0}
+    pausePawnControl: 0
+    notCinematic: 0
+    resumePawnControl: 0
+    changeTinkerLocation: 0
+    changeAsheLocation: 0
+    tinkerNewLocation: {x: 0, y: 0, z: 0}
+    asheNewLocation: {x: 0, y: 0, z: 0}
+    invoke: 1
+    activate: 1
+    id: 1
   hideDialogueAfterEvent: 0
   skippable: 1
