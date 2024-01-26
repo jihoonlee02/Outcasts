@@ -1242,6 +1242,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1 &35186269
 GameObject:
   m_ObjectHideFlags: 0
@@ -74077,6 +74078,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!114 &232177576 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6931623744282149702, guid: 9b670a98737d6a841a570bdf59cf58b0, type: 3}
@@ -74401,6 +74403,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1 &268727882
 GameObject:
   m_ObjectHideFlags: 0
@@ -79952,6 +79955,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &377116629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111378,6 +111382,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &635891441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111923,6 +111928,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &714353285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113303,6 +113309,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1 &913569572
 GameObject:
   m_ObjectHideFlags: 0
@@ -115842,6 +115849,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &1073820686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117384,7 +117392,7 @@ MonoBehaviour:
   m_followEnabled: 0
   m_smooth: 1
   m_cameraShaker: {fileID: 1226954545}
-  m_cameraFollow: {fileID: 0}
+  m_tnaCameraFollow: {fileID: 0}
 --- !u!114 &1226954542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117401,6 +117409,8 @@ MonoBehaviour:
   isLocked: 0
   lockVertical: 1
   lockHorizontal: 0
+  tinkerOnly: 0
+  asheOnly: 0
   leftBound: 0
   boundTheLeft: 1
   rightBound: 0
@@ -118305,6 +118315,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1 &1327593200
 GameObject:
   m_ObjectHideFlags: 0
@@ -118363,6 +118374,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &1332116736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134226,6 +134238,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1 &1876007398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4390724550975800429, guid: f2c631834c4bf7647b5afed60de629be, type: 3}
@@ -134256,6 +134269,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &1888963340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134648,6 +134662,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &1938565737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134966,6 +134981,7 @@ MonoBehaviour:
   speed: 1
   autoMove: 0
   noHaltOnCollisions: 0
+  smooth: 0
 --- !u!1001 &2076774587
 PrefabInstance:
   m_ObjectHideFlags: 0

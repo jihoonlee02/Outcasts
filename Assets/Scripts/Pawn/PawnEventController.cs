@@ -138,7 +138,7 @@ public class PawnEventController : Invokee
         {
             yield return new WaitUntil(() =>
             {
-                if (GameManager.Instance.TinkerPC.PlayerInput.actions["UseToolPrimary"].inProgress)
+                if (GameManager.Instance.TinkerPC.PlayerInput.actions["Skip"].inProgress)
                 {
                     tinkerHeld += Time.deltaTime;
                 }
@@ -146,7 +146,7 @@ public class PawnEventController : Invokee
                 {
                     tinkerHeld -= Time.deltaTime;
                 }
-                if (GameManager.Instance.AshePC.PlayerInput.actions["UseToolPrimary"].inProgress)
+                if (GameManager.Instance.AshePC.PlayerInput.actions["Skip"].inProgress)
                 {
                     asheHeld += Time.deltaTime;
                 }
@@ -170,7 +170,7 @@ public class PawnEventController : Invokee
         {
             yield return new WaitUntil(() =>
             {
-                if (GameManager.Instance.SC.PlayerInput.actions["PrimaryTinker"].inProgress)
+                if (GameManager.Instance.SC.PlayerInput.actions["TinkerSkip"].inProgress)
                 {
                     tinkerHeld += Time.deltaTime;
                 }
@@ -178,7 +178,7 @@ public class PawnEventController : Invokee
                 {
                     tinkerHeld -= Time.deltaTime;
                 }
-                if (GameManager.Instance.SC.PlayerInput.actions["PrimaryAshe"].inProgress)
+                if (GameManager.Instance.SC.PlayerInput.actions["AsheSkip"].inProgress)
                 {
                     asheHeld += Time.deltaTime;
                 }

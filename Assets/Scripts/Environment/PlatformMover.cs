@@ -11,6 +11,7 @@ public class PlatformMover : Invokee
     [SerializeField, Range(0f, 10f)] private float speed = 1f;
     [SerializeField] private bool autoMove;
     [SerializeField] private bool noHaltOnCollisions;
+    [SerializeField] private bool smooth;
     private float activeCount;
 
     # if UNITY_EDITOR
@@ -33,7 +34,9 @@ public class PlatformMover : Invokee
         if (!blocked)
         {
             if (!haltAutoMove && autoMove && (Vector2)transform.localPosition == m_waypoints[idx]) idx = (idx + 1) % m_waypoints.Length;
-            transform.localPosition = Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
+            transform.localPosition = smooth 
+                ? Vector2.Lerp(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed)
+                : Vector2.MoveTowards(transform.localPosition, m_waypoints[idx], Time.deltaTime * 3f * speed);
         }
     }
 

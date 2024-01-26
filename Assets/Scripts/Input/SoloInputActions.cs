@@ -134,6 +134,24 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TinkerSkip"",
+                    ""type"": ""Button"",
+                    ""id"": ""40b3ada4-0815-4532-9dcf-56c23c29f804"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AsheSkip"",
+                    ""type"": ""Button"",
+                    ""id"": ""70c57ff0-8ce9-459f-aca2-b27d6f6ac39f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -376,6 +394,28 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""LocalKeyboard"",
                     ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28eee9a9-0fa5-4bb6-980f-d9e3df4c709e"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""TinkerSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4f49bd9-fca8-44d2-b58a-b2ba02306d71"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""LocalKeyboard"",
+                    ""action"": ""AsheSkip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -948,6 +988,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         m_Player_InteractTinker = m_Player.FindAction("InteractTinker", throwIfNotFound: true);
         m_Player_InteractAshe = m_Player.FindAction("InteractAshe", throwIfNotFound: true);
         m_Player_Join = m_Player.FindAction("Join", throwIfNotFound: true);
+        m_Player_TinkerSkip = m_Player.FindAction("TinkerSkip", throwIfNotFound: true);
+        m_Player_AsheSkip = m_Player.FindAction("AsheSkip", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1031,6 +1073,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_InteractTinker;
     private readonly InputAction m_Player_InteractAshe;
     private readonly InputAction m_Player_Join;
+    private readonly InputAction m_Player_TinkerSkip;
+    private readonly InputAction m_Player_AsheSkip;
     public struct PlayerActions
     {
         private @SoloInputActions m_Wrapper;
@@ -1047,6 +1091,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         public InputAction @InteractTinker => m_Wrapper.m_Player_InteractTinker;
         public InputAction @InteractAshe => m_Wrapper.m_Player_InteractAshe;
         public InputAction @Join => m_Wrapper.m_Player_Join;
+        public InputAction @TinkerSkip => m_Wrapper.m_Player_TinkerSkip;
+        public InputAction @AsheSkip => m_Wrapper.m_Player_AsheSkip;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1092,6 +1138,12 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 @Join.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
                 @Join.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
                 @Join.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
+                @TinkerSkip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTinkerSkip;
+                @TinkerSkip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTinkerSkip;
+                @TinkerSkip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTinkerSkip;
+                @AsheSkip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAsheSkip;
+                @AsheSkip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAsheSkip;
+                @AsheSkip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAsheSkip;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1132,6 +1184,12 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
                 @Join.started += instance.OnJoin;
                 @Join.performed += instance.OnJoin;
                 @Join.canceled += instance.OnJoin;
+                @TinkerSkip.started += instance.OnTinkerSkip;
+                @TinkerSkip.performed += instance.OnTinkerSkip;
+                @TinkerSkip.canceled += instance.OnTinkerSkip;
+                @AsheSkip.started += instance.OnAsheSkip;
+                @AsheSkip.performed += instance.OnAsheSkip;
+                @AsheSkip.canceled += instance.OnAsheSkip;
             }
         }
     }
@@ -1264,6 +1322,8 @@ public partial class @SoloInputActions : IInputActionCollection2, IDisposable
         void OnInteractTinker(InputAction.CallbackContext context);
         void OnInteractAshe(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
+        void OnTinkerSkip(InputAction.CallbackContext context);
+        void OnAsheSkip(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -176,17 +176,14 @@ public class PlayerController : MonoBehaviour
 
         m_playerInput.actions.actionMaps[0].Enable();
         m_playerInput.actions["Join"].Disable();
+        m_playerInput.actions["Skip"].Disable();
     }
     public void DisablePawnControl()
     {
         if (pawnControlDisabled) return;
         pawnControlDisabled = true;
         m_playerInput.actions.actionMaps[0].Disable();
-
-        // For Skipping (Ryan) HIGHLY INEFFICENT, But works
-        m_playerInput.actions["UseToolPrimary"].Enable();
-        //m_playerInput.actions["Pause"].Enable(); --> (Ryan) There are no instances where this is beneficial so far
-        // Plus this is too jank for my liking ;-;
+        m_playerInput.actions["Skip"].Enable();
     }
     private IEnumerator ShowControlSchemeUsed()
     {

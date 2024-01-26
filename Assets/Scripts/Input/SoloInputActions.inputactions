@@ -112,6 +112,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TinkerSkip",
+                    "type": "Button",
+                    "id": "40b3ada4-0815-4532-9dcf-56c23c29f804",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AsheSkip",
+                    "type": "Button",
+                    "id": "70c57ff0-8ce9-459f-aca2-b27d6f6ac39f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -354,6 +372,28 @@
                     "processors": "",
                     "groups": "LocalKeyboard",
                     "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28eee9a9-0fa5-4bb6-980f-d9e3df4c709e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "TinkerSkip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4f49bd9-fca8-44d2-b58a-b2ba02306d71",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "LocalKeyboard",
+                    "action": "AsheSkip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

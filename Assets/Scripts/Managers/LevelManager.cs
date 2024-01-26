@@ -83,9 +83,9 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.TinkerPC?.DisablePawnControl();
         GameManager.Instance.SC?.DisablePawnControl();
 
-        // For Skipping Reasons
-        GameManager.Instance.Ashe.DisablePunch();
-        GameManager.Instance.Tinker.DisableShoot();
+        //// For Skipping Reasons
+        //GameManager.Instance.Ashe.DisablePunch();
+        //GameManager.Instance.Tinker.DisableShoot();
     }
     public void PausePawnControl()
     {
@@ -97,11 +97,6 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.AshePC?.EnablePawnControl();
         GameManager.Instance.TinkerPC?.EnablePawnControl();
         GameManager.Instance.SC?.EnablePawnControl();
-
-        // For Skipping & Paw Grabbing Reasons
-        GameManager.Instance.Ashe.EnablePunch();
-        GameManager.Instance.Ashe.EnableGrab();
-        GameManager.Instance.Tinker.EnableShoot();
     }
     public void ActivateEvent(int id)
     {

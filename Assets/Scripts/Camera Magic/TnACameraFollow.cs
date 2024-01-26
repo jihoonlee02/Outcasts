@@ -9,6 +9,10 @@ public class TnACameraFollow : MonoBehaviour
     [SerializeField] private bool isLocked = true;
     [SerializeField] private bool lockVertical = true;
     [SerializeField] private bool lockHorizontal = false;
+    [SerializeField] private bool tinkerOnly = false;
+    [SerializeField] private bool asheOnly = false;
+    public bool TinkerOnly { set { tinkerOnly = value; } }
+    public bool AsheOnly { set { asheOnly = value; } }
 
     [Header("Bounds")]
     [SerializeField] public float leftBound = 0;
@@ -35,7 +39,12 @@ public class TnACameraFollow : MonoBehaviour
         }
         if (GameManager.Instance.Tinker != null && GameManager.Instance.Ashe != null)
         {
-            var centerPoint = GetCenterPoint();
+            Vector3 centerPoint;
+            if (tinkerOnly && asheOnly) centerPoint = GetCenterPoint();
+            else if (tinkerOnly) centerPoint = GameManager.Instance.Tinker.transform.position;
+            else if (asheOnly) centerPoint = GameManager.Instance.Ashe.transform.position;
+            else centerPoint = GetCenterPoint();
+                              
             Vector3 newPosition = new Vector3(lockHorizontal ? transform.position.x : centerPoint.x, 
                 lockVertical ? transform.position.y : centerPoint.y, transform.position.z);
 

@@ -130,18 +130,19 @@ public class Chase : MonoBehaviour
         if (target == null || target.GetComponent<Grabbed>()) return;
         if (target.tag == "Tinker")
         {
+            Camera.Instance.TnACameraFollow.AsheOnly = true;
             GameManager.Instance.Tinker.IsHeld = false;
             GameManager.Instance.Ashe.IsLifting = false;
             GameManager.Instance.Tinker.DisableShoot();
         }
         else if (target.tag == "Ashe")
         {
+            Camera.Instance.TnACameraFollow.TinkerOnly = true;
             if (GameManager.Instance.Ashe.IsLifting)
             {
                 GameManager.Instance.Tinker.Jump();
                 GameManager.Instance.Ashe.IsLifting = false;
-            }
-            
+            }       
             GameManager.Instance.Ashe.DisablePunch();
             GameManager.Instance.Ashe.DisableGrab();
         }
@@ -155,11 +156,13 @@ public class Chase : MonoBehaviour
         if (grabbedTarget == null) return;
         if (grabbedTarget.tag == "Tinker")
         {
+            Camera.Instance.TnACameraFollow.AsheOnly = false;
             GameManager.Instance.Tinker.EnableShoot();
             GameManager.Instance.Tinker.RB.velocity = Vector2.zero;
         }
         else if (grabbedTarget.tag == "Ashe")
         {
+            Camera.Instance.TnACameraFollow.TinkerOnly = false;
             GameManager.Instance.Ashe.EnablePunch();
             GameManager.Instance.Ashe.EnableGrab();
             GameManager.Instance.Ashe.RB.velocity = Vector2.zero;

@@ -33,15 +33,18 @@ public class Camera : MonoBehaviour
 
     [Header("Playful")]
     [SerializeField] private CameraShake m_cameraShaker;
-    [SerializeField] private CameraFollow m_cameraFollow;
+    [SerializeField] private TnACameraFollow m_tnaCameraFollow;
 
     public CameraShake CameraShaker => m_cameraShaker;
-    public CameraFollow CameraFollow => m_cameraFollow;
+    public TnACameraFollow TnACameraFollow => m_tnaCameraFollow;
 
     #region Technical
 
     #endregion
-
+    private void Awake()
+    {
+        m_tnaCameraFollow = GetComponent<TnACameraFollow>();
+    }
     public void ShiftTo(Vector3 targetPosition)
     {
         this.targetPosition = new Vector3(targetPosition.x, targetPosition.y, -10f);
