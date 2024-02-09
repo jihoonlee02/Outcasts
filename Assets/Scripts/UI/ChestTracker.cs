@@ -29,11 +29,24 @@ public class ChestTracker : MonoBehaviour
     public int NumberOfChestsOpened => currNumberOfChestOpened;
 
     private Animator m_animator;
+
+    private bool[] m_savedFoundChests;
+    private int m_savedCurrNumberofChestOpened;
     private void Awake()
     {
         m_foundChests = new bool[maxNumberOfChests];
         m_animator = GetComponent<Animator>();
         m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
+    }
+    public void ResetChestCollectionToLastSave()
+    {
+        m_foundChests = m_savedFoundChests;
+        currNumberOfChestOpened = m_savedCurrNumberofChestOpened;
+    }
+    public void SaveRecentChestCollection()
+    {
+        m_savedFoundChests = m_foundChests;
+        m_savedCurrNumberofChestOpened = currNumberOfChestOpened;
     }
     public void SetFoundChests(bool[] a_foundChests, int a_chestsOpenedCount)
     {

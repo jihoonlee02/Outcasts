@@ -29,12 +29,25 @@ public class GemTracker : MonoBehaviour
 
     public int TinkerGemsCollected => m_tinkerGems;
     public int AsheGemsCollected => m_asheGems;
+
+    private int m_savedTinkerGems = 0;
+    private int m_savedAsheGems = 0;
+
+    public void ResetGemCollectionToLastSave()
+    {
+        m_asheGems = m_savedAsheGems;
+        m_tinkerGems = m_savedTinkerGems;
+    }
+    public void SaveRecentGemCollection()
+    {
+        m_savedAsheGems = m_asheGems;
+        m_savedTinkerGems = m_tinkerGems;
+    }
     public void TinkerCollectsGem()
     {
         m_tinkerGems++;
         m_tinkerGemTracking.text = m_tinkerGems.ToString();
     }
-
     public void AsheCollectsGem()
     {
         m_asheGems++;
@@ -44,6 +57,13 @@ public class GemTracker : MonoBehaviour
     {
         m_tinkerGems = a_tinkerGems;
         m_asheGems = a_asheGems;
+        m_tinkerGemTracking.text = m_tinkerGems.ToString();
+        m_asheGemTracking.text = m_asheGems.ToString();
+    }
+    public void ClearGemCount()
+    {
+        m_tinkerGems = 0;
+        m_asheGems = 0;
         m_tinkerGemTracking.text = m_tinkerGems.ToString();
         m_asheGemTracking.text = m_asheGems.ToString();
     }

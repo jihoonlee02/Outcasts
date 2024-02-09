@@ -49,17 +49,10 @@ public class GameManager : MonoBehaviour, ISaveable
     [SerializeField] private GameObject m_visualCanvas;
     [SerializeField] private CharacterSelection m_characterSelection;
     [SerializeField] private CharacterSelection m_characterSelection2;
-    // --------These Two are no apart of Scene Management-----
-    [SerializeField] private DoorTransition m_doorTransition;
-    [SerializeField] private CanvasGroup m_fadeTransition;
-    //--------------------------------------------------------
     [SerializeField] private TextMeshProUGUI m_onScreenMessage;
     [SerializeField] private Animator m_cinematicCover;
     [SerializeField] private SkipIndicator m_skipIndicator;
     public SkipIndicator SkipIndicator => m_skipIndicator;
-
-    public DoorTransition DoorTransition => m_doorTransition;
-    public CanvasGroup FadeTransition => m_fadeTransition;
 
     [Header("Level Management")]
     [SerializeField] private Transform m_levelThings;
@@ -98,7 +91,7 @@ public class GameManager : MonoBehaviour, ISaveable
     #endregion
 
     #region ProfileData
-    private string m_profileName;
+    private string m_currentProfile;
     private float m_timeTracking;
     #endregion
     private void Update()
@@ -269,6 +262,7 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void PauseGame(PlayerController pc = null)
     {
+        Time.timeScale = 0;
         isPaused = true;
         m_tinkerPC?.DisablePawnControl();
         m_ashePC?.DisablePawnControl();
@@ -278,6 +272,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void UnPauseGame()
     {
+        Time.timeScale = 1;
         isPaused = false;
         m_tinkerPC?.EnablePawnControl();
         m_ashePC?.EnablePawnControl();
@@ -335,6 +330,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public void ReloadCurrentScene()
     {
         UnPauseGame();
+        ChestTracker.Instance.ResetChestCollectionToLastSave();
+        GemTracker.Instance.ResetGemCollectionToLastSave();
         LoadToScene(m_currScene);
     }
 
@@ -360,13 +357,19 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     private void OnSceneChange(Scene current, Scene next)
     {
+        ChestTracker.Instance.SaveRecentChestCollection();
+        GemTracker.Instance.SaveRecentGemCollection();
+        SaveGameToProfile(m_currentProfile);
         //Dev Bs only
         DialogueManager.Instance.StopDialogue();
         if (m_currScene == "hub")
         {
             ChestTracker.Instance.ResetChestCount();
+            GemTracker.Instance.ClearGemCount();
         }
 
+        // This is wack and breaks the game
+        // FUCK THE MAIN MENU!!!!! NO NEED!
         if (next.name == "MainMenu")
         {
             Destroy(transform.parent.gameObject);
@@ -463,7 +466,7 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void PopulateSaveData(SaveData a_SaveData)
     {
-        a_SaveData.ProfileName = "Ashe";
+        a_SaveData.ProfileName = m_currentProfile;
         a_SaveData.CurrScene = m_currScene;
         a_SaveData.ChestCollected = ChestTracker.Instance.FoundChests;
         a_SaveData.ChestsCount = ChestTracker.Instance.NumberOfChestsOpened;
@@ -484,7 +487,7 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void LoadFromSaveData(SaveData a_SaveData)
     {
-        m_profileName = a_SaveData.ProfileName;
+        m_currentProfile = a_SaveData.ProfileName;
         m_timeTracking = a_SaveData.PlayerTimeInSeconds;
         ChestTracker.Instance.SetFoundChests(a_SaveData.ChestCollected, a_SaveData.ChestsCount);
         GemTracker.Instance.InitializeGemCount(a_SaveData.TinkerGemCount, a_SaveData.AsheGemCount);
