@@ -25,6 +25,8 @@ public class ChestTracker : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_trackerTextBox;
     private bool[] m_foundChests;
     public bool IsAllChestsOpen => (currNumberOfChestOpened / requiredChests) >= 1;
+    public bool[] FoundChests => m_foundChests;
+    public int NumberOfChestsOpened => currNumberOfChestOpened;
 
     private Animator m_animator;
     private void Awake()
@@ -33,7 +35,16 @@ public class ChestTracker : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
     }
-
+    public void SetFoundChests(bool[] a_foundChests, int a_chestsOpenedCount)
+    {
+        if (a_foundChests == null) Debug.LogError("Can't send Null Chest's Array");
+        ResetChestCount();
+        for (int i = 0; i < m_foundChests.Length; i++)
+        {
+            m_foundChests[i] = a_foundChests[i];
+        }
+        currNumberOfChestOpened = a_chestsOpenedCount;
+    }
     public void FoundNewChest(int idx)
     {
         if (m_foundChests[idx]) return;
@@ -66,6 +77,7 @@ public class ChestTracker : MonoBehaviour
         {
             m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
         }
+        // Hackey As Fucc Bruh
         yield return new WaitForSeconds(1.5f);
         m_animator.Play("HideChestTracker");
     }

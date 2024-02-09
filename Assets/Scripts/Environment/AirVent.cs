@@ -104,10 +104,14 @@ public class AirVent : MonoBehaviour
         Rigidbody2D gRBody = other.attachedRigidbody;
         if (gObject == null || gRBody == null) return;
         var box = gObject.GetComponent<Box>();
-        if (gRBody.velocity.y < 0) {
-            if (gObject.tag == "Tinker") {
-                gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y/5.0f);
-            } else if (gObject.tag == "physical" && box != null && !box.IsHeavy) {
+        if (gRBody.velocity.y < 0)
+        {
+            if (gObject.tag == "Tinker")
+            {
+                gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y / 5.0f);
+            }
+            else if (gObject.tag == "physical" && box != null && !box.IsHeavy)
+            {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
             }
         }
@@ -118,23 +122,33 @@ public class AirVent : MonoBehaviour
         Rigidbody2D gRBody = other.attachedRigidbody;
         if (gObject == null || gRBody == null) return;
         var box = gObject.GetComponent<Box>();
-
+        
         if (gObject.tag == "Tinker" 
             || (box == null && gObject.tag == "physical") 
-            || (box != null && !box.IsHeavy)) {
+            || (box != null && !box.IsHeavy)) 
+        {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
-            if (gObject.tag == "physical" && box != null && !box.IsHeavy) {
-                if (gRBody.velocity.y < 0) {
+            if (gObject.tag == "physical" && box != null && !box.IsHeavy) 
+            {
+                if (gRBody.velocity.y < 0) 
+                {
                     gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
                 }
-                if (holdObject && gObject.transform.position.x < transform.position.x && gRBody.velocity.x < 0) {
+                if (holdObject && gObject.transform.position.x < transform.position.x && gRBody.velocity.x < 0) 
+                {
                     gRBody.AddForce(windAngQuat * (Vector2.right * holdForce * Vector3.Distance(gObject.transform.position, gameObject.transform.position)));
                 }
-                else if (holdObject && gObject.transform.position.x > transform.position.x && gRBody.velocity.x > 0) {
+                else if (holdObject && gObject.transform.position.x > transform.position.x && gRBody.velocity.x > 0) 
+                {
                     gRBody.AddForce(windAngQuat * (Vector2.left * holdForce * Vector3.Distance(gObject.transform.position, gameObject.transform.position)));
                 }
             }
         }
+        //else if (gObject.tag == "Ashe" 
+        //    || (box != null && box.IsHeavy))
+        //{
+        //    ChangePower(float power); // Make it a number that is within the closeness of the base
+        //}
     }
 }

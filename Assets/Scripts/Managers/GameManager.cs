@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     #region Singleton
     private static GameManager instance;
@@ -87,11 +89,24 @@ public class GameManager : MonoBehaviour
 
     [Header("Dev Settings")]
     [SerializeField] private string[] initialScenesToEnqueue;
-    
+
+    #region DETAILS
     private bool isPaused = false;
     private bool tranistionExited = false;
     private bool tranistionEntered = false;
     private bool cinematicActive = false;
+    #endregion
+
+    #region ProfileData
+    private string m_profileName;
+    private float m_timeTracking;
+    #endregion
+    private void Update()
+    {
+        // Tracking the time
+        if (isPaused) return;
+        m_timeTracking += Time.deltaTime;
+    }
     private void Awake()
     {
         // Just in case the gameManager finds itself in the same scene
@@ -438,6 +453,45 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    #region Saving Current Data
+    public void SaveGameToProfile(string a_profileName)
+    {
+        SaveData sd = new SaveData();
+        this.PopulateSaveData(sd);
+        FileManagment.WriteToSaveFile(a_profileName, sd.ToJson());
+    }
+    public void PopulateSaveData(SaveData a_SaveData)
+    {
+        a_SaveData.ProfileName = "Ashe";
+        a_SaveData.CurrScene = m_currScene;
+        a_SaveData.ChestCollected = ChestTracker.Instance.FoundChests;
+        a_SaveData.ChestsCount = ChestTracker.Instance.NumberOfChestsOpened;
+        a_SaveData.TinkerGemCount = GemTracker.Instance.TinkerGemsCollected;
+        a_SaveData.AsheGemCount = GemTracker.Instance.AsheGemsCollected;
+        // Point Tracking
+      
+        a_SaveData.PlayerTimeInSeconds = m_timeTracking;
+    }
+    public void LoadGameProfile(string a_profile)
+    {
+        if (FileManagment.LoadFromSaveFile(a_profile, out var json))
+        {
+            SaveData sd = new SaveData();
+            sd.LoadFromJson(json);
+            LoadFromSaveData(sd);
+        }
+    }
+    public void LoadFromSaveData(SaveData a_SaveData)
+    {
+        m_profileName = a_SaveData.ProfileName;
+        m_timeTracking = a_SaveData.PlayerTimeInSeconds;
+        ChestTracker.Instance.SetFoundChests(a_SaveData.ChestCollected, a_SaveData.ChestsCount);
+        GemTracker.Instance.InitializeGemCount(a_SaveData.TinkerGemCount, a_SaveData.AsheGemCount);
+        // Point Loading
+        LoadToScene(a_SaveData.CurrScene);
+    }
+    #endregion 
 }
 
 public enum TransitionType
