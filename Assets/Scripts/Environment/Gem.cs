@@ -10,12 +10,12 @@ public class Gem : MonoBehaviour
     {
         if (isTinkerGem && collision.tag == "Tinker")
         {
-            GemTracker.Instance.AsheCollectsGem();
+            GemTracker.Instance.TinkerCollectsGem();
             Destroy(gameObject);
         }
-        else if (collision.tag == "Ashe")
+        else if (!isTinkerGem && collision.tag == "Ashe")
         {
-            GemTracker.Instance.TinkerCollectsGem();
+            GemTracker.Instance.AsheCollectsGem();
             Destroy(gameObject);
         }
     }
