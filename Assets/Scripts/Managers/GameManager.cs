@@ -82,22 +82,20 @@ public class GameManager : MonoBehaviour, ISaveable
 
     [Header("Dev Settings")]
     [SerializeField] private string[] initialScenesToEnqueue;
+    [SerializeField] private string m_currentProfile;
+    [SerializeField] private float m_timeTracking;
 
     #region DETAILS
     private bool isPaused = false;
+    private bool pauseTimer = false;
     private bool tranistionExited = false;
     private bool tranistionEntered = false;
     private bool cinematicActive = false;
     #endregion
-
-    #region ProfileData
-    private string m_currentProfile;
-    private float m_timeTracking;
-    #endregion
     private void Update()
     {
         // Tracking the time
-        if (isPaused) return;
+        if (isPaused || pauseTimer) return;
         m_timeTracking += Time.deltaTime;
     }
     private void Awake()
@@ -122,6 +120,10 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         if (m_visualCanvas == null) { Debug.LogError("Error: VisualCanvas is Missing as an instance in GameManger!"); }
 
+        if (m_currentProfile != null || m_currentProfile != "")
+        {
+            LoadGameProfile(m_currentProfile);
+        }
         // Initial Unaffected Dont Destroys
         //DontDestroyOnLoad(gameObject);
         //DontDestroyOnLoad(m_visualCanvas);
@@ -262,27 +264,35 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void PauseGame(PlayerController pc = null)
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         isPaused = true;
         m_tinkerPC?.DisablePawnControl();
         m_ashePC?.DisablePawnControl();
         m_SC?.DisablePawnControl();
+
+        // UI Things that appear
         UIManager.Instance.OpenPauseMenu(pc);
+        ChestTracker.Instance.ShowChestTracker();
+        GemTracker.Instance.ShowAsheTracker();
+        GemTracker.Instance.ShowTinkerTracker();
     }
 
     public void UnPauseGame()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         isPaused = false;
         m_tinkerPC?.EnablePawnControl();
         m_ashePC?.EnablePawnControl();
         m_SC?.EnablePawnControl();
+
+        // UI Things to Hide
         UIManager.Instance.ClosePauseMenu();
+        ChestTracker.Instance.HideChestTracker();
+        GemTracker.Instance.HideAsheTracker();
+        GemTracker.Instance.HideTinkerTracker();
     }
 
     #region Scene Management
-
-
     public void LoadToScene(string scene)
     {
         m_currScene = scene;
@@ -357,9 +367,6 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     private void OnSceneChange(Scene current, Scene next)
     {
-        ChestTracker.Instance.SaveRecentChestCollection();
-        GemTracker.Instance.SaveRecentGemCollection();
-        SaveGameToProfile(m_currentProfile);
         //Dev Bs only
         DialogueManager.Instance.StopDialogue();
         if (m_currScene == "hub")
@@ -493,6 +500,24 @@ public class GameManager : MonoBehaviour, ISaveable
         GemTracker.Instance.InitializeGemCount(a_SaveData.TinkerGemCount, a_SaveData.AsheGemCount);
         // Point Loading
         LoadToScene(a_SaveData.CurrScene);
+    }
+    public void SaveGameToCurrentProfile()
+    {
+        ChestTracker.Instance.SaveRecentChestCollection();
+        GemTracker.Instance.SaveRecentGemCollection();
+        SaveGameToProfile(m_currentProfile);
+    }
+    public void ChangeCurrentProfile(string newProfile)
+    {
+        m_currentProfile = newProfile;
+    }
+    public void PauseRecordTimer()
+    {
+        pauseTimer = true;
+    }
+    public void ResumeRecordTimer()
+    {
+        pauseTimer = false;
     }
     #endregion 
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.ConstrainedExecution;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public static class FileManagment
@@ -35,7 +36,7 @@ public static class FileManagment
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed To read to {fullPath} with exception {e}");
+            //Debug.LogError($"Failed To read to {fullPath} with exception {e}");
             result = "";
             return false;
         }    
@@ -52,5 +53,29 @@ public static class FileManagment
         }
 
         return profiles;
+    }
+
+    /// <summary>
+    /// Returns the contents of the profiles found in json
+    /// </summary>
+    /// <returns></returns>
+    public static List<string> GetProfileContents()
+    {
+        var filesInDir = Directory.GetFiles(Application.persistentDataPath, "*" + SaveFileExt, SearchOption.TopDirectoryOnly);
+        List<string> profilesContents = new List<string>();
+
+        foreach (var fileInDir in filesInDir)
+        {
+            try
+            {
+                profilesContents.Add(File.ReadAllText(fileInDir));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Error with Getting All Profile Contents. Producing Error: " + e);
+            }
+        }
+
+        return profilesContents;
     }
 }

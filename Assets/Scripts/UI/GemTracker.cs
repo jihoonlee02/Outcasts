@@ -23,13 +23,13 @@ public class GemTracker : MonoBehaviour
     [Header("UIComponents")]
     [SerializeField] private TextMeshProUGUI m_tinkerGemTracking;
     [SerializeField] private TextMeshProUGUI m_asheGemTracking;
+    [SerializeField] private Animator m_tinkerTrackerAnimator;
+    [SerializeField] private Animator m_asheTrackerAnimator;
     // Gem Data
     private int m_tinkerGems = 0;
     private int m_asheGems = 0;
-
     public int TinkerGemsCollected => m_tinkerGems;
     public int AsheGemsCollected => m_asheGems;
-
     private int m_savedTinkerGems = 0;
     private int m_savedAsheGems = 0;
     public void Awake()
@@ -49,13 +49,15 @@ public class GemTracker : MonoBehaviour
     }
     public void TinkerCollectsGem()
     {
-        m_tinkerGems++;
-        m_tinkerGemTracking.text = m_tinkerGems.ToString();
+        //m_tinkerGems++;
+        //m_tinkerGemTracking.text = m_tinkerGems.ToString();
+        StartCoroutine(ShowTinkerTrackerFor(2f));
     }
     public void AsheCollectsGem()
     {
-        m_asheGems++;
-        m_asheGemTracking.text = m_asheGems.ToString();
+        //m_asheGems++;
+        //m_asheGemTracking.text = m_asheGems.ToString();
+        StartCoroutine(ShowAsheTrackerFor(2f));
     }
     public void InitializeGemCount(int a_tinkerGems, int a_asheGems)
     {
@@ -69,10 +71,53 @@ public class GemTracker : MonoBehaviour
         m_asheGems = 0;
         UpdateUI();
     }
-
     public void UpdateUI()
     {
         m_tinkerGemTracking.text = m_tinkerGems.ToString();
         m_asheGemTracking.text = m_asheGems.ToString();
+    }
+    public void ShowTinkerTracker()
+    {
+        m_tinkerTrackerAnimator.Play("ShowChestTracker");
+    }
+    public void HideTinkerTracker()
+    {
+        m_tinkerTrackerAnimator.Play("HideChestTracker");
+    }
+    public void ShowAsheTracker()
+    {
+        m_asheTrackerAnimator.Play("ShowChestTracker");
+    }
+    public void HideAsheTracker()
+    {
+        m_asheTrackerAnimator.Play("HideChestTracker");
+    }
+    private IEnumerator ShowBothTrackersFor(float delay)
+    {
+        m_asheTrackerAnimator.Play("ShowChestTracker");
+        m_tinkerTrackerAnimator.Play("ShowChestTracker");
+        yield return new WaitForSeconds(delay);
+        m_asheTrackerAnimator.Play("HideChestTracker");
+        m_tinkerTrackerAnimator.Play("HideChestTracker");
+    }
+
+    private IEnumerator ShowTinkerTrackerFor(float delay)
+    {
+        m_tinkerTrackerAnimator.Play("ShowChestTracker");
+        yield return new WaitForSeconds(delay / 2f);
+        m_tinkerGems++;
+        m_tinkerGemTracking.text = m_tinkerGems.ToString();
+        yield return new WaitForSeconds(delay / 2f);
+        m_tinkerTrackerAnimator.Play("HideChestTracker");
+    }
+
+    private IEnumerator ShowAsheTrackerFor(float delay)
+    {
+        m_asheTrackerAnimator.Play("ShowChestTracker");
+        yield return new WaitForSeconds(delay / 2f);
+        m_asheGems++;
+        m_asheGemTracking.text = m_asheGems.ToString();
+        yield return new WaitForSeconds(delay / 2f);
+        m_asheTrackerAnimator.Play("HideChestTracker");
     }
 }

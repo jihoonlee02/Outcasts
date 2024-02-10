@@ -6,14 +6,14 @@ using UnityEngine;
 public class SaveData
 {
     // General Stats
-    public string ProfileName;
-    public string CurrScene;
+    public string ProfileName = "";
+    public string CurrScene = "";
     public bool[] ChestCollected;
-    public int ChestsCount;
-    public int TinkerGemCount;
-    public int AsheGemCount;
-    public int Points;
-    public float PlayerTimeInSeconds;
+    public int ChestsCount = 0;
+    public int TinkerGemCount = 0;
+    public int AsheGemCount = 0;
+    public int Points = 0;
+    public float PlayerTimeInSeconds = 0;
     
     // Challenge Achievements
     // Run Past Torches 50 times

@@ -35,13 +35,14 @@ public class ChestTracker : MonoBehaviour
     private void Awake()
     {
         m_foundChests = new bool[maxNumberOfChests];
-        m_animator = GetComponent<Animator>();
+        m_animator = GetComponentInChildren<Animator>();
         m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
     }
     public void ResetChestCollectionToLastSave()
     {
         m_foundChests = m_savedFoundChests;
         currNumberOfChestOpened = m_savedCurrNumberofChestOpened;
+        UpdateUI();
     }
     public void SaveRecentChestCollection()
     {
@@ -57,6 +58,7 @@ public class ChestTracker : MonoBehaviour
             m_foundChests[i] = a_foundChests[i];
         }
         currNumberOfChestOpened = a_chestsOpenedCount;
+        UpdateUI();
     }
     public void FoundNewChest(int idx)
     {
@@ -76,11 +78,26 @@ public class ChestTracker : MonoBehaviour
         currNumberOfChestOpened = 0;
         m_trackerTextBox.color = Color.white;
     }
+    public void ShowChestTracker()
+    {
+        m_animator.Play("ShowChestTracker");
+    }
+    public void HideChestTracker()
+    {
+        m_animator.Play("HideChestTracker");
+    }
     private IEnumerator UpdateChestTracker()
     {
         m_animator.Play("ShowChestTracker");
         yield return new WaitForSeconds(2.3f);
-        
+        UpdateUI();
+        // Hackey As Fucc Bruh
+        yield return new WaitForSeconds(1.5f);
+        m_animator.Play("HideChestTracker");
+    }
+
+    public void UpdateUI()
+    {
         if (IsAllChestsOpen)
         {
             m_trackerTextBox.color = Color.green;
@@ -90,8 +107,5 @@ public class ChestTracker : MonoBehaviour
         {
             m_trackerTextBox.text = currNumberOfChestOpened.ToString() + "/" + requiredChests.ToString();
         }
-        // Hackey As Fucc Bruh
-        yield return new WaitForSeconds(1.5f);
-        m_animator.Play("HideChestTracker");
     }
 }

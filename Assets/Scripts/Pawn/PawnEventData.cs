@@ -87,6 +87,7 @@ public struct SkipEvent
     [SerializeField] private bool changeMusic;
     [SerializeField] private bool changeCameraPosition;
     [SerializeField] private bool hideDialogue;
+    [SerializeField] private bool skipWithFade;
     [SerializeField] private AudioClip musicSelection;
     [SerializeField] private Vector3 cameraNewLocation;
     
@@ -109,6 +110,7 @@ public struct SkipEvent
     public bool ChangeMusic => changeMusic;
     public bool ChangeCameraPosition => changeCameraPosition;
     public bool HideDialogue => hideDialogue;
+    public bool SkipWithFade => skipWithFade;
     public AudioClip MusicSelection => musicSelection;
     public Vector3 CameraNewLocation => cameraNewLocation;
     public bool PausePawnControl => pausePawnControl;
@@ -461,6 +463,10 @@ public class PawnEventDataEditor : Editor
     {
         SerializedProperty skipEvent = serializedObject.FindProperty("skipEvent");
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
+
+        var skipWithFade = skipEvent.FindPropertyRelative("skipWithFade");
+        skipWithFade.boolValue = EditorGUILayout.Toggle("Fade on Skip", skipWithFade.boolValue);
+
         var changeMusic = skipEvent.FindPropertyRelative("changeMusic");
         changeMusic.boolValue = EditorGUILayout.Toggle("Change Music", changeMusic.boolValue);
         if (changeMusic.boolValue)

@@ -50,6 +50,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.TranisitionExit = m_transitionExit;
         GameManager.Instance.TransitionEnter();
         AudioManager.Instance.PlayAudio();
+        GameManager.Instance.SaveGameToCurrentProfile();
         invokeAtStart.Invoke();
     }
 
