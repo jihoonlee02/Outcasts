@@ -40,13 +40,13 @@ public class ChestTracker : MonoBehaviour
     }
     public void ResetChestCollectionToLastSave()
     {
-        m_foundChests = m_savedFoundChests;
+        m_foundChests = (bool[])m_savedFoundChests.Clone();
         currNumberOfChestOpened = m_savedCurrNumberofChestOpened;
         UpdateUI();
     }
     public void SaveRecentChestCollection()
     {
-        m_savedFoundChests = m_foundChests;
+        m_savedFoundChests = (bool[])m_foundChests.Clone();
         m_savedCurrNumberofChestOpened = currNumberOfChestOpened;
     }
     public void SetFoundChests(bool[] a_foundChests, int a_chestsOpenedCount)

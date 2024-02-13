@@ -120,10 +120,11 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         if (m_visualCanvas == null) { Debug.LogError("Error: VisualCanvas is Missing as an instance in GameManger!"); }
 
-        if (m_currentProfile != null || m_currentProfile != "")
-        {
-            LoadGameProfile(m_currentProfile);
-        }
+        // Default Loading Profile
+        //if (m_currentProfile != null || m_currentProfile != "")
+        //{
+        //    LoadGameProfile(m_currentProfile);
+        //}
         // Initial Unaffected Dont Destroys
         //DontDestroyOnLoad(gameObject);
         //DontDestroyOnLoad(m_visualCanvas);
@@ -490,6 +491,7 @@ public class GameManager : MonoBehaviour, ISaveable
             SaveData sd = new SaveData();
             sd.LoadFromJson(json);
             LoadFromSaveData(sd);
+            LoadToScene(sd.CurrScene); // Better here to not confuse game I hope
         }
     }
     public void LoadFromSaveData(SaveData a_SaveData)
@@ -499,10 +501,11 @@ public class GameManager : MonoBehaviour, ISaveable
         ChestTracker.Instance.SetFoundChests(a_SaveData.ChestCollected, a_SaveData.ChestsCount);
         GemTracker.Instance.InitializeGemCount(a_SaveData.TinkerGemCount, a_SaveData.AsheGemCount);
         // Point Loading
-        LoadToScene(a_SaveData.CurrScene);
+        
     }
     public void SaveGameToCurrentProfile()
     {
+        if (m_currentProfile != null || m_currentProfile != "")
         ChestTracker.Instance.SaveRecentChestCollection();
         GemTracker.Instance.SaveRecentGemCollection();
         SaveGameToProfile(m_currentProfile);

@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioClip m_music;
     [SerializeField] private bool useSetupDefault = false;
     [SerializeField] private string m_nextScene;
+    [SerializeField] private bool m_pawnControlOnEnter;
     // TODO: Implement these as enums to handle which one you want
     // Fade IN/OUT and Door Open/Close
     [SerializeField] private TransitionType m_transitionEntry = TransitionType.Fade;
@@ -51,6 +52,16 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.TransitionEnter();
         AudioManager.Instance.PlayAudio();
         GameManager.Instance.SaveGameToCurrentProfile();
+
+        if (m_pawnControlOnEnter)
+        {
+            PausePawnControl();
+        } 
+        else
+        {
+            ResumePawnControl(); 
+        }
+
         invokeAtStart.Invoke();
     }
 

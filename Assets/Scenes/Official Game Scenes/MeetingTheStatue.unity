@@ -101434,9 +101434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5376876a6c670cc4db015a752e2911c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColor: {fileID: 0}
   id: 50505
-  colorId: {r: 0, g: 0, b: 0, a: 0}
   triggerOnce: 1
   stayTimeToTrigger: 0
   triggerType: 2
@@ -105986,7 +105984,7 @@ MonoBehaviour:
   m_followEnabled: 0
   m_smooth: 0
   m_cameraShaker: {fileID: 1226954542}
-  m_cameraFollow: {fileID: 1226954543}
+  m_tnaCameraFollow: {fileID: 0}
 --- !u!114 &1226954542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106002,8 +106000,6 @@ MonoBehaviour:
   m_horizontal: 1
   m_vertical: 1
   m_strength: 0.1
-  m_radius: 0.125
-  m_speed: 1
   m_audioSource: {fileID: 0}
 --- !u!114 &1226954543
 MonoBehaviour:
@@ -106043,6 +106039,8 @@ MonoBehaviour:
   isLocked: 0
   lockVertical: 0
   lockHorizontal: 0
+  tinkerOnly: 0
+  asheOnly: 0
   leftBound: 0
   boundTheLeft: 1
   rightBound: 17.97
@@ -119183,9 +119181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5376876a6c670cc4db015a752e2911c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColor: {fileID: 0}
   id: 80808
-  colorId: {r: 0, g: 0, b: 0, a: 0}
   triggerOnce: 1
   stayTimeToTrigger: 0
   triggerType: 1

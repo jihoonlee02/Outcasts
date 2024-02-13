@@ -19887,7 +19887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &850292082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21263,7 +21263,7 @@ MonoBehaviour:
   m_followEnabled: 0
   m_smooth: 0
   m_cameraShaker: {fileID: 1226954542}
-  m_cameraFollow: {fileID: 1226954543}
+  m_tnaCameraFollow: {fileID: 0}
 --- !u!114 &1226954542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21279,8 +21279,6 @@ MonoBehaviour:
   m_horizontal: 1
   m_vertical: 1
   m_strength: 0.1
-  m_radius: 0.125
-  m_speed: 1
   m_audioSource: {fileID: 0}
 --- !u!114 &1226954543
 MonoBehaviour:
@@ -23451,7 +23449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5894873018757677855, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8654875393880184968, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
       propertyPath: m_AnchorMax.y
@@ -24937,7 +24935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1933542898
 Transform:
   m_ObjectHideFlags: 0
