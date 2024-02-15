@@ -138,68 +138,18 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: RUUNN!!
       speed: 8
-      delay: 3
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
-      alignment: 0
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Where do we even go?!
-      speed: 8
       delay: 2
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: The way they came from!
-      speed: 8
-      delay: 3
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
-      alignment: 0
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Are you CRAZY?
-      speed: 8
-      delay: 3
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
-      alignment: 1
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Having lived with you, yeah!
-      speed: 8
-      delay: 3
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 1
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
+    - profile: {fileID: 21300000, guid: 14fa20623e7ffa141b68f97951e09242, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: '
-
-'
-      speed: 8
+      text: 
+      speed: 0
       delay: 0
       waitOnInput: 0
       noWaiting: 1
@@ -208,4 +158,22 @@ MonoBehaviour:
     invoke: 1
     activate: 1
     id: 2
+  skipEvent:
+    changeMusic: 0
+    changeCameraPosition: 0
+    hideDialogue: 0
+    skipWithFade: 0
+    musicSelection: {fileID: 0}
+    cameraNewLocation: {x: 0, y: 0, z: 0}
+    pausePawnControl: 0
+    notCinematic: 0
+    resumePawnControl: 0
+    changeTinkerLocation: 0
+    changeAsheLocation: 0
+    tinkerNewLocation: {x: 0, y: 0, z: 0}
+    asheNewLocation: {x: 0, y: 0, z: 0}
+    invoke: 0
+    activate: 0
+    id: 0
   hideDialogueAfterEvent: 0
+  skippable: 0

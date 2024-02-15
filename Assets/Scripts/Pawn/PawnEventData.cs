@@ -5,6 +5,8 @@ using Newtonsoft.Json.Bson;
 using System.Linq;
 using Yarn.Unity;
 using Mono.Cecil.Cil;
+using System;
+using UnityEditor.Timeline.Actions;
 
 
 #if UNITY_EDITOR
@@ -432,14 +434,20 @@ public class PawnEventDataEditor : Editor
     {
         EditorGUILayout.LabelField("Invoke Game Event", EditorStyles.boldLabel);
         var id = pawnEvent.FindPropertyRelative("id");
+        var Invoke = pawnEvent.FindPropertyRelative("invoke");
+        var Activate = pawnEvent.FindPropertyRelative("activate");
+
         id.intValue = EditorGUILayout.IntField("ID", id.intValue);
         if (id.intValue >= 0)
         {
-            var Invoke = pawnEvent.FindPropertyRelative("invoke");
-            var Activate = pawnEvent.FindPropertyRelative("activate");
             Invoke.boolValue = EditorGUILayout.Toggle("Invoke", Invoke.boolValue);
             Activate.boolValue = EditorGUILayout.Toggle("Activate", Activate.boolValue);
-        }    
+        } 
+        else
+        {
+            Invoke.boolValue = false;
+            Activate.boolValue = false;
+        }
     }
 
     #region Pawn Actions

@@ -20,9 +20,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 1
-    timeDuration: 3.4
     moveDirection: 0
     moveSpeed: 0.9
+    timeDuration: 3.4
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -37,9 +37,9 @@ MonoBehaviour:
     transitionTime: 1.3
     pawnSelection: 1
     eventAction: 1
-    timeDuration: 3
     moveDirection: 0
     moveSpeed: 0.9
+    timeDuration: 3
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -54,9 +54,9 @@ MonoBehaviour:
     transitionTime: 0.3
     pawnSelection: 0
     eventAction: 2
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -71,9 +71,9 @@ MonoBehaviour:
     transitionTime: 2
     pawnSelection: 1
     eventAction: 2
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -88,9 +88,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 1
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -129,9 +129,9 @@ MonoBehaviour:
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 0
@@ -139,3 +139,22 @@ MonoBehaviour:
     invoke: 1
     activate: 1
     id: 1
+  skipEvent:
+    changeMusic: 0
+    changeCameraPosition: 0
+    hideDialogue: 0
+    skipWithFade: 0
+    musicSelection: {fileID: 0}
+    cameraNewLocation: {x: 0, y: 0, z: 0}
+    pausePawnControl: 0
+    notCinematic: 0
+    resumePawnControl: 0
+    changeTinkerLocation: 0
+    changeAsheLocation: 0
+    tinkerNewLocation: {x: 0, y: 0, z: 0}
+    asheNewLocation: {x: 0, y: 0, z: 0}
+    invoke: 0
+    activate: 0
+    id: 0
+  hideDialogueAfterEvent: 0
+  skippable: 0
