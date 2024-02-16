@@ -16,28 +16,35 @@ public abstract class Invoker : MonoBehaviour
 
     protected void Activate()
     {
+        // Cannot Invoke negative invokees
+        if (this.id < 0) return;
         EventManager.GetEventManager.Activated.Invoke(this.id);
     }
 
     protected void Deactivate()
     {
+        // Cannot Invoke negative invokees
+        if (this.id < 0) return;
         EventManager.GetEventManager.Deactivated.Invoke(this.id);
     }
 
     protected void Activate(int id)
     {
+        // Cannot Invoke negative invokees
+        if (id < 0) return;
         EventManager.GetEventManager.Activated.Invoke(id);
     }
 
     protected void Deactivate(int id)
     {
+        // Cannot Invoke negative invokees
+        if (id < 0) return;
         EventManager.GetEventManager.Deactivated.Invoke(id);
     }
     #if UNITY_EDITOR
     protected void OnDrawGizmos()
     {
-        if (id < 0) return;
-        Handles.Label(transform.position, "Invoker ID: " + id);
+        Handles.Label(transform.position, this.id < 0 ? "Static" : "Invoker ID: " + this.id);
     }
     #endif
 }

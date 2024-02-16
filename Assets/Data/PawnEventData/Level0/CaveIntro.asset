@@ -56,7 +56,7 @@ MonoBehaviour:
     eventAction: 1
     moveDirection: 0
     moveSpeed: 0.8
-    timeDuration: 1.65
+    timeDuration: 1.5
     jumpForce: 0
     activeDialogueAtTime: 0
     waitOnDialogue: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     pawnSelection: 1
     eventAction: 2
     moveDirection: 0
-    moveSpeed: 0
+    moveSpeed: 0.2
     timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 0
@@ -719,7 +719,7 @@ MonoBehaviour:
     changeTinkerLocation: 1
     changeAsheLocation: 1
     tinkerNewLocation: {x: 0.373, y: -2.675, z: 0}
-    asheNewLocation: {x: -5.66, y: -3.67, z: 0}
+    asheNewLocation: {x: -5.2, y: -3.67, z: 0}
     invoke: 1
     activate: 1
     id: 3

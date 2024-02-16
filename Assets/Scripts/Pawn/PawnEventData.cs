@@ -6,7 +6,6 @@ using System.Linq;
 using Yarn.Unity;
 using Mono.Cecil.Cil;
 using System;
-using UnityEditor.Timeline.Actions;
 
 
 #if UNITY_EDITOR
@@ -458,6 +457,8 @@ public class PawnEventDataEditor : Editor
         Direction.enumValueIndex = EditorGUILayout.Popup("Direction", Direction.enumValueIndex, Direction.enumDisplayNames);
         var Speed = pawnEvent.FindPropertyRelative("moveSpeed");
         Speed.floatValue = EditorGUILayout.Slider("Speed", Speed.floatValue, 0.2f, 1f);
+        var TimeDuration = pawnEvent.FindPropertyRelative("timeDuration");
+        TimeDuration.floatValue = EditorGUILayout.FloatField("Duration", TimeDuration.floatValue);
     }
     private void JumpActionSpace(SerializedProperty pawnEvent)
     {
