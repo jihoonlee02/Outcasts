@@ -23,6 +23,6 @@ public class Fire : MonoBehaviour
     {
         DialogueManager.Instance.DisplayDialogue(tag == "Tinker" ? m_tinkerDeath : m_asheDeath);
         yield return new WaitForSeconds(0.4f);
-        GameManager.Instance.ReloadCurrentScene();
+        GameManager.Instance.ReloadLevel();
     }
 }

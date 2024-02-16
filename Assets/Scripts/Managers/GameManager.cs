@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour, ISaveable
     [SerializeField] private string[] initialScenesToEnqueue;
     [SerializeField] private string m_currentProfile;
     [SerializeField] private float m_timeTracking;
+    [SerializeField] private bool wasReloaded = false;
+    public bool WasReloaded => wasReloaded;
 
     #region DETAILS
     private bool isPaused = false;
@@ -265,6 +267,7 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void PauseGame(PlayerController pc = null)
     {
+        if (isPaused) return; 
         //Time.timeScale = 0;
         isPaused = true;
         m_tinkerPC?.DisablePawnControl();
@@ -280,6 +283,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void UnPauseGame()
     {
+        if (!isPaused) return;
         //Time.timeScale = 1;
         isPaused = false;
         m_tinkerPC?.EnablePawnControl();
@@ -296,8 +300,9 @@ public class GameManager : MonoBehaviour, ISaveable
     #region Scene Management
     public void LoadToScene(string scene)
     {
-        m_currScene = scene;
-
+        wasReloaded = m_currScene == scene;
+        m_currScene = scene;        
+        
         TransitionExit();
         StartCoroutine(LoadSceneWithDelay(1.2f));
     }
@@ -337,7 +342,12 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         Application.Quit();
     }
-
+    // Callable For UI in LevelThings Only
+    public void ReloadLevel()
+    {
+        m_levelManager.ReloadLevel();
+    }
+    //
     public void ReloadCurrentScene()
     {
         UnPauseGame();

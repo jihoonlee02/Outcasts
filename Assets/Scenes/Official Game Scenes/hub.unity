@@ -28519,7 +28519,7 @@ MonoBehaviour:
   m_followEnabled: 0
   m_smooth: 0
   m_cameraShaker: {fileID: 1226954542}
-  m_cameraFollow: {fileID: 1226954543}
+  m_tnaCameraFollow: {fileID: 0}
 --- !u!114 &1226954542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28535,8 +28535,6 @@ MonoBehaviour:
   m_horizontal: 1
   m_vertical: 1
   m_strength: 0.1
-  m_radius: 0.125
-  m_speed: 1
   m_audioSource: {fileID: 0}
 --- !u!114 &1226954543
 MonoBehaviour:
@@ -28576,6 +28574,8 @@ MonoBehaviour:
   isLocked: 0
   lockVertical: 1
   lockHorizontal: 1
+  tinkerOnly: 0
+  asheOnly: 0
   leftBound: -13.66
   boundTheLeft: 0
   rightBound: 0
@@ -45125,9 +45125,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: reloadEventID
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_asheExitDoor
       value: 
       objectReference: {fileID: 2126072870}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: firstTimeEventID
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_tinkerExitDoor
       value: 

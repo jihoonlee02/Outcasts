@@ -681,11 +681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level1
+      value: Cave-1
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: 'Next Scene: Level 1'
+      value: 'Next Scene: Cave-1'
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1531,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level4
+      value: Air-1
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -1657,7 +1657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level5
+      value: Air-2
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -2223,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level7
+      value: Chase
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -23220,7 +23220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level0
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -23673,7 +23673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level3To4Transition
+      value: Cave-4
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -24381,7 +24381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level3
+      value: Cave-3
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -25540,7 +25540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level6
+      value: Air-3
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -35246,7 +35246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level2
+      value: Cave-2
       objectReference: {fileID: 0}
     - target: {fileID: 1481022282437053650, guid: a7d0094d6e34e0e4ca28327279a1709b, type: 3}
       propertyPath: activate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -43531,16 +43531,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_nextScene
-      value: Level7_remake-Basement
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: isSetupScene
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: reloadEventID
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_asheExitDoor
       value: 
       objectReference: {fileID: 2126072870}
+    - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
+      propertyPath: firstTimeEventID
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 997537019407936488, guid: c0592aadc120a5348b27e14a421ec393, type: 3}
       propertyPath: m_tinkerExitDoor
       value: 

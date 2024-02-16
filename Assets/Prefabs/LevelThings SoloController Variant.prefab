@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7452084601193586477, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 7515144415494797043, guid: 0b2a11b01df352045acb9786d228d851, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

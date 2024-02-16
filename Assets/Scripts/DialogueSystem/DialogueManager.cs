@@ -205,7 +205,7 @@ public class DialogueManager : MonoBehaviour
             //dialogue.OnDialogue.Invoke();
         }
 
-        // Usuer Should mainly hide it
+        // Writer Should mainly hide it
         inProduction = false;
         yield return null;
     }

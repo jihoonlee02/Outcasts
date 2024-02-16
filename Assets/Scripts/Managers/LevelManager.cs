@@ -16,8 +16,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool useSetupDefault = false;
     [SerializeField] private string m_nextScene;
     [SerializeField] private bool m_pawnControlOnEnter;
-    // TODO: Implement these as enums to handle which one you want
-    // Fade IN/OUT and Door Open/Close
     [SerializeField] private TransitionType m_transitionEntry = TransitionType.Fade;
     [SerializeField] private TransitionType m_transitionExit = TransitionType.Fade;
 
@@ -26,10 +24,11 @@ public class LevelManager : MonoBehaviour
     public DialogueProducer[] ExternalDialogues => m_externalDialogues;
 
     [Header("Dev Details")]
-    //[SerializeField] private bool isSetupScene = false;
+    [SerializeField] private int firstTimeEventID = -1;
+    [SerializeField] private int reloadEventID = -1;
     [SerializeField] private UnityEvent invokeAtStart;
+    [SerializeField] private UnityEvent onReload;
     [SerializeField] private UnityEvent OnExit;
-    //[SerializeField] private GameObject levelThings;
 
     private bool exited = false;
     private void Start() {
@@ -63,6 +62,16 @@ public class LevelManager : MonoBehaviour
         }
 
         invokeAtStart.Invoke();
+
+        // Invoke Time Based Events
+        if (GameManager.Instance.WasReloaded && reloadEventID >= 0)
+        {
+            EventManager.GetEventManager.Activated.Invoke(reloadEventID);
+        }
+        else if (!GameManager.Instance.WasReloaded && firstTimeEventID >= 0)
+        {
+            EventManager.GetEventManager.Activated.Invoke(firstTimeEventID);
+        }
     }
 
     private void Update() 
@@ -79,6 +88,8 @@ public class LevelManager : MonoBehaviour
         // So that Tinker n' Ashe don't start invoking this a billion times
         GameManager.Instance.Tinker.gameObject.SetActive(false);
         GameManager.Instance.Ashe.gameObject.SetActive(false);
+
+        // Diabled Pawn Alerts Here //
 
         //DialogueManager.Instance.DisplayDialogue();
 
@@ -146,7 +157,8 @@ public class LevelManager : MonoBehaviour
     //--------------------------------------------
     public void ReloadLevel()
     {
-        GameManager.Instance.ReloadCurrentScene();
+        onReload.Invoke();
+        GameManager.Instance.ReloadCurrentScene();      
     }
     public void StopMusic()
     {
@@ -191,6 +203,14 @@ public class LevelManager : MonoBehaviour
     public void DisableAlertAshe(int alertType)
     {
         GameManager.Instance.Ashe.DisableAlert((AlertType)alertType);
+    }
+    public void TelportTinker(Transform transform)
+    {
+        GameManager.Instance.Tinker.transform.position = transform.position;
+    }
+    public void TelportAshe(Transform transform)
+    {
+        GameManager.Instance.Ashe.transform.position = transform.position;
     }
 }
 
