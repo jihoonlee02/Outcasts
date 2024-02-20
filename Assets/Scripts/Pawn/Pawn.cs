@@ -19,11 +19,13 @@ public class Pawn : MonoBehaviour
     [SerializeField] protected HingeJoint2D m_hingeJoint;
     [SerializeField] protected FixedJoint2D m_fixedJoint;
     [SerializeField] protected Transform m_pawnCanvas;
+    [SerializeField] protected GameObject m_heldItem;
     public Rigidbody2D RB => m_rb;
     public Animator Animator => m_animator;
     public FixedJoint2D FixedJoint => m_fixedJoint;
     public PawnData Data => m_pawnData;
     public AudioSource AudioSource => m_audioSource;
+    public GameObject HeldItem => m_heldItem;
 
     #region Platforming Modifiers
     [Header("Movement Modifiers")]
@@ -88,7 +90,7 @@ public class Pawn : MonoBehaviour
     protected bool isJumping;
     protected bool isGrounded;
     protected bool isHeld;
-    protected bool isHoldingItem = true;
+    protected bool isHoldingItem;
     public bool IsMoving => isMoving;
     public bool IsJumping => isJumping;
     public bool IsGrounded => isGrounded;

@@ -389,6 +389,7 @@ MonoBehaviour:
   m_hingeJoint: {fileID: 0}
   m_fixedJoint: {fileID: 0}
   m_pawnCanvas: {fileID: 2685537635362009567}
+  m_heldItem: {fileID: 6240755229300651012}
   movementSpeed: 9
   acceleration: 8
   decceleration: 20
@@ -1248,7 +1249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7541500317523420883
 Transform:
   m_ObjectHideFlags: 0

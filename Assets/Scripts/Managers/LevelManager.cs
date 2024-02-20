@@ -212,6 +212,22 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.Ashe.transform.position = transform.position;
     }
+    public void TinkerHoldItem()
+    {
+        GameManager.Instance.Tinker.HoldItem();
+    }
+    public void TinkerHideItem()
+    {
+        GameManager.Instance.Tinker.HideItem();
+    }
+    public void AsheHoldItem()
+    {
+        GameManager.Instance.Ashe.HoldItem();
+    }
+    public void AsheHideItem()
+    {
+        GameManager.Instance.Ashe.HideItem();
+    }
 }
 
 // Temp Level Struct

@@ -10,14 +10,6 @@ public class AsheDefaultState : State
         m_animationName = "";
         InitializeSubState();
     }
-    public override void EnterState()
-    {
-        
-    }
-    public override void ExitState() 
-    { 
-
-    }
     public override void InitializeSubState()
     {
         if (m_context.IsJumping) 
@@ -42,7 +34,12 @@ public class AsheDefaultState : State
 
     public override void CheckSwitchState()
     {
-        if (((AshePawn)m_context).IsPunching)
+        if (m_context.IsHoldingItem)
+        {
+            Debug.Log(m_context.IsHoldingItem);
+            SwitchState(m_factory.AsheItemState());
+        }
+        else if (((AshePawn)m_context).IsPunching)
         {
             SwitchState(m_factory.AshePunchingState());
         }

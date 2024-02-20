@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TinkerItemState : State
+public class AsheItemState : State
 {
-    public TinkerItemState(Pawn context, PawnStateFactory factory) : base(context, factory)
+    public AsheItemState(Pawn context, PawnStateFactory factory) : base(context, factory)
     {
         m_isRootState = true;
         m_animationName = "_holdingItem";
@@ -13,12 +13,16 @@ public class TinkerItemState : State
     public override void EnterState()
     {
         m_context.HeldItem.SetActive(true);
-        ((TinkerPawn)m_context).DisableShoot();
+        ((AshePawn)m_context).DisablePunch();
+        ((AshePawn)m_context).DisableGrab();
+        ((AshePawn)m_context).DisableLiftingRegion();
     }
     public override void ExitState()
     {
         m_context.HeldItem.SetActive(false);
-        ((TinkerPawn)m_context).EnableShoot();
+        ((AshePawn)m_context).EnablePunch();
+        ((AshePawn)m_context).EnableGrab();
+        ((AshePawn)m_context).EnableLiftingRegion();
     }
     public override void InitializeSubState()
     {
@@ -46,7 +50,7 @@ public class TinkerItemState : State
     {
         if (!m_context.IsHoldingItem)
         {
-            SwitchState(m_factory.TinkerDefaultState());
+            SwitchState(m_factory.AsheDefaultState());
         }
     }
 }

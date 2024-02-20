@@ -63,7 +63,7 @@ public class PawnStateFactory
     }
     public State AsheItemState()
     {
-        return null;
+        return new AsheItemState(m_context, this);
     }
     public State TinkerDefaultState()
     {
