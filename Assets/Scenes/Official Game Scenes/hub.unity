@@ -7133,6 +7133,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5469195000495590479, guid: a1fe09a7951dc4a4282370af1978f833, type: 3}
   m_PrefabInstance: {fileID: 783392557}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &785556300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677852, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894873018757677855, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
+      propertyPath: m_Name
+      value: LevelThings SoloController Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca716a072f7df1142af8f7d5dc309c16, type: 3}
 --- !u!1001 &787421874
 PrefabInstance:
   m_ObjectHideFlags: 0
