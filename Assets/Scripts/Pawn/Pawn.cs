@@ -88,9 +88,11 @@ public class Pawn : MonoBehaviour
     protected bool isJumping;
     protected bool isGrounded;
     protected bool isHeld;
+    protected bool isHoldingItem = true;
     public bool IsMoving => isMoving;
     public bool IsJumping => isJumping;
     public bool IsGrounded => isGrounded;
+    public bool IsHoldingItem => isHoldingItem;
     public bool IsHeld 
     {
         get => isHeld;
@@ -189,6 +191,15 @@ public class Pawn : MonoBehaviour
         //Debug.DrawRay(m_collider.bounds.center + new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
         //Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, 0), Vector2.down * (m_collider.bounds.extents.y + .1f), Color.green);
         //Debug.DrawRay(m_collider.bounds.center - new Vector3(m_collider.bounds.extents.x, m_collider.bounds.extents.y), Vector2.right * (m_collider.bounds.extents.x), Color.green);
+    }
+
+    public void HoldItem()
+    {
+        isHoldingItem = true;
+    }
+    public void HideItem()
+    {
+        isHoldingItem = false;
     }
 
     #region Platforming

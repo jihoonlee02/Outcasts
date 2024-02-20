@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36186622261584591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.251, y: 0.099, z: 0}
-  m_LocalScale: {x: 0.3532, y: 0.3532, z: 0.3532}
+  m_LocalPosition: {x: -0.1564, y: 0.0044, z: 0}
+  m_LocalScale: {x: 0.5186326, y: 0.5186326, z: 0.5186326}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1713408768315621136}
@@ -1221,6 +1221,7 @@ MonoBehaviour:
   m_minPitch: 0.8
   m_maxPitch: 1.5
   m_nailGunReference: {fileID: 1910975803770333381}
+  canShoot: 0
 --- !u!50 &134046781713132578
 Rigidbody2D:
   serializedVersion: 4

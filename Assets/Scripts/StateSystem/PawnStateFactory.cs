@@ -61,6 +61,10 @@ public class PawnStateFactory
     {
         return new AshePunchingState(m_context, this);
     }
+    public State AsheItemState()
+    {
+        return null;
+    }
     public State TinkerDefaultState()
     {
         return new TinkerDefaultState(m_context, this);
@@ -72,6 +76,10 @@ public class PawnStateFactory
     public State TinkerHeldState()
     {
         return new TinkerHeldState(m_context, this);
+    }
+    public State TinkerItemState()
+    {
+        return new TinkerItemState(m_context, this);
     }
     //public State Moving()
     //{

@@ -41,7 +41,11 @@ public class TinkerShootState : State
 
     public override void CheckSwitchState()
     {
-        if (!((TinkerPawn)m_context).IsShooting)
+        if (m_context.IsHoldingItem)
+        {
+            SwitchState(m_factory.TinkerItemState());
+        }
+        else if (!((TinkerPawn)m_context).IsShooting)
         {
             SwitchState(m_factory.TinkerDefaultState());
         }
