@@ -47,9 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14eb93d655425f740a261b676bcd6a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColor: {fileID: 0}
   id: 0
-  colorId: {r: 0, g: 0, b: 0, a: 0}
   inactiveSprite: {fileID: -113923115, guid: 8ee54975aadd35b4f8097ec8035de4ae, type: 3}
   activeSprite: {fileID: -234127053, guid: 8ee54975aadd35b4f8097ec8035de4ae, type: 3}
   destroyProjectileWhenShot: 0
@@ -73,7 +71,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 03f83d4e87bd68547a47363b88ee4b6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
