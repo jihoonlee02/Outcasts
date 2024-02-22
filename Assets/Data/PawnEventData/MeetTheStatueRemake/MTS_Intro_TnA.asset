@@ -17,6 +17,23 @@ MonoBehaviour:
     notCinematic: 0
     pausePawnControl: 1
     resumePawnControl: 0
+    transitionTime: 3
+    pawnSelection: 0
+    eventAction: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    timeDuration: 0
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: TnAStartingDarkRoom
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
@@ -25,51 +42,203 @@ MonoBehaviour:
     timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
-    waitOnDialogue: 0
+    waitOnDialogue: 1
     dialogues:
-    - profile: {fileID: 0}
+    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: 
-      speed: 0
+      text: ...
+      speed: 3
       delay: 0
+      waitOnInput: 0
+      noWaiting: 1
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: ...
+      speed: 3
+      delay: 2
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 0}
+    - profile: {fileID: 21300000, guid: fc2b1802565ba3d40a4021e061d652a5, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: 
-      speed: 0
-      delay: 0
+      text: That
+      speed: 2
+      delay: 2
       waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 14fa20623e7ffa141b68f97951e09242, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Was
+      speed: 2
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Awesome!
+      speed: 2
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: I want to do that again!
+      speed: 3
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 1
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: AsheAngry
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 3
+    moveDirection: 0
+    moveSpeed: 0.2
+    timeDuration: 0
+    jumpForce: 0
+    activeDialogueAtTime: 1
+    waitOnDialogue: 1
+    dialogues:
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: How can you say that after we were almost killed!
+      speed: 3
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 1ac5f9f653d8d0a4dabf80d3dc9d52df, type: 3}
+      alignment: 1
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Does nothing scream danger to you
+      speed: 3
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 6d88673597054b445bb13b8698863f29, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Danger is what I look for!
+      speed: 3
+      delay: 0
+      waitOnInput: 1
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
     invoke: 0
     activate: 0
     id: -1
+  - pawnEventTitle: AsheGrabTorch
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 0
+    pawnSelection: 1
+    eventAction: 1
+    moveDirection: 0
+    moveSpeed: 1
+    timeDuration: 1
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: TinkerGrabTorch
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 0
+    transitionTime: 3
+    pawnSelection: 0
+    eventAction: 1
+    moveDirection: 0
+    moveSpeed: 1
+    timeDuration: 1
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 0
+    activate: 0
+    id: -1
+  - pawnEventTitle: Dark Room Start
+    notCinematic: 0
+    pausePawnControl: 0
+    resumePawnControl: 1
+    transitionTime: 0
+    pawnSelection: 0
+    eventAction: 0
+    moveDirection: 0
+    moveSpeed: 0.2
+    timeDuration: 0
+    jumpForce: 0
+    activeDialogueAtTime: 0
+    waitOnDialogue: 0
+    dialogues: []
+    invoke: 1
+    activate: 1
+    id: 10
   skipEvent:
     changeMusic: 0
     changeCameraPosition: 0
-    hideDialogue: 0
-    skipWithFade: 0
+    hideDialogue: 1
+    skipWithFade: 1
     musicSelection: {fileID: 0}
     cameraNewLocation: {x: 0, y: 0, z: 0}
     pausePawnControl: 0
     notCinematic: 0
-    resumePawnControl: 0
-    changeTinkerLocation: 0
-    changeAsheLocation: 0
-    tinkerNewLocation: {x: 0, y: 0, z: 0}
-    asheNewLocation: {x: 0, y: 0, z: 0}
-    invoke: 0
-    activate: 0
-    id: 0
+    resumePawnControl: 1
+    changeTinkerLocation: 1
+    changeAsheLocation: 1
+    tinkerNewLocation: {x: -51.52, y: -3.29, z: 0}
+    asheNewLocation: {x: -46.93, y: -3.29, z: 0}
+    invoke: 1
+    activate: 1
+    id: 10
   hideDialogueAfterEvent: 0
-  skippable: 0
+  skippable: 1

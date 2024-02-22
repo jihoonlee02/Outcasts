@@ -6,6 +6,9 @@ public class Tourch : MonoBehaviour
 {
     [Header("Tourch Specs")]
     [SerializeField] private float speed_reaction = 0f;
+    [SerializeField] private bool unlit;
+    [SerializeField] private GameObject lightItSelf;
+    private bool isUnlit = false;
     private Animator m_animator;
     private float duration_swap;
     private float duration_wind;
@@ -18,6 +21,19 @@ public class Tourch : MonoBehaviour
 
     private void Update()
     {
+        if (!isUnlit && unlit)
+        {
+            m_animator.Play("Touch_unlit");
+            lightItSelf.SetActive(false);
+            isUnlit = true;
+            return;
+        }
+        else if (isUnlit && !unlit)
+        {
+            m_animator.Play("Touch_idle_left");
+            lightItSelf.SetActive(true);
+            isUnlit = false;
+        }
         if (Time.time >= duration_wind)
         {
             m_animator.ResetTrigger("Wind");
@@ -35,6 +51,7 @@ public class Tourch : MonoBehaviour
             m_animator.SetBool("left", !punchLeft);
             duration_wind = Random.Range(35f, 50f) + Time.time;
             duration_swap = Random.Range(5f, 12f) + Time.time;
+            unlit = false;
         }
         else if ((collision.gameObject.tag == "Tinker" || collision.gameObject.tag == "Ashe") && collision.GetComponent<Rigidbody2D>().velocity.magnitude > speed_reaction)
         {
@@ -43,6 +60,7 @@ public class Tourch : MonoBehaviour
             m_animator.SetBool("left", !movementLeft);
             duration_wind = Random.Range(35f, 50f) + Time.time;
             duration_swap = Random.Range(5f, 12f) + Time.time;
+            unlit = false;
         }
         else if (collision.gameObject.tag == "projectile")
         {
@@ -51,6 +69,7 @@ public class Tourch : MonoBehaviour
             m_animator.SetBool("left", !projectileLeft);
             duration_wind = Random.Range(35f, 50f) + Time.time;
             duration_swap = Random.Range(5f, 12f) + Time.time;
+            unlit = false;
         }
     }
 }
