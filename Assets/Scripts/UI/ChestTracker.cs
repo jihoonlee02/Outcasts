@@ -25,8 +25,8 @@ public class ChestTracker : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_trackerTextBox;
     private bool[] m_foundChests;
     public bool IsAllChestsOpen => (currNumberOfChestOpened / requiredChests) >= 1;
-    public bool[] FoundChests => m_foundChests;
-    public int NumberOfChestsOpened => currNumberOfChestOpened;
+    public bool[] FoundChests => m_savedFoundChests;
+    public int NumberOfChestsOpened => m_savedCurrNumberofChestOpened;
 
     private Animator m_animator;
 

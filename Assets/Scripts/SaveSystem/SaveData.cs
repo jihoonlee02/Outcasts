@@ -14,6 +14,17 @@ public class SaveData
     public int AsheGemCount = 0;
     public int Points = 0;
     public float PlayerTimeInSeconds = 0;
+
+    // Achievments
+    public bool BeatTheTutorial;
+    public bool BeatTheCave;
+    public bool BeatTheAirDungeon;
+    public bool BeatTheFinalLevel;
+    public bool MTB;
+    public bool Funny;
+    public bool RUNNN;
+    public bool LightItUp;
+    public bool TheFuture;
     
     // Challenge Achievements
     // Run Past Torches 50 times

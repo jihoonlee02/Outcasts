@@ -28,8 +28,8 @@ public class GemTracker : MonoBehaviour
     // Gem Data
     private int m_tinkerGems = 0;
     private int m_asheGems = 0;
-    public int TinkerGemsCollected => m_tinkerGems;
-    public int AsheGemsCollected => m_asheGems;
+    public int TinkerGemsCollected => m_savedTinkerGems;
+    public int AsheGemsCollected => m_savedAsheGems;
     private int m_savedTinkerGems = 0;
     private int m_savedAsheGems = 0;
     public void Awake()

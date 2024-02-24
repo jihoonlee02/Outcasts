@@ -87,6 +87,9 @@ public class GameManager : MonoBehaviour, ISaveable
     [SerializeField] private bool wasReloaded = false;
     public bool WasReloaded => wasReloaded;
 
+    // Save Data Tracking
+    private int Points;
+
     #region DETAILS
     private bool isPaused = false;
     private bool pauseTimer = false;
@@ -530,9 +533,16 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void ResumeRecordTimer()
     {
-        pauseTimer = false;
+        pauseTimer = false; 
     }
-    #endregion 
+    public void MarkAchievement(AchievementType type)
+    {
+        //switch (type)
+        //{
+        //    case 
+        //}
+    }
+    #endregion
 }
 
 public enum TransitionType
@@ -541,4 +551,9 @@ public enum TransitionType
     Fade,
     Doors,
     BigDoor,
+}
+
+public enum AchievementType
+{
+    
 }
