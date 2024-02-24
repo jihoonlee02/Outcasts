@@ -44,6 +44,10 @@ public class Tourch : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if ((collision.gameObject.tag == "Tinker" || collision.gameObject.tag == "Ashe") && unlit)
+        {
+            unlit = false;
+        }
         if (collision.gameObject.tag == "Gauntlet")
         {
             bool punchLeft = collision.gameObject.transform.parent.GetComponent<Animator>().GetFloat("MoveX") < 0;
