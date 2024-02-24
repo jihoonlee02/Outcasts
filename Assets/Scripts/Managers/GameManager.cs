@@ -88,7 +88,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public bool WasReloaded => wasReloaded;
 
     // Save Data Tracking
-    private int Points;
+    private int wreckPoints;
+    private int saved_wreckPoints;
 
     #region DETAILS
     private bool isPaused = false;
@@ -493,8 +494,7 @@ public class GameManager : MonoBehaviour, ISaveable
         a_SaveData.ChestsCount = ChestTracker.Instance.NumberOfChestsOpened;
         a_SaveData.TinkerGemCount = GemTracker.Instance.TinkerGemsCollected;
         a_SaveData.AsheGemCount = GemTracker.Instance.AsheGemsCollected;
-        // Point Tracking
-      
+        a_SaveData.Points = saved_wreckPoints;
         a_SaveData.PlayerTimeInSeconds = m_timeTracking;
     }
     public void LoadGameProfile(string a_profile)
@@ -513,14 +513,15 @@ public class GameManager : MonoBehaviour, ISaveable
         m_timeTracking = a_SaveData.PlayerTimeInSeconds;
         ChestTracker.Instance.SetFoundChests(a_SaveData.ChestCollected, a_SaveData.ChestsCount);
         GemTracker.Instance.InitializeGemCount(a_SaveData.TinkerGemCount, a_SaveData.AsheGemCount);
-        // Point Loading
-        
+        saved_wreckPoints = a_SaveData.Points;
+        wreckPoints = saved_wreckPoints;
     }
     public void SaveGameToCurrentProfile()
     {
         if (m_currentProfile != null || m_currentProfile != "")
         ChestTracker.Instance.SaveRecentChestCollection();
         GemTracker.Instance.SaveRecentGemCollection();
+        saved_wreckPoints = wreckPoints;
         SaveGameToProfile(m_currentProfile);
     }
     public void ChangeCurrentProfile(string newProfile)
@@ -537,10 +538,58 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void MarkAchievement(AchievementType type)
     {
-        //switch (type)
-        //{
-        //    case 
-        //}
+        SaveData sd = new SaveData();
+        if (FileManagment.LoadFromSaveFile(m_currentProfile, out var json))
+        {
+            sd.LoadFromJson(json);
+        } 
+        else
+        {
+            return;
+        }
+            
+        switch (type)
+        {
+            case AchievementType.BeatTheTutorial:
+                saved_wreckPoints += 5;
+                sd.BeatTheTutorial = true;
+                break;
+            case AchievementType.BeatTheCave:
+                saved_wreckPoints += 5;
+                sd.BeatTheCave = true;
+                break;
+            case AchievementType.BeatTheAirDungeon:
+                saved_wreckPoints += 5;
+                sd.BeatTheAirDungeon = true;
+                break;
+            case AchievementType.BeatTheFinalLevel:
+                saved_wreckPoints += 10;
+                sd.BeatTheFinalLevel = true;
+                break;
+            case AchievementType.MTB:
+                saved_wreckPoints += 8;
+                sd.MTB = true;
+                break;
+            case AchievementType.Funny:
+                saved_wreckPoints += 8;
+                sd.Funny = true;
+                break;
+            case AchievementType.RUNNN:
+                saved_wreckPoints += 8;
+                sd.RUNNN = true;
+                break;
+            case AchievementType.LightItUp:
+                saved_wreckPoints += 8;
+                sd.LightItUp = true;
+                break;
+            case AchievementType.TheFuture:
+                saved_wreckPoints += 8;
+                sd.TheFuture = true;
+                break;
+        }
+
+        PopulateSaveData(sd);
+        FileManagment.WriteToSaveFile(m_currentProfile, sd.ToJson());
     }
     #endregion
 }
@@ -555,5 +604,13 @@ public enum TransitionType
 
 public enum AchievementType
 {
-    
+    BeatTheTutorial,
+    BeatTheCave,
+    BeatTheAirDungeon,
+    BeatTheFinalLevel,
+    MTB,
+    Funny,
+    RUNNN,
+    LightItUp,
+    TheFuture
 }
