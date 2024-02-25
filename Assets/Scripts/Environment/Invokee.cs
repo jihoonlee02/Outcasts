@@ -22,7 +22,6 @@ public abstract class Invokee : MonoBehaviour
     [SerializeField, Tooltip("Runs Deactivate during scene load")] 
     private bool deactivateOnStart = false;
 
-
     protected void Awake()
     {
         EventManager.GetEventManager.Activated += ReactOnActivate;
@@ -43,6 +42,8 @@ public abstract class Invokee : MonoBehaviour
     }
     protected void ReactOnActivate(int other_id)
     {
+        if (!enabled) return;
+
         if (other_id == id) 
         {
             StartCoroutine(DelayActivate());        
@@ -50,6 +51,8 @@ public abstract class Invokee : MonoBehaviour
     }
     protected void ReactOnDeactivate(int other_id)
     {
+        if (!enabled) return;
+
         if (other_id == id)
         {
             OnDeactivate();

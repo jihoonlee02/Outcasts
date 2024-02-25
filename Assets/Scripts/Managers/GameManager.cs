@@ -409,8 +409,7 @@ public class GameManager : MonoBehaviour, ISaveable
     private IEnumerator LoadSceneWithDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        m_ashe.IsLifting = false;
-        m_tinker.IsHeld = false;
+        m_ashe.DropHeldObject();
         m_ashe.CurrentGroup?.StopMotionGroup();
         m_tinker.CurrentGroup?.StopMotionGroup();
         m_tinker.transform.SetParent(m_levelThings, true);

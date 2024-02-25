@@ -237,7 +237,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: You know me ashe!
+      text: Come on ashe!
       speed: 6
       delay: 1
       waitOnInput: 0
@@ -367,19 +367,31 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Come on! Don't worry!
+      text: Don't doubt me now!
       speed: 6
       delay: 0
       waitOnInput: 1
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
+    - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: You know I've always been good at maze games!
+      text: There's nothing to worry about.
+      speed: 6
+      delay: 0
+      waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: a8a8571b9bee31d4896dc0e3b0c05b76, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: You know I've always been good at maze games.
       speed: 6
       delay: 0
       waitOnInput: 1
@@ -420,7 +432,7 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Let's just find out where"here" is.
+      text: Let's just find out where we are going.
       speed: 6
       delay: 0
       waitOnInput: 1
