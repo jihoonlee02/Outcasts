@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawnEvents:
   - pawnEventTitle: Tinker Fall
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -66,14 +67,15 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Statue Speaks
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -140,16 +142,17 @@ MonoBehaviour:
       keepTextAfterDialogue: 0
     invoke: 1
     activate: 1
-    id: 5
+    id: 21
   - pawnEventTitle: Music Starts
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 0
-    timeDuration: 0
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -168,16 +171,17 @@ MonoBehaviour:
       keepTextAfterDialogue: 0
     invoke: 1
     activate: 1
-    id: 10
+    id: 22
   - pawnEventTitle: Tinker talking to herself
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 1
-    timeDuration: 0.001
     moveDirection: 1
     moveSpeed: 0.2
+    timeDuration: 0.001
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -210,14 +214,15 @@ MonoBehaviour:
     activate: 0
     id: -1
   - pawnEventTitle: Main Event
+    notCinematic: 0
     pausePawnControl: 0
     resumePawnControl: 0
     transitionTime: 0
     pawnSelection: 0
     eventAction: 1
-    timeDuration: 0.001
     moveDirection: 0
     moveSpeed: 0.2
+    timeDuration: 0.001
     jumpForce: 0
     activeDialogueAtTime: 1
     waitOnDialogue: 1
@@ -303,6 +308,18 @@ MonoBehaviour:
       speed: 4
       delay: 0
       waitOnInput: 1
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
+    - profile: {fileID: 21300000, guid: 49cd650cedb1aef46b96b56a72417a2d, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: 
+      speed: 4
+      delay: 0
+      waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
       keepTextAfterDialogue: 0
@@ -430,3 +447,22 @@ MonoBehaviour:
     invoke: 0
     activate: 0
     id: -1
+  skipEvent:
+    changeMusic: 0
+    changeCameraPosition: 0
+    hideDialogue: 0
+    skipWithFade: 0
+    musicSelection: {fileID: 0}
+    cameraNewLocation: {x: 0, y: 0, z: 0}
+    pausePawnControl: 0
+    notCinematic: 0
+    resumePawnControl: 0
+    changeTinkerLocation: 0
+    changeAsheLocation: 0
+    tinkerNewLocation: {x: 0, y: 0, z: 0}
+    asheNewLocation: {x: 0, y: 0, z: 0}
+    invoke: 0
+    activate: 0
+    id: 0
+  hideDialogueAfterEvent: 0
+  skippable: 0
