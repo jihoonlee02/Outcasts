@@ -138,4 +138,21 @@ public class SoloController : MonoBehaviour
         m_playerInput.actions["TinkerSkip"].Enable();
         m_playerInput.actions["AsheSkip"].Enable();
     }
+    public void OnPausePawnControl()
+    {
+        if (pawnControlDisabled) return;
+        pawnControlDisabled = true;
+        m_playerInput.actions.actionMaps[0].Disable();
+        m_playerInput.actions["Pause"].Enable();
+    }
+    public void OnUnPausePawnControl()
+    {
+        if (!pawnControlDisabled) return;
+        pawnControlDisabled = false;
+
+        m_playerInput.actions.actionMaps[0].Enable();
+        m_playerInput.actions["Join"].Disable();
+        m_playerInput.actions["TinkerSkip"].Disable();
+        m_playerInput.actions["AsheSkip"].Disable();
+    }
 }

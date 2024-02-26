@@ -185,6 +185,21 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions.actionMaps[0].Disable();
         m_playerInput.actions["Skip"].Enable();
     }
+    public void OnPausePawnControl()
+    {
+        if (pawnControlDisabled) return;
+        pawnControlDisabled = true;
+        m_playerInput.actions.actionMaps[0].Disable();
+        m_playerInput.actions["Pause"].Enable();
+    }
+    public void OnUnPausePawnControl()
+    {
+        if (!pawnControlDisabled) return;
+        pawnControlDisabled = false;
+        m_playerInput.actions.actionMaps[0].Enable();
+        m_playerInput.actions["Join"].Disable();
+        m_playerInput.actions["Skip"].Disable();
+    }
     private IEnumerator ShowControlSchemeUsed()
     {
         if (controlledPawn.Data.Name == "Tinker")

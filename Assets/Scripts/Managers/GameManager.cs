@@ -274,9 +274,9 @@ public class GameManager : MonoBehaviour, ISaveable
         if (isPaused) return; 
         //Time.timeScale = 0;
         isPaused = true;
-        m_tinkerPC?.DisablePawnControl();
-        m_ashePC?.DisablePawnControl();
-        m_SC?.DisablePawnControl();
+        m_tinkerPC?.OnPausePawnControl();
+        m_ashePC?.OnPausePawnControl();
+        m_SC?.OnPausePawnControl();
 
         // UI Things that appear
         UIManager.Instance.OpenPauseMenu(pc);
@@ -290,9 +290,9 @@ public class GameManager : MonoBehaviour, ISaveable
         if (!isPaused) return;
         //Time.timeScale = 1;
         isPaused = false;
-        m_tinkerPC?.EnablePawnControl();
-        m_ashePC?.EnablePawnControl();
-        m_SC?.EnablePawnControl();
+        m_tinkerPC?.OnUnPausePawnControl();
+        m_ashePC?.OnUnPausePawnControl();
+        m_SC?.OnUnPausePawnControl();
 
         // UI Things to Hide
         UIManager.Instance.ClosePauseMenu();
