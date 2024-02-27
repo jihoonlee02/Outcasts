@@ -11,14 +11,20 @@ public class ChaseStateManager : MonoBehaviour
 
     [SerializeField] private Transform leftPoint;
     [SerializeField] private Transform rightPoint;
-    private bool chasingEnd;
+    private bool chasing = false;
 
     private void Start()
     {
         if (leftPaw == null || rightPaw == null || leftPoint == null || rightPoint == null)
             Debug.LogError("ChaseStateManager Requires paws and transforms to be initialized");
-
-        StartCoroutine(ChaseEndChecker());
+    }
+    private void Update()
+    {
+        if (!chasing)
+        {
+            chasing = true;
+            StartCoroutine(ChaseEndChecker());
+        }
     }
 
     private IEnumerator ChaseEndChecker()
@@ -48,6 +54,13 @@ public class ChaseStateManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         leftPaw.UnGrabTarget();
         rightPaw.UnGrabTarget();
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        leftPaw.ChangeTargetsToTna(false);
+        rightPaw.ChangeTargetsToTna(true);
+
+        chasing = false; // Chase Restarts
     }
     public void SetLeftPoint(Transform point)
     {

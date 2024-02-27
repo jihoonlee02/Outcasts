@@ -15,6 +15,8 @@ public class AirVent : MonoBehaviour
     private bool holdObject;
     [SerializeField]
     private float holdForce;
+    [SerializeField]
+    private bool affectHeavy;
     public bool Activated {
         get => activated;
         set {
@@ -106,11 +108,11 @@ public class AirVent : MonoBehaviour
         var box = gObject.GetComponent<Box>();
         if (gRBody.velocity.y < 0)
         {
-            if (gObject.tag == "Tinker")
+            if ((affectHeavy && gObject.tag == "Ashe") || gObject.tag == "Tinker")
             {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, gRBody.velocity.y / 5.0f);
             }
-            else if (gObject.tag == "physical" && box != null && !box.IsHeavy)
+            else if (gObject.tag == "physical" && box != null && (affectHeavy || !box.IsHeavy))
             {
                 gRBody.velocity = new Vector2(gRBody.velocity.x, 0);
             }
@@ -123,13 +125,13 @@ public class AirVent : MonoBehaviour
         if (gObject == null || gRBody == null) return;
         var box = gObject.GetComponent<Box>();
         
-        if (gObject.tag == "Tinker" 
+        if ((affectHeavy && gObject.tag == "Ashe") || gObject.tag == "Tinker" 
             || (box == null && gObject.tag == "physical") 
             || (box != null && !box.IsHeavy)) 
         {
             Quaternion windAngQuat = Quaternion.AngleAxis(windAngle, Vector3.forward);
             gRBody.AddForce(windAngQuat * (Vector2.up * windVel));
-            if (gObject.tag == "physical" && box != null && !box.IsHeavy) 
+            if (gObject.tag == "physical" && box != null && (affectHeavy || !box.IsHeavy)) 
             {
                 if (gRBody.velocity.y < 0) 
                 {

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AirVentBase : MonoBehaviour
 {
+    [SerializeField] private bool NotBlockedByHeavy = false;
     private BoxCollider2D baseCollider;
     private AirVent airVent;
     private List<Collider2D> objectsOn;
@@ -50,7 +52,7 @@ public class AirVentBase : MonoBehaviour
     }
 
     private void CheckEnter(Collider2D other) {
-        if (objectsOn.Contains(other)) {
+        if (NotBlockedByHeavy || objectsOn.Contains(other)) {
             return;
         }
         Vector2 rotatedExtent = transform.rotation * Extent;

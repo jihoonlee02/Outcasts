@@ -134,6 +134,7 @@ public class Chase : MonoBehaviour
             GameManager.Instance.Tinker.IsHeld = false;
             GameManager.Instance.Ashe.IsLifting = false;
             GameManager.Instance.Tinker.DisableShoot();
+            GameManager.Instance.Tinker.EnableAlert(AlertType.Alert);
         }
         else if (target.tag == "Ashe")
         {
@@ -145,6 +146,7 @@ public class Chase : MonoBehaviour
             }       
             GameManager.Instance.Ashe.DisablePunch();
             GameManager.Instance.Ashe.DisableGrab();
+            GameManager.Instance.Ashe.EnableAlert(AlertType.Alert);
         }
         grabbedTarget = target;
         isGrabbing = true;
@@ -159,6 +161,7 @@ public class Chase : MonoBehaviour
             Camera.Instance.TnACameraFollow.AsheOnly = false;
             GameManager.Instance.Tinker.EnableShoot();
             GameManager.Instance.Tinker.RB.velocity = Vector2.zero;
+            GameManager.Instance.Tinker.DisableAlert(AlertType.Alert);
         }
         else if (grabbedTarget.tag == "Ashe")
         {
@@ -166,6 +169,7 @@ public class Chase : MonoBehaviour
             GameManager.Instance.Ashe.EnablePunch();
             GameManager.Instance.Ashe.EnableGrab();
             GameManager.Instance.Ashe.RB.velocity = Vector2.zero;
+            GameManager.Instance.Ashe.DisableAlert(AlertType.Alert);
         }
         isGrabbing = false;
         Destroy(grabbedTarget.GetComponent<Grabbed>());

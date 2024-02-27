@@ -434,4 +434,6 @@ public enum AlertType
     Alert,
     punchOrShoot,
     pawnName,
+    grab,
+    help
 }
