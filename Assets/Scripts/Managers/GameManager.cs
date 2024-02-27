@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour, ISaveable
     }
     public void TransitionToNextScene()
     {
-        LoadToScene(m_currScene = m_scenes.Count > 0 ? m_scenes.Dequeue() : "Hub");
+        LoadToScene(m_scenes.Count > 0 ? m_scenes.Dequeue() : "Hub");
     }
     public void QuitToMainMenu()
     {
