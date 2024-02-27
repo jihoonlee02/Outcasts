@@ -75,7 +75,7 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: That
       speed: 2
-      delay: 0.8
+      delay: 1.2
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
@@ -87,19 +87,7 @@ MonoBehaviour:
       initialSound: {fileID: 0}
       text: Was
       speed: 2
-      delay: 0.8
-      waitOnInput: 0
-      noWaiting: 0
-      hideProfileAfterDialogue: 0
-      keepTextAfterDialogue: 0
-    - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
-      alignment: 0
-      externalID: 0
-      charSound: {fileID: 0}
-      initialSound: {fileID: 0}
-      text: Awesome!
-      speed: 2
-      delay: 1
+      delay: 1.2
       waitOnInput: 0
       noWaiting: 0
       hideProfileAfterDialogue: 0
@@ -121,12 +109,24 @@ MonoBehaviour:
     activeDialogueAtTime: 1
     waitOnDialogue: 1
     dialogues:
+    - profile: {fileID: 21300000, guid: c5d940790fc459848a3dea73f5fd2a9f, type: 3}
+      alignment: 0
+      externalID: 0
+      charSound: {fileID: 0}
+      initialSound: {fileID: 0}
+      text: Awesome!
+      speed: 2
+      delay: 2
+      waitOnInput: 0
+      noWaiting: 0
+      hideProfileAfterDialogue: 0
+      keepTextAfterDialogue: 0
     - profile: {fileID: 21300000, guid: 181f9066a2b29d4479091abeaf176a9b, type: 3}
       alignment: 0
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: I want to do that again!
+      text: We need to do that again!
       speed: 3
       delay: 2
       waitOnInput: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
       externalID: 0
       charSound: {fileID: 0}
       initialSound: {fileID: 0}
-      text: Look where you've put us!
-      speed: 3
+      text: We just keep getting deeper and no where near the surface!
+      speed: 6
       delay: 0
       waitOnInput: 1
       noWaiting: 0
